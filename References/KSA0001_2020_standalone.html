@@ -1,0 +1,2668 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>KS A 0001:2020 표준의 서식과 작성 방법 (재구성 발췌본)</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+      --serif:'Noto Serif KR','AppleMyungjo','Batang',serif}
+body{font-family:var(--serif);color:#111;line-height:1.78;font-size:15.5px;word-break:keep-all;
+     max-width:860px;margin:0 auto;padding:34px 40px 60px;background:#fff}
+/* ── 앞표지 ── */
+.cover{min-height:1150px;display:flex;flex-direction:column;break-after:page;page-break-after:always}
+.cover .top{display:flex;justify-content:space-between;align-items:baseline;
+            border-bottom:3px double #111;padding-bottom:10px;font-family:var(--sans)}
+.cover .top .k{font-size:15px;font-weight:700;letter-spacing:.35em}
+.cover .top .no{font-size:20px;font-weight:800}
+.cover .ics{text-align:right;font-family:var(--sans);font-size:12.5px;color:#333;margin-top:8px}
+.cover .title{margin-top:150px;text-align:center;font-family:var(--sans);font-size:36px;font-weight:800;letter-spacing:.02em}
+.cover .etitle{text-align:center;font-style:italic;font-size:16px;color:#333;margin-top:16px}
+.cover .meta{margin-top:130px;text-align:center;font-family:var(--sans);font-size:13.5px;color:#333;line-height:2.1}
+.cover .pub{margin-top:auto;text-align:center;font-family:var(--sans);font-size:13px;color:#333;
+            border-top:1px solid #111;padding-top:14px}
+/* ── 일러두기 ── */
+.notice{background:#fdf7ec;border:1.5px solid #e8d5ab;border-radius:8px;padding:14px 18px;
+        font-size:13.5px;margin:26px 0;line-height:1.65;font-family:var(--sans)}
+.notice b{color:#8a6516}
+/* ── 목차 ── */
+.toc{break-after:page;page-break-after:always;margin-top:10px}
+.toc h2{text-align:center;font-family:var(--sans);font-size:22px;letter-spacing:.5em;margin:20px 0 26px}
+.toc .row{display:flex;align-items:baseline;gap:8px;font-family:var(--sans)}
+.toc .row a{color:#111;text-decoration:none}
+.toc .l1{font-weight:700;font-size:14.5px;margin:7px 0 3px}
+.toc .l2{font-size:13.5px;margin:2px 0 2px 1.8em;font-weight:400}
+.toc .fill{flex:1;border-bottom:1px dotted #aaa;transform:translateY(-4px)}
+/* ── 본문 조항 ── */
+h2.pre{font-family:var(--sans);font-size:20px;text-align:center;letter-spacing:.3em;margin:44px 0 16px}
+h2.cl{font-family:var(--sans);font-size:19px;font-weight:800;margin:38px 0 12px}
+h3{font-family:var(--sans);font-size:16.5px;font-weight:800;margin:26px 0 10px}
+h4{font-family:var(--sans);font-size:15.5px;font-weight:700;margin:20px 0 8px}
+h2.annex{text-align:center;margin:56px 0 18px;font-family:var(--sans)}
+h2.annex span{display:block}
+h2.annex .ax{font-size:20px;font-weight:800}
+h2.annex .axk{font-size:14px;font-weight:400;margin-top:2px}
+h2.annex .axt{font-size:18px;font-weight:700;margin-top:8px}
+.block{margin-bottom:12px}
+.block p{margin-bottom:7px;text-align:justify}
+.block p.clause{font-family:var(--sans);margin-top:16px;margin-bottom:4px;font-size:15.5px}
+p.nb{font-size:13.8px;color:#222;padding-left:1.2em;text-indent:-0em;margin:5px 0 7px}
+p.nb b{font-family:var(--sans)}
+.ed{color:#8a6516;font-size:12.5px;font-family:var(--sans)}
+.foot{margin-top:48px;padding-top:14px;border-top:1.5px solid #999;font-size:12px;color:#777;
+      text-align:center;font-family:var(--sans)}
+@media print{
+  @page{size:A4;margin:15mm 14mm}
+  body{padding:0;max-width:none}
+  h2.cl,h3,h4,h2.annex,h2.pre{break-after:avoid}
+  .block{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="top"><span class="k">한국산업표준</span><span class="no">KS A 0001:2020</span></div>
+  <div class="ics">ICS 01.120</div>
+  <div class="title">표준의 서식과 작성 방법</div>
+  <div class="etitle">Layout and drafting of Korean Industrial Standards</div>
+  <div class="meta">개정 연도: 2020 · 원안작성 협력: KS 서식 표준기술연구회<br>기초: ISO/IEC Directives, Part 2 (제8판, 2018)</div>
+  <div class="pub">재구성 발췌본(교육용) — 원출처: KS A 0001 신구 비교표(KSA0001_20210105.docx)</div>
+</div>
+
+<div class="notice"><b>일러두기</b> — 본 문서는 KS A 0001 신구 비교표에서 <b>2020년판 기준 내용을 추출·재구성</b>한 비공식 참고 자료입니다.
+개정 항목은 2020년판 열의 내용을, “좌동”·공란 항목은 개정이 없는 것으로 보아 2015년판 열의 내용을 수록했습니다.
+서식(앞표지·목차·조항 계층·부속서 (규정)/(참고) 구분·비고/보기 표기)은 KS A 0001 자체의 작성 규칙
+(<b>ks-a0001-standard-drafting 스킬</b>)에 따라 재구성했으며, <span class="ed">†</span> 표시는 서식화 과정에서 보완한
+정형문임을 뜻합니다. 공식 인용 시 반드시 e나라표준인증(www.standard.go.kr)의 원문을 대조하십시오.</div>
+
+<div class="toc">
+<h2>목차</h2>
+<div class="row l1"><a href="#s1">머리말</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s2">개요</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s3">1 적용범위</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s4">2 인용표준</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s5">3 용어와 정의</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s6">3.1 문서 종류(document type)</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s7">3.2 요소(element)</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s8">3.3 규정(provisions)</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s9">3.5 표준의 종류</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s10">3.6 표준의 요소</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s11">6.5 기타 참고요소</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s12">B.2 언어에 관한 참고자료</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s13">부속서 C(참고) 구분 및 세부구분의 번호부여 보기</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s14">부속서 D 용어와 정의의 작성과 표현 방법</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s15">D.1 일반원칙</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s16">부속서 E(규정) 표준의 명칭 작성</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s18">부속서 F(규정) 특허권</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s19">G.2 적용성</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s20">G.3 호칭체계</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s21">G.4 문자의 사용</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s23">J.1 조항의 표현을 위한 문장말미의 형태</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s24">K.1 표준의 체제</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s25">K.2 표지</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s26">부속서 L(참고) 머리말, 개요 등의 작성방법</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s27">M.2 용어</a><span class="fill"></span></div>
+<div class="row l2"><a href="#s29">M.3 서술부호</a><span class="fill"></span></div>
+<div class="row l1"><a href="#s30">부속서 P(규정) 추록</a><span class="fill"></span></div>
+</div>
+
+<h2 class="pre" id="s1">머리말</h2>
+<div class="block"><p>정형문</p></div>
+<p class="ed">※ 원출처(신구 비교표)에는 머리말이 “정형문”으로만 표기되어 있어 전문(全文)은 수록되어 있지 않다.</p>
+
+<h2 class="pre" id="s2">개요</h2>
+<div class="block"><p>이 표준은 한국산업표준(KS)의 체계를 국제표준의 체계와 일치시키기 위하여 2018년 제8판으로 발행된 ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards를 기초로 하여 작성한 한국산업표준이다.</p>
+<p>이 표준에서 밑줄로 표시한 문단은 한글 맞춤법 및 관행이 달라서 수용할 수 없는 조항을 추가한 사항이다. 하나의 조항이 전체적으로 변경되거나 추가된 경우에는 본문에서 조항 번호와 제목에만 밑줄을 그어 표시하였다</p>
+<p>이 표준은 개정고시 이후에 발행 또는 고시되는 모든 한국산업표준에 적용된다.</p></div>
+
+<h2 class="cl" id="s3">1&emsp;적용범위</h2>
+<div class="block"><p>이 표준은 국가표준(이하, “표준”이라 한다.)의 구성 및 표현 형식을 규정하며 한국산업표준, 단체표준, 회사표준 및 기술기준에도 적용이 가능하다. 한국산업표준은 국가표준으로서, 영문으로는 “Korean Standards”로 표기하며, 약칭은 “KS”로 한다.</p></div>
+
+<h2 class="cl" id="s4">2&emsp;인용표준</h2>
+<p>다음의 인용표준은 전체 또는 부분적으로 이 표준의 적용을 위해 필수적이다. 발행연도가 표기된 인용표준은 인용된 판만을 적용한다. 발행연도가 표기되지 않은 인용표준은 최신판(모든 추록을 포함)을 적용한다. <span class="ed">†</span></p>
+<div class="block"><p>KS A ISO/IEC Guide 2 , 표준화 및 관련 활동 — 일반 어휘</p>
+<p>KS A ISO/IEC Guide 21-1, 국제 규격 및 발간물의 지역 또는 국가 규격 및 발간물로의 채택 — 제1부：국제 규격의 채택</p>
+<p>KS A ISO/IEC Guide 21-2, 국제 규격 및 발간물의 지역 또는 국가 규격 및 발간물로의 채택 — 제2부：국제 규격 이외의 국제 발간물의 채택</p>
+<p>KS A 0014, 기술규정에서 표준을 참조하는방법에 대한 가이드</p>
+<p>KS A ISO Guide 99, 국제측정학용어 — 기본 및 일반 개념과 관련 용어(VIM)</p>
+<p>KS A ISO 128－30, 제도 — 표시의 일반원칙 — 제30부: 투상도에 대한 기본 규정</p>
+<p>KS A ISO 128－40, 제도 — 표시의 일반원칙 — 제40부: 절단과 단면에 대한 기본규정</p>
+<p>KS A ISO 6433, 제품의 기술 문서(TPD) — 부품번호</p>
+<p>KS A ISO 80000(모든 부), 양 및 단위</p>
+<p>KS A IEC 80000(모든 부), 양 및 단위</p>
+<p>KS A OIML V 1, 법정계량 용어(VIML)</p>
+<p>KS B ISO 128－34, 제도 — 표시의 일반원칙 —</p>
+<p>제34부: 기계제도에서의 투상도</p>
+<p>KS B ISO 128－44, 제도 — 표시의 일반원칙 — 제44부: 기계제도에서의 단면도</p>
+<p>KS B ISO 3098－2, 제품의 기술 문서(TPD) — 문자 — 제2부: 로마자, 숫자 및 표시</p>
+<p>KS C IEC 60027(모든 부), 전기기술 분야에 사용되는 기호</p>
+<p>KS C IEC 61175, 산업시스템, 설비ㆍ장치 및 산업제품 — 신호 명칭</p>
+<p>KS C IEC 61355, 설비, 시스템, 장비의 문서분류 및 지정 — 제1부: 규정 및 분류표</p>
+<p>KS C IEC 81346(모든 부), 산업시스템, 설비ㆍ장치 및 산업제품 — 구성원리 및 참조 명칭</p>
+<p>KS M ISO 78－2, 화학 표준을 위한 체계 — 화학 분석법</p>
+<p>KS Q ISO/IEC 17000, 적합성평가 — 용어 및 일반원칙</p>
+<p>KS S ISO 7000, 장비에 이용되는 그래픽 심볼 — 목록 및 개요</p>
+<p>KS X 1510(모든 부), 국명 및 지명 코드</p>
+<p>KS X ISO 639－1, 언어명 표현 코드 — 제1부: 두 자리 코드</p>
+<p>KS X IEC 61082－1, 전기공학 분야에서 사용되는 문서준비 — 제1부: 규칙</p>
+<p>ISO/IEC Guide 17, Guide for writing standards taking into account the needs of micro, small and medium-sized enterprises</p>
+<p>ISO/IEC Guide 59, ISO and IEC rcommended practices for standardization by national bodies</p>
+<p>ISO 690, Information and documentation — Guidelines for bibliographic references and citations to information resources</p>
+<p>ISO 10241－1:2011, Terminological entries in standards — Part 1: General requirements and examples of presentation</p>
+<p>ISO 14617(all parts), Graphical symbols for diagrams</p>
+<p>ISO 15924, Information and documentation — Codes for the representation of names of scripts</p>
+<p>IEC 60417, Graphical symbols for use on equipment</p>
+<p>IEC 60617, Graphical symbols for diagrams</p>
+<p>ISO/IEC Directives, Part 1, Procedures for the technical work</p>
+<p>ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards</p>
+<p>ISO/IEC Directives, Supplement — Procedures specific to IEC</p>
+<p>ISO/IEC Directives, Supplement — Procedures specific to ISO</p>
+<p>Quality management systems — Guidance and criteria for the development of documents to meet needs of specific product and industry/economic sectors, ISO/TC 176</p></div>
+
+<h2 class="cl" id="s5">3&emsp;용어와 정의</h2>
+<div class="block"><p>이 표준의 목적을 위하여 다음의 용어와 정의를 적용한다.</p>
+<p class="nb"><b>비고 1</b>&ensp;ISO 및 IEC의 용어 데이터베이스는 다음과 같다.</p>
+<p>- ISO 온라인 브라우징 플랫폼: https: //www.iso.org/obp</p>
+<p>- IEC 일렉트로피디아</p>
+<p>https://www.electropedia.org</p>
+<p class="nb"><b>비고 2</b>&ensp;KS용어사전는 다음을 적용할 수 있다</p>
+<p>-e나라표준인증포털 : https://www.standard.go.kr/KSCI/dictionary</p></div>
+
+<h3 id="s6">3.1&emsp;문서 종류(document type)</h3>
+<div class="block"><p class="clause"><b>3.1.1 문서(document)</b></p>
+<p>국가표준기관 또는 국제표준기관의 표준안 및 발행물</p>
+<p class="nb"><b>보기</b>&ensp;국제표준(3.1.3), 기술시방서(3.1.5), 기술보고서(3.1.6), PAS(3.1.8) 및 가이드(3.1.7)와 한국산업 표준</p>
+<p>[출처: ISO/IEC Directives, Part 2, 3.1.1, modified]</p></div>
+<div class="block"><p class="clause"><b>3.1.2 표준(standard)</b></p>
+<p>제시된 상황에서 최적의 질서를 달성하기 위해 일반적이고 반복적인 용도의 규칙, 지침, 또는 행위와 그 결과에 대한 특성을 제공하며, 합의(3.7.1.3)에 의해 개발되고 국가표준기관에 의해 승인된 문서(3.1.1)</p>
+<p>표준은 공익의 최대 진흥을 목적으로 하며, 확고한 과학적, 기술적 및 경험적 결과에 근거하는 것이 좋다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 3.2]</p></div>
+<div class="block"><p class="clause"><b>3.1.3 국제표준(international standard)</b></p>
+<p>국제표준기관이 채택(3.8.1)하고, 일반에게 공개되는 표준(3.1.2)</p>
+<p>[출처: KS A ISO/IEC Guide 2, 3.2.1.1]</p></div>
+<div class="block"><p class="clause"><b>3.1.4 국가표준(national standard)</b></p>
+<p>국가표준기관이 채택(3.8.1) 또는 공인한 표준(3.1.2)</p>
+<p>[출처: KS A ISO/IEC Guide 2, 3.2.1.3]</p></div>
+<div class="block"><p class="clause"><b>3.1.5 기술시방서( technical specification)</b></p>
+<p>TS</p>
+<p>국제표준기관에서 발행한 문서(3.1.1)로서, 국제표준으로 합의될 가능성(3.3.5)은 있으나, 현실적으로 다음과 같은 이유로 국제표준(3.1.3)이 되지 못한 문서</p>
+<p>—국제표준(3.1.3)으로 승인되기 위한 지지를 획득하지 못함</p>
+<p>—합의(3.7.1.3)가 이루어졌는지가 불분명함</p>
+<p>—표준화 주제 또는 대상이 아직 기술개발 중임</p>
+<p>—국제표준(3.1.3)으로 발행되는 데 기타 장애 요인이 있음</p>
+<p class="nb"><b>비고 1</b>&ensp;부속서를 포함한 기술시방서의 내용은 요구사항(3.3.1)을 포함시켜도 된다.</p>
+<p class="nb"><b>비고 2</b>&ensp;기술시방서는 기존의 국제표준(3.1.3)과의 충돌이 허용되지 않는다.</p>
+<p class="nb"><b>비고 3</b>&ensp;동일 주제에 대한 기술시방서(3.1.5) 간의 경쟁이 허용된다.</p>
+<p class="nb"><b>비고 4</b>&ensp;이 용어는 특정 분야에서 기술명세서 또는 기술규격으로도 사용된다.</p></div>
+<div class="block"><p class="clause"><b>3.1.6 기술보고서(technical report)</b></p>
+<p>TR</p>
+<p>국제표준(3.1.3) 또는 기술시방서(3.1.5)로 발행된 문서에서 수집된 여러 종류의 데이터를 포함시켜 발행한 문서(3.1.1)</p>
+<p class="nb"><b>비고</b>&ensp;데이터는 국가표준기관간의 설문조사에서 얻은 데이터, 다른 국제기구의 작업에 의한 데이터 또는 특정 주제에 관한 국가표준기관의 표준과 관련된 “최신 기술(3.4)” 에 관한 데이터를 포함한다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.1.8]</p></div>
+<div class="block"><p class="clause"><b>3.1.7 가이드(guide)</b></p>
+<p>국가 및 국제표준화와 관련된 비규범적 사항에 대한 규칙, 방침, 조언 또는 권고사항(3.3.2)을 담아 국가 및 국제표준기관이 발행한 문서(3.1.1)</p>
+<p class="nb"><b>비고</b>&ensp;가이드는 국가 및 국제표준기관이 발행한 문서(3.1.1)에 대해 모든 사용자와 이해관계가 있는 사안을 다룰 수 있다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.1.7]</p></div>
+<div class="block"><p class="clause"><b>3.1.8 PAS(publicly available specification)</b></p>
+<p>시급한 시장의 요구에 부응하기 위하여 국제표준기관이 발행한 문서(3.1.1)로서, 다음 중 하나의 사항을 포함</p>
+<p>—	ISO 및 IEC 외부 조직의 합의(3.7.1.3)</p>
+<p>—	작업반(WG) 내의 전문가들의 합의(3.7.1.3)</p>
+<p class="nb"><b>비고 1</b>&ensp;PAS는 기존의 국제표준(3.1.3)과의 충돌이 허용되지 않는다.</p>
+<p class="nb"><b>비고 2</b>&ensp;동일 주제에 대한 PAS간의 경합이 허용된다.</p>
+<p class="nb"><b>비고 3</b>&ensp;PAS는 영문약자를 대신하여 ‘공적가용시방’ 또는 ‘공적가용명세’로 번역될 수 있다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.1.6]</p></div>
+
+<h3 id="s7">3.2&emsp;요소(element)</h3>
+<div class="block"><p>3.2 문서의 요소</p></div>
+<div class="block"><p class="clause"><b>3.2.1 규정요소(normative element)</b></p>
+<p>문서(3.1.1)의 적용범위를 서술하거나 조항(3.3)을 설정하는 요소</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.2.1]</p></div>
+<div class="block"><p>3.2.2 참고요소(informative element)참고요소(informative element)</p>
+<p>문서(3.1.1)의 이해 또는 사용을 돕거나 혹은 그 문서(3.1.1)의 내용, 배경 또는 다른 문서(3.1.1)와의 관계에 대한 문맥적인 정보을 제공하기 위한 요소</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.2.2]</p></div>
+<div class="block"><p class="clause"><b>3.2.2.1 예비 참고요소(preliminary informative elements)</b></p>
+<p>문서(3.1.1)를 식별하고, 그 내용을 소개하며, 배경, 개발과정 및 기타 문서(3.1.1)와의 관계를 설명하는 요소</p></div>
+<div class="block"><p class="clause"><b>3.2.2.2 보충 참고요소(supplementary informative elements)</b></p>
+<p>문서(3.1.1)의 사용이나 이해를 돕는 것을 목적으로 추가적인 정보를 제공하는 요소</p></div>
+<div class="block"><p class="clause"><b>3.2.3 의무요소(mandatory element)</b></p>
+<p>문서(3.1.1) 내에서 의무적으로 존재해야 하는 요소</p>
+<p class="nb"><b>보기</b>&ensp;적용범위는 의무요소의 한 예이다</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.2.3]</p></div>
+<div class="block"><p class="clause"><b>3.2.4 조건요소(conditional element)</b></p>
+<p>특정 문서(3.1.1)의 조항(3.3)에 따라 존재하는 요소</p>
+<p class="nb"><b>보기</b>&ensp;기호와 약어는 조건요소의 한 예이다</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.2.4]</p></div>
+<div class="block"><p class="clause"><b>3.2.5 선택요소(optional element)</b></p>
+<p>문서(3.1.1) 작성자가 포함 여부를 선택할 수 있는 요소</p>
+<p class="nb"><b>보기</b>&ensp;개요는 선택요소의 한 예이다. 다만, 국제표준의 국가표준 채택 정보는 필수적이다</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.2.5]</p></div>
+
+<h3 id="s8">3.3&emsp;규정(provisions)</h3>
+<div class="block"><p class="clause"><b>3.3 조항(provision)</b></p>
+<p>설명(3.3.3), 명령, 권고사항(3.3.2) 또는 요구사항(3.3.1)의 형식을 취하는 규범적 문서(3.1.1) 내용을 서술하는 표현</p>
+<p class="nb"><b>비고</b>&ensp;조항의 형식은 이를 사용하는 단어의 형태로 구분된다. 예를들어, 명령은 명령법으로 표현되며 권고사항(3.3.2) 및 요구사항(3.3.1)의 문장 말미형태로 구별된다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.3.1]</p></div>
+<div class="block"><p class="clause"><b>3.3.1 요구사항(requirement)</b></p>
+<p>해당 문서(3.1.1)를 반드시 이행해야 하는 기준을 제시하고 충족해야 할 내용을 전달하는 표현</p>
+<p class="nb"><b>비고</b>&ensp;표 I.1은 요구사항을 표현하기 위한 문장말미의 형태를 규정한다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.3.3]</p></div>
+<div class="block"><p class="clause"><b>3.3.2 권고사항(recommendation)</b></p>
+<p>해당 문서(3.1.1)의 내용 중 기타 사항을 언급 또는 배제하지 않으면서 여러 가능한 대상 중의 하나를 특별히 적절한 것으로 추천하거나, 특정 행위 절차가 필수적으로 요구되는 것은 아니지만 선호될 때, 또는 소극적 관점에서 특정 행위 절차가 회피되지만 금지된 것은 아닐 때 해당 내용을 전달하는 표현</p>
+<p class="nb"><b>비고</b>&ensp;표 I.2는 권고사항을 표현하기 위한 문장말미의 형태를 규정한다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.3.4]</p></div>
+<div class="block"><p class="clause"><b>3.3.3 설명(statement)</b></p>
+<p>해당 문서(3.1.1)의 내용 중 정보를 전달하는 표현</p>
+<p class="nb"><b>비고</b>&ensp;표 I.3은 해당 문서의 범위 내에서 임의 행위 절차가 허용 가능하다는 것을 지시하는 문장말미의 형태에 관해 규정한다. 표 I.4는 가능성(3.3.5) 및 역량(3.3.6)에 관한 설명에 사용되는 문장말미의 형태에 대해 규정한다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.3.2]</p></div>
+<div class="block"><p class="clause"><b>3.3.4 허용(permission)</b></p>
+<p>무엇을 하는 것에 대한 동의 또는 자유(또는 기회)을 전달하는 문서(3.1.1) 내용을 서술하는 표현</p>
+<p class="nb"><b>비고</b>&ensp;허용은 표 I.3에 지정한 동사형식을 사용하여 표현한다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.3.5]</p></div>
+<div class="block"><p class="clause"><b>3.3.5 가능성(possiblility)</b></p>
+<p>예상되거나 있을 법한 물질적, 물리적 또는 인과적 결과를 전달하는 문서(3.1.1) 내용을 서술하는 표현</p>
+<p class="nb"><b>비고</b>&ensp;가능성은 표 I.4에 지정한 동사형식을 사용하여 표현한다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.3.6]</p></div>
+<div class="block"><p class="clause"><b>3.3.6 역량(capability)</b></p>
+<p>특정된 것을 수행하거나 달성하기 위해 필요한 능력, 적합성 또는 품질을 전달하는 문서(3.1.1) 내용을 서술하는 표현</p>
+<p class="nb"><b>비고</b>&ensp;역량은 표 I.4에 지정한 동사형식을 사용하여 표현한다.</p>
+<p>[출처: ISO/IEC Directives Part2, 3.3.7]</p></div>
+<div class="block"><p class="clause"><b>3.3.7 외적 제약(external constraint)</b></p>
+<p>표준(3.1.2)의 조항(3.3.1)으로 지정되지 않은 하나 이상의 법적 요구사항 또는 자연법에 기인한 문서(3.1.1) 이용자에게 부과되는 금지 또는 의무</p>
+<p class="nb"><b>비고</b>&ensp;외적 제약은 표 I.5에 지정한 동사형식을 사용하여 표현한다.</p>
+<p>[출처: ISO/IEC Directives, Part2, 3.3.7]</p></div>
+<div class="block"><p class="clause"><b>3.4 최신 기술(state of the art)</b></p>
+<p>과학, 기술 및 경험에 대한 총괄적인 발견사항들을 근거로 제품, 프로세스 또는 서비스에 대하여 주어진 시간 내에 이룬 기술적 능력의 발전된 단계</p>
+<p>[출처: ISO/IEC ISO/IEC Guide 2, 1.4]</p></div>
+
+<h3 id="s9">3.5&emsp;표준의 종류</h3>
+<div class="block"><p class="clause"><b>3.5 인용표준(normative reference)</b></p>
+<p>어떤 문서(3.1.1)가 그 규정의 일부를 구성하기 위하여 인용하는 국가표준(3.1.4), 국제표준(3.1.3) 또는 이에 준하는 표준(3.1.2)</p>
+<p class="nb"><b>비고</b>&ensp;출처, 근거 등의 정보로서 참조한다는 것을 나타내는 표준(3.1.2)이나 문서(3.1.1)는 인용표준이 아니다.</p></div>
+<div class="block"><p class="clause"><b>3.5.1 인용표준(normative reference)</b></p>
+<p>어떤 표준이 그 규정의 일부를 구성하기 위하여 인용하는 한국산업표준이거나 국제표준 또는 이들에 준하는 규범 문서</p>
+<p class="nb"><b>비고</b>&ensp;단지 출처, 근거 등의 정보로서 참조한다는 것을 나타내는 표준이나 문서는 인용표준이 아니다.</p></div>
+<div class="block"><p class="clause"><b>3.5.2 원국제표준(original International Standard)</b></p>
+<p>ISO 또는 IEC가 발행한 국제표준으로 한국산업표준의 기초가 된 표준</p></div>
+<div class="block"><p class="clause"><b>3.5.3 국제일치표준(internationally harmonized standard)</b></p>
+<p>기술적 내용이 원국제표준과 동등 )하고, 표준의 구성이 원국제표준과 대응하도록 한국어로 번역하여 한국산업표준으로 제정한 표준</p></div>
+<div class="block"><p class="clause"><b>3.5.4 대응국제표준(corresponding International Standard)</b></p>
+<p>다음에 나타내는 ISO 및/또는 IEC가 발행한 국제표준</p>
+<p>—	원국제표준</p>
+<p>—	어떤 한국산업표준과 적용범위에서 대상으로 하고 있는 제품 등이 일치하고 있는 국제표준. 규정 내용의 차이의 유무는 묻지 않는다.</p>
+<p class="nb"><b>보기</b>&ensp;본체와 부속서로 구성되는, 어떤 한국산업표준의 본체 또는 부속서에 대응하는 국제표준</p>
+<p>—	어떤 한국산업표준의 일부분 또는 어떤 규정 내용에 대응하는 국제표준. 규정 내용의 차이의 유무는 묻지 않는다.</p></div>
+<div class="block"><p class="clause"><b>3.5.5 관련표준(related standard)</b></p>
+<p>어떤 표준을 적용하는 데 있어서 참조하는 편이 좋은 표준(국제표준, 국가표준, 단체표준 등) 및 기타 기타 문서. 다만, 회사표준은 제외한다</p>
+<p>1) 원국제표준에서 받아들이는 것은 KS에서도 모두 받아들여지고，그 반대의 경우도 이것이 성립하는 상태</p>
+<p>국제일치표준에서 다음에 나타내는 편집상의 변경은 원국제표준의 기술적 내용의 변경에는 해당하지 않는다.</p>
+<p>a)	소수점을 나타내는 반점/쉼표(,)를 온점/마침표(.)로 변경한다.</p>
+<p>b)	오류의 수정(예를 들면, 탈자) 또는 쪽을 변경한다.</p>
+<p>c)	다언어판 국제표준에서 1언어판 또는 복수언어판을 삭제한다.</p>
+<p>d)	국제표준에 대하여 발행된 서술에 관한 정오표 또는 수정표를 포함시킨다.</p>
+<p>e)	기존의 국제표준의 계열에 일치한 명칭으로 변경한다.</p>
+<p>f)	“이 국제표준”을 “이 표준”으로 바꾼다.</p>
+<p>g)	국가의 참고자료(예를 들면, 국제표준의 조항을 변경하거나 추가하거나 삭제하거나 하지 않은 참고 부속서)를 추가한다.</p>
+<p>h)	국제표준에서 참고로서의 예비적 자료는 삭제한다.</p>
+<p>i)	국제표준을 하나의 공용어로 채용하는 데 있어서 국제표준을 채용하는 국가에서 사용되고 있는 공통언어로 하기 위하여 하나의 단어 또는 문구를 국가표준 중에서 동의어로 바꾼다.</p>
+<p>j)	다른 측정시스템이 사용되고 있는 국가의 경우, 재계산한 양의 단위를 참고로 추가한다.</p>
+<p>[참고]	위의 a)∼j)는 KS A ISO/IEC Guide 21(국제 규격 및 발간물의 지역 또는 국가 규격 및 발간물로의 채택)에 따랐다.</p></div>
+<div class="block"><p class="clause"><b>3.5.6 제품표준(product standard)</b></p>
+<p>제품이 특정 조건 아래에서 소정의 목적을 달성하기 위하여 만족시켜야 하는 요구사항에 대하여 규정하는 표준. 요구사항의 일부만을 규정하는 표준을 포함한다.</p></div>
+<div class="block"><p class="clause"><b>3.5.7 시험표준(testing standard)</b></p>
+<p>시험방법에 대하여 규정하는 표준. 때로는 샘플링방법, 통계적 방법의 사용 및 시험순서와 같은 시험에 관한 기타 규정도 보충적으로 정한다.</p></div>
+<div class="block"><p class="clause"><b>3.5.8 용어표준(terminology standard)</b></p>
+<p>용어에 대하여 개념 본문 안에 위치하여 단어로 그 개념을 표현하고 다른 개념과의 차이를 명확히 하는 정의와 함께 규정하는 표준. 보통, 용어 및 정의 외에 번호, 대응 영어(참고), 비채용 용어(참고), 색인(권말에 붙인다)을 포함하고 때로는 비고, 도해, 보기 등을 수반한다.</p></div>
+
+<h3 id="s10">3.6&emsp;표준의 요소</h3>
+<div class="block"><p>3.6 표준의 유형</p>
+<p class="nb"><b>비고</b>&ensp;다음의 용어는 표준(3.1.2)의 공통적인 종류를 제시한다. 이들은 상호 배타적이지 않다. 예를들면, 특정한 제품표준(3.6.4)이 제품의 특성을 위한 시험방법을 제공하는 경우 시험표준(3.6.3)으로 간주될 수 있다</p></div>
+<div class="block"><p class="clause"><b>3.6.1 기본표준(basic standard)</b></p>
+<p>폭 넓은 범위을 가지거나 특정한 분야에 대한 일반적인 조항(3.3)을 포함하는 표준(3.1.2)</p>
+<p class="nb"><b>비고</b>&ensp;기본표준은 직접적인 적용을 위한 표준(3.1.2)으로서 또는 타 표준(3.1.2)을 위한 기초로서의 기능을 가질 수 있다</p>
+<p>[출처: KS A ISO/IEC Guide 2, 5.1]</p></div>
+<div class="block"><p class="clause"><b>3.6.2 용어표준(terminology standard)</b></p>
+<p>용어와 관련된 표준(3.1.2)으로서 일반적으로 용어 정의를 수반. 때로는 비고, 도해, 보기 등을 수반</p>
+<p>[출처: KS A ISO/IEC Guide 2, 5.2]</p></div>
+<div class="block"><p class="clause"><b>3.6.3 시험표준(testing standard)</b></p>
+<p>시험방법과 관련된 표준(3.1.2)으로서 때로는 샘플링, 통계적 방법의 사용, 시험 순서와 관련된 다른 조항(3.3)을 보충</p>
+<p>[출처: KS A ISO/IEC Guide 2, 5.3]</p></div>
+<div class="block"><p class="clause"><b>3.6.4 제품표준(product standard)</b></p>
+<p>목적과의 부합성(3.7.2.1)을 위해 하나의 제품 또는 제품군이 충족해야 할 요구사항(3.3.1)을 규정한 표준(3.1.2)</p>
+<p class="nb"><b>비고 1</b>&ensp;제품표준은 목적과의 부합성(3.9.2.1)에 더불어, 용어, 샘플링, 시험, 포장 및 라벨링, 때로는 요구사항 프로세스를 직접적으로 또는 인용하여 포함 할 수도 있다.</p>
+<p class="nb"><b>비고 2</b>&ensp;제품표준은 필요한 요구사항(3.3.1)의 전부 또는 일부만을 규정하는지 여부에 따라, 완전하거나 그렇지 않을 수 있다. 이런 측면에서, 치수, 재료 및 기술 제공과 같은 표준(3.1.2)으로 구별 할 수 있다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 5.4]</p></div>
+<div class="block"><p class="clause"><b>3.6.5 프로세스표준(process standard)</b></p>
+<p>목적과의 부합성(3.7.2.1)을 달성하기 위하여 프로세스에 의해 충족되어야 하는 요구사항(3.3.1)을 규정한 표준(3.1.2)</p>
+<p>[출처: KS A ISO/IEC Guide 2, 5.5]</p></div>
+<div class="block"><p class="clause"><b>3.6.6 서비스표준(service standard)</b></p>
+<p>목적과의 부합성(3.7.2.1)을 달성하기 위하여 서비스에 의해 충족되어야 하는 요구사항(3.3.1)을 규정한 표준(3.1.2)</p>
+<p class="nb"><b>비고</b>&ensp;서비스표준은 세탁, 호텔관리, 운송, 자동차 정비, 통신, 보험, 은행 및 무역과 같은 분야에서 작성될 수 있다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 5.6]</p></div>
+<div class="block"><p class="clause"><b>3.6.7 인터페이스표준(interface standard)</b></p>
+<p>제품 또는 시스템이 상호 연결되는 시점에서 적합성에 관한 요구사항(3.3.1)을 규정한 표준(3.1.2)</p>
+<p>[출처: KS A ISO/IEC Guide 2, 5.7]</p></div>
+<div class="block"><p class="clause"><b>3.6.8 데이터표준(standard on data to be provided)</b></p>
+<p>제품, 프로세스 또는 서비스를 규정하기 위한 일련의 값 또는 데이터에 대한 특성 목록을 포함하는표준(3.1.2)</p>
+<p>[출처: KS A ISO/IEC Guide 2, 5.8]</p></div>
+<div class="block"><p class="clause"><b>3.6.9 비고(note)</b></p>
+<p>본문, 그림, 표 등의 내용을 이해하기 위하여 없어서는 안 될 것이지만, 그 안에 직접 기재하면 복잡해지는 사항을 따로 기재하는 것.</p></div>
+<div class="block"><p class="clause"><b>3.6.10 각주(footnote)</b></p>
+<p>본문, 비고, 그림, 표 등의 안에 있는 일부의 사항에 각주번호를 붙이고, 그 사항을 보충하는 내용을 해당하는 쪽의 맨 아랫부분에 따로 기재하는 것.</p></div>
+<div class="block"><p class="clause"><b>3.6.11 보기/예(example)</b></p>
+<p>본문, 각주, 비고, 그림, 표 등에 나타내는 사항의 이해를 돕기 위한 예시</p></div>
+<div class="block"><p>3.7 표준화</p></div>
+<div class="block"><p class="clause"><b>3.7.1 표준화(standardization)</b></p>
+<p>실제적이거나 잠재적인 문제들에 대하여 주어진 범위에서 최적 수준을 성취할 목적으로, 공통적이고 반복적인 사용을 위한 문서를 만드는 활동</p>
+<p class="nb"><b>비고 1</b>&ensp;문서(3.1.1)을 공식화하고 발행 및 이행하는 프로세스로 이루어진 활동</p>
+<p class="nb"><b>비고 2</b>&ensp;표준화의 중요한 이익은 제품, 프로세스 또는 서비스를 본래의 의도된 목적에 적절하도록 개선하고, 무역에 대한 장벽을 방지하며 기술적 협력을 촉진하는 것이다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 1.1]</p></div>
+<div class="block"><p class="clause"><b>3.7.1.1 표준화 주제(subject of standardization)</b></p>
+<p>표준화가 되어야 할 토픽(topic)</p>
+<p class="nb"><b>비고 1</b>&ensp;“제품, 프로세스 또는 서비스“라는 표현은 광의의 의미에서 표준화 주제를 포괄하기 위하여 채택하였다. 즉, 모든 자재, 구성 요소, 장비, 시스템, 인터페이스, 프로토콜, 절차, 기능, 방법 또는 활동을 포괄하는 것으로 이해해야 할 것이다.</p>
+<p class="nb"><b>비고 2</b>&ensp;표준화(3.7.1)는 모든 주제의 특정한 측면에 한정 될 수 있다. 예를들면, 신발의 경우 크기와 내구성의 기준이 개별적으로 표준화(3.7.1)될 수 있을 것이다.</p>
+<p>[출처: KS A ISO/IEC Guide 2,  1.2]</p></div>
+<div class="block"><p class="clause"><b>3.7.1.2 표준화 분야(field of standardization)</b></p>
+<p>표준화 주제(3.7.1.1)와 관련된 그룹</p>
+<p class="nb"><b>비고</b>&ensp;예를 들어, 엔지니어링, 운송, 농업 및 양과 단위는 표준화 분야로 간주될 수 있다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 1.4]</p></div>
+<div class="block"><p class="clause"><b>3.7.1.3 합의(consensus)</b></p>
+<p>이해 관계가 있는 중요한 부분에 대한 지속적인 반대가 없으며, 관련된 모든 당사자의 견해를 고려하고, 충돌하는 논쟁을 조정하는 절차를 특징으로 하는 일반적 합의</p>
+<p class="nb"><b>비고</b>&ensp;합의는 만장일치를 의미하지 않는다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 1.7]</p></div>
+<div class="block"><p>3.7.2 	표준화의 목적(aim)</p>
+<p class="nb"><b>비고</b>&ensp;표준화의 목적은 3.7.1의 정의에 따른다. 표준화(3.7.1)는 제품, 프로세스 또는 서비스를 그 목적과의 부합성(3.7.2.1)을 위해 둘 이상의 목적을 가질 수 있다. 이러한 목적에는 다양성 관리(3.7.2.4), 호환성(3.7.2.2), 상호교환성(3.7.2.3), 건강, 안전(3.7.2.5), 환경보호(3.7.2.6), 제품보호(3.8.2.7), 상호 이해, 경제적 능력, 무역 등이 포함되며, 이 목적에만 한정되는 것은 아니다. 이러한 목적은 한 가지 이상일 수 있다.</p></div>
+<div class="block"><p class="clause"><b>3.7.2.1 목적과의 부합성(fitness for purpose)</b></p>
+<p>제품, 프로세스 또는 서비스가 특정한 조건하에서 정해진 목적을 이루어내는 능력</p>
+<p>[출처: KS A ISO/IEC Guide 2, 2.1]</p></div>
+<div class="block"><p class="clause"><b>3.7.2.2 호환성(compatiblity)</b></p>
+<p>제품, 프로세스 또는 서비스가 특정한 조건에서, 수용할 수 없는 상호작용을 일으킴이 없이 관련된 요구사항(3.3.1)을 충족하기 위하여 함께 사용되는 적절성</p>
+<p>[출처: KS A ISO/IEC Guide 2, 2.2]</p></div>
+<div class="block"><p class="clause"><b>3.7.2.3 상호교환성(interchangeablility)</b></p>
+<p>동일한 요구사항(3.3.1)을 충족하기 위하여 하나의 제품, 프로세스 또는 서비스가 다른 제품, 프로세스 또는 서비스를 대신하여 사용되는 능력</p>
+<p class="nb"><b>비고</b>&ensp;상호교환성의 기능적인 측면을 “기능적 상호교환성“이라 부리며, 치수적인 측면을 “치수적 상호교환성“이라고 한다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 2.3]</p></div>
+<div class="block"><p class="clause"><b>3.7.2.4 다양성 관리(variety control)</b></p>
+<p>제품, 프로세스 또는 서비스의 크기 및 유형 중 최대한의 수가 요구사항(3.3.1)을 만족하도록 선정하는 행위</p>
+<p class="nb"><b>비고</b>&ensp;다양성 관리는 주로 다양성의 감소와 연관된다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 2.4]</p></div>
+<div class="block"><p class="clause"><b>3.7.2.5 안전(safety)</b></p>
+<p>수용할 수 없는 위해 위험으로부터 자유로워 지는 것</p>
+<p class="nb"><b>비고</b>&ensp;표준화에 있어서 제품, 프로세스 또는 서비스의 안전은 인간의 행동과 같은 비기술적 요인과 인간 및 제품에 대하여 수용 가능한 수준까지 회피 가능한 위험을 제거해 주는 다수의 요인에 대한 최적의 균형을 달성하기 위하여 고려된다.</p>
+<p>[출처: KS A ISO/IEC Guide 2, 2.5]</p></div>
+<div class="block"><p class="clause"><b>3.7.2.6 환경 보호(protection of the environment)</b></p>
+<p>제품, 프로세스 또는 서비스의 효과 및 운영에서 야기되는 수용할 수 없는 피해로부터 환경을 보호하는 것</p>
+<p>[출처: KS A ISO/IEC Guide 2, 2.6]</p></div>
+<div class="block"><p class="clause"><b>3.7.2.7 제품 보호(product protection)</b></p>
+<p>제품의 사용, 운송 또는 저장 중에 기후 또는 다른 불리한 조건으로부터 제품을 보호하는 것</p>
+<p>[출처: KS A ISO/IEC Guide 2, 2.7]</p></div>
+<div class="block"><p>3.8 국제표준의 국가표준 채택</p></div>
+<div class="block"><p class="clause"><b>3.8.1 채택(adoption)</b></p>
+<p>관련 국제표준(3.1.3)에 기초하여 국가의 규범적 문서(3.1.1)로 발행 또는 동일한 지위로 승인하는 것</p>
+<p class="nb"><b>비고 1</b>&ensp;채택이란 용어의 영어는 “adoption“ 대신 “taking over“가 종종 사용된다.</p>
+<p class="nb"><b>비고 2</b>&ensp;국제표준(3.1.3) 또는 국가표준(3.1.4)의 채택은 국제표준 채택에 대한 적합성(4.3.7) 참조</p>
+<p>[출처: KS A ISO/IEC Guide 21-1, 3.6]</p></div>
+<div class="block"><p class="clause"><b>3.8.2 원국제표준(original international standard)</b></p>
+<p>국제표준(3.1.3)으로서, 국가표준(3.1.4)의 기초가 된 표준(3.1.2)</p></div>
+<div class="block"><p class="clause"><b>3.8.3 국제일치표준(internationally harmonized standard)</b></p>
+<p>기술적 내용 및 구성이 원국제표준(3.8.2)과 동등 또는 대응하도록 번역하여 국가표준(3.1.4)으로 제정한 표준(3.1.2)</p></div>
+<div class="block"><p class="clause"><b>3.8.4 대응국제표준(corresponding international standard)</b></p>
+<p>다음과 같은 국제표준(3.1.3)</p>
+<p>—	원국제표준(3.8.2)</p>
+<p>—	국가표준(3.1.4)과 적용범위가 일치하는 국제표준(3.1.3). 규정 내용의 차이의 유무는 묻지 않는다</p>
+<p>보 기 국가표준(3.1.4)의 본문(3.9.7) 또는 부속서에 대응하는 국제표준(3.1.3)</p></div>
+<div class="block"><p class="clause"><b>3.8.5 편집상 변경(editorial change)</b></p>
+<p>국제표준(3.1.3)을 국가표준(3.1.4)으로 채택(3.8.1)하는 경우 기술적 내용이 바뀌지 않는 상태에서 허용되는 변경</p>
+<p class="nb"><b>비고</b>&ensp;허용되는 편집상 변경은 3.8.5에 제시되어 있다.</p>
+<p>[출처: KS A ISO/IEC Guide 21-1, 3.7]</p></div>
+<div class="block"><p class="clause"><b>3.8.6 기술적 차이점(technical deviation)</b></p>
+<p>국제표준(3.1.3)과 국가표준(3.1.4) 간의 기술적 내용의 차이</p>
+<p>[출처: KS A ISO/IEC Guide 21-1, 3.8]</p></div>
+<div class="block"><p class="clause"><b>3.8.7 표현상 변경(change in wording)</b></p>
+<p>국제표준(3.1.3)과 국가표준(3.1.4)으로 채택(3.8.1)하는 경우 국제표준(3.1.3)에서 사용한 단어 또는 문장을 국가에서 사용하는 공용 언어로 변경하는 것</p>
+<p class="nb"><b>비고</b>&ensp;어떤 국가에서는 “리프트“ 대신 “엘리베이터“를 사용</p>
+<p>[출처: KS A ISO/IEC Guide 21-1, 3.9]</p></div>
+<div class="block"><p class="clause"><b>3.8.8 가역 원리(vice versa principle)</b></p>
+<p>국제표준(3.1.3)의 조건에 따라 허용되는 모든 것이 국가표준(3.1.4)에 허용되며 그 반대로도 허용되는 원칙. 국제표준(3.1.3)을 준수한다는 것은 국가표준(3.1.4)도 준수함을 의미</p>
+<p class="nb"><b>비고</b>&ensp;국제일치표준(3.8.3)은 편집상 변경(3.8.5) 및 표현상 변경(3.8.7)을 가역원리로 허용</p>
+<p>[출처: KS A ISO/IEC Guide 21-1, 3.11]</p></div>
+<div class="block"><p class="clause"><b>3.8.9 관련표준(related standard)</b></p>
+<p>어떤 표준(3.1.2)을 적용하는 데 있어서 참조하는 편이 좋은 표준(국제표준, 국가표준, 단체표준 등) 및 기타 문서. 다만, 회사표준은 제외</p></div>
+<div class="block"><p>3.9 표준의 구성</p></div>
+<div class="block"><p class="clause"><b>3.9.1 표준의 명칭(title)</b></p>
+<p>개개의 표준에 붙이는 표제</p></div>
+<div class="block"><p class="clause"><b>3.9.2 본체(body)</b></p>
+<p>예비 참고요소(3.2.2.1) 및 보충 참고요소(3.2.2.2)를 제외한 표준(3.1.2)의 요소를 서술한 부분</p></div>
+<div class="block"><p class="clause"><b>3.9.3 부속서(규정) [annex (normative)]</b></p>
+<p>내용으로서는 본래 표준(3.1.2)의 본체(3.9.2)에 포함시켜도 되는 사항이지만, 표준(3.1.2)의 구성상 특별히 추려서 본체에 준하여 정리한 것</p></div>
+<div class="block"><p class="clause"><b>3.9.4 부속서(참고) [annex (informative)]</b></p>
+<p>본체(3.9.2) 및 부속서(규정)(3.9.3)의 규정 내용과 관련되는 사항을 보충하는 것</p></div>
+<div class="block"><p class="clause"><b>3.9.5 해설(explanation)</b></p>
+<p>본체(3.9.2) 및 부속서(규정)(3.9.3)에 규정한 사항</p>
+<p class="nb"><b>비고</b>&ensp;부속서(참고)(3.9.4)에 기재한 사항 및 이들과 관련된 사항을 설명하는 것. 다만, 표준(3.1.2)의 일부는 아니다.</p></div>
+<div class="block"><p class="clause"><b>3.9.6 조문(article)</b></p>
+<p>본체(3.9.2) 및 부속서(규정)(3.9.3)의 구성 부분인 개개의 독립된 규정으로서 문장, 그림, 표, 식 등으로 구성되며, 각각 하나의 정리된 요구사항(3.3.1) 등을 나타내는 것</p></div>
+<div class="block"><p class="clause"><b>3.9.7 본문(text)</b></p>
+<p>조문의 구성 부분의 주체가 되는 문장</p></div>
+<div class="block"><p class="clause"><b>3.9.8 비고(note)</b></p>
+<p>본문(3.9.7), 그림, 표 등의 내용에 참고가 될 만한 사항을 보충하여 적은 것</p></div>
+<div class="block"><p class="clause"><b>3.9.9 각주(footnote)</b></p>
+<p>본문(3.9.7), 비고(3.9.8), 그림, 표 등의 안에 있는 일부의 사항에 각주 번호를 붙이고, 그 사항을 보충하는 내용을 해당하는 쪽의 맨 아랫부분에 따로 기재하는 것</p></div>
+<div class="block"><p class="clause"><b>3.9.10 보기(example)</b></p>
+<p>예(허용용어)</p>
+<p>본문(3.9.7), 각주(3.9.9), 비고(3.9.8), 그림, 표 등에 나타내는 사항의 이해를 돕기 위한 예시</p></div>
+<div class="block"><p>4. 일반원칙</p>
+<p>4.1 표준의 목적</p>
+<p>적용범위에 규정된 한도 내에서 필요한 모든 사항을 포함할 수 있도록 완전하여야 함</p>
+<p class="nb"><b>비고</b>&ensp;요구사항 또는 권고사항은 명시적으로 작성하거나 다른 표준을 참조하여 작성한다.</p>
+<p>표준 개발에 참여하지 않은 자격을 갖춘 사람도 이해할 수 있어야 함</p>
+<p>표준 작성원칙을 고려하여야 함(4.3 참조)</p>
+<p>표준은 그 자체로 어느 누구에게도 이를 따를 의무를 부과하지 않는다. 그러나, 법률 또는 계약서에인용됨으로서 의무가 부과될 수 있다. 표준은 계약에 대한 요구사항(청구, 보증, 비용 충당 등)과 법령 또는 법규에서 정한 요구사항을 포함하지 않아야 한다.</p></div>
+<div class="block"><p>4.2 표준개발의 기준</p></div>
+<div class="block"><p>4.2.1 일반사항</p>
+<p>합의에 기반한 표준 개발은 뚜렷한 몇 가지 밀접한 프로세스를 구성한다.</p>
+<p>표준은 법규 또는 계약에 인용 될 수 있으나, 원칙적으로 표준 사용은 자발적이다.</p>
+<p>첫 번째 단계는 표준의 필요성을 식별한 다음, 사용 가능한 자원에 기초하여, 표준 개발에 필요한 작업의 우선 순위를 정한다.</p>
+<p>두 번째 단계는 국가 차원에서 관련된 모든 이해관계를 고려한 위원회 설치 및 운영을 통해 표준을 개발하는 것이다.</p>
+<p>세 번째 단계는 대중의 의견을 들을 수 있다.</p>
+<p>네 번째 단계는 표준 승인에 해당한다. 마지막 단계는 표준의 발행, 홍보 및 유지이다.</p>
+<p>4.2.2에서 4.2.6의 권고사항은 국가표준기관이 표준을 개발하거나 국제 표준화 작업에 기여할 때 따라야 한다. 이 세부항은 국제표준, 가이드 및 권고안 개발 원칙에 대한 WTO TBT의 결정과 일치한다.</p></div>
+<div class="block"><p>4.2.2 투명성(transparency)</p>
+<p>투명성은 모든 이해당사자가 원하는 경우, 표준화 절차에 참여할 수 있도록 충분한 정보를 적절한 시기에 쉽게 이용할 수 있음을 의미한다. 적절한 시간과 기회가 제공되도록 절차를 수립해야 할 것이다. 이러한 절차에 대한 정보는 효과적으로 배포되어야 할 것이다.</p>
+<p>국가표준기관은 표준 관리 및 개발 프로세스를 지원하기 위해 적절히 문서화된 절차를 갖추어야 할 것이다. 이러한 절차는 최신이어야 하며 이해당사자가 자유롭게 이용할 수 있어야 할 것이다.</p>
+<p>국가표준기관은 표준안이 공개적인 의견 청취가 준비되면, 이해당사자가 이를 이용할 수 있도록 해야 할 것이다. 이해당사자가 의견을 제출할 수 있는 기간으로 60일이 제공된다. 그러나, 안전, 보건 또는 환경의 긴급한 문제를 해결해야 하는 경우 또는 발행된 표준에 대해 자구, 오탈자 수정 등 표준에 영향을 미치지 않는 사항은 이 기간을 단축할 수 있다. 제출된 의견서의 관리를 위해 명확하고 잘 이해된 절차가 마련되어야 할 것이다.</p>
+<p>폐지된 표준뿐만 아니라 현재 표준에 대한 정보는 웹사이트, 가입 등과 같은 적절한 방법으로 이용할 수 있어야 할 것이다.</p></div>
+<div class="block"><p>4.2.3 공개성(openness)</p>
+<p>표준개발의 참여는 모든 이해당사자가 차별없이 표준개발 절차에서 공개되어야 할 것이다. 표준개발의 모든 단계에 다음의 참여를 포함한다.</p>
+<p>—	새로운 표준개발의 제안 및 승인</p>
+<p>—	제안된 기술의 논의</p>
+<p>—	초안에 대한 의견 제출</p>
+<p>—	기존 표준의 검토</p>
+<p>—	제출된 의견에 대한 결정 및 표준 승인</p>
+<p>—	승인된 표준의 유용성</p>
+<p>국가표준기관은 개발 중인 표준에 적합한 이해당사자의 참여를 촉진해야 할 것이다. 이것은 어떤 특정 조직의 회원에 따라 결정되어서는 안 된다.</p>
+<p>국가표준기관은 다양한 범주의 이해당사자의 참여를 모니터링하는 절차뿐만 아니라 인식 제고를 위한 활동을 고려해야 할 것이다.</p></div>
+<div class="block"><p>4.2.4 공정성과 합의 (impartiality and consensus)</p>
+<p>공정성은 다음과 관련하여 표준개발 절차 전반에 걸쳐 준수해야 할 것이다.</p>
+<p>—	표준개발 참여의 접근성</p>
+<p>—	초안에 대한 의견 제출</p>
+<p>—	의견 및 견해에 대한 고려</p>
+<p>—	합의를 통한 의사결정</p>
+<p>—	정보 및 문서 획득</p>
+<p>—	초안 및 승인된 표준의 가용성</p>
+<p>—	국제표준의 국가표준 채택</p>
+<p>—	표준의 개정</p>
+<p>공정성과 합의을 다룰 때, 국가표준기관은 표준개발 작업을 위해 공정하고 중립적인 기준을 제공해야 할 것이며, 모든 이해당사자에게 동등한 접근 권한을 제공해야 할 것이다. 이 작업은 어떤 당사자도 다른 당사자를 편애하지 않는 합의적이고 공정한 방식으로 진행할 것으로 기대한다. 어떤 조직이나 참가자가 표준개발 과정을 지배해서는 안 될 것이다. 또한, 국가표준기관은 이 지배구조를 조사해야 할 것이다. 이 모든 지배구조와 관련된 행정조직(governing bodies)을 통해 특정한 사적 또는 공적 당사자의 대표에 관련하여 중립성을 지원해야 할 것이다.</p>
+<p>국가표준기관은 협력적이고 합의된 기반을 유지하며 의견 및 견해를 고려하여 서로 다른 의견을 수렴하는 표준화 과정을 가져야 할 것이다. 합의를 언급할 때마다, 국가표준기관은 그 출처에 대한 정확한 언급과 함께 그 정의의 전체를 인용해야 할 것이다.</p>
+<p>국가표준기관은 참가자와 합의를 구축하는 과정을 주도하는 자를 지원해야 할 것이다. 이를 위해 다음의 모범 관행이 권장된다.</p>
+<p>a) 적격 인원의 참가</p>
+<p>국가표준기관은 표준화 작업에 전적으로 성실하게 협력할 수 있는 자가 참가해야 할 것이다.</p>
+<p>b) 지속적 반대에 대한 처리</p>
+<p>합의에 도달하는 과정에서 문서가 개발됨에 따라 다양한 관점이 표현되고 다루어질 것이다. 표준화 위원회 또는 작업반 회의에서 표명된 의견은 이해의 중요한 부분으로 유지됨으로, 합의에 이르지 못하게 하는 의견은 &quot;지속적 반대&quot;를 구성한다. 지속적 반대를 표명하는 자는 권리가 있으며, 지속적 반대를 선언할 때 다음과 같은 접근법을 권고한다.</p>
+<p>— 국가표준기관은 이의신청이 &quot;지속적인 반대&quot;에 해당하는지, 즉 관련된 이해의 중요한 부분을 지지하는지 여부를 평가하여 할 것이다. 그렇지 않은 경우, 국가표준기관은 이의신청을 등록(회의록, 기록 등)하고 문서 작업을 계속 주도할 수 있다.</p>
+<p>— 국가표준기관은 지속적인 반대가 있다고 판단한다면 선의로 해결하도록 노력해야 할 것이다. 어째든, 지속적인 반대는 거부권으로 해석될 수 없다. 지속적인 반대를 다룰 의무가 이를 성공적으로 해결해야 할 의무를 의미하지 않는다. 합의 여부에 대한 평가 책임은 국가표준기관에 있다. 여기에는 문서의 나머지 부분에 대한 기존 합의 수준을 손상시키지 않고 지속적인 반대가 있는지 또는 지속적인 반대가 해결될 수 있는지를 평가하는 것이 포함된다. 이 경우, 국가표준기관은 이의신청을 등록 하고 작업을 계속하게 된다.</p>
+<p>— 국가표준기관은 모든 참가자의 이해를 고려하면서 지속적인 반대의 해결책을 찾기 위한 노력을 해야 할 것이다.</p>
+<p>— 지속적인 반대를 유지하고 과정이나 결과에 불만족스러운 당사자는 이의제기 절차를 사용할 수 있다.</p>
+<p>c) 투표보다는 합의</p>
+<p>국가표준기관은 가능한 합의 원칙에 따라 결정해야 할 것이다.</p>
+<p>d) 의사결정 문서화</p>
+<p>지속적인 반대, 취한 결정, 실행된 조치와 합의에 도달하기 위해 취한 발의권 등을 합리적으로 표현된 관점을 문서화한다.</p>
+<p>국가표준기관은 표준개발 절차를 보호하고, 그 무결성을 보장하며, 검토 중인 표준에 대한 기술적 입장을 취하지 않으며, 표준개발 절차에서 적절한 이해관계의 균형을 통해 대표할 기회를 제공함으로써 공정하고 독립적인 입장을 유지해야 할 것이다.</p>
+<p>이해당사자와 참가자를 광범위한 관심 범위에 할당하는 것은 좋은 관행이다. 개발 중인 표준을 고려하여 다양한 범위에서 참가자의 관련성을 평가해야 할 것이다. 모든 범위가 모든 표준과 관련된 것은 아니다.</p>
+<p>국가표준기관의 역할(role)은 표준화 작업에 적극적으로 참여하는 모든 참가자에게 동일한 권리를 부여하여 의견을 표명하고, 이를 지체없이 고려해야 할 것이다. 정해진 절차에 따라 제출된 모든 시의적절하고 관련있는 기고(contributions)를 어느 한 가지도 유리하거나 무시하지 않고 정당하게 고려한다는 것이 국가표준기관의 모범 관행이다.</p>
+<p>이를 위해, 국가표준기관은 표준개발 절차를 이끄는 자에게 자신이 참여하는 회의와 업무에서 공정하게 행동할 것을 정식으로 요청하고, 그 약속을 기록하도록 하는것이 모범 관행이다. 국가표준기관의 역할과 절차는 자신과 참가자가 이를 따르도록 할 책임이 있는 표준개발 절차를 이끄는 자에게 전달해야 할 것이다.</p>
+<p>산업과 상업의 대표성은 ISO/IEC Guide 17의 소기업의 대표성에 특히 주의를 기울이는 것이 모범 관행이다.</p>
+<p>국가표준기관은 참가자의 특정 이해와 관련하여 중립적이고 공정하며 독립적인 행정조직을 유지해야 할 것이다. 국가표준기관은 다음의 행동적 독립성에 초점을 맞추어야 할 것이다.</p>
+<p>a) 해당 행정조직 및 직원이 표준개발 활동에 자금을 대는 기관과 독립적으로 행동할 수 있는 능력</p>
+<p>b) 모든 이해당사자와 참가자가 자신을 표현할 수 있는 가능성</p>
+<p>c) 참가자의 다양성</p>
+<p>국가표준기관은 문서화된 불만사항 및 이의제기 해결 절차를 가진다.</p></div>
+<div class="block"><p>4.2.5 효과성 및 적절성(effectiveness and relevance)</p>
+<p>국가표준기관은 표준개발에 관련 규제(regulatory) 또는 시장의 니즈(needs)와 과학기술 발전을 고려해야 할 것이다.</p>
+<p>국가표준기관은 새로운 표준 개발에 다음을 포함하지 않아야 할 것이다.</p>
+<p>—	시장 왜곡</p>
+<p>—	공정 경쟁에 악영향</p>
+<p>—	혁신과 기술개발 역행(adverse)</p>
+<p>—	환경에 악영향</p>
+<p>—	지속 가능한 개발 원칙 역행</p>
+<p>—	동일한 주제 및 내용에 대한 다른 표준 개발</p>
+<p>국가표준기관은 여러 가지 이유로 진부하거나, 부적절 또는 비효과적인 표준을 식별하고 검토 절차를 시행하여야 할 것이다. 모든 표준은 정기적으로 검토되고 적시에 개정되어야 하며, 시장의 니즈 또는 규제의 변화 및 새로운 과학기술 개발 맥락에 적절해야 한다.</p>
+<p>실질적이며 직접적인 이해관계자 또는 조직이 적절한 절차에 따라 표준안을 제출할 경우, 새로운 표준개발 이나 표준안 개정에 관한 제안은 어디에서든 즉시 고려되어야 할 것이다.</p>
+<p>기본표준의 경우, 수정 또는 폐지는 다른 표준개발 및 이해당사자에게 영향을 미칠 수 있다. 따라서 표준의 수정 또는 개정과 관련하여, 해당 위원회는 현재 버전과 과거 버전의 사용을 고려해야 할 것이다. 기본표준을 인용하는 다른 표준에 특별한 주의를 기울여야 할 것이다. 모범 사례로서, 국가표준기관은 표준의 과거 버전을 이용할 수 있도록 해야 할 것이다. 과거 버전을 사용할 수 있는 경우, 예를 들어 폐지된 표준 또는 대체된 표준인 경우 표준의 상태를 명확하게 명시해야 할 것이다.</p>
+<p>국가표준기관은 개발된 표준이 무역에 불필요한 장애를 일으키지 않도록 가능하면 설계나 서술적 특성이 아닌 성능 측면에서 요구사항을 표현해야 할 것이다. 이는 기술개발에 최대한의 자유를 허용하고 바람직하지 않은 시장 영향의 위험(보기: 혁신의 제한)을 감소시킨다. 성능 원리를 채택할 때 성능 요건에 중요한 특성이 누락되지 않도록 주의해야 할 것이다. 제조 공정에 관한 요구사항은 일반적으로 최종 제품에 대한 시험을 위해 생략해야 할 것이다. 그러나 제조 공정에 대한 참조가 필요한 분야(보기: 열간 압연, 압출)나 제조 공정에 대한 검사가 필요한 분야(보기: 압력 용기)도 있다. 성능별 사양은 복잡하고 비용이 많이 들며 시험 절차가 길어질 수 있기 때문에 설명으로 규정하거나 성능별로 규정하는 것 중에서 선택을 해야 할 것이다.</p>
+<p>국가표준기관은 시장의 니즈에 부합하는 표준을 개발하고 가장 광범위한 지리적, 경제적 맥락에서 무역의 발전에 기여해야 할 것이다.</p>
+<p>국가표준기관은 사용자 친화성, 단순한 언어에 초점을 맞추고 요구사항을 충족하는데 필수적인 인용표준의 사용을 제한해야 할 것이다.</p>
+<p>기술적 이유로 특허 항목의 사용이 정당하고 권리 보유자가 합리적인 조건에 따라 어디에 있든지 관심있는 신청자와 라이센스 협상에 동의하는 한, 특허 항목의 사용을 요구하는 조건으로 표준안을 작성해서는 안 될 것이다.</p></div>
+<div class="block"><p>4.2.6 공공의 이익</p>
+<p>표준은 과학적 지식의 산물이지만 발행 이후에는 공공의 이익에 부합되도록 사용해야 한다. 국가표준기관은 공공의 이익에 반하는 표준의 기획 및 준비, 표준개발 및 발행은 승인되지 않도록 적절하게 관리해야 할 것이다.</p>
+<p>표준은 그 자체가 목적이 될 수 없음으로 제안된 표준안에 대한 경제적 요인에 대한 평가를 검토할 필요가 있다. 이는 최신 기술을 담고 있더라도 시장의 수요가 떨어지는 표준이 발행되지 않도록 사용자를 확보한 표준화 대상으로 검토해야 할 것이다.</p></div>
+<div class="block"><p>4.3 표준작성의 원칙</p></div>
+<div class="block"><p>4.3.1 기획 및 준비</p>
+<p>표준을 적시에 발행하기 위해, 시작 전에 다음 사항을 결정한다.</p>
+<p>—	의도하는 표준서 구조(절, 항, 구문, 표, 그림 및 부속서의 순서 등)</p>
+<p>—	모든 상호관계</p>
+<p>—	표준화 대상, 표준화 대상과 관련된 상황 인지</p>
+<p>표준서의 구조를 여러 부(part)로 의도하는 경우, 의도하는 모든 부의 목차를 작성 한다(제목과 적용범위 포함).</p>
+<p>표준을 준비하기 위해서는 국가기술표준원에서 제공하는 표준 작성용 프로그램(KS Draft Template)을 사용하여야 한다. 이 프로그램과 사용설명서는 e나라 표준인증(https://www.standard.go.kr)에서 이용 가능하다.</p></div>
+<div class="block"><p>4.3.2 목적지향 접근</p>
+<p>표준화 항목이나 주제에 대한 모든 특성이 표준화 되거나 될 필요는 없다. 표준화 해야 할 특성의 선택은 그 표준화의 목적에 달려 있다.</p>
+<p>제품의 기능적 분석은 문서에 포함될 특성 파악에 도움이 된다. 개별 특성에 대한 설명은 허용되지만 필요한 것은 아니다.</p>
+<p>어떤 제품이든 수많은 고유의 특징이 있지만, 일부 특징만이 국가 또는 국제표준화에 적합하다. 작성하고자 하는 표준의 목적에 따라 선택되며, 무엇보다 해당 제품의 목적에 대한 적합해야 한다.</p>
+<p>따라서 하나의 표준 또는 일련의 표준은, 특히, 상호 이해관련 문제, 보건, 안전, 환경보호, 연계성, 호환성, 병용성 또는 상호작용, 그리고 다양성 관리를 다룰 수 있다.</p>
+<p>문제시되는 제품에 대한 기능적인 분석은 어떤 특징을 표준에 포함하여야 할지를 파악하는 데 도움이 될 수 있다.</p>
+<p>다양한 목적 또는 다양한 조건(보기: 다른 기후조건)에서 사용하도록 의도된 제품, 혹은 사용자가 다양한 제품은 일부 특성에 대하여 다른 수치를 필요로 할 수 있다. 특정 목적 또는 조건에 대해 의도된 각 수치는 일부 카테고리 또는 수준에 해당된다. 이들 수치는 하나의 표준 또는 다른 표준에 포함될 수 있다. 그러나 목적과 수치 간의 상관관계가 분명히 명시하여야 한다.</p>
+<p>무역에 있어서 그 중요성이 정당화될 경우, 다른 지역 및 국가 내에서의 다른 카테고리 및 수준도 포함이 될 수 있다. 상품 목적의 적절성과 관련된 의무사항은 상품에 적용될 명칭 및 표기를 만족시켜야 하는 조건에 따라 표시되어야 한다(보기: 손목시계의 경우, “내충격성” 표기).</p>
+<p>상호이해의 증진에는 기술적 요구사항에 사용되는 용어, 기호 및 표시 정의와 표준에 명시된 각 기술적 요구사항과 관련된 샘플링 방법 및 시험방법의 확립이 필요하다.</p>
+<p>보건, 안전, 환경 보호 및 자원의 경제적 사용이 상품과 관련될 경우, 적정한 요구사항을 포함해야 한다. 그렇지 않을 경우, 일부 국가에서 부합되지 않으면, 무역상에서의 기술장벽이 생길 수 있는 부가적인 강제 요구사항이 만들어질 수 있다.</p>
+<p>이러한 요구사항은 한계값 (최대 및/또는 최소) 또는 근접하게 정의된 크기, 그리고 어떤 경우에는 구조적 조건(보기: 안전상의 이유로 비호환성을 달성하고자 하는 경우)을 가질 필요가 있을 수 있다. 이러한 제한이 결정된 수준은 위험요소가 최소화된 수준이어야 한다.</p>
+<p>관련되는 경우, 표준은 제품 보관과 이동 시 사용될 포장 및 조건에 대한 기술적인 요구사항을 규정할 수 있다. 이는 부적절한 포장으로 인해 유발될 수 있는 위험 및 오염을 막고, 제품을 보호하기 위함이다.</p>
+<p>규제의 일부를 형성하거나, 의무적인 표준이 될 수 있는 보건 및 안전을 다루는 요구사항(KS A ISO/IEC Guide 51과 IEC Guide 104 참조)과 환경을 다루는 요구사항(KS A ISO Guide 64 및 IEC Guide 106 참조)은 표준을 작성할 경우 우선순위로 하도록 한다. 정부 규제에 속하는 표준에 대한 참조 원칙(KS A ISO/IEC Guide 15)을 촉진하기 위해서, 관련 측면을 별도 표준으로, 혹은 표준의 별도 부분으로 출판하여야 한다. 하지만, 별도 출판이 가능하지 않을 경우, 이를 표준의 하나의 절로써 하나로 그룹화하여야 한다.</p>
+<p>전기전자 분야의 경우에는 특별히 예외가 있지만, 일반적으로 환경 요구사항은 KS, ISO 및 IEC 문서에서보다는 정부 규제에서 다룬다.</p>
+<p>그러나 해당되는 경우, 대응되는 시험방법이 국제적으로 표준화되어야 한다. KS I ISO 14040, KS I ISO 14044는 제품 또는 프로세스의 환경 측면 평가에 대한 절차를 제공한다.</p>
+<p>관련될 경우, 연계성, 호환성, 병용성 및 상호작용 요구사항은 국제표준화를 따라야 한다. 왜냐하면, 이 요소가 제품 사용과 관련하여 결정적인 요소를 형성할 수 있기 때문이다.</p>
+<p>특정 제품에 대한 국제표준화는 어떤 관점에 한정될 수 있으며, 다른 목적을 무시할 수 있다. 국제표준화의 목적이 호환성을 보장하기 위한 경우, 제품의 표준 및 기능 측면을 고려하여야 한다.</p>
+<p>다양성 관리는 파스너, 기타 기계부품, 전자부품 및 전기케이블과 같이 광범위하게 사용되는 재료, 물질 및 요소에 대한 국제 표준화의 중요한 목적의 하나이다(세계 무역, 경제 또는 안전과 같은 이유 때문에, 호환성 있는 요소의 가용성이 필수적이며, 국제수준에서의 일정수준의 다양성을 표준화하는 것이 정당화된다).</p>
+<p>다양성은 크기는 물론 다른 특성과도 관련이 있다. 관련표준은 선택된 치수(통상 일련의 값)를 포함하여야 하며, 오차를 규정하여야 한다.</p></div>
+<div class="block"><p>4.3.3 성능 원칙</p>
+<p>요구사항은 가능한 한 설계 또는 외형적 특성보다는 성능 기준으로 표현되어야 한다. 이 접근법은 기술개발에 최대한의 자유를 부여하며, 바람직하지 않은 시장 충격(보기: 혁신적인 해결방법의 제한)을 최소화 한다. 기본적으로 위에서 포함된 특성은 전 세계적(보편적)으로 수용되는 사항이다. 필요한 경우, 법규, 기후, 환경, 경제, 사회 조건, 무역 형태 등의 차이에 기인한 몇 가지 선택사항을 나타내어도 된다. 자세한 것은 4.3.2을 참조한다.</p>
+<p>필요한 성능 특성을 규정할 수 없는 경우, 재질 또는 제품을 규정할 수 있다. 그러나, 이런 경우에는 “~ 또는 동등하게 적합한 것으로 증명된 물질이나 제품”이라는 문구가 포함되도록 한다.”.</p>
+<p>재료의 경우, 필요한 성능요소를 결정하는 것이 불가능하다면, 가급적이면 “... 또는 동등하게 적용 가능하다고 입증된 다른 재료”라는 문구를 포함해도 된다.</p>
+<p>최종 제품에 대한 시험이 수행되어야 한다면, 제조 프로세스와 관련된 요구사항은 통상 생략되어야 한다. 그러나 제조 프로세스에 대한 참조가 필요한 분야(보기: 열간압연, 압출) 및 제조 프로세스 점검이 필요한 분야(보기: 압력용기)도 있다.</p>
+<p>그러나 서술적으로 규정하는 것과 성능으로 규정하는 것 중에서의 택일은 심사숙고할 필요가 있다. 왜냐하면 성능 규정화는 장기적이고 비용이 많이 드는 복잡한 시험 절차로 이어질 수 있기 때문이다.</p></div>
+<div class="block"><p>4.3.4 동일성</p>
+<p>표준이 상호 일관되고 사용자 간의 이해에 모순이 없도록 다음의 표준화 활동을 적극적이고 자발적으로 조정해야 할 것이다.</p>
+<p>a) 국제표준기관</p>
+<p>b) 국가표준기관</p>
+<p>이러한 조정은 표준화에 참여하는 전문가의 제한된 자원을 적용하는 데에도 도움이 된다.</p>
+<p>국가표준기관은 특히 새로운 표준개발의 경우, 기획 및 준비를 적절한 방법으로 공개하여 중복이 발생할 수 있는 지점을 이해하고 이해관계자의 조기 참여를 지원해야 할 것이다.</p>
+<p>국가표준기관은 새로운 표준개발 기획 및 준비를 시작하기 전에 보완적, 중복적인 개발이 이미 존재하는지의 여부와 상황을 파악하기 위한 철저한 연구를 수행해야 할 것이다. 이상적으로는 이 검토를 다음 새로운 작업을 시작하기 위한 제안에 그 결과를 반영해야 할 것이다.</p>
+<p>a) 국제표준, 지역표준 또는 국가표준이 개발되고 있다는 사실이 알려졌을 때, 중복되거나 상반되는 노력을 피하기 위해 국가표준기관은 국제표준의 채택 여부를 고려해야 할 것이다.</p>
+<p>b) 상호 동일하고 최대한 모순이 없는 표준을 위해서, 표준화 활동은 국제 수준과 국가표준기관이 적극적이고 자발적으로 조정해야 할 것이다. 국제 수준의 표준화 활동은 국가 대표단 원칙에 의해 수용된다.</p>
+<p>국가표준기관은 잠재적 충돌을 해결하고 표준화 활동을 조정하기 위해 노력해야 할 것이다. 이러한 노력은 실질적이고 철저하며 포괄적인 노력을 보여야 할 것이며, 이 노력을 문서화하여 보유해야 할 것이다.</p>
+<p>국가표준의 발전을 위하여, 국가표준기관은 서로의 가치, 목표, 구성원 자격을 존중하면서, 효과적인 조정과 협력을 지원할 수 있을 만큼 충분히 유연한 정책과 절차를 채택하여야 한다. 예를 들어 다음 중 하나 이상을 사용하여 이를 달성할 수 있다.</p>
+<p>—	각 표준의 범위, 목적 및 의도된 적용에 대한 명확한 정의 유지</p>
+<p>—	표준화 활동에 대한 조기 공고</p>
+<p>—	관련 표준기관이 적절한 경우, 노력을 조정할 수 있는 독립적이지만 대표적인 기구의 조직</p>
+<p>—	협력 및 조정 조건을 문서화하기 위한 공식적인 합의의 수립</p>
+<p>—	적절한 경우, 표준의 공동 및 협력 개발</p>
+<p>—	국가표준기관간 연락 관계</p>
+<p>국가표준기관은 법규 또는 관련 규제를 지원하는 표준화의 가능한 역할을 식별할 수 있는 시스템을 갖추어야 할 것이다. 이러한 맥락에서 특히 법규 지원을 목적으로 하는 그러한 기준의 경우, 공공기관과 공무원의 참여도 필수적이다.</p></div>
+<div class="block"><p>4.3.5 	문서의 일관성</p>
+<p>구조, 양식 및 전문용어의 동일성은 각 표준 내에서뿐만 아니라 일련의 연관된 표준 내에서도 유지되어야 한다. 연관된 표준의 구조 및 절의 번호부여 방식은 가능한 한 동일하여야 한다. 유사한 조항을 표현할 때는 유사한 어법이 사용되어야 하며 동일한 조항을 표현하는 경우에는 동일한 문장이 사용되어야 한다.</p>
+<p>제시된 개념을 설명하기 위해서는 개별 표준 또는 일련의 연관된 표준을 통해 동일한 용어가 사용되어야 한다. 이미 정의된 개념에 대한 대체 용어(동의어) 사용은 피하여야 한다. 가능한 한 선택된 용어마다 오직 하나의 의미만 부여되어야 한다.</p>
+<p>이러한 요구사항은 해당 표준 또는 일련의 연관된 표준에 대한 이해를 보장하기 위해서뿐만 아니라, 자동 문서처리 기술 및 컴퓨터 보조번역 등을 통한 최대의 편의를 얻기 위해서도 매우 중요하다.</p>
+<p>문서 전반에서 동일성이라는 목표를 달성하기 위해서는, 모든 문서의 본문은 이 표준의 관련 조항에 따라야 한다. 이는 특히 다음 사항과 관련이 있다.</p>
+<p>a)	표준화된 전문용어</p>
+<p>b)	전문용어의 원칙과 사용방법</p>
+<p>c)	양, 단위 및 기호</p>
+<p>d)	약어</p>
+<p>e)	참고문헌</p>
+<p>f)	기술 도면과 다이어그램</p>
+<p>g)	기술 문서화그림기호, 공공정보기호 및 안전표지</p>
+<p>추가적으로, 특정 기술적 측면은 다음의 주제를 다루기 위해 KS 또는 ISO 및 IEC에서 발행된 일반 문서의 조항에 부합하여 작성되어야 한다.</p>
+<p>h)	한계, 조립 및 표면 특성</p>
+<p>i)	치수의 허용오차와 측정불확도</p>
+<p>j)	표준수</p>
+<p>k)	통계적 기법</p>
+<p>l)	환경 조건과 연관 시험</p>
+<p>m)	안전</p>
+<p>n)	화학</p>
+<p>o)	적합성과 품질</p>
+<p>p)	환경과 포장</p>
+<p>q)	소비자 이슈</p>
+<p>r)	국제표준화</p>
+<p>기본 참고자료는 부속서 B에 제시되어 있다.</p></div>
+<div class="block"><p>4.3.6 검증가능성</p>
+<p>요구사항은 객관적인 검증이 가능해야 한다. 오직 검증할 수 있는 요구사항만을 포함할 수 있다.</p>
+<p>“충분히 강한”이나 “적당한 강도의” 같은 문구는 주관적 표현이므로 사용하지 말아야 한다.</p>
+<p>그 주장을 합리적인 단기간 내에 검증할 수 있는 시험방법이 알려진 바가 없는 경우, 제품의 안정성, 신뢰성이나 수명을 특정하지 말아야 한다. 제조자의 보증으로 그 요구사항을 대체할 수 없다.</p>
+<p>보증(guarantee)은 상업적 또는 계약상의 개념이지 기술적 개념이 아니므로 포함하지 말아야 한다.</p></div>
+<div class="block"><p>4.3.7 국제표준 채택에 대한 적합성</p></div>
+<div class="block"><p>4.3.7.1 일반사항</p>
+<p>국제표준은 국가적 차원에서 널리 채택되고 있으며, 제조자, 무역 단체, 구매자, 소비자, 시험소, 정부 당국 및 기타 이해 관계자에 의해 적용되고 있다. 국제표준은 전세계의 산업계, 연구자, 소비자 및 규제자의 최상의 경험을 반영하고 다양한 국가들의 공통 요구 사항을 수록하고 있기 때문에, 무역상의 기술 장벽을 제거하는 데 중요한 기반을 구성하고 있다. 이러한 사실은 WTO TBT 협정에서 명확히 인정하고 있다.</p>
+<p>국제표준의 국가표준 채택 및 사용뿐만 아니라 위에서 언급한 이유에 근거하여, 가능한 빠른 시일 내에 상충되는 국가표준을 폐지하는 데 노력을 기울여야 할 것이다.</p>
+<p>표준화의 이점은 전세계적인 접근 방법의 개발을 통해서만 제대로 실현될 수 있다. 그러나 국가의 안보, 보건 및 안전, 환경 보호 또는 근본적인 풍토, 지리, 기술적인 문제점으로 인해 국제표준을 그대로(완벽하게) 채택한다는 것은 불가능할 수 있다. WTO TBT 협정에서는 이러한 사유로 인한 지역 또는 국가 간의 차이점을 정당하다고 인정하고 있다.</p>
+<p>국제표준을 채택할 경우에는 오직 국가표준으로만 채택하여야 하며, 동일 형태의 국가적 발행물이어야 한다.</p>
+<p>국제표준의 국가표준 채택에 대한 부합 정도는 가능한 많은 정보를 제공하는 것이 바람직하다. 부합 정도는 기본적으로 세 가지로 분류하는 것이 적정하며, 지나치게 상세히 표시하게 되면 다양한 경우가 발생할 수 있기 때문에 적당하지 않다.</p>
+<p>이러한 정보는 눈에 잘 띄는 부분(표지, 제목 및 개요), 목록, 총람, 연감 및 검색 용도의 매체에 명시하여야 할 것이다. 국제표준을 인용하는 경우에는 표준번호와 발행연도를 명시하여야 할 것이다</p></div>
+<div class="block"><p>4.3.7.2 국제표준과 국가표준의 일치</p>
+<p>국제일치표준에서 다음에 나타내는 편집상 변경은 원국제표준의 기술적 내용의 변경에 해당하지 않는다.</p>
+<p>—	소수점을 나타내는 반점 또는 쉼표를 온점 또는 마침표로 변경</p>
+<p class="nb"><b>비고</b>&ensp;다만, 원국제표준에서 대량의 수치 데이터 등을 그대로 사용하는 경우에는 반점 또는 쉼표을 사용된다. 이 경우 비고에 이 사항을 명기한다.</p>
+<p>—	문장 종단에 표시된 쉼표, 세미콜론의 삭제</p>
+<p>—	오류의 수정(오탈자) 또는 쪽번호의 변경</p>
+<p>—	다언어판 국제표준에서 1언어판 또는 복수언어판의 삭제</p>
+<p>—	국제표준에 대하여 발행된 서술에 관한 정오표 또는 수정표 포함</p>
+<p>—	기존의 국제표준의 계열에 일치한 명칭으로 변경</p>
+<p>—	“이 국제표준”을 “이 표준”으로 변경</p>
+<p>—	국가의 참고자료(예를 들면, 국제표준의 조항 변경, 추가 또는 삭제하지 않은 참고 부속서) 추가</p>
+<p>—	국제표준에서 참고로서의 예비적 자료 삭제</p>
+<p>—	국제표준을 하나의 공용어로 채용하는 데 있어서 국제표준을 채용하는 국가에서 사용되고 있는 공통언어로 하기 위하여 하나의 단어 또는 문구를 국가표준 중에서 동의어로 변경</p>
+<p>—	다른 측정시스템이 사용되고 있는 국가의 경우, 재계산한 양의 단위를 참고로 추가</p>
+<p>—	국제표준 머리말 및 개요의 기술된 내용을 정형문으로 변경</p>
+<p>부합 정도가 일치인 경우, 가역 원리가 충족된다. 즉, 원국제표준에서 받아들이는 것은 국가표준에서도 모두 받아들여지고, 그 반대도 성립한다.</p>
+<p class="nb"><b>비고</b>&ensp;문서의 레이아웃(예를 들면 쪽수, 서체 및 크기 등)에 대한, 특히 문서 환경에서의 변경은 부합 정도에 영향을 미치지 않는다.</p></div>
+<div class="block"><p>4.3.7.3 국제표준과 국가표준의 수정</p>
+<p>국가표준은 국제표준에 대하여 다음 조건하에서 수정된다. 기술적인 차이점은 명확히 파악 및 설명된 경우에 한하여 허용된다.</p>
+<p>국가표준은 국제표준의 구조를 반영한다. 구조의 변경은 두 표준 간의 내용 및 구조의 용이한 비교가 계속될 수 있을 경우에만 허용된다.</p>
+<p>투명성과 추적성을 위해 하나의 국제표준은 하나의 국가표준으로 채택하여야 한다. 특정 상황에서 몇 개의 국제표준을 하나의 국가표준으로 채택하여야 하는 경우가 있을 수 있다. 그러나 이 경우도 변경 사항을 파악 및 설명하는 목록이 있어 사용자가 이를 통해 비교가 용이한 경우에만 가능하다.</p>
+<p>부합 정도가 수정인 경우 가역 원리가 충족되지 않는다.</p>
+<p>국가표준은 다음과 같은 경우에 수정될 수 있다.</p>
+<p>—	국가표준의 내용이 국제표준보다 적은 경우 : 국가표준이 국제표준의 내용 중 선택 가능한 일부 사항만 적용하거나 덜 엄격한 요구 사항을 포함</p>
+<p>—	지역 또는 국가표준의 내용이 국제표준보다 많은 경우 : 국가표준은 국제표준에 없는 특성 또는 유형을 추가하거나 좀 더 엄격한 요구 사항을 포함하거나 추가 시험을 포함</p>
+<p>—	국가표준이 국제표준의 일부를 변경한 경우 : 국가표준이 국제표준 내용과 일부 동일하지만, 서로 다른 요구 사항을 일부 포함</p>
+<p>—	국가표준이 대안을 제시하는 경우 : 국가표준이 국제표준에 수록된 조항의 대안으로 사용할 수 있는, 동등한 지위를 갖는 조항을 제공</p></div>
+<div class="block"><p>4.3.7.4 국제표준과 국가표준의 동등하지 않음</p>
+<p>국가표준은 기술적인 내용 및 구조에서 국제표준과 동등하지 않으며, 변경 사항도 명확히 파악되어 있지 않다. 또한 국가표준에 국제표준의 내용이 극히 일부만 남아 있는 경우도 이 범주에 포함될 수 있다.</p>
+<p>부합 정도가 동등하지 않은 경우는 채택으로 보지 않는다.</p></div>
+<div class="block"><p>4.3.7.5 국제표준의 국가표준 채택에 대한 번호 부여 및 표시 방법</p>
+<p>일치를 채택한 표준의 식별 방법은 단일 번호 부여 방법을 채택한다. 국제표준의 번호(문자 및 숫자)와 국가표준번호를 병기한다. 투명성 증진을 위해, 국제표준의 발행연도를 표준번호 다음에 추가하여야 한다.</p>
+<p>국제표준과의 부합화 정도 등을 쉽게 구분하기 위하여，다음과 같은 방법으로 KS의 번호를 부여한다.</p>
+<p>—	KS를 국제표준과 일치시켜 제정 또는 개정하는 경우, KS 및 분류기호와 국제표준의 종류, 번호 및 연도를 함께 표기한다.</p>
+<p class="nb"><b>비고</b>&ensp;KS를 국제표준과 일치시켜 제정 또는 개정하는 경우, KS의 발행연도 대신 국제표준의 발행연도를 사용한다.</p>
+<p class="nb"><b>보기</b>&ensp;ISO 9001:2018를 KS로 채택하여 2020년에 KS로 제정한 경우,</p>
+<p>KS Q ISO 9001:2018로 표기</p>
+<p>KS와 ISO/IEC 사이의 기호는 한국산업표준의 부문 기호이다(부속서 O 참조)</p>
+<p>—	기존의 KS를 국제표준과 수정 부합화하여 개정하는 경우에는 기존의 KS 번호를 그대로 사용하고 표준번호 밑부분에 국제표준번호를 표기한다.</p>
+<p class="nb"><b>보기</b>&ensp;KS C 6506을 IEC 60758:2001과 수정 부합화하여 2015년에 개정하는 경우에는 KS C 6506:2015</p>
+<p>(MOD IEC 60758:2001)로 표기</p>
+<p>—	국제표준이 없는 품목을 KS로 신규 제정하는 경우와 기존 KS를 개정하는 경우는 현행 KS 번호부여방식에 따른다.</p>
+<p class="nb"><b>보기</b>&ensp;국제표준이 없는 기계분야 중 열 가스기기의 KS를 신규 제정하는 경우에는 KS B 8207로 표기</p>
+<p>국제표준과 국가표준 간의 부합 정도는 사용자에게 가능한 명확하게 제시해야 할 것이다.</p>
+<p>표 1 — 국제표준과 국가표준간의 부합 정도 및 표시</p></div>
+<div class="block"><p>4.3.8 기술규정의 참조</p>
+<p>기술규정에서 표준을 용이하게 참조하기 위하여 표준을 개발하는 국가표준기관은 가능한 특정한 규제 목적을 충족하는 데 필요한 기술적 요구사항을 표준화하는 것을 권장한다.</p>
+<p>비 고 본체에 기술규정 또는 법규를 인용표준 및 참조를 하지 않아야 한다. 다만, 참고문헌으로는 가능하다.</p>
+<p>기술규정에서 참조하는 것뿐만 아니라 시장 요구 또는 기타 목적을 위해 개발하는 표준은 이러한  목적을 만족하도록 기술규정에서 필요로 하는 요구사항과 시장에서 요구하는 정보 사항을 분리하여 표준안을 개발하여야 할 것이다.</p>
+<p>기술규정에 참조하여 통합하기 용이하도록 표준에서 규정되는 요구사항은 확실하고 일관적이며 쉽게 파악할 수 있도록 부로 나누어서 개발하는 것을 권고한다. 이렇게 하면 표준의 일부만 참조되어 있을 때 선택된 부분을 규정에서 쉽게 파악할 수 있다.</p>
+<p>표준에는 제품이나 과정, 규정된 서비스에 대한 시험 규정 이외의 적합성 평가 측면(보기: 인증, 적합성 표시)에 관련된 요소는 가능한 포함시키지 않는 것이 좋다.</p>
+<p>표준을 참조한 기술규정에서 시행되는 날짜는 규제기관에서 결정할 수 있도록 표준에는 시행일을 규정하지 않는 것이 좋다.</p>
+<p>표준에서 다른 표준을 참조할 경우, 그 참조는 기술규정에서 필요한 요구사항인지 혹은 정보제공인지 명확하게 구별되어야 하며, 그 표준의 일부는 이 표준에 사용된 기술규정 참조 전체 목록에 포함되어야 한다.</p>
+<p>기술규정에 사용할 표준의 언어는 명확하고 직접적이며 간결하여야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;기술규정에서 표준을 참조하는 방법에 대한 가이드(KS A 0014) 참조</p></div>
+<div class="block"><p>4.3.9.1 한계값</p>
+<p>어떤 목적에 있어서 한계값(최대 또는 최소)를 규정하는 것이 필요하다. 일반적으로 하나의 한계값이 각 특성마다 규정되어 있다. 광범위하게 사용되는 범주나 레벨의 경우, 여러 개의 한계값이 필요하다.</p>
+<p>특정 지역에서만 중요한 한계값이 표준에 포함되어서는 안 된다.</p></div>
+<div class="block"><p>4.3.9.2 선택값</p>
+<p>어떤 목적에 따라서, 특히 다양성 관리 및 연계성을 목적으로 하는 경우에는 값 또는 일련의 값을 선택할 수 있다. KS A ISO 3(KS A ISO 17 및 KS A ISO 497 참조)에 제시된 일련의 선호되는 값에 따라서, 혹은 해당되는 경우, 모듈 시스템 및 기타 결정요소에 따라 값을 선택한다. 전기전자 분야의 경우, 치수 크기에 대한 추천된 시스템이 IEC Guide 103에 제시되어 있다.</p>
+<p>타 표준 항목에서 언급된 장비 및 부품에 대한 값의 선택을 명시하는 표준은 기본 표준으로 간주하여야 한다. 보기는 다음과 같다. 전기전자 작업의 경우, 저항기 및 축전기에 대해 선호되는 값을 명시하는 IEC 60063, 화학 시험인 경우, ISO/TC 48에서 개발한 실험실용 유리용기 표준이 그것이다.</p>
+<p>표준에는 특정 지역에서만 중요한 값이 포함되어서는 안 된다. 일련의 합리화된 값을 표준화하는 데 있어서, 기존의 시리즈가 세계 어디에서도 적용 가능한지의 여부에 대한 조사가 이루어져야 한다.</p>
+<p>일련의 표준수가 사용될 경우, 분수가 나올 때 발생할 수 있는 문제에 초점을 두어야 한다. 이는 불편하거나 불필요하게 고도의 정확도가 요구될 수 있으며, 이럴 경우 KS A ISO 497에 따라 반올림을 하여야 한다. 타 국가에서(정확한 값과 반올림된 값이 표준에 둘 다 표시되어 있는 국가) 사용하는 타 값의 소개가 이루어져서는 안 된다.</p></div>
+<div class="block"><p>4.3.9.3 제조자가 명시하는 값</p>
+<p>다양성이 허용된다면(이 특성이 결정적으로 제품 성능에 영향을 줄 수 있더라도), 반드시 명시될 필요가 없는 제품 특성이 있다.</p>
+<p>표준은 제조자가 자유롭게 선택하는 모든 특성을 열거할 수 있지만, 그 수치는 제조자가 명시하여야 한다. 명시하는 방법은 여러 가지 형태(명판, 라벨, 동봉 문서 등)가 가능하다.</p>
+<p>복잡한 제품일 경우, 관련 시험방법이 정의됐다는 조건에서, 제조자가 제공하여야 할 성능 데이터(제품 정보) 목록에 성능 요구사항을 포함하는 것이 권장된다.</p>
+<p>규정된 값 대신에 제조자가 값을 명시하도록 하는 요구사항은 보건과 안전에 관련된 요구사항인 경우에는 허용되지 않는다.</p></div>
+<div class="block"><p>4.3.9.4 하나 이상의 제품 치수에 대한 조정</p>
+<p>만약 제시된 제품을 단일 치수로 표준화하는 것이 최종 목표이고, 전 세계적으로 하나 이상의 널리 용인된 치수가 존재한다면 위원회에서 충분한 지지가 획득될 때 해당 위원회는 한 표준 내에 대체 가능한 제품 치수를 포함하도록 결정할 수 있다. 그러나 이런 경우에 대체 치수의 숫자를 최소한으로 줄이고 다음의 사항을 고려하도록 노력하여야 한다.</p>
+<p>—	관련 국가의 수나 해당 국가의 생산규모보다는 관련 제품 종류의 국제무역 규모가 “전 세계적 사용”을 위한 기준으로서 작용한다.</p>
+<p>—	오직 합리적으로 예측 가능한 미래에 전 세계적으로 사용될 수 있을 관행만 고려하여야 한다(보기: 5년 혹은 그 이상).</p>
+<p>—	자원의 절약 및 에너지 보전과 같은 과학, 기술 또는 경제 원칙에 기초한 관행이 우선되어야 한다.</p>
+<p>—	대안이 국제적으로 채택될 때마다 이들은 모두 같은 표준 내에 포함되어야 하고 서로 다른 대안 사이의 우선순위가 제시되어야 한다. 그리고 해당 우선순위에 대한 근거는 표준의 개요에 설명되어야 한다.</p>
+<p>—	해당 위원회에 의해 승인된 경우, 비 표준수의 사용이 허용되는 전환기간이 표시될 수 있다.</p></div>
+<div class="block"><p>4.3.10 반복의 회피</p>
+<p>제품과 관련된 어떠한 요구사항이라도 하나의 표준에서만 규정되어야 한다. 표준 명칭에 따라 요구사항을 다룬다.</p>
+<p>어떤 분야의 경우, 제품 그룹에 적용 가능한 포괄적인 요구사항을 명시하는 표준을 제정하는 것이 바람직하다.</p>
+<p>어떤 요구사항을 다른 여러 곳에서 적용하는 것이 필요하다면, 반복하여 서술하는 것보다는 인용하는 것이 바람직하며 6.4.4를 참조한다.</p>
+<p>편의상, 다른 표준에 있는 요구사항을 반복하는 것이 유용하다면, 반복할 수 있다. 단, 이 반복이 단지 정보제공을 위한 것임을 분명히 하고, 요구사항이 반복된 표준에 참고 표시를 한다는 조건하에 가능하다</p></div>
+<div class="block"><p>4.4 문서의 일관성</p>
+<p>문서 전반에서 일관성이라는 목표를 달성하기 위해서는, 모든 문서의 본문은 이 표준의 관련 조항에 따라야 한다. 이는 특히 다음 사항과 관련이 있다.</p>
+<p>a) 	표준화된 전문용어</p>
+<p>b) 	전문용어의 원칙과 사용방법</p>
+<p>c) 	양, 단위 및 기호</p>
+<p>d) 	약어</p>
+<p>e) 	참고문헌</p>
+<p>f) 	기술 도면과 다이어그램</p>
+<p>g) 	기술 문서화</p>
+<p>h) 	그림기호, 공공정보기호 및 안전표지</p>
+<p>추가적으로, 특정 기술적 측면은 다음의 주제를 다루기 위해 KS 또는 ISO 및 IEC에서 발간된 일반 문서의 조항에 부합하여 작성되어야 한다.</p>
+<p>i) 	한계, 조립 및 표면 특성</p>
+<p>j) 	치수의 허용오차와 측정의 불확도</p>
+<p>k) 	표준수</p>
+<p>l) 	통계적 기법</p>
+<p>m) 	환경 조건과 연관 시험</p>
+<p>n) 	안전</p>
+<p>o) 	화학</p>
+<p>p) 	전자기 적합성</p>
+<p>q) 	적합성과 품질</p>
+<p>r) 	환경경영</p>
+<p>s) 	포장</p>
+<p>t) 	소비자 이슈</p>
+<p>u) 	국제표준화</p>
+<p>기본 참고자료 목록은 부속서 B에 제시되어 있다.</p></div>
+<div class="block"><p>4.5 공식 언어본 간의 동등성</p>
+<p>서로 다른 공식 언어본 내의 내용은 기술적으로 동일하고 체계상 일치되어야 한다.</p>
+<p>KS안 작성의 초기 단계에서부터 두 가지 언어로 작성하는 것이 명확하고 분명한 내용을 작성하는 데 큰 도움이 된다.</p></div>
+<div class="block"><p>4.6 국제표준의 도입에 대한 적합성</p>
+<p>ISO 및 IEC에서 발행하는 문서의 내용을 가능한 한 그대로 KS로 변경 없이 채택하는 것을 촉진하는 방식으로 작성되어야 한다.</p></div>
+<div class="block"><p>4.7 기획</p>
+<p>하나의 표준 또는 일련의 연관된 표준을 적시에 발간하기 위해서는 세부적인 KS안 작성이 시작되기 전에 의도하는 구조와 제반 상호관련사항이 확정되어야 한다. 특히, 주제사항의 세분화에 대해 고려하여야 한다(5.1 참조). 복수의 부(part)를 가진 표준의 경우, 각 부의 목록과 해당 명칭이 한국어와 영어로 작성되어야 한다.</p></div>
+<div class="block"><p>5.1 주제의 세분화</p>
+<p>5.1.1 일반사항</p>
+<p>좌 동 -</p></div>
+<div class="block"><p>5.1.2 일련의 부 내에서 주제의 세분화</p>
+<p>-좌 동 –</p>
+<p>여러 부를 가진 표준의 각 부는 이 표준에서 서술된 개별 표준을 위한 규정에 따라 표준안을 작성하여야 한다.</p></div>
+<div class="block"><p>5.1.3 각각의 표준 내에서 주제의 세분</p>
+<p>좌 동 -</p>
+<p>—	규정요소(3.2.1 참조), 의무요소(3.2.3 참조), 조건요소(3.2.4 참조)</p>
+<p>—	선택요소(3.2.5 참조) 및 보충 참고요소(3.2.2.2 참조)</p>
+<p>좌 동 -</p></div>
+<div class="block"><p>5.2 구분 및 세부구분의 종류와 번호 붙이기</p>
+<p>5.2.1 	부(part)</p>
+<p>부의 번호는 1부터 시작하는 아라비아 숫자로 표시되며, 표준번호 뒤에 붙임표(－)를 넣어 배치하고붙여쓰기를 하여야 한다.</p>
+<p>보 기 9999－1, 9999－2 등</p>
+<p>각 부는 더 세분될 수도 있다. 또한 5.1.2의 보기도 참조한다.</p>
+<p>한 부의 명칭은 6.1.1에 설명된 표준 명칭 작성방법과 동일한 방법으로 작성되어야 한다. 일련의 부에 있는 모든 개별 명칭이 동일한 도입요소(존재할 경우) 및 주 요소를 가질 수 있는 반면, 보완요소는 한 부를 다른 부와 구별할 수 있도록 각각 달라야 한다. 보완요소는 각 경우에 “제...부”와 같은 호칭이 앞에 선행되어야 한다.</p>
+<p>한 표준이 여러 개의 분리된 부를 가진 형태로 발간된 경우, 제1부는 해당 머리말(6.1.3 참조)에 의도하는 체계에 대한 설명을 포함시켜야 한다. 일련의 표준 집합에 포함된 각 부의 머리말에는 계획 중이거나 발행된 모든 다른 부의 명칭을 참조하여야 한다.</p></div>
+<div class="block"><p>5.2.1.2 	한 부의 명칭은 6.1.1에 설명된 표준 명칭 작성방법과 동일한 방법으로 작성되어야 한다. 일련의 부에 있는 모든 개별 명칭이 동일한 도입요소(존재할 경우) 및 주 요소를 가질 수 있는 반면, 보완요소는 한 부를 다른 부와 구별할 수 있도록 각각 달라야 한다. 보완요소는 각 경우에 “제...부”와 같은 호칭이 앞에 선행되어야 한다.</p></div>
+<div class="block"><p>5.2.1.3 	한 표준이 여러 개의 분리된 부를 가진 형태로 발간된 경우, 제1부는 해당 머리말(6.1.3 참조)에 의도하는 체계에 대한 설명을 포함시켜야 한다. 일련의 표준 집합에 포함된 각 부의 머리말에는 계획 중이거나 출판된 모든 다른 부의 명칭이 참조되어야 한다.</p></div>
+<div class="block"><p>5.2.3 항(subclause)</p>
+<p>항은 아라비아 숫자로 번호가 부여되어야 한다(부속서 F 참조).</p>
+<p>각각의 기본항은 그 뒤에 오는 본문과 행을 바꾸어서, 그 항의 번호 바로 뒤에 위치하여야 하는 제목을 되도록 붙여야 한다. 파생항도 같은 방법으로 취급한다.</p></div>
+<div class="block"><p>5.2.4 문단(paragraph)</p>
+<p>표 4 — 미결문단</p>
+<p>다음 조항의 도입부 문구는 미결문단이 아님을 주의한다.</p>
+<p>—	적용범위</p>
+<p>—	인용표준</p>
+<p>—	용어와정의</p>
+<p>—	기호와 약어</p>
+<p>—	부속서</p></div>
+<div class="block"><p>5.2.5 목록(list)</p>
+<p>좌 동 -</p></div>
+<div class="block"><p>5.2.6 부속서(annex)</p>
+<p>좌 동 -</p></div>
+<div class="block"><p>5.2.8 색인(index)</p>
+<p>좌 동 -</p></div>
+<div class="block"><p>5.2.9 해설</p>
+<p>해설은 본체 및 부속서(규정)에 규정한 사항, 부속서(참고)에 기재한 사항 및 이들과 관련된 사항을 설명하는 것으로 표준의 일부는 아니다.</p>
+<p>따라서 본체 및 부속서(규정)에서 규정하고 있지 않은 요구사항, 규정할 수 없는 상세한 사항 등을 보충규정과 같은 형태로 해설에 기재하여는 안 된다. 표준은 본체 및 부속서(규정)에서만 실수 없이 이행할 수 있도록 해 두어야 한다.</p>
+<p>그러나 표준이 정해지고 개정된 결과, 표준의 내용의 근거, 국제표준과의 부합성, 심의 중에 특히 문제가 된 사항 등 표준의 사용자가 표준의 내용을 보다 잘 이해하도록 표준의 차기 재검토, 개정에 종사하는 자가 배려하여야 하는 사항을 명확하게 붙이면 된다. 적</p></div>
+<div class="block"><p>6.1.1 	표지(title page)</p>
+<p>표지는 앞표지 앞면 및 앞표지 뒷면과 뒷표지 안쪽면 및 바깥면으로 구성된다. (부속서 C 참조)</p>
+<p>앞표지 앞면은 해당 표준의 명칭을 포함해야 한다.(6.3.1 참조)</p>
+<p>앞표지 앞면의 양식은 그림 C.1에 따르며, 앞표지의 제목은 본문의 제목과 같아야 한다.</p>
+<p>KS인증대상 품목에 관한 표준은 ㉿마크를 표준 명칭의 왼쪽에 기재한다.</p>
+<p class="nb"><b>비고</b>&ensp;단체표준대상 품목에 관한 표준은  마크를 표준 명칭의 왼쪽에 기재한다.</p>
+<p>개정의 경우에는 “제정” 연월일란에 개정 연월일을 기재하고, “제정”을 “개정”으로 기재한다.</p>
+<p>확인의 경우에는 표준 명칭 아래의 표준번호 밑에 괄호를 붙여서 확인한 연도와 “확인”이라는 문자를 기재한다.</p></div>
+<div class="block"><p>6.1.1.1 앞표지의 뒷면</p>
+<p>앞표지의 뒷면은 표준을 작성 및 조사 검토한 위원회와 심의한 위원회, 표준열람 정보를 제공한다.</p>
+<p>a)	해당 표준안의 심의를 소관하는 산업기술심의회의 명칭 및 정보</p>
+<p class="nb"><b>비고</b>&ensp;간사는 담당 부처의 담당 공무원 기재</p>
+<p>b)	원안작성협력의 명칭 및 정보</p>
+<p class="nb"><b>비고</b>&ensp;원안작성 협력은 표준안을 소관하는 전문위원회가 된다. 없는 경우, 표준안을 작성한 조직 또는 위원회가 된다(그림 C.2 참조)</p>
+<p>c)	표준의 승인과 연관된 표준 정보</p></div>
+<div class="block"><p>6.1.1.2 뒤표지의 바깥면</p>
+<p>KS 양식 그림 하단에 표준안의 영문 명칭을 표시하고, 마지막 행에 국제표준과 국가표준의 연계성을위해 국제표준분류코드(ICS)를 표시한다. 코드번호는 표준 제목의 주요소와 보완요소에 따라 다른 그룹 또는 서브 그룹을 선정하며, 하나 또는 둘 이상을 지정할 수 있다.</p>
+<p class="nb"><b>비고</b>&ensp;국제표준분류코드는 ISO 웹사이트에서 확인할 수 있다.</p>
+<p>같은 그룹에서 두 개 이상의 하위그룹으로 국제표준분류코드를 선정할 수 없으며, 부품, 부속품 및 재료와 같이 국제표준분류코드가 없는 경우, 시스템 또는 모듈 관점에서 선정한다.</p>
+<p>두 개 이상의 코드번호간의 구분자는 세미콜론( ; )을 사용한다.</p>
+<p class="nb"><b>비고 1</b>&ensp;최대 4개까지 가능하나 일반적으로 2개까지 선정한다.</p>
+<p class="nb"><b>비고 2</b>&ensp;표준 구매 정보는 뒤표지 안쪽면에서 확인할 수 있다.</p></div>
+<div class="block"><p>6.1.2 목차(table of contents)</p>
+<p>목차에는 “목차”라고 제목을 붙여 각 절을 기재하여야 하고, 필요할 경우 항과 그의 제목, 부속서와 그 지위(규정 또는 참고)를 기재한다. 그 순서는 다음과 같다.</p>
+<p>—	절, 항 및 제목</p>
+<p>—	부속서(필요한 경우 절 및 항, 그 명칭을 포함한다)</p>
+<p class="nb"><b>비고</b>&ensp;색인, 표 및 그림 목차는 표준안 구성에 필요한 경우를 제외하고 목차를 만들지 않는다.</p>
+<p>기재된 모든 사항은 전체 제목과 함께 인용되어야 한다. “용어와 정의”의 절은 목차에 기재되어서는 안 된다.</p>
+<p>목차는 워드프로세스의 자동 생성 기능을 사용하고, 수기로 작성하여서는 안 된다.</p>
+<p>표준안의 최종 검토 단계에서 자동 생성 기능을 사용하여 목차를 갱신하고, “용어와 정의”의 세부항은 삭제한다.</p></div>
+<div class="block"><p>6.1.3 	머리말(foreword)</p>
+<p>머리말은 각 표준마다 나타내어야 한다. 머리말에는 요구사항, 권고사항, 그림 또는 표를 포함시키지 않아야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;머리말의 도입부에 대한 정형문은 E.1 참조.</p>
+<p>표준 내 특허권을 명시한 부분에 해당 정보를 머리말에 포함하여야 한다. 자세한 내용은 부속서 E를 참조한다(E.1 참조).</p>
+<p>국제표준을 국가표준으로 채택하는 경우, 원국제표준의 머리말에 기재된 부가적 사항(인쇄 등)은 포하지 않는다.</p></div>
+<div class="block"><p>6.1.4 개요(introduction)</p>
+<p>개요는 선택 예비요소로 필요 시 해당 표준의 기술적 내용과 표준작성 개시사유에 관한 특별한 정보 및 논평을 제공하는 데 사용된다. 개요에는 요구사항이 포함되어서는 안 된다.</p>
+<p>표준에서 국제적으로 대안책을 채택하고 다른 대안에 대한 선호도가 제시될 때마다, 선호하는 이유를 개요에 설명해야 한다[A.6  d) 참조].</p>
+<p>개요에는 번호가 부여된 세부구분을 생성할 필요가 있는 경우를 제외하고는 번호가 부여되어서는 안 된다. 번호가 부여되는 경우에는 0으로 표시하며 그의 항은 0.1, 0.2 등으로 번호가 부여되어야 한다. 번호가 부여된 그림, 표, 표시된 공식 또는 각주라 하여도 일반적으로 1부터 시작되는 아라비아 숫자로 번호가 부여되어야 한다.</p></div>
+<div class="block"><p>6.2 선택요소(optional element)</p></div>
+<div class="block"><p>6.2.1 개요(introduction)</p>
+<p>개요는 표준의 기술적 내용과 표준작성 개시 사유에 관한 정보 및 논평을 제공하는 데 사용된다.</p>
+<p>개요는 요구사항을 포함하지 않는다.</p>
+<p class="nb"><b>비고</b>&ensp;개요의 도입부에 대한 정형문은 E.2 참조</p>
+<p>개요에는 번호가 부여된 세부구분을 생성할 필요가 있는 경우를 제외하고는 번호를 부여하지 않는다. 번호가 부여되는 경우에는 0으로 표시하며 그의 항은 0.1, 0.2 등으로 번호를 부여한다. 번호가 부여된 그림, 표, 표시된 공식 또는 각주라 하여도 일반적으로 1부터 시작되는 아라비아 숫자로 번호를 부여한다.</p>
+<p>해당 표준의 이전 판으로부터의 중요한 기술적 변동사항을 서술 할 수 있다. 국제표준을 국가표준으로 채택하는 경우, 원국제표준의 머리말에 기재된 주요 변경사항은 개요에 기술한다.</p></div>
+<div class="block"><p>6.2.2 인용표준(normative references)</p>
+<p>이 조건요소는 어떤 표준에서 해당 표준의 적용을 필수적으로 만드는 방법으로 인용된 참조문서의 목록(J.7.5 참조)을 제시하여야 한다. 일자가 표기되는 인용표준은 발행연도를 제시하여야 하거나, 또는 조회서나 최종 KS안의 경우에는 “발행 예정”이라는 각주와 함께 줄표( — )를 하고 완전한 명칭을 제시하여야 한다. 발행연도 또는 대시는 일자가 표기되지 않는 인용표준에 대해서는 제시되어서는 안 된다. 일자가 표기되지 않는 인용표준이 그 표준의 모든 부에 걸쳐 있는 경우에 그 발행번호에는 “(모든 부)”라는 표시가 따라야 하고 일련의 부의 전반에 걸치는 제목(즉, 도입부와 주된 요소, 부속서 E 참조)이 따라야 한다.</p>
+<p>원칙적으로, 참조문서는 KS 또는 ISO 및/또는 IEC에 의해서 발행된 문서이어야 한다. 다른 기관에 의해서 발행된 문서는 다음과 같이 제공된 얼마간의 기준에 관련되어도 된다.</p>
+<p>a) 	참조된 문서는 해당 KS, ISO 및/또는 IEC 위원회에 의해서 공적으로 유효할 뿐만 아니라, 권위를 가지고 널리 수용되고 있음이 인정된다.</p>
+<p>b) 	해당 ISO 및 IEC 위원회는 참조문서의 저작자 또는 발행자가 요구하는 대로 문헌의 내용과 이용가능성에 대한 동의를 얻어야 한다. 저작자 또는 발행자는 요청에 따라 해당 문서를 이용할 수 있게 할 것이 요구된다.</p>
+<p>c) 	저작자 또는 발행자는 해당 ISO 및/또는 IEC 위원회에 참조문서의 개정 의도 및 개정될 주요 사항과 관련된 정보를 제공하는 데 동의하여야 한다.</p>
+<p>d) 	해당 ISO 및 IEC 위원회는 참조문서의 변동사항과 관련된 상황을 검토하는 일을 수행한다.</p>
+<p>목록은 다음의 어법으로 도입되어야 한다.</p>
+<p>“다음의 인용표준은 전체 또는 부분적으로 이 표준의 적용을 위해 필수적이다. 발행연도가 표기된 인용표준은 인용된 판만을 적용한다. 발행연도가 표기되지 않은 인용표준은 최신판(모든 추록을 포함)을 적용한다.”</p>
+<p>위에 언급된 어법은 또한 복수의 부를 가진 표준의 각 부에도 적용이 가능하다.</p>
+<p>목록은 다음을 포함시켜서는 안 된다.</p>
+<p>•	공적으로 유효하지 않은 참조문서</p>
+<p>•	정보제공의 의미로만 인용되는 참조문서</p>
+<p>•	해당 문서의 준비과정에서 단지 도서목록이나 배경자료로 제공되는 참조문서</p>
+<p>상기 참조문서는 참고문헌에 등재되어도 된다(6.4.2 참조).</p></div>
+<div class="block"><p>6.3 의무요소 (mandatory element)</p></div>
+<div class="block"><p>6.3.1 	명칭</p>
+<p>명칭의 표현은 매우 세심한 주의를 가지고 정해야 한다(부속서 D 참조).</p>
+<p>제목은 표준화 대상에 대한 주제를 명확하고 간결하게 표현해야 한다. 불필요하게 자세한 사항이 없이도 다른 표준의 주제와 구별되도록 작성해야 한다.</p>
+<p>필수적으로 추가해야 할 특정사항은 적용범위에서 다뤄야 한다.</p>
+<p>명칭은 간결하면서 특징적 요소로 구성되고 일반사항에서부터 특정사항까지 포괄하여야 한다. 일반적으로 다음 세 요소 외에는 사용하지 않는다.</p>
+<p>—	도입요소(선택) : 해당 표준이 속하고 있는 일반 분야를 지시(이것은 주로 표준을 작성한 위원회 명칭에 기초한다)</p>
+<p>—	주요소(필수) : 도입요소의 일반 분야 내에서 다루어지는 주요 주제를 지시</p>
+<p>—	보완요소(선택) : 주된 주제의 특정 측면을 지시하거나 다른 표준과 해당 표준을 구분 또는 동일 표준의 다른 부를 구분하기 위한 세부사항을 제공</p>
+<p>명칭의 작성과 관련된 세부적인 규정은 부속서 D에서 제공된다.</p>
+<p>명칭은 한글과 영문으로 작성되며, 순서는 한글 하단에 영문 제목이 위치한다.</p>
+<p>도입요소, 주요소 및 보완요소 사이의 구분자는 줄표(“—”: 특수문자에서의 “Em 대시”)가 쓰이며, 줄표의 앞뒤는 띄어쓰기를 원칙으로 한다.</p>
+<p>표준번호는 한국산업표준의 부문과 부문 기호(부속서 O 참조) 다음에 위치하며, 발행연도와 구분자는쌍점( : )이 쓰이며 붙여쓰기를 한다.</p>
+<p>표준이 여러 부로 구성되는 경우, 구분자는 붙임표(“－”)가 쓰이며 붙여쓰기를 한다</p>
+<p class="nb"><b>비고</b>&ensp;국제표준의 국가표준 채택에 따른 호칭 및 발행연도 기입 방법은 4.3.7.5 참조</p></div>
+<div class="block"><p>6.3.2 	적용범위(scope)</p>
+<p>적용범위는 각 표준의 시작에서 제시하고, 표준의 주제와 취급될 측면을 명백하게 정의하여야 하며, 그것에 의해 해당 표준 또는 해당 표준 내 특정 부의 적용한계를 나타내어야 한다. 적용범위에 요구사항을 포함하지 않아야 한다.</p>
+<p>여러 개의 부로 세분되는 표준에 있어서 각 부의 적용범위는 표준의 부만에 대한 주제를 정의해야 한다.</p>
+<p>적용범위는 참고문헌 목적을 위한 요약으로 사용될 수 있도록 간결하게 작성해야 한다.</p>
+<p>이 사항은 일련의 사실에 대한 서술로서 표현되어야 한다. 표현양식으로는 다음과 같은 형식이 사용되어야 한다.</p>
+<p>“이 표준은</p>
+<p>...의 치수에 대하여</p>
+<p>...의 방법에 대하여      규정한다.”</p>
+<p>...의 특성에 대하여</p>
+<p>...를 위한 체계를</p>
+<p>...를 위한 일반 원칙을</p>
+<p>...를 위한 지침을 제공한다.”</p>
+<p>...의 용어를 정의한다.”</p>
+<p>표준의 적용성에 관한 설명은 다음과 같은 어법으로 도입해야 한다.</p>
+<p>“이 표준은 ...에 적용 될 수 있다.”</p>
+<p>“이 표준은 ...에 적용 되지 않는다.”</p></div>
+<div class="block"><p>6.3.3 요구사항(requirements)</p>
+<p>이 요소는 조건사항이다. 만약 존재할 때는 다음을 포함하여야 한다.</p>
+<p>a) 	해당 표준에서 명시적 또는 참고적으로 적용되는 제품, 프로세스 또는 서비스 측면과 연관된 모든 특성</p>
+<p>b) 	정량화할 수 있는 특성에 대해 요구되는 한계치</p>
+<p>c) 	각 요구사항에서 각 특성에 대한 수치를 결정하거나 검증하기 위한 시험방법, 또는 시험방법 그 자체에 대한 언급(6.3.5 참조)</p>
+<p>요구사항, 설명, 권장사항 사이에 명백한 차이점이 있어야 한다.</p>
+<p>계약 요구사항(청구, 보증, 비용의 취급 등)과 법률 또는 법적 요구사항이 포함되어서는 안 된다.</p>
+<p>몇몇 제품표준에서는 제품에 설치자나 사용자를 위한 경고사항이나 지시사항을 첨부하고 그들의 특성을 명확하게 규정할 필요가 있다. 반면에, 설치 또는 사용과 관련된 요구사항은 제품 그 자체의 적용과 관련된 요구사항이 아니기 때문에 독립된 표준이나 독립된 부에 수록되어야 한다.</p>
+<p>제조자는 그 표준 자체가 서술되지 않은 수치를 진술하도록 요구되는 특성에 관해 나열하는 표준에서는 이 수치가 어떻게 측정되고 진술되었는지 서술하여야 한다.</p>
+<p>두 개 이상의 제품 치수의 조정에 채택되어야 할 정책은 A.6에 제시되어 있다.</p></div>
+<div class="block"><p>6.3.4 샘플링(sampling)</p>
+<p>이 조건요소는 시료의 보관방법뿐만 아니라 샘플링의 조건과 방법에 관해 규정한다. 이 사항은 6.3.5 내용의 도입부에서 서술되어도 된다.</p></div>
+<div class="block"><p>6.3.5 시험방법(test methods)</p></div>
+<div class="block"><p>6.3.5.1 	일반사항</p>
+<p>이 조건요소는 특성치를 결정하거나 서술된 요구사항에 적합성을 점검하고 결과의 재현성을 확인하기 위한 절차와 연관된 모든 조항을 제공한다. 해당하는 경우 시험은 그들이 형식 시험인지 혹은 프로세스 시험이나 샘플링 시험인지 적절하게 표시하도록 확인되어야 한다. 부가해서, 시험순서가 시험결과에 영향을 미칠 수 있다면 해당 표준에 시험의 순서가 명기되어야 한다.</p>
+<p>시험방법은 다음의 순서로 세분되어도 된다(해당되는 경우).</p>
+<p>a) 	원리</p>
+<p>b) 	시약 및/또는 재료(6.3.5.2 참조)</p>
+<p>c) 	장치(6.3.5.3 참조)</p>
+<p>d) 	시험시료 및 시편의 준비와 보존</p>
+<p>e) 	절차</p>
+<p>f) 	계산방법과 시험방법의 정밀도를 포함한 시험결과의 표시, 그리고 ISO에서는 측정불확도</p>
+<p>g) 	시험성적서</p>
+<p>시험방법은 독립된 절로 표현되거나 요구사항과 결합(6.3.3 참조), 혹은 부속서(6.3.8 참조)나 독립된 부(5.2.1 참조)로 표현되어도 된다. 시험방법이 복수의 다른 표준에 인용될 것 같은 경우에는 시험방법을 독립된 표준으로 준비하여야 한다.</p>
+<p>요구사항, 샘플링 및 시험방법은 제품의 표준화와 상호 연관된 사항이므로 서로 다른 요소들을 한 표준 내의 독립된 절에 표현하거나 분리된 표준에서 표현할 때에는 종합적으로 고려되어야 한다.</p>
+<p>시험방법에 관한 KS안을 작성할 때에는 일반적인 시험방법을 위한 표준과 다른 표준에서 유사한 특성에 맞는 관련시험에 대한 문서가 참작되어야 한다. 같은 수준의 신뢰수준으로 파괴 시험방법을 비파괴 시험방법으로 교체 가능한 때에는 비파괴 시험방법을 선택하여야 한다.</p>
+<p>시험방법은 KS Q ISO/IEC 17025:2006, 5절에 기술된 실효성 확인(validation), 측정 소급성(traceability), 측정 불확도(uncertainty) 예측에 관한 계측적인 원칙을 준수하여야 한다. 기타 적용 가능한 문서로는 ISO/IEC Guide 98－3, 불확도 측정 — 제3부: 측정시 불명확도 표현(GUM:1995) 및 ISO/IEC Guide 99, 계량학의 국제어휘 — 기본 및 일반개념과 관련 용어(VIM)가 포함된다. 시험기구와 관련한 요건은 KS Q ISO/IEC 17025:2006, 5절에 규정된 정확도(accuracy)와 교정(calibration)에 관한 조항을 준수하여야 한다.</p>
+<p>화학 분석방법에 관한 KS안을 작성하기 위해서는 KS M ISO 78－2를 참조한다. KS M ISO 78－2의 대부분은 또한 다른 화학 제품을 위한 제품 시험방법에도 적용이 가능하다.</p>
+<p>유해한 제품, 장치 또는 프로세스의 사용을 포함한 시험방법에 대해 서술하는 표준에서는 일반 경고사항과 적절한 특정 경고사항을 포함하여야 한다. 권장되는 어법은 KS A ISO/IEC Guide 51을 참조한다(B.15 참조).</p>
+<p>시험방법을 규정하는 표준에서는 어떠한 시험의 종류도 실행할 어떠한 책임도 의미해서는 안 된다. 이는 단지 (예를 들면, 동일 표준이나 다른 표준에서, 규정 또는 계약에서) 요구되거나 적용될 경우 평가가 행해져야 하는지에 대한 방법을 서술하여야 한다.</p>
+<p>제품, 프로세스, 또는 서비스에 대한 사업의 적합성평가를 위한 통계적인 방법이 표준을 준수하는 어떠한 진술도 오직 모집단 또는 로트의 적합성에만 관련된다.</p>
+<p>모든 단일 항목이 표준에 따라 시험되어야 한다고 해당 표준에 규정되었다면, 표준에 대한 제품의 적합성과 연관된 모든 서술은 모든 단일 항목이 시험되었다는 것과 각 단일 항목이 연관된 요구사항을 만족시켰다는 것을 의미한다.</p>
+<p>일반적 적용을 위해 가장 적합한 방법과는 다른 시험방법이 일반적으로 사용된다고 하여도 이것이 표준에서 가장 적합한 방법을 규정하지 않는 이유가 되어서는 안 된다</p></div>
+<div class="block"><p>6.3.5.2 	시약 및/또는 재료(reagents and/or materials)</p>
+<p>이것은 표준 내에서 사용되는 시약 및/또는 재료의 목록을 제공하는 조건요소이다.</p>
+<p>시약 및/또는 재료 절의 내용은 일반적으로 하나 또는 그 이상의 시약 및/또는 재료의 세부적인 목록과 함께 선택적인 본문 도입부를 포함한다.</p>
+<p>본문 도입부는 상호 참조되지 않은 일반적 조항을 규정할 때만 사용되어야 한다. 상호 참조하기 위해 필요한 모든 항목을 이 본문에 포함시켜서는 안 되지만 그 아래에 설명된 별도 기재사항으로서 기입되어야 한다.</p>
+<p>시약 및/또는 재료에 대해 세부적으로 설명하는 목록이 일련의 항이 아니라 목록이기 때문에, 일반적 조항을 설명하는 도입문구는 5.2.4에 설명된 미결문단과는 다르다는 것을 주의한다.</p>
+<p>한 절 내에 단일 항을 가지도록 하는 것은 허용 불가능한 반면에 모든 표준이 최소한 두 개의 시약 및/또는 재료를 포함하도록 요구하는 것은 이치에 맞지 않는다(5.2.3 참조).</p>
+<p>각각의 시약 및/또는 재료 기재사항은 상호 참조의 목적을 위해 오직 하나만 존재할지라도 번호가 부여되어야 한다.</p>
+<p>다음의 보기는 사용된 표현형태를 나타낸다(보다 많은 KS안 작성의 보기는 KS M ISO 78－2, A.10.1을 참조). 활자표현방식(typographic presentation)은 절이나 항과는 다르다는 것을 주의한다. 절 혹은 항의 제목은 절 혹은 항 번호와 같은 행에 표기하여야 하지만 활자표현방식은 “그 뒤에 있는 본문과는 행을 바꾸어” 표기한다. 시약 및/또는 재료 목록에서의 시약 및/또는 재료는 선택적으로 시약 및 재료에 관한 서술을 같은 행에, 더 많은 추가적인 서술은 다른 문단에 제공한다.</p>
+<p class="nb"><b>보기</b>&ensp;</p>
+<p>3 시약</p>
+<p>오직 승인된 분석등급의 시약과 증류수 또는 이와 동등한 순도를 가진 물만 사용한다.</p>
+<p>3.1 세척제, 예를 들면 메탄올 또는 수용 세제 몇 방울이 첨가된 물</p></div>
+<div class="block"><p>6.3.5.3 	장치(apparatus)</p>
+<p>이것은 표준에서 사용된 장치의 목록을 제공하는 조건요소이다. “장치” 절의 체계, 번호부여 및 표현에 관련된 표준은 “시약 및/또는 재료” 절의 내용과는 다르다(6.3.5.2 참조). 가능하다면, 한 명의 제조자에 의해 생산된 장치는 일일이 열거시키지 않는 것이 좋다. 그러한 장치를 즉각적으로 사용할 수 없는 곳이라면 비교할 수 있는 시험이 모든 관계자에 의해 실행될 수 있다는 것을 보장하기 위한 장치의 설명이 이 절에 포함되어야 한다. 상표명의 사용에 대해서는 J.3도 참조한다.</p></div>
+<div class="block"><p>6.3.5.4 	대안적 시험방법(alternative test methods)</p>
+<p>어떤 특성을 시험하기 위한 두 가지 이상의 적당한 시험방법이 존재한다면 원칙적으로 한 표준에서 오직 하나만이 논의되어야 한다. 만약 어떤 이유에서 두 개 이상의 시험방법이 표준화되어야 한다면, 중재방법(“참조방법”이라고도 함)이 의심이나 논쟁을 해결하기 위해 해당 표준에 표시되어야 한다.</p></div>
+<div class="block"><p>6.3.5.5 정확도에 따른 시험방법의 선택</p></div>
+<div class="block"><p>6.3.5.5.1 선택된 시험방법의 정확도는 평가될 특성치가 명시된 허용오차 내에 놓여있는지 아닌지에 대해 명확하게 결정할 수 있을 정도이어야 한다.</p></div>
+<div class="block"><p>6.3.5.5.2 각 시험방법이 기술적으로 필요가 되는 경우, 각 시험방법은 그의 정확도의 한계에 관한 설명이 포함되어야 한다.</p></div>
+<div class="block"><p>6.3.5.6 중복의 회피 및 불필요한 편차의 방지</p>
+<p>중복의 회피는 표준화의 방법론에 있어 일반적인 원칙이지만 한 가지 시험방법이 차이가 거의 없거나 아예 없는 하나 이상의 제품 또는 제품 종류에 종종 적용되기 때문에 중복에 있어서의 최대의 위험성은 시험방법 분야에서 나타난다. 따라서 어떤 시험방법을 표준화하기 전에 적용 가능한 시험방법이 이미 존재하고 있는지 결정되어야 한다.</p>
+<p>시험방법이 두 가지 이상의 제품 종류에 적용 가능할 경우에는 방법 자체에 관한 표준이 준비되어야 하고 주어진 제품에 관해 다루는 각각의 표준은 그것에 대해 언급하여야 한다(요청될 수 있는 모든 수정사항을 지시함). 이것이 불필요한 편차를 줄이는 데 도움을 줄 것이다.</p>
+<p>제품과 관련된 표준을 준비하는 데 있어 다른 제품을 시험할 때에도 사용될 수 있을 몇 종류의 시험 장비를 표준화할 필요가 있다면 이런 장치에 관해 다루는 위원회와의 협의로 마련된 독립된 표준에서 취급되어야 한다.</p></div>
+<div class="block"><p>6.3.6 분류, 호칭 및 부호화(classification, designation and coding)</p>
+<p>이 조건요소는 제품의 분류, 호칭(부속서 G 참조) 및/또는 제품의 부호화, 진술된 요구사항을 만족시키는 프로세스 또는 서비스에 관한 체계를 확립하여도 된다. 편의를 위해, 이 요소는 6.3.3의 요소와 결합되어도 된다. 호칭과 관련된 요구사항이 해당 표준에 포함되어야 할 것인지 아닌지는 관계된 위원회가 결정해야 할 사안이다. 위의 사항이 포함된다면 그 요구사항은 부속서 G에 따라야 한다. 이 요소는 지시 관련 정보의 보기를 제공하는 참고 부속서에서 보충시켜도 된다.</p></div>
+<div class="block"><p>6.3.7 표기, 라벨링 및 포장(marking, labelling and packaging)</p></div>
+<div class="block"><p>6.3.7.1 일반사항</p>
+<p>표기, 라벨링 및 포장은 특히 소비자 상품과 관련되는 제품표준에서 관련될 때는 언제든지 포함되어야 하는 보충적인 측면이다.</p>
+<p>필요하다면, 표기의 방법은 또한 규정되거나 권고되어야 한다.</p>
+<p>이 요소는 적합성에 관한 표지를 다루지는 않아야 한다. 그러한 표지는 일반적으로 인증 시스템 관련 규칙하에서 적용된다(KS A ISO/IEC Guide 23을 참조). 표준기관 또는 표준기관의 문서화에 관한 제품의 표시에 대한 사항은 KS Q ISO/IEC 17050－1과 KS Q ISO/IEC 17050－2에 논의된다.</p>
+<p>안전 표준 및 안전에 관련된 측면에 대한 조항은 KS A ISO/IEC Guide 51에서 제시된다.</p>
+<p>이 요소는 배열 정보의 보기를 제시하는 참고 부속서에서 보충시켜도 된다.</p></div>
+<div class="block"><p>6.3.7.2 제품의 표기, 라벨링 및 포장과 관련된 요구사항</p>
+<p>제품의 표기에 대한 참고사항을 포함하고 있는 문서를 작성할 경우, 다음 사항을 기술하여야 한다.</p>
+<p>•	적용할 수 있는 경우, 제조자(상호 및 주소) 또는 판매자(상호, 상표 또는 식별표시), 또는 제품 그자체에 대한 마크[즉, 제조자 또는 판매자의 상표, 모델 또는 형식번호, 호칭(부속서 G 참조)], 혹은서로 다른 크기, 종류, 형식 및 등급의 식별표시를 포함하여 제품의 식별에 사용되는 표기에 대한 내용</p>
+<p>•	예를 들면 팻말(때로는 “명판”이라고 함), 라벨, 날인, 색채, 실(케이블에서의)을 사용하여 제품의 마크를 표현하는 방법</p>
+<p>•	제품 또는 포장에 해당 마크가 부착되어야 할 위치</p>
+<p>•	제품의 라벨링 및 포장에 대한 요구사항(즉, 취급 설명서, 위험 경고사항, 제조일자)</p>
+<p>•	요구될 수 있는 그 외의 정보</p>
+<p>만약 라벨의 적용이 문서에서 요구되는 경우, 그 문서는 라벨링의 성격 및 라벨링이 어떻게 제품 또는 포장지에 첨부, 부착 또는 적용되는지에 관해 서로 규정하여야 한다.</p>
+<p>마크 표시를 위해서 표기된 기호는 KS, ISO 및 IEC에 의해서 출판된 관련 문서에 적합하여야 한다. 포장과 관련된 표준은 ISO 및 IEC 카탈로그 내 ICS 범주 하에 찾을 수 있다.</p></div>
+<div class="block"><p>6.3.7.3 제품에 동봉된 문서에 대한 요구사항</p>
+<p>상기 문서에서는 제품에 몇몇 종류의 문서가 동봉되도록 요구하기도 한다(예를 들면, 시험 성적서, 취급 설명서, 제품 포장에 표기하는 그 외의 정보). 플랜트, 시스템 및 장비와 관련된 문서의 분류 및 호칭에 관한 규정은 KS C IEC 61355에 제시되어 있으며 관리, 무역 및 산업과 관련된 문서에 관한 규정은 ICS 분류 01.140.30에 제시되어 있다. 관련되는 경우에는 그런 문서의 내용이 규정되어야 한다.</p></div>
+<div class="block"><p>6.3.8 규정 부속서(normative annex)</p>
+<p>규정 부속서는 표준의 본체 내용에 추가되는 조항을 제시하며 이는 조건사항이다. 부속서의 규정적 지위(참고적 지위의 반의어 — 6.4.1 참조)는 본문 내에서 언급된 방법과 목차 및 부속서의 제목 아래에 표시된 대로 명시되어야 한다.</p>
+<p>참고 부속서(informative annex)에 대한 규칙은 6.4.1을 참조한다.</p></div>
+<div class="block"><p>6.4 규정요소(normative element)</p></div>
+<div class="block"><p>6.4.1 인용표준(normative references)</p>
+<p>문서에서 해당 문서의 적용을 필수적으로 만드는 방법으로 인용표준를 제시한다.</p>
+<p>일자가 표기되는 인용표준은 발행연도를 제시하거나, 조회서 또는 최종 표준안의 경우에는 “발행 예정”이라는 각주와 함께 줄표( — )를 하고 완전한 명칭을 제시하여야 한다.</p>
+<p>발행연도 또는 줄표는 일자가 표기되지 않는 인용표준에 대해서 제시하지 않는다.</p>
+<p>일자가 표기되지 않는 인용표준이 그 표준의 모든 부에 걸쳐 있는 경우에 그 발행번호에는 “(모든 부)”라는 표시가 따라야 하고 일련의 부의 전반에 걸치는 제목(즉, 도입부와 주된 요소, 부속서 D 참조)이 따라야 한다.</p>
+<p>원칙적으로, 인용표준은 국가표준기관 또는 국제표준기관에서 발행한 표준이어야 한다. 다른 기관에 의해서 발행된 표준은 다음과 같이 제공된 얼마간의 기준에 관련되어도 된다.</p>
+<p>—	국가표준기관 또는 국제표준기관에서 공적으로 유효할 뿐만 아니라, 권위를 가지고 널리 수용되고 있음이 인정된다.</p>
+<p>—	국가표준 또는 국제표준의 인용표준은 저작자 또는 발행자가 요구하는 대로 문서의 내용과 이용가능성에 대한 동의를 얻어야 한다. 저작자 또는 발행자는 요청에 따라 해당 문서를 이용할 수 있게 할 것이 요구된다.</p>
+<p>—	저작자 또는 발행자는 해당 국제표준에 인용문서의 개정 의도 및 개정될 주요 사항과 관련된정보를 제공하는 데 동의하여야 한다.</p>
+<p>인용표준의 도입부는 다음과 같은 정형문으로 시작된다.</p>
+<p>“다음의 인용표준은 전체 또는 부분적으로 이 표준의 적용을 위해 필수적이다. 발행연도가 표기된 인용문서는 인용된 판만을 적용한다. 발행연도가 표기되지 않은 인용표준은 최신판(모든 추록을 포함)을 적용한다.”</p>
+<p>이 도입부의 정형문은 표준의 각 부에도 적용된다.</p>
+<p>발행연도를 표시한 인용표준은 해당 문서에서 인용한 표준에 한정되며, 발행연도를 표시하지 않은 인용표준은 해당 문서에서 인용표준의 모든 변경사항을 허용하거나 적용한다는 의미를 갖는다.</p>
+<p>인용된 표준이 해당 문서의 전체에 걸쳐 있는 경우, 발행연도 대신에 ‘모든 부’로 표시한다.</p>
+<p>인용표준에 다음을 포함시켜서는 안 된다.</p>
+<p>—	공적으로 유효하지 않은 문서</p>
+<p>—	정보제공의 의미로만 인용되는 문서</p>
+<p>—	해당 문서의 준비과정에서 단지 도서목록이나 배경자료로 제공되는 문서</p>
+<p>—	법규 및 기술규정</p>
+<p>이러한 문서는 참고문헌에 등재되어도 된다(6.5.4 참조).</p>
+<p>인용표준 목록의 작성 순서는 다음을 따른다.</p>
+<p>표 5 — 인용표준의 작성 순서</p></div>
+<div class="block"><p>6.4.1.1 참고 부속서는 해당 표준을 이해하거나 사용할 때 도움을 주기 위해 추가적인 정보를 제공한다. 참고 부속서에는 6.4.1.2에 서술된 것 이외의 요구사항을 포함시켜서는 안 되고 이들은 조건사항이다. 부속서의 참고적 지위(규정적 지위의 반의어 — 6.3.8 참조)는 본문에 언급된 방법과 목차 표시에 의해, 그리고 부속서의 순서 아래에 명시되어야 한다.</p>
+<p>규정 부속서(normative annex)에 대한 규칙은 6.3.8을 참조한다.</p></div>
+<div class="block"><p>6.4.1.2 참고 부속서는 선택적 요구사항을 포함하여도 된다. 예를 들면, 선택적인 시험방법에 요구사항이 포함되어도 되지만, 표준의 규정에 따를 것을 요구하는 요구사항을 따를 필요는 없다.</p></div>
+<div class="block"><p>6.4.2용어와 정의(terms and definitions)</p>
+<p>용어와 정의는 문서에서 사용되는 용어의 이해를 위해 필요한 정의를 제공한다.</p>
+<p>다음의 도입 어법을 해당 표준의 모든 용어와 정의가 표현된 곳에 사용하여야 한다.</p>
+<p>“이 표준의 목적을 위하여 다음의 용어와 정의를 적용한다.”</p>
+<p>용어가 하나 또는 그 이상의 표준에도 적용되는 경우(예를 들면, 일련의 연관된 표준의 제1부가 해당 표준의 일부분이거나, 모든 부에서 사용되는 용어와 정의를 규정하고 있을 경우), 다음의 도입 어법을 사용하고, 필요에 따라 변경이 가능하다.</p>
+<p>“이 표준의 목적을 위하여 용어와 정의는 ...에서 주어지고 다음을 적용한다.”</p>
+<p>용어와 정의에 대한 표준안 작성과 표현을 위한 규정은 어휘, 학술용어, 또는 서로 다른 언어에서 동등한 용어의 목록 등과 같은 용어표준을 위한 특별한 지침과 함께 부속서 G에 제시된다.</p>
+<p>용어와 정의는 정의의 목록이며 일련의 조항은 아니다. 다만, 영역을 구분하기 위하여 일련의 용어를 항으로 구분 할 수 있다.</p>
+<p>용어는 문서에 사용된 용어와 정의만을 열거해야 한다. 다만, 광범위한 사용을 위한 전문용어 문서에는 적용하지 않는다.</p>
+<p>용어 선정은 다음을 고려하여 문서에 규정해야 한다.</p>
+<p>a) 	자명하지 않거나 일반적으로 알려지지 않았으며 서로 다른 문맥에서 다르게 해석될 수 있는 용어, 기호 또는 명칭은 관련 개념을 정의하여 명확하게 하여야 함</p>
+<p>b) 	일반적인 언어 표현 및 통상적으로 사용되는 용어는 그 문서의 문맥 속에서 특정한 의미로 사용될 때만 정의</p>
+<p>c) 	용어 선정이 경쟁적인 경우, 모든 용어 중에서 오직 한 가지만 용어 만 표준용어로 선택(G.1.4 참조)하는 것을 권고</p>
+<p>d) 	표준용어로 선정되지 않았으나 시장에서 널리 사용되어 혼용이 우려되는 경우 허용용어 또는 기피용어로 명백히 표시하여 표준용어 사용을 권장(G.4.2 참조)</p>
+<p>용어의 배치는 다음을 고려하여 문서에 기술해야 한다.</p>
+<p>용어의 번호는 독립적인 행으로 구분하며, 따라서 용어는 새로운 줄에 위치한다. 영문 표기는 괄호를사용하여 병행 표기하며, 한글과 괄호는 붙인다.</p>
+<p class="nb"><b>비고</b>&ensp;영어 용어는 대문자로 정해진 경우를 제외하고 소문자로 시작한다.</p>
+<p>용어와 정의는 상호 인용 관계를 표시해야 한다.</p>
+<p>정의는 해당 용어를 대신할 수 있는 형태로 작성해야 하고 하나의 용어에 하나의 정의만 허용된다.</p>
+<p>마침표로 끝내서는 안되며 필요한 경우, 비고를 달아 주어진 정의를 보충 설명할 수 있다.</p>
+<p>만약 하나의 용어가 여러 개념의 정의를 대표하는 경우, 해당 정의 앞에 각 개념에 속하는 주제 분야를 화살괄호로 표시하여 보충 할 수 있다(G.4.4 참조).</p>
+<p>용어와 정의의 인용표준이 있는 경우, 해당되는 용어와 정의 하단에 출처를 표시해야 한다.</p></div>
+<div class="block"><p>6.4.3 요구사항(requirements)</p>
+<p>요구사항이 있는 경우 다음을 포함하여야 한다.</p>
+<p>—	해당 표준에서 명시적 또는 참고적으로 적용되는 제품, 프로세스 또는 서비스 측면과 연관된 모든 특성</p>
+<p>—	정량화할 수 있는 특성에 대해 요구되는 한계값</p>
+<p>—	각 요구사항에서 각 특성에 대한 수치를 결정하거나 검증하기 위한 시험방법, 또는 시험방법 그 자체에 대한 언급(6.4.3.2 참조)</p>
+<p>요구사항, 설명, 권고사항 사이에 명백한 차이점이 있어야 한다.</p>
+<p>계약 요구사항(청구, 보증, 비용의 취급 등)과 법률 또는 법적 요구사항이 포함되어서는 안 된다.</p>
+<p>몇몇 제품표준에서는 제품에 설치자나 사용자를 위한 경고사항이나 지시사항을 첨부하고 그들의 특성을 명확하게 규정할 필요가 있다.</p>
+<p>반면에, 설치 또는 사용과 관련된 요구사항은 제품 그 자체의 적용과 관련된 요구사항이 아니기 때문에 독립된 표준이나 독립된 부에 수록되어야 한다.</p>
+<p>제조자는 그 표준 자체가 서술되지 않은 수치를 진술하도록 요구되는 특성에 관해 나열하는 표준에서는 이 수치가 어떻게 측정되고 진술되었는지 서술하여야 한다.</p>
+<p>두 개 이상의 제품 치수의 조정에 채택되어야 할 정책은 4.3.9.4에 제시되어 있다.</p></div>
+<div class="block"><p>6.4.3.1 샘플링(sampling)</p>
+<p>이 조건요소는 시료의 보관 방법뿐만 아니라 샘플링의 조건과 방법에 관해 규정한다. 이 사항은 6.4.3.2 내용의 도입부에서 서술되어도 된다.</p></div>
+<div class="block"><p>6.4.3.2 	시험방법(test methods)</p></div>
+<div class="block"><p>6.4.3.2.1 일반사항</p>
+<p>이 항은 특성값을 결정하거나 서술된 요구사항에 적합성을 점검하고 결과의 재현성을 확인하기 위한 절차와 연관된 사항을 제공한다.</p>
+<p>해당하는 경우, 형식시험인지 프로세스시험 또는 샘플링시험인지 적절하게 표시하도록 확인해야 한다. 부가해서, 시험순서가 시험결과에 영향을 미칠 수 있다면 해당 표준에 시험의 순서를 명기해야 한다.</p>
+<p>시험방법은 다음 순서로 세분되어도 된다(해당되는 경우).</p>
+<p>—	원리</p>
+<p>—	시약 및/또는 재료(6.4.3.2.2 참조)</p>
+<p>—	장치(6.4.3.2.3 참조)</p>
+<p>—	시험시료 및 시편의 준비와 보존</p>
+<p>—	절차</p>
+<p>—	계산방법과 시험방법의 정밀도를 포함한 시험결과의 표시, 그리고 ISO에서는 측정불확도</p>
+<p>—	시험성적서</p>
+<p>시험방법은 독립된 절로 표현되거나 요구사항과 결합, 혹은 부속서(6.6 참조)나 독립된 부(5.2.1 참조)로 표현되어도 된다. 시험방법이 복수의 다른 표준에 인용될 것 같은 경우에는 시험방법을 독립된 표준으로 준비하여야 한다.</p>
+<p>요구사항, 샘플링 및 시험방법은 제품의 표준화와 상호 연관된 사항이므로 서로 다른 요소들을 한 표준 내의 독립된 절에 표현하거나 분리된 표준에서 표현할 때에는 종합적으로 고려해야 한다.</p>
+<p>시험방법에 관한 표준안을 작성할 때에는 일반적인 시험방법을 위한 표준과 다른 표준에서 유사한 특성에 맞는 관련시험에 대한 문서를 참고하여야 한다. 같은 수준의 신뢰수준으로 파괴 시험방법을 비파괴 시험방법으로 교체 가능한 때에는 비파괴 시험방법을 선택하여야 한다.</p>
+<p>시험방법은 KS Q ISO/IEC 17025:2019, 5절에 기술된 유효성 확인(validation), 측정소급성(traceability), 측정불확도(uncertainty) 예측에 관한 측정학적 원칙을 준수하여야 한다. 기타 적용 가능한 문서로는 KS Q ISO/IEC Guide 98 – 3, 측정불확도 — 제3부: 측정불확도 표현 지침 및 KS A ISO/IEC Guide 99, 국제 측정학 용어 — 기본 및 일반개념과 관련 용어(VIM)가 포함된다. 시험 및 교정기관과 관련한 요건은 KS Q ISO/IEC 17025:2019, 5절에 규정된 정확도(accuracy)와 교정(calibration)에 관한 조항을 준수하여야 한다.</p>
+<p>화학 분석방법에 관한 표준안을 작성하기 위해서는 KS M ISO 78－2를 참조한다. KS M ISO 78－2의 대부분은 또한 다른 화학 제품을 위한 제품 시험방법에도 적용이 가능하다.</p>
+<p>유해한 제품, 장치 또는 프로세스의 사용을 포함한 시험방법에 대해 서술하는 표준에서는 일반 경고사항과 적절한 특정 경고사항을 포함하여야 한다. 권장되는 어법은 KS A ISO/IEC Guide 51을 참조한다(B.15 참조).</p>
+<p>시험방법을 규정하는 표준에서는 어떠한 시험의 종류도 실행할 어떠한 책임도 의미해서는 안 된다. 이는 단지 (예를 들면, 동일 표준이나 다른 표준에서, 규정 또는 계약에서) 요구되거나 적용될 경우 평가가 행해져야 하는지에 대한 방법을 서술하여야 한다.</p>
+<p>제품, 프로세스, 또는 서비스에 대한 사업의 적합성평가를 위한 통계적인 방법이 표준을 준수하는 어떠한 진술도 오직 모집단 또는 로트의 적합성에만 관련된다.</p>
+<p>모든 단일 항목이 표준에 따라 시험되어야 한다고 해당 표준에 규정되었다면, 표준에 대한 제품의 적합성과 연관된 모든 서술은 모든 단일 항목이 시험되었다는 것과 각 단일 항목이 연관된 요구사항을 만족시켰다는 것을 의미한다.</p>
+<p>일반적 적용을 위해 가장 적합한 방법과는 다른 시험방법이 일반적으로 사용된다고 하여도 이것이 표준에서 가장 적합한 방법을 규정하지 않는 이유가 되어서는 안 된다.</p></div>
+<div class="block"><p>6.4.3.2.2 시약 및/또는 재료(reagents and/or materials)</p>
+<p>이 항은 표준 내에서 사용되는 시약 및/또는 재료의 목록을 제공하는 조건요소이다.</p>
+<p>시약 및/또는 재료 절의 내용은 일반적으로 하나 또는 그 이상의 시약 및/또는 재료의 세부적인 목록과 함께 선택적인 본문 도입부를 포함한다.</p>
+<p>본문 도입부는 상호 참조되지 않은 일반적 조항을 규정할 때만 사용해야 한다. 상호 참조하기 위해 필요한 모든 항목을 이 본문에 포함시켜서는 안 되지만 그 아래에 설명된 별도 기재사항으로서 기입해야 한다.</p>
+<p>시약 및/또는 재료에 대해 세부적으로 설명하는 목록이 일련의 항이 아니라 목록이기 때문에, 일반적 조항을 설명하는 도입문구는 5.2.4에 설명된 미결문단과는 다르다는 것을 주의한다.</p>
+<p>한 절 내에 단일 항을 가지도록 하는 것은 허용 불가능한 반면에 모든 표준이 최소한 두 개의 시약 및/또는 재료를 포함하도록 요구하는 것은 이치에 맞지 않는다(5.2.3 참조).</p>
+<p>각각의 시약 및/또는 재료 기재사항은 상호 참조의 목적을 위해 오직 하나만 존재할지라도 번호가 부여되어야 한다.</p>
+<p>다음의 보기는 사용된 표현 형태를 나타낸다(보다 많은 표준안 작성의 보기는 KS M ISO 78－2 참조)은 절이나 항과는 다르다는 것을 주의한다.</p>
+<p>시약 및/또는 재료 목록에서의 시약 및/또는 재료는 선택적으로 시약 및 재료에 관한 서술을 같은 행에, 더 많은 추가적인 서술은 다른 문단에 제공한다.</p>
+<p class="nb"><b>보기</b>&ensp;</p>
+<p>3 시약</p>
+<p>오직 승인된 분석등급의 시약과 증류수 또는 이와 동등한 순도를 가진 물만 사용한다.</p>
+<p>3.1 세척제, 예를 들면 메탄올 또는 수용 세제 몇 방울이 첨가된 물</p></div>
+<div class="block"><p>6.4.3.2.3 장치(apparatus)</p>
+<p>장치에 대한 설명을 기술할 때 절의 체계, 번호부여 및 표현에 관련된 표준은 “시약 및/또는 재료” 절의 내용과는 다르다(6.4.3.2.2 참조).</p>
+<p>가능하다면, 한 명의 제조자에 의해 생산된 장치는 일일이 열거시키지 않는 것이 좋다.</p>
+<p>장치를 즉각적으로 사용할 수 없는 곳이라면 비교할 수 있는 시험이 모든 관계자에 의해 실행될 수 있다는 것을 보장하기 위한 장치의 설명이 이 절에 포함해야 한다.</p>
+<p>상표명의 사용에 대해서는 6.4.3.4.4를 참조한다.</p></div>
+<div class="block"><p>6.4.3.2.4 대안적 시험방법(alternative test methods)</p>
+<p>어떤 특성을 시험하기 위한 두 가지 이상의 적당한 시험방법이 존재한다면 원칙적으로 한 표준에서 오직 하나만을 고려해야한다.</p>
+<p>만약 어떤 이유에서 두 개 이상의 시험방법이 표준화되어야 한다면, 논쟁을 해결하기 위해 중재방법(“참조방법”이라고도 함)의 의심 또는 해당 표준을 표시해야 한다.</p></div>
+<div class="block"><p>6.4.3.2.5 정확도에 따른 시험방법의 선택</p>
+<p>선택된 시험방법의 정확도는 평가될 특성값가 명시된 허용오차 내에 놓여있는지 아닌지에 대해 명확하게 결정할 수 있을 정도이어야 한다.</p>
+<p>각 시험방법이 기술적으로 필요가 되는 경우, 각 시험방법은 정확도의 한계에 관한 설명을 포함하여야 한다.</p></div>
+<div class="block"><p>6.4.3.2.6 중복의 회피 및 불필요한 편차의 방지</p>
+<p>중복의 회피는 표준화의 방법론에 있어 일반적인 원칙이지만 한 가지 시험방법이 차이가 거의 없거나 아예 없는 하나 이상의 제품 또는 제품 종류에 종종 적용되기 때문에 중복에 있어서의 최대의 위험성은 시험방법 분야에서 나타난다. 따라서 어떤 시험방법을 표준화하기 전에 적용 가능한 시험방법이 이미 존재하고 있는지 결정하여야 한다.</p>
+<p>시험방법이 두 가지 이상의 제품 종류에 적용 가능할 경우에는 방법 자체에 관한 표준을 준비해야 하고 주어진 제품에 관해 다루는 각각의 표준은 그것에 대해 언급하여야 한다(요청될 수 있는 모든 수정사항을 지시함). 이것이 불필요한 편차를 줄이는 데 도움을 줄 것이다.</p>
+<p>제품과 관련된 표준을 준비하는 데 있어 다른 제품을 시험할 때에도 사용될 수 있을 몇 종류의 시험 장비를 표준화할 필요가 있다면 이런 장치에 관해 다루는 위원회와의 협의로 마련된 독립된 표준에서 취급하여야 한다.</p></div>
+<div class="block"><p>6.4.3.3 분류, 호칭 및 부호화(classification, designation and coding)</p>
+<p>제품의 분류, 호칭(부속서 K 참조) 및/또는 제품의 부호화는, 진술된 요구사항을 만족시키는 프로세스 또는 서비스에 관한 체계를 확립하여야 할 것이다. 편의를 위해, 이 요소는 6.4.3의 요소와 결합되어도 된다.</p>
+<p>호칭과 관련된 요구사항이 해당 표준에 포함되어야 할 것인지 아닌지는 관계된 위원회가 결정해야 할 사안이다. 해당되는 경우, 요구사항은 부속서 J에 따르며 지시 관련 정보의 보기를 제공하는 참고 부속서에서 보충시켜도 된다.</p></div>
+<div class="block"><p>6.4.3.4 표기, 라벨링 및 포장(marking, labelling and packaging)</p></div>
+<div class="block"><p>6.4.3.4.1 일반사항</p>
+<p>표기, 라벨링 및 포장은 특히 소비자 상품과 관련되는 제품표준에서 관련될 때는 언제든지 포함되어야 하는 보충적인 측면이다. 필요하다면, 표기 방법을 규정하거나 권고해야 한다.</p>
+<p>이 조항은 적합성에 관한 표지를 다루지는 않아야 한다. 그러한 표지는 일반적으로 인증시스템 관련 규칙하에서 적용된다(KS A ISO/IEC Guide 23을 참조). 표준기관 또는 표준기관의 문서화에 관한 제품의 표시에 대한 사항은 KS Q ISO/IEC 17050－1과 KS Q ISO/IEC 17050－2을 참고한다.</p>
+<p>안전 표준 및 안전에 관련된 측면에 대한 조항은 KS A ISO/IEC Guide 51에서 제시된다.</p>
+<p>이 요소는 배열 정보의 보기를 제시하는 참고 부속서에 추가해도 된다.</p></div>
+<div class="block"><p>6.4.3.4.2 제품의 표기, 라벨링 및 포장과 관련된 요구사항</p>
+<p>제품의 표기에 대한 참고사항을 포함하고 있는 문서를 작성할 경우, 다음 사항을 기술하여야 한다.</p>
+<p>—	적용할 수 있는 경우, 제조자(상호 및 주소) 또는 판매자(상호, 상표 또는 식별표시), 또는 제품 그 자체에 대한 마크 즉, 제조자 또는 판매자의 상표, 모델 또는 형식번호, 호칭, 혹은 서로 다른 크기, 종류, 형식과 등급의 식별 표시를 포함하여 제품의 식별에 사용되는 표기에 대한 내용</p>
+<p>—	보기 팻말(때로는 “명판”이라고 함), 라벨, 날인, 색채, 실(케이블에서의)을 사용하여 제품의 마크를 표현하는 방법</p>
+<p>—	제품 또는 포장에 해당 마크가 부착되어야 할 위치</p>
+<p>—	제품의 라벨링 및 포장에 대한 요구사항(즉, 취급 설명서, 위험 경고사항, 제조일자)</p>
+<p>—	요구될 수 있는 그 외의 정보</p>
+<p>만약 라벨의 적용이 문서에서 요구되는 경우, 그 문서는 라벨링의 성격 및 라벨링이 어떻게 제품 또는 포장지에 첨부, 부착 또는 적용되는지에 관해 서로 규정하여야 한다.</p>
+<p>마크 표시를 위해서 표기된 기호는 KS, ISO 및 IEC에 의해서 발행한 관련 문서에 적합하여야 한다. 포장과 관련된 표준은 ISO 및 IEC 카탈로그에서 ICS로 찾을 수 있다.</p></div>
+<div class="block"><p>6.4.3.4.3 제품에 동봉된 문서에 대한 요구사항</p>
+<p>상기 문서에서는 제품에 몇몇 종류의 문서가 동봉되도록 요구하기도 한다(예를 들면, 시험 성적서, 취급 설명서, 제품 포장에 표기하는 그 외의 정보).</p>
+<p>플랜트, 시스템 및 장비와 관련된 문서의 분류 및 호칭에 관한 규정은 KS C IEC 61355에 제시되어 있으며 관리, 무역 및 산업과 관련된 문서에 관한 규정은 ICS 코드, 01.140.30에 제시되어 있다.</p>
+<p>관련되는 경우에는 그런 문서의 내용이 규정되어야 한다.</p></div>
+<div class="block"><p>6.4.3.4.4 상표명과 상표의 사용</p>
+<p>상표명(상품명)보다는 제품의 정확한 명칭 혹은 설명을 제시하여야 한다.</p>
+<p>특정 상품의 상표명 소유권(즉, 상표권)은 통상적으로 사용되고 있을지라도 가능한 한 피하는 것이 좋다.</p>
+<p>예외적으로, 상표명을 사용할 수밖에 없을 경우에는 그 특성을 표시하여야 한다. 예를 들면, 등록된 상표명에는 ® 기호를 사용하고(보기 1 참조), 상표에는 ™ 기호를 사용한다.</p>
+<p class="nb"><b>보기 1</b>&ensp;“Teflon®” 대신에 “polytetrafluoroethylene(PTFE)”으로 쓴다.</p>
+<p>오직 하나의 제품만이 현재 이용 가능하고 표준상에서 성공적으로 인용하는 데 적합하다고 알려져 있다면, 제품의 상표명은 표준의 본문에서 주어져도 되지만 보기 2에서와 같이 각주로 연결되어야 한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;“1) …[제품의 상표명 또는 상표]…은 …[제조자]...에 의해서 제공된 [제품의 상표명 또는 상표]이다. 이 정보는 표준 사용자의 편의를 위하여 제공된 것이며 …[KS]…가 이 상표의 제품을 보증하는 것이 아니다. 동일한 결과를 도출할 수 있다면 동등한 제품이 사용되어도 된다.”</p>
+<p>해당 제품의 특성이 상세하게 서술되기 어려운 관계로 표준의 성공적 인용에 적합하고 상업적으로 이용 가능한 제품의 보기를 제시하는 것이 필수적이라고 생각된다면, 보기 3에 나타내었듯이 상표명 또는 상표를 각주에 나타내어도 된다.</p>
+<p class="nb"><b>보기 3</b>&ensp;“1) …[제품의 상표명 또는 상표] …은 상업적으로 이용하기에 적합한 제품의 보기이다. 이 정보는 표준 사용자의 편의를 위하여 제공된 것이며 …[KS]가 …이들 제품들을 보증하는 것은이 아니다.”</p></div>
+<div class="block"><p>6.4.4 참조(reference)</p></div>
+<div class="block"><p>6.4.4.1 일반사항</p>
+<p>일반적인 규칙으로, 원래의 출처 자료를 반복하기보다는 특정한 본문의 한 부분에 대한 참조를 사용하여야 한다. 이와 같은 반복은 오류나 모순의 위험성을 내포하고 있음으로, 표준의 길이를 길게 만들 수 있기 때문이다.</p>
+<p>그러나, 해당 자료를 반복할 필요가 있는 경우, 그의 출처를 명확하게 식별해야 한다.</p></div>
+<div class="block"><p>6.4.4.2 본문 전체에 대한 문서의 참조</p>
+<p>표준, 기술시방서(TS), PAS, 기술보고서(TR), 또한 가이드(Guide)와 같은 관계된 문서 형식의 기능처럼 어법은 변경되어야 하고, 각 문서에서는 “이 표준”이라는 표현이 사용되기도 한다.</p>
+<p>각각의 부로 발행한 표준은 다음의 형식을 사용해야 한다.</p>
+<p>—	“KS X ISO/IEC 2382의 이번 부”(한 부만을 참조)</p>
+<p>—	“KS C IEC 60335”(일련의 부 전체를 참조)</p>
+<p>위의 참조는 일자가 기입되지 않았으므로 해당 표준의 모든 추록과 개정판을 포함하는 것으로 취급된다(6.4.4.5.1 참조).</p></div>
+<div class="block"><p>6.4.4.3 본문 요소에의 참조</p>
+<p>다음의 형태를 사용한다.</p>
+<p>—	“3절과 일치되도록”</p>
+<p>—	“3.1에 따라서”</p>
+<p>—	“3.1 b)에 규정된 대로”</p>
+<p>—	“3.1.1에서 제시된 세부사항”</p>
+<p>—	“부속서 B 참조”</p>
+<p>—	“B.2에서 제시된 요구사항”</p>
+<p>—	“표 2의 비고 참조”</p>
+<p>—	“J.3의 보기 2 참조”</p>
+<p>—	“3.1의 식(3) 참조”</p>
+<p>“3.2.1항”과 같은 형태와 “이 절” 및 “이 부속서”와 같은 모호한 말은 사용하지 않는다.</p>
+<p>다른 표준에서 정렬되지 않은 항목을 언급할 필요가 있다면 다음의 어구가 사용되어야 한다.</p>
+<p>보 기 “ISO 15888:2000, 3.1, 두 번째 항목에서 규정된 대로”</p></div>
+<div class="block"><p>6.4.4.4 그림 및 표의 참조</p>
+<p>표준에 포함된 모든 그림 및 표는 일반적으로 본문 내에서 참조되어야 한다.</p>
+<p>예를 들면, 다음의 형식을 사용할 수 있다.</p>
+<p>—	“그림 A.6에서 나타낸”</p>
+<p>—	“(그림 3 참조)”</p>
+<p>—	“표 2에서 주어진”</p>
+<p>—	“(표 B.2 참조)”</p></div>
+<div class="block"><p>6.4.4.5 다른 표준의 참조</p></div>
+<div class="block"><p>6.4.4.5.1 일자가 명시되지 않은 참조</p>
+<p>일자가 명시되지 않은 인용은 전체 표준이나 그 표준의 한 부를 참조할 때에만 적용되고, 다음의 경우에만 가능하다.</p>
+<p>—	인용하는 표준의 목적을 위한 참조문서의 모든 변경사항을 이용할 수 있도록 허용된 경우</p>
+<p>—	참고의 경우</p>
+<p>일자가 명시되지 않은 참조는 참조된 문서의 추록과 개정판을 포함하는 것으로 간주되어야 한다.</p>
+<p>다음의 형식을 사용한다.</p>
+<p>—	“...KS A ISO 128－21 및 KS A ISO 80000...에서 규정된 대로 ...”</p>
+<p>—	“...KS C IEC 60027 참조...”</p></div>
+<div class="block"><p>6.4.4.5.2 일자가 명시된 참조</p>
+<p>일자가 명시된 참조는 다음 사항의 참조를 의미한다.</p>
+<p>—	발행연도가 표시된 특정 발행본</p>
+<p>—	줄표( — )에 의해 표시된 최종 표준안</p>
+<p>발행일은 연도를 표시하거나, 한 종류 이상의 편집본이 있거나 동일한 연도에 발행된 문서가 있는 경우에는 발행연도와 월(필요하면 날짜)을 표시한다.</p>
+<p>보충적인 추록이나 개정본이 있는 경우, 일자가 명시된 참조는 그를 참조하는 문서의 추록과 결합되어야 할 필요가 있다.</p>
+<p class="nb"><b>비고</b>&ensp;이 문맥에서 한 부(part)는 분리된 한 표준으로 간주된다.</p>
+<p>본문 내, 특정한 구분이나 세부 구분의 인용에서 다른 표준의 표 및 그림에는 항상 연도가 명시되어 있어야 한다.</p>
+<p>다음의 형태를 사용한다.</p>
+<p>—	“... KS C IEC 60068－1:2001에서 제시된 시험을 수행하여...”(발행연도가 기입된 인용)</p>
+<p>—	“... KS B ISO 1234:－, 제3절에 따라...”(최종 표준안의 연도가 기입된 인용)</p>
+<p>—	“... IEC 64321－4:1996, 표 1에서 서술된 대로...”(다른 표준에 있는 특정 표의 연도가 기입된 인용)</p>
+<p>—	“… ISO/TS 10303－1000:2010-03에 규정된 대로...”(동일 연도에 여러 개의 편집본이 발행된 경우, 연월이 있는 참조)</p>
+<p>—	“… IEC 60417－5017:2002-10”(데이타베이스 표준의 입력 연월이 있는 참조)</p></div>
+
+<h3 id="s11">6.5&emsp;기타 참고요소</h3>
+<div class="block"><p>6.5 조건요소</p></div>
+<div class="block"><p>6.5.1 기호와 약어</p>
+<p>기술적 기준을 반영하기 위해서 특별한 순서로 기호를 나열할 필요가 없다면, 모든 기호는 다음의 순으로 알파벳 순서에 따라 목록을 만드는 것이 좋다.</p>
+<p>—	대문자 라틴문자 뒤에 소문자 라틴문자를 배치한다(A, a, B, b 등).</p>
+<p>—	첨자 없는 문자는 첨자 있는 문자의 앞에 위치하며 문자로 된 첨자가 숫자로 된 첨자보다 선행한다(B, b, C, Cm, C2, c, d, dext, dint, d1 등).</p>
+<p>—	그리스 문자는 라틴문자 뒤에 위치한다(Z, z, A, , B, , ..., Λ, λ 등).</p>
+<p>—	기타 특수기호</p>
+<p>편의상 이 요소는 예를 들면 “용어, 정의, 기호, 단위 및 약어”와 같은 적절한 합성 제목하에서 용어와 그것의 정의, 기호, 약어, 그리고 형편에 따라서는 단위를 조합하기 위해 6.4.2의 요소와 함께 결합시켜도 된다.</p>
+<p>기관명의 약자는 영어로 관련기관에서 사용하여야 한다.</p>
+<p>약어는 주의깊게 사용되어야 하고 혼란을 일으키지 않을 경우에만 사용하여야 한다.</p>
+<p>약어의 목록이 제시되지 않는 경우, 약어가 처음으로 사용된 시점에서 약어의 뒤에 괄호를 사용하여 원래 용어를 제시하여야 한다.</p>
+<p>약어는 표준에서 계속적으로 사용되는 경우에만 지정하여야 한다.</p>
+<p>일반적인 규정으로 약어는 각 문자의 뒤에 마침표를 찍지 않고 대문자로 구성된다. 예외적으로, 각 문자 뒤에 마침표를 찍어 소문자로 된 각 단어의 첫 번째 철자로 구성된 약어가 사용될 수 있다(예를 들면, “교류”는 “a.c.”로 표시).</p>
+<p>그러나 마크와 관련된 기술시방서에는 다른 요구사항이 포함되어도 된다(예를 들면, KS C IEC 61293에서는 “AC 230 V” 형태의 마크표시를 규정한다).</p>
+<p>문장이 몇 개의 소문자로 이루어진 약어로 시작될 때에는 “A.C.”처럼 약어의 모든 철자가 대문자이어야 한다.</p></div>
+<div class="block"><p>6.5.2 비고 및 보기</p>
+<p>표준의 본문에 통합된 비고 및 보기는 표준을 사용하고 이해하는데 도움을 주기 위한 추가적인 정보를 제공하기 위해서만 사용되어야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;및 보기에는 요구사항(3.3.1 및 표 I.1 참조)이나 해당 문서를 사용하는데 필수적이라고 생각되는 어떤 정보, 예를 들어 지침(표 I.1 참조), 권고사항(3.3.2 및 표 I.2 참조) 혹은 허용(3.3.4 및 표 I.3 참조), 외적제약(3.3.7 및 표 H.5 참조)이 포함되어서는 안 된다.</p>
+<p class="nb"><b>비고</b>&ensp;는 사실을 서술하는 문장으로 작성한다.</p>
+<p class="nb"><b>보기 1</b>&ensp;다음의 보기는 대응하는 비고와 함께 절로 구성하였다. 비고는 문서를 이해하는데 도움이 되고자 추가정보를 포함하기 때문에 정확하게 작성되었다.</p>
+<p>“각 라벨은 길이 25 mm에서 40 mm, 폭은 10 mm에서 15 mm로 한다.”</p>
+<p>—	 라벨의 크기는 주사기 눈금을 보는데 방해가 되지 않게 적절한 크기를 선택한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;다음의 비고는 각각 요구사항, 지침, 권고사항 및 허용사항을 포함하고, 이들이 “추가 정보”를 제공하지 않기 때문에 부정확하게 작성되었다. 문제가 되는 부분을 밑줄로 표시하고, 괄호 안에 설명하였다.</p>
+<p>—	이러한 맥락에서, 이 장은 별도의 문서로 간주하여야 한다(“하여야 한다”는 요구사항을 구성한다. 3.3.1 및 표 I.1 참조)</p>
+<p>—	대안으로, .......의 하중에서 시험(“시험”은 필수사항을 사용하는 지침의 형태로 표현된 요구사항을 구성한다. 표 I.1 참조)</p>
+<p>—	실험실이 큰 조직의 한 부서인 경우, 조직은 상충되는 이해를 갖는 부서와 조직적인 장치는.... 하는 것이 좋다(“하는 것이 좋다”는 권고사항을 구성한다</p>
+<p>—	개인은 한 가지 이상 역할을 수행할 수 있다(“할 수 있다”는 허용적 어조를 사용하여 허용을 구성한다. 표 I.3 참조).</p>
+<p class="nb"><b>비고</b>&ensp;및 보기는 이들이 언급된 문단 뒤에 위치하는 것이 좋다.</p>
+<p class="nb"><b>비고</b>&ensp;및 보기는 동일한 절, 항, 그림 또는 표 내에 두 개 이상 적용되지 않으면 번호를 매기지 않는다.</p>
+<p>동일한 절, 항, 그림 또는 표에 여러 개의 비고가 적용된 경우에는 “비고 1”, “비고 2”, “비고 3” 등으로 표시하여야 한다. 동일한 절, 항, 그림 또는 표 내에 보기가 여러 개 인 “보기 1”, “보기 2”, “보기 3” 등으로 표시하여야 한다.</p>
+<p>KS에서는 비고나 보기의 범위를 알 수 있도록 비고와 보기는 굵은 활자체로 표시하여야 한다. 동일한 절 또는 항에 비고와 보기가 함께 기재되는 경우 보기가 우선한다.</p></div>
+<div class="block"><p>6.5.3 각주</p>
+<p>각주는 추가적인 정보를 제공하며, 최소한으로 사용해야 할 것이다.</p>
+<p>본문 내에 비고와 보기가 삽입되어 있듯이(6.5.2 참조), 각주에는 요구사항이나 그 표준을 사용하는 데 필수적이라고 생각되는 어떠한 정보도 포함시켜서는 안 된다.</p>
+<p>그림 및 표에서의 각주는 다른 규칙을 따른다(J.1.10 및 J.2.7 참조).</p>
+<p>본문에서의 각주는 관련 쪽 하단부에 배치시키고 해당 쪽의 왼쪽에 짧고 가는 수평선을 그어 본문과 분리시켜야 한다.</p>
+<p>본문에서의 각주는 통상적으로 1부터 시작하여 뒤에 한쪽 괄호기호를 붙이고, 표준안 전반에 연속하는 일련의 숫자배열, 즉 아라비아 숫자[즉, 1), 2), 3) 등]로 구별하여야 한다.</p>
+<p>각주는 해당 단어 혹은 문장 뒤에 위첨자로 표시된 동일 번호를 삽입하여 본문 내에서 관련시켜야 한다[즉, 1), 2), 3) 등].</p>
+<p>위첨자로 된 숫자와 혼동되는 것을 회피하여야 할 경우 등 특정한 상황에서는 하나 혹은 그 이상의 별표 및 다른 적절한 기호를 대신 사용하여도 된다(즉, *, **, ***, 등, 또는 †, ‡ 등).</p>
+<p>각주의 내용이 많아 해당 쪽에 모두 넣기 어려운 경우, 다음 쪽으로 분할하여 배치시켜도 된다.</p></div>
+<div class="block"><p>6.5.4 참고문헌</p>
+<p>국가표준 또는 국제표준에 대한 참조는 6.4.4.5에 명시된 표현 규칙에 따라야 한다.</p>
+<p>그 외의 참고문서 및 정보 출처(인쇄, 전자 또는 기타)는 ISO 690에 서술된 관련 규칙을 따라야 한다.</p>
+<p>온라인 상의 참고된 문서에서는 출처를 확인하고 찾기 위해 충분한 정보가 제시되어야 한다.</p>
+<p>되도록이면 탐색이 용이하도록 참고문서의 직접적인 출처가 인용되어도 된다. 더욱이 참조는 가능한 한 문서가 사용 가능할 것으로 기대되는 때까지 유효한 것이 좋다.</p>
+<p class="nb"><b>비고 1</b>&ensp;ISO/IEC Directives 및 ISO Supplement는 ISO/&lt;http://www.iso.org/directives&gt;에서 이용가능</p>
+<p class="nb"><b>비고 2</b>&ensp;Statutes and directives는 &lt;http://www.iec.ch/members_experts/refdocs/&gt;에서 이용가능</p>
+<p class="nb"><b>비고 3</b>&ensp;KS S ISO 7000/IEC 60417는 &lt;http://www.graphical-symbols.info/equipment&gt;에서 이용가능</p>
+<p>참고문헌의 인용문서는 제목으로 그룹별 분류할 수 있다. 제목의 번호는 연속하는 일련의 숫자배열, 즉 아라비아 숫자를 “[  ]”로 구별하며, 목차에 표시하지 않는다.</p></div>
+<div class="block"><p>6.6 보충 참고요소</p></div>
+<div class="block"><p>6.6.1 규정 부속서(normative annex)</p>
+<p>규정 부속서는 표준의 본체 내용에 추가되는 조항을 제시하며 이는 조건사항이다.</p>
+<p>부속서의 규정적 지위(참고적 지위의 반의어 — 6.6.2 참조)는 본문 내에서 언급된 방법과 목차 및 부속서의 제목 아래에 표시된 대로 명시해야 한다.</p></div>
+<div class="block"><p>6.6.2 참고 부속서(informative annex)</p>
+<p>참고 부속서는 해당 표준을 이해하거나 사용할 때 도움을 주기 위해 추가적인 정보를 제공한다.</p>
+<p>부속서의 참고적 지위(규정적 지위의 반의어 — 6.6.1 참조)는 본문에 언급된 방법과 목차 표시에 의해, 그리고 부속서의 순서 아래에 명시되어야 한다.</p>
+<p>참고 부속서에는 선택적 요구사항을 포함하여도 된다. 예를 들면, 선택적인 시험방법에 요구사항이 포함되어도 되지만, 표준의 규정에 따를 것을 요구하는 요구사항을 따를 필요는 없다.</p></div>
+<div class="block"><p>6.6.3 색인(index)</p>
+<p>색인을 도입하고자 할 때 비표준 전문용어 작성자는 워드프로세서의 자동 생성 방법을 권고한다.</p></div>
+<div class="block"><p>6.7.1 제품, 프로세스, 서비스, 인력, 시스템 및 기관에 대한 요구사항을 포함하는 문서</p>
+<p class="nb"><b>비고</b>&ensp;적합성평가의 제1자, 제2자 및 제3자는 KS Q ISO/IEC 17000의 정의를 따른다.</p>
+<p>이러한 문서에는 반복 재현 가능한 적합성평가 결과를 도출하기에 필요한 요건을 제외한 적합성평가와 관련된 사항을 포함하지 않아야 한다.</p></div>
+<div class="block"><p>6.7.2 국제표준의 적합성평가 문서의 참조</p>
+<p>적합성평가시스템이나 제도 또는 적합성평가 측면을 다루는 문서를 개발하고자 할 때, KS Q ISO/IEC 17000 및 KS Q ISO/IEC 17025를 포함하는 적합성평가절차를 위해 발행된 국제표준을 참조해야 한다.</p></div>
+<div class="block"><p>6.7.3 경영표준(MS) 및 경영시스템표준(MSS)</p>
+<p>경영표준 및 경영시스템표준(부문별 표준 포함)의 표준에 대한 규칙은 ISO/IEC 기술작업지침서 제1부의 ISO의 부속서 SL과 부속서 SP에 제시되어 있다.</p>
+<p>국가표준기관은 특정 제품 또는 산업 및 경제 부문에 대한 품질경영시스템의 요구사항 또는 지침을 개발하고자 할 때는 다음 규칙을 준수해야 한다.</p>
+<p>—	규범적 참조는 KS Q ISO 9001 전체를 대상으로 한다. 또는 절 또는 항은 그대로 재현할 수 있다.</p>
+<p>—	KS Q ISO 9001의 텍스트가 분야별 문서에 재현된 경우, 분야별 문서의 다른 요소와 구별되어야 한다</p>
+<p>—	KS Q ISO 9000에 명시된 용어와 정의는 규범적인 방법으로 참조하거나 재현해야 한다.</p>
+<p>—	품질관리시스템에서 제공하는 지침 및 기준</p>
+<p>품질경영서비스 기술심의회(TC 176)에서 승인한 특정 제품 및 산업 및 경제 분야의 요구를 충족시키기 위한 문서 개발 지침 및 기준은 부문별 요구사항 또는 지침 문서의 필요성을 결정할 때뿐만 아니라 문서도 고려해야 한다.</p></div>
+<div class="block"><p>6.8 품질경영시스템, 신뢰성 및 샘플링 측면</p>
+<p>일반적인 측면은 ISO/TC 69(통계적 방법의 적용), ISO/TC 176(품질경영 및 품질보증) 및 IEC/TC 56(신뢰성)에서 다루고 있다. 이들 기술위원회에 의해 개발된 표준을 참고하여야 한다.</p></div>
+<div class="block"><p>7 표준의 준비 및 제출</p>
+<p>표준을 준비하기 위해서는 국가기술표준원에서 제공하는 표준작성용 프로그램(KS Draft Template)을 사용하여야 한다. 프로그램과 사용설명서는 국가기술표준원에서 운영하는 e나라 표준인증 웹사이트(http://www.standard.go.kr)에서 이용 가능하다.</p></div>
+<div class="block"><p>부속서 A</p>
+<p>(참고)</p>
+<p>문서 작성자 및 편집자를 위한 점검표</p>
+<p>이 부속서는 KS A 0001을 적용하여 작성한 문서의 작성자 및 편집자의 검토를 위해 제공한다.</p>
+<p>산업표준심의회, 원안작성협력 및 KS A 0001에 기초하여 작성된 문서의 검토 및 심의에 적용하여야 할 것이다.</p>
+<p class="nb"><b>비고</b>&ensp;국가표준의 적부확인(개정 및 확인)을 위한 심의에도 적용하여야 할 것이다.</p></div>
+<div class="block"><p>A.1 일반사항</p>
+<p>부속서 A에 제시된 작성원칙은 제품표준 측면에서 서술되었으나, 필요할 경우, 용어표준이나 시험방법표준과 같은 표준에도 적용된다.</p></div>
+<div class="block"><p>A.2 목적지향의 접근법</p></div>
+<div class="block"><p>A.2.1 어떤 제품이든 수많은 고유의 특징이 있지만, 일부 특징만이 국가 또는 국제표준화에 적합하다. 작성하고자 하는 표준의 목적에 따라 선택이 결정되며, 그중에서도 가장 중요한 것은 해당 제품의 목적에 대한 적합성이다.</p>
+<p>따라서 하나의 표준 또는 일련의 표준은, 특히, 상호 이해관련 문제, 보건, 안전, 환경보호, 연계성, 호환성, 병용성 또는 상호작용, 그리고 다양성 관리를 다룰 수 있다.</p>
+<p>문제시되는 제품에 대한 기능적인 분석은 어떤 특징을 표준에 포함하여야 할지를 파악하는 데 도움이 될 수 있다.</p>
+<p>대부분의 표준에서 각각의 요구사항에 대한 목적은 명시되어 있지 않다[표준 목적 및 일부 요구사항이 개요에 설명된 경우도 있다(6.1.4 참조)]. 그러나 각각의 요구사항과 관련된 결정을 수월하게 하기 위해서는 가능한 한 초기 작업단계에서 이 목적을 확인하는 것이 중요하다.</p>
+<p>표준을 참조하고자 하는 제조자와 구매자 뿐만 아니라 인증기관, 시험소, 규제당국을 포함하는 이용자들이 이행하는 것을 용이하게 하기 위해서, 여러 당사자의 별개의 관심에 따라 제품 관점은 표준의 별도의 절 또는 별도의 표준, 혹은 표준의 부로 명확히 구분되어야 한다. 그 구분의 보기는 다음과 같다.</p>
+<p>•안전 요구사항과 보건 요구사항</p>
+<p>•성능 요구사항</p>
+<p>•유지보전 요구사항과 서비스 요구사항</p>
+<p>•설치 규칙</p>
+<p>다양한 목적 또는 다양한 조건(보기: 다른 기후조건)에서 사용하도록 의도된 제품, 혹은 사용자가 다양한 제품은 일부 특성에 대하여 다른 수치를 필요로 할 수 있다. 특정 목적 또는 조건에 대해 의도된 각 수치는 일부 카테고리 또는 수준에 해당된다. 이들 수치는 하나의 표준 또는 다른 표준에 포함될 수 있다. 그러나 목적과 수치 간의 상관관계가 분명히 명시되어야 한다.</p>
+<p>무역에 있어서 그 중요성이 정당화될 경우, 다른 지역 및 국가 내에서의 다른 카테고리 및 수준도 포함이 될 수 있다. 상품 목적의 적절성과 관련된 의무사항은 상품에 적용될 명칭 및 표기를 만족시켜야 하는 조건에 따라 표시되어야 한다(보기: 손목시계의 경우, “내충격성” 표기).</p></div>
+<div class="block"><p>A.2.2 상호이해의 증진에는 기술적 요구사항에 사용되는 용어, 기호 및 표시 정의와 표준에 명시된 각 기술적 요구사항과 관련된 샘플링 방법 및 시험방법의 확립이 필요하다.</p></div>
+<div class="block"><p>A.2.3 보건, 안전, 환경 보호 및 자원의 경제적 사용이 상품과 관련될 경우, 적정한 요구사항이 포함되어야 한다. 그렇지 않을 경우, 일부 국가에서 부합되지 않으면, 무역상에서의 기술장벽이 생길 수 있는 부가적인 강제 요구사항이 만들어질 수 있다.</p>
+<p>이러한 요구사항은 한계 수치(최대 및/또는 최소) 또는 근접하게 정의된 크기, 그리고 어떤 경우에는 구조적 조건(보기: 안전상의 이유로 비호환성을 달성하고자 하는 경우)을 가질 필요가 있을 수 있다. 이러한 제한이 결정된 수준은 위험요소가 최소화된 수준이어야 한다.</p>
+<p>관련되는 경우, 표준은 제품 보관과 이동 시 사용될 포장 및 조건에 대한 기술적인 요구사항을 규정할 수 있다. 이는 부적절한 포장으로 인해 유발될 수 있는 위험 및 오염을 막고, 제품을 보호하기 위함이다.</p>
+<p>정부 규제 일부를 형성하거나, 의무적인 표준이 될 수 있는 보건 및 안전을 다루는 요구사항(KS A ISO/IEC Guide 51과 IEC Guide 104 참조)과 환경을 다루는 요구사항(KS A ISO Guide 64 및 IEC Guide 106 참조)은 표준을 작성할 경우 우선순위로 하도록 한다. 정부 규제에 속하는 표준에 대한 참조 원칙(KS A ISO/IEC Guide 15)을 촉진하기 위해서, 관련 측면을 별도 표준으로, 혹은 표준의 별도 부분으로 출판하여야 한다. 하지만, 별도 출판이 가능하지 않을 경우, 이를 표준의 하나의 절로써 하나로 그룹화하여야 한다.</p>
+<p>전기전자 분야의 경우에는 특별히 예외가 있지만, 일반적으로 환경 요구사항은 KS, ISO 및 IEC 문서에서보다는 정부 규제에서 다룬다.</p>
+<p>그러나 해당되는 경우, 대응되는 시험방법이 국제적으로 표준화되어야 한다. KS I ISO 14040, KS I ISO 14044는 제품 또는 프로세스의 환경 측면 평가에 대한 절차를 제공한다.</p></div>
+<div class="block"><p>A.2.4 관련될 경우, 연계성, 호환성, 병용성 및 상호작용 요구사항은 국제표준화를 따라야 한다. 왜냐하면, 이 요소가 제품 사용과 관련하여 결정적인 요소를 형성할 수 있기 때문이다.</p>
+<p>특정 제품에 대한 국제표준화는 어떤 관점에 한정될 수 있으며, 다른 목적을 무시할 수 있다. 국제표준화의 목적이 호환성을 보장하기 위한 경우, 제품의 표준 및 기능 측면을 고려하여야 한다.</p></div>
+<div class="block"><p>A.2.5 다양성 관리는 파스너, 기타 기계부품, 전자부품 및 전기케이블과 같이 광범위하게 사용되는 재료, 물질 및 요소에 대한 국제 표준화의 중요한 목적의 하나이다(세계 무역, 경제 또는 안전과 같은 이유 때문에, 호환성 있는 요소의 가용성이 필수적이며, 국제수준에서의 일정수준의 다양성을 표준화하는 것이 정당화된다).</p>
+<p>다양성은 크기는 물론 다른 특성과도 관련이 있다. 관련표준은 선택된 치수(통상 일련의 값)를 포함하여야 하며, 오차를 규정하여야 한다.</p></div>
+<div class="block"><p>A.3 성능 접근법</p>
+<p>성능 접근법(4.2 참조)을 채택하는 경우, 중요요소가 성능 요구사항에서 부주의로 인해 빠지지 않도록 보장하기 위해 주의할 필요가 있다.</p>
+<p>재료의 경우, 필요한 성능요소를 결정하는 것이 불가능하다면, 가급적이면 “... 또는 동등하게 적용 가능하다고 입증된 다른 재료”라는 문구를 포함해도 된다.</p>
+<p>최종 제품에 대한 시험이 수행되어야 한다면, 제조 프로세스와 관련된 요구사항은 통상 생략되어야 한다. 그러나 제조 프로세스에 대한 참조가 필요한 분야(보기: 열간압연, 압출) 및 제조 프로세스 점검이 필요한 분야(보기: 압력용기)도 있다.</p>
+<p>그러나 서술적으로 규정하는 것과 성능으로 규정하는 것 중에서의 택일은 심사숙고할 필요가 있다. 왜냐하면 성능 규정화는 장기적이고 비용이 많이 드는 복잡한 시험 절차로 이어질 수 있기 때문이다.</p></div>
+<div class="block"><p>A.4 검증가능성의 원칙</p>
+<p>제품표준의 목적이 무엇이든지 간에, 검증될 수 있는 요구사항만을 포함하여야 한다.</p>
+<p>표준에 있어서 요구사항은 잘 정의된 기준으로 명시되어야 한다(J.10.4 참조). “충분히 강한” 또는 “적당한 강도”와 같은 문구는 사용될 수 없다.</p>
+<p>검증가능성 원칙의 다른 중요한 점은 단기간에 검증할 수 있는 시험방법이 알려져 있지 않다면, 이 요구사항과 함께 어떤 제품의 안정성, 신뢰성 또는 수명이 규정되어서는 안 된다. 제조자의 보장은 유용하지만, 이런 요구사항을 대신하지는 못한다. 보증 조건은 상업적 또는 계약적이며, 기술적이 아닌 개념이기 때문에, 포함되어야 할 관점 밖의 것으로 간주된다.</p></div>
+<div class="block"><p>A.5 수치의 선택</p></div>
+<div class="block"><p>A.5.1 한계 수치</p>
+<p>어떤 목적에 있어서 한계 수치(최대 또는 최소)를 규정하는 것이 필요하다. 일반적으로 하나의 한계 수치가 각 특성마다 규정되어 있다. 광범위하게 사용되는 범주나 레벨의 경우, 여러 개의 한계 수치가 필요하다.</p>
+<p>특정 지역에서만 중요한 한계 수치가 표준에 포함되어서는 안 된다.</p></div>
+<div class="block"><p>A.5.2 선택 수치</p>
+<p>어떤 목적에 따라서, 특히 다양성 관리 및 연계성을 목적으로 하는 경우에는 수치 또는 일련의 수치를 선택할 수 있다. KS A ISO 3(KS A ISO 17 및 KS A ISO 497 참조)에 제시된 일련의 선호되는 수치에 따라서, 혹은 해당되는 경우, 모듈 시스템 및 기타 결정요소에 따라 수치를 선택한다. 전기전자 분야의 경우, 치수 크기에 대한 추천된 시스템이 IEC Guide 103에 제시되어 있다.</p>
+<p>타 표준 항목에서 언급된 장비 및 부품에 대한 수치 선택을 명시하는 표준은 기본 표준으로 간주하여야 한다. 보기는 다음과 같다. 전기전자 작업의 경우, 저항기 및 축전기에 대해 선호되는 수치를 명시하는 IEC 60063, 화학 시험인 경우, ISO/TC 48에서 개발한 실험실용 유리용기 표준이 그것이다.</p>
+<p>표준에는 특정 지역에서만 중요한 수치가 포함되어서는 안 된다. 일련의 합리화된 수치를 표준화하는 데 있어서, 기존의 시리즈가 세계 어디에서도 적용 가능한지의 여부에 대한 조사가 이루어져야 한다.</p>
+<p>일련의 표준수가 사용될 경우, 분수(보기: 3.15)가 나올 때 발생할 수 있는 문제에 초점을 두어야 한다. 이는 불편하거나 불필요하게 고도의 정확도가 요구될 수 있으며, 이럴 경우 KS A ISO 497에 따라 반올림을 하여야 한다. 타 국가에서(정확한 수치와 반올림된 수치가 표준에 둘 다 표시되어 있는 국가) 사용하는 타 수치 소개가 이루어져서는 안 된다.</p></div>
+<div class="block"><p>A.5.3 제조자가 명시하는 수치</p>
+<p>다양성이 허용된다면(이 특성이 결정적으로 제품 성능에 영향을 줄 수 있더라도), 반드시 명시될 필요가 없는 제품 특성이 있다.</p>
+<p>표준은 제조자가 자유롭게 선택하는 모든 특성을 열거할 수 있지만, 그 수치는 제조자가 명시하여야 한다. 명시하는 방법은 여러 가지 형태(명판, 라벨, 동봉문서 등)가 가능하다.</p>
+<p>복잡한 제품일 경우, 관련 시험방법이 정의됐다는 조건에서, 제조자가 제공하여야 할 성능 데이터(제품 정보) 목록에 성능 요구사항을 포함하는 것이 권장된다.</p>
+<p>규정된 수치 대신에 제조자가 수치를 명시하도록 하는 요구사항은 보건과 안전에 관련된 요구사항인 경우에는 허용되지 않는다.</p></div>
+<div class="block"><p>A.6 하나 이상의 제품 치수에 대한 조정</p>
+<p>만약 제시된 제품을 단일 치수로 표준화하는 것이 최종 목표이고, 전 세계적으로 하나 이상의 널리 용인된 치수가 존재한다면 위원회 내에서 충분한 지지가 획득될 때 해당 위원회는 한 표준 내에 대체 가능한 제품 치수를 포함하도록 결정할 수 있다. 그러나 이런 경우에 대체 치수의 숫자를 최소한으로 줄이고 다음의 사항을 고려하도록 노력하여야 한다.</p>
+<p>a) 관련 국가의 수나 해당 국가의 생산규모보다는 관련 제품 종류의 국제무역 규모가 “전 세계적 사용”을 위한 기준으로서 작용한다.</p>
+<p>b) 오직 합리적으로 예측 가능한 미래에 전 세계적으로 사용될 수 있을 관행만 고려하여야 한다(보기: 5년 혹은 그 이상).</p>
+<p>c) 자원의 절약 및 에너지 보전과 같은 과학, 기술 또는 경제 원칙에 기초한 관행이 우선되어야 한다.</p>
+<p>d) 대안이 국제적으로 채택될 때마다 이들은 모두 같은 표준 내에 포함되어야 하고 서로 다른 대안 사이의 우선순위가 제시되어야 한다. 그리고 해당 우선순위에 대한 근거는 표준의 개요에 설명되어야 한다.</p>
+<p>e) 해당 위원회에 의해 승인된 경우, 비 표준수의 사용이 허용되는 전환기간이 표시될 수 있다.</p></div>
+<div class="block"><p>A.7 반복의 회피</p></div>
+<div class="block"><p>A.7.1 제품과 관련된 어떠한 요구사항이라도 하나의 표준에서만 규정되어야 한다. 표준 명칭에 따라 요구사항을 다룬다.</p></div>
+<div class="block"><p>A.7.2 어떤 분야의 경우, 제품 그룹에 적용 가능한 포괄적인 요구사항을 명시하는 표준을 제정하는 것이 바람직하다.</p></div>
+<div class="block"><p>A.7.3 어떤 요구사항을 다른 여러 곳에서 적용하는 것이 필요하다면, 반복하여 서술하는 것보다는 인용하는 것이 바람직하며 J.7.1을 참조한다.</p>
+<p>편의상, 다른 표준에 있는 요구사항을 반복하는 것이 유용하다면, 반복할 수 있다. 단, 이 반복이 단지 정보제공을 위한 것임을 분명히 하고, 요구사항이 반복된 표준에 참고 표시를 한다는 조건하에 가능하다.</p></div>
+<div class="block"><p>부속서B</p>
+<p>B.1 	개요</p>
+<p>이 부속서는 언어에 대한 참고자료(B.2 참조) 및 가장 일반적으로 적용 가능한 기본 참고자료(4.3.5 참조)의 목록을 제공한다(총망라한 것은 아님). 특정 주제에 대해서는 일반적으로 덜 적용되는 다른 문서의 조항이 관련된다.</p></div>
+
+<h3 id="s12">B.2&emsp;언어에 관한 참고자료</h3>
+<div class="block"><p>B.2 언어 관련 참고자료</p>
+<p>국립국어원 표준국어대사전 : https://stdict.korean.go.kr/main/main.do</p>
+<p>우리말샘 : https://opendict.korean.go.kr</p>
+<p>e나라표준인증 표준용어사전 : https://www.standard.go.kr/KSCI/dictionary/</p>
+<p>정보통신용어사전: http://terms.tta.or.kr/main.do</p>
+<p>전기용어 한국어 미러사이트: http://ca.sookmyung.ac.kr/IEV/</p></div>
+<div class="block"><p>B.3 	표준화된 전문용어</p>
+<p>KS A ISO/IEC Guide 2, 표준화 및 관련 활동 — 일반 어휘</p>
+<p>KS A ISO/IEC Guide 99, 국제 측정학 용어 — 기본 및 일반 개념과 관련 용어(VIM)</p>
+<p>KS C IEC 60050(모든 부), 국제전기기술용어</p>
+<p>KS X 0001(모든 부), 정보기술 — 용어</p>
+<p>KS Q ISO/IEC 17000, 적합성평가 — 용어 및 일반원칙</p>
+<p>ISO/IEC 2382(모든부), information technology  — vocabulary</p>
+<p>ISO Online Browing Platform(OBT): https: //www.iso.org/obp</p>
+<p>ISO 기술위원회(TC)에서 개발한 국제표준 중 ICS코드가 01.040(어휘)인 국제표준</p></div>
+<div class="block"><p>B.5 양, 단위 및 기호</p></div>
+<div class="block"><p>B.8 기술 도면과 도표</p>
+<p>KS A ISO 129(모든 부), 제도 — 표시의 일반 원칙</p>
+<p>KS B ISO 14405(모든 부), 제품의 형상 명세(GPS) — 치수 공차 기입</p>
+<p>KS C IEC 61082－1, 전기공학 분야에서 사용되는 문서준비 — 제1부 : 일반적인 요구사항</p>
+<p>KS C IEC 61175－1, 산업시스템, 설비ㆍ장치 및 산업제품 — 신호명－제1부 : 기본규칙</p>
+<p>KS C IEC 81346(모든 부), 산업시스템, 설비ㆍ장치 및 산업제품</p></div>
+<div class="block"><p>B.9 기술 문서화</p>
+<p>ISO 표준 중에 ICS코드가 01.140.30(Documents in administration, commerce and industry)으로 분류된 국제표준</p></div>
+<div class="block"><p>B.13 통계적 방법</p>
+<p>KS Q ISO/IEC Guide 98 – 3, 측정불확도 — 제3부: 측정불확도 표현 지침</p></div>
+<div class="block"><p>B.15 안전</p>
+<p>KS A ISO/IEC Guide 50, 안전 측면 — 표준 및 기타 규격의 어린이 안전을 위한 지침</p>
+<p>KS A ISO/IEC Guide 51, 안전 측면 — 표준에 포함시킬 지침</p></div>
+<div class="block"><p>B.19 국제표준과 기타 국제 발간물의 채택</p></div>
+<div class="block"><p>B.21 포장</p>
+<p>ISO 기술위원회(TC)에서 개발한 국제표준 중에 ICS코드가 55(포장)인 국제표준</p></div>
+<div class="block"><p>B.23 가이드</p>
+<p>KS A ISO/IEC Guide 71, 고령자와 장애인의 요구를 반영하기 위한 규격 개발자 지침</p></div>
+
+<h2 class="annex" id="s13"><span class="ax">부속서 C</span><span class="axk">(참고)</span><span class="axt">구분 및 세부구분의 번호부여 보기</span></h2>
+<div class="block"><p>부속서 C</p>
+<p>(규정)</p>
+<p>표지의 서식</p></div>
+<div class="block"><p>C.1 국가표준(KS) 표지</p></div>
+<div class="block"><p>C.1.1 앞표지 앞면</p>
+<p>표준 앞표지 앞면은 그림 C.1에 따른다</p></div>
+<div class="block"><p>C.1.2 앞표지 뒷면</p>
+<p>표준 앞표지 뒷면은 그림 C.2에 따른다.</p></div>
+<div class="block"><p>C.1.3 뒤표지 바깥면</p>
+<p>표준 뒤표지 바깥면은 그림 C.3에 따른다.</p></div>
+<div class="block"><p>C.1.4 본문의 명칭 및 작성 서식</p>
+<p>본문의 1쪽 명칭부는 그림 C.4에 따른다.</p></div>
+<div class="block"><p>C.2 단체표준(SPS) 표지</p></div>
+<div class="block"><p>C.2.1 앞표지 앞면</p>
+<p>표준 앞표지 앞면은 그림 C.5에 따른다.</p></div>
+<div class="block"><p>C.2.2 앞표지 뒷면</p>
+<p>표준 앞표지 뒷면은 그림 C.6에 따른다.</p></div>
+<div class="block"><p>C.2.3 	본문 명칭 및 작성 서식</p>
+<p>표준 뒤표지 바깥면은 그림 C.7에 따른다.</p>
+<p>그림 C.1 — 앞표지 앞면</p>
+<p>그림 C.2 — 앞표지 뒷면(1)</p>
+<p>그림 C.2 — 앞표지 뒷면(2)</p>
+<p>그림 C.3 — 뒤표지 바깥면</p>
+<p>그림 C.4 — KS의 제1쪽(1)</p>
+<p>그림 C.4 — 국제표준 부합화 KS의 제1쪽(2)</p>
+<p>그림 C.4 — 표준의 제2쪽 이후의 체제(3)</p>
+<p class="nb"><b>보기 1</b>&ensp;“한국산업표준번호:연도”는 지면의 위쪽 모서리에 기재한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;쪽 번호는 본체, 부속서 및 해설까지 일련 번호로 한다.</p>
+<p>그림 C.5 — 앞표지의 체계</p>
+<p>그림 C.6 — 앞 표지의 뒷면 체계</p>
+<p>그림 C.7 — 본문 1쪽의 명칭 및 서식(1)</p>
+<p>그림 C.7 — 표준의 제2쪽 이후의 체제(2)</p>
+<p>그림 C.8 — 뒤표지의 바깥면 체제</p></div>
+
+<h2 class="annex" id="s14"><span class="ax">부속서 D</span><span class="axk"><span class="ed">(규정/참고 구분 — 원본에 표기 없음)</span></span><span class="axt">용어와 정의의 작성과 표현 방법</span></h2>
+<div class="block"><p>부속서D</p>
+<p>표준의 명칭 작성</p></div>
+
+<h3 id="s15">D.1&emsp;일반원칙</h3>
+<div class="block"><p>D.1 명칭의 구성요소)</p></div>
+<div class="block"><p>D.1.1 도입요소</p>
+<p>도입요소 없이 주 요소에서 표시된 주제가 충분히 정의될 수 없다면 도입요소가 필요하다.</p>
+<p class="nb"><b>보기 1</b>&ensp;</p>
+<p>올바름	: 비가공 광학유리 — 다이아몬드 펠렛 연삭성 — 시험방법과 분류</p>
+<p>올바르지 않음	:                    다이아몬드 펠렛 연삭성 — 시험방법과 분류</p>
+<p>명칭의 주 요소(보완요소가 있는 경우에는 보완요소를 포함)가 표준 내에서 다루어지는 주제와 명백히 연관되면 도입요소는 생략되어야 한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p>올바름	:         산업용 과붕산 나트륨 — 체적밀도의 결정</p>
+<p>올바르지 않음	: 화학 — 산업용 과붕산 나트륨 — 체적밀도의 결정</p></div>
+<div class="block"><p>D.1.2 주 요소</p>
+<p>주 요소는 항상 포함되어야 한다.</p></div>
+<div class="block"><p>D.1.3 보완요소</p>
+<p>만일 해당 표준이 주성분에서 표시된 주제의 하나 또는 몇몇 측면만을 다룬다면 보완요소가 필요하다.</p>
+<p>어떤 표준이 일련의 부로 나뉘어서 출판되는 경우, 보완요소는 각 부를 구분하고 식별하는 역할을 한다[도입요소(존재할 경우) 및 주 요소는 각 부에서 동일하게 유지된다].</p>
+<p class="nb"><b>보기 1</b>&ensp;</p>
+<p>KS C IEC 60947－1, 저전압 개폐장치 및 제어장치 — 제1부: 일반 규정</p>
+<p>KS C IEC 60947－2, 저전압 개폐장치 및 제어장치 — 제2부: 차단기</p>
+<p>만일 해당 표준이 주 요소에서 표시된 주제의 전부가 아닌 여러 가지 측면을 다루고 있다면 취급된 측면은 하나하나 열거하기보다는 “시방서” 또는 “기계적 요구사항 및 시험방법” 등의 일반용어를 사용한다.</p>
+<p>만일 다음의 두 가지 사항이 다 만족된다면 보완요소는 생략하여야 한다.</p>
+<p>2) 6.3.1 참조</p>
+<p>—	주 요소에서 지시된 주제의 모든 기본적인 측면을 다루고 있으며,</p>
+<p>—	해당 표준이 이 주제에 관계된 유일한 표준일 때</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p>올바름	: 커피 분쇄기</p>
+<p>올바르지 않음	: 커피 분쇄기 — 용어, 기호, 재료, 치수, 기계적 특성, 평가된 값, 시험방법</p></div>
+<div class="block"><p>D.1.4 정의될 개념의 선정</p>
+<p>자명하지 않거나 일반적으로 알려지지 않았으며 서로 다른 문맥에서 다르게 해석될 수 있는 모든 용어, 기호 또는 명칭(간결하게 하기 위해서 “용어, 기호 및 명칭”은 이하 “용어”라 함)은 관련 개념을 정의하여 명확하게 하여야 한다.</p>
+<p>일반적 언어 표현 및 통상적으로 사용되는 용어는 관련 문맥 속에서 특정한 의미로 사용될 때만 포함될 수 있다(그래서 표현이나 용어가 정의되어 있지 않으면, 오해를 야기할 수 있다). 상품명(상표명)과 고어체 및 구어체 용어는 포함되지 않아야 한다.</p>
+<p>표준용어(preferred term), 허용용어(admitted term) 및 기피용어(deprecated term) 각각에서 한 개 이상의 용어가 있을지라도, 모든 용어 중에서 오직 한 가지 용어만 표준용어로 선택할 것을 권고한다. 만약 표준의 용어 개체 개념을 표현하는 한 가지 용어가 있다면, 이 용어는 자동적으로 표준용어가 된다.</p>
+<p>약어 형식(abbreviated form)이 존재하는 용어에 대해서는, 만약 유용하다고 생각된다면, 약어 형식이 표준용어로 선택된 이유의 설명을 “개체에 대한 주석”에 제시해야 하고(D.4.8 참조), 전체 형식(full form) 또는 약어 형식 중에서 어느 것이든 표준용어, 허용용어 또는 기피용어가 선택될 수 있다.</p>
+<p>독립적인 전문용어 표준에서 정의된 개념은 해당 표준의 적용범위에 관련된 분야에서만 제한적으로 적용되어야 한다. 다른 표준에서는 추가적인 개념과 그들의 용어를 제외하고 이런 정의를 이해하는 데 필요할 것으로 생각되는 개념만을 해당 표준에서 사용하여야 한다.</p></div>
+<div class="block"><p>D.1.5 중복 및 모순의 회피</p>
+<p>하나의 용어와 정의가 하나의 개념으로 성립되기 전에, 다른 국제표준에서 해당 개념에 대한 다른 용어와 정의가 존재하지 않는다는 사실이 확인되어야 할 것이다. ISO의 데이터베이스를 참고한다. &lt;http://www.cdb.iso.org&gt;. 전기 전문용어의 경우에는 국제전기기술용어를 참고한다. (IEC 60050) &lt;http://www.electropedia.org&gt;.</p>
+<p>특정 개념이 여러 문서에서 사용된다면 본 개념은 해당 문서 중에서 가장 일반적인 문서 내에서 정의되거나 독자적인 용어표준 내에서 정의되어야 한다. 그러면 다른 문서들은 그 개념의 정의를 반복할 필요 없이 그 문서나 용어표준을 적용하여야 한다.</p>
+<p>어떤 문서의 본문에서 어떤 개념이 참조될 때마다, 표준용어는 이 개념을 표시하기 위해 사용되어야 한다. 그것은 강조될 수 있고, 항목번호가 뒤따를 수 있다. 표준용어가 사용될 때, 용어 개체에 쓰여진 것과 동일한 형태여야 하며(변형된 형태 제외), 오류와 불일치를 피하기 위해 특별히 주의를 기울여야 한다.</p>
+<p>하나의 정의가 반복될 필요가 있을 때에는, 해당 출처 문서에서 인용된 부분부터 일자가 명시된 정보적 참조사항(J.7.5.3 참조)이 포함되어야 한다. 출처 정보는 항목에 대한 주석 다음에 꺽쇠괄호 ”[  ]” 안에 주어져야 하며, 적절한 내용으로 확인될 수 있다. 예를 들어 “출처”. 다른 분야나 주제에서 표준화된 정의가 수정되어야만 하는 곳에서는, 수정의 표시가 출처의 표시 뒤에 있어야 한다.</p>
+<p>만약 하나의 용어와 정의가 한 문서 내에서 성립되었다면, 다른 문서에 정의된 개념의 다른 용어(동의어)를 도입하는 것은 권장되지 않는다. 표준화의 같은 영역이나 주제에서 표준화된 정의에 반대되거나 벗어나는 새로운 정의는, 그 개념에 대한 기존 정의가 부분 혹은 전체적으로 구식이지 않은 한 새롭게 작성되지 않는다. 이런 경우에는 새로운 정의의 초안 작성은 기존 표준화된 정의에 책임이 있는 위원회와 상의해서 실행되어야 한다.</p></div>
+<div class="block"><p>D.1.6 정의 및 비언어적 표현</p></div>
+<div class="block"><p>D.1.6.1 정의의 작성에 관한 규칙은 ISO 10241에서 제시된다.</p></div>
+<div class="block"><p>D.1.6.2 정의는 요구사항의 형태를 취하거나 또는, 요구사항이 포함되어서도 안 된다.</p></div>
+<div class="block"><p>D.1.6.3 정의의 형태는 문맥 내의 용어를 대체할 수 있어야 한다. 추가적인 정보는 보기나 비고의 형태로만 제시되어야 한다(D.4.8 참조).</p></div>
+<div class="block"><p>D.1.6.4 어떤 정의는 그 개념을 명시하고, 가능하다면 개념시스템에서 그 개념의 위치를 반영하는 단일 문구로 구성되어야 한다(D.2 참조).</p></div>
+<div class="block"><p>D.1.6.5 그것의 적용성에 대한 지시가 없이 제시된 용어와 정의는 해당 용어의 일반적인 의미를 표현하는 것처럼 하여도 된다. 특정 문맥 안의 특별한 의미는 주제란에 표시하여 나타내어야 한다(D.4.5 참조).</p></div>
+<div class="block"><p>D.1.6.6 비언어적 표현은 그 개념을 예를 들기 위하여 사용될 수 있다. 보통 그것들은 비언어적 표현이 정의 대신에 관습적으로 사용되는 영역이나 주제를 제외하고는 정의를 대체하면 안 되고 보완해야 한다. 그것들은 보통 그림, 표, 수학적 표현과 같은 시각 표현을 구성한다. 만약 하나 이상의 비언어적 표현이 용어 개체에 존재한다면, 그것들에 숫자를 부여하는 것을 허용한다.</p></div>
+<div class="block"><p>D.2 적용범위에 대한 의도하지 않은 제한의 회피</p>
+<p>명칭에는 해당 표준의 적용범위를 의도하지 않게 제한하는 세부사항이 포함되어서는 안 된다.</p>
+<p>다만, 만일 해당 표준이 특정한 형식의 제품에 적합하지 않다면 그 명칭에 그 사실이 표현되어야 한다.</p>
+<p class="nb"><b>보기</b>&ensp;항공 — 자동잠금식, 고정, single-lug 앵커 너트, 등급 100 MPa / 235 ℃</p></div>
+<div class="block"><p>D.3 어법</p>
+<p>표준의 명칭에서 동일한 개념을 표시하기 위해 사용되는 용어는 일관성을 유지하여야 한다.</p>
+<p>용어에 대한 표준에서는 가능한 한 다음 표현 중의 하나를 사용하여야 한다. 용어의 정의가 포함되었다면 “어휘(vocabulary)”로, 서로 다른 언어에서의 동등한 용어만 제시되었다면 “동등한 용어 목록(list of equivalent terms)”으로 표현한다.</p>
+<p>시험방법을 다루는 표준에서는 “시험방법(test method)” 또는 “…의 결정(determination of…)”의 표현 중의 하나를 사용하여야 한다. “시험의 방법(method of testing)”, “…의 결정을 위한 방법(method for the determination of …)”, “…의 측정을 위한 시험법(test code for the measurement of …)”, “…에 관한 시험(Test on …)” 등의 표현은 피하여야 한다.</p>
+<p>명칭에는 국제표준, 기술시방서, 기술보고서 또는 가이드와 같은 표준의 종류 또는 성격을 서술하기 위한 표현은 필요하지 않다. 따라서, “…에 대한 국제 시험방법”, “…에 관한 기술보고서” 등의 표현을 사용하여서는 안 된다.</p></div>
+<div class="block"><p>D.4 표현방법</p></div>
+<div class="block"><p>D.4.1 규칙</p>
+<p>표준화된 용어의 표현방법에 관한 규칙은 ISO 10241－1에 제시되어 있다.</p>
+<p>ISO 10241－1:2011, 부속서 A에서 제시된 다음의 규칙은 독립적인 용어 표준과 그 외 표준에서의 “용어와 정의” 절의 표현방법(6.3.1 참조)에 적용된다.</p></div>
+<div class="block"><p>D.4.2 배치</p>
+<p>인쇄출판물에서 굵은 글씨로 표현된 표준용어 또는 기호는 새로운 줄에서 해당 개체번호(entry number) 뒤에 배치되어야 하며, 본문 내에서 일반 기록형식에 따라 대문자로 기록되어야만 하는 경우를 제외하고는 소문자로 시작된다. 복합용어(예를 들면, 화합물이나 여러 단어로 된 용어)에서도 어순의 원래 뜻은 유지되어야 한다.</p>
+<p>인쇄출판물에서 일반 글씨로 표현된 허용용어 또는 기호는 각각 새로운 줄에서 표준용어 뒤에 배치해야 한다.</p>
+<p>일반 글씨로 표현된 잘 쓰이지 않는 용어나 기호는 각각 새로운 줄에 배치되어야 하며, 적절한 내용(예를 들면, “기피용어” 또는 “쓰이지 않음”, 영문표준은 “DEPRECATED”)에 의해 식별되어야 한다.</p>
+<p>정의는 새로운 줄에 위치하여야 하고, 본문 내에서 일반 기록형식에 따라 대문자로 기록되어야만 하는 경우를 제외하고는 소문자로 시작해야 하며, 뒤에 마침표를 찍지 않는다.</p>
+<p>양에 대한 기호 및 단위는 KS A ISO 80000, KS A IEC 80000 및 KS C IEC 60027에서 채택되어야 하며, KS A ISO 80000－1에서 규정된 방식으로 인쇄되어야 한다. 즉, 양에 대한 기호는 이탤릭체, 단위에 대한 기호는 일반 활자형을 사용한다. 만일 어떤 기호가 국제기구에서 채택된 것이라면, 해당 국제기구를 근거 안에 표시해야 한다(D.4.8에 있는 예시 참조). 양에 적용할 수 있는 단위에 관련된 정보는 “개체에 대한 비고(note to entry)”에 제시되어야 한다(D.4.8 참조).</p></div>
+<div class="block"><p>D.4.3 문법 정보</p>
+<p>용어는 일반적으로 기본적인 문법형태로 표현되어야 한다. 즉, 영문표준인 경우 명사는 단수로, 동사는 부정사로 표현하여야 한다.</p>
+<p>유용하다고 생각되는 곳에 문법 정보를 다음과 같이 나타낸다.</p>
+<p>—	성별표현: 남(남성, m), 여(여성, f), 중(중성, n)</p>
+<p>—	숫자표현: 단(단수, sg), 복(복수, pl)</p>
+<p>—	품사표현: 명사(noum), 동사(verb), 형(형용사, adj) 그리고 부(부사, adv)</p></div>
+<div class="block"><p>D.4.4 부재용어(missing terms)를 위한 기호</p>
+<p>만약 정의된 개념에 대한 해당용어가 하나의 언어체계에서 존재하지 않는다면, 5개의 중점(·····)으로 구성된 슬롯홀더기호(slot holder sign)가 그 용어 대신 사용될 수 있다. 이런 경우, 용어 개체는 어떠한 허용용어나 기피용어를 포함하지 않는다.</p></div>
+<div class="block"><p>D.4.5 복수 의미</p>
+<p>만약 한 용어가 여러 개의 개념을 대표하여 사용된다면, 해당 정의 앞에 각 개념이 속하는 주제분야를 화살괄호(“&lt;  &gt;”)로 표시하여야 한다.</p></div>
+<div class="block"><p>D.4.6 나라별 및 언어별 코드</p>
+<p>각 국가의 국명을 표현하는 코드는 KS X 1510－1에 따라야 한다. 지리적 또는 스크립트 변형(script variants)은 KS X ISO 639－1(언어명 표현 코드 — 제1부: 두 자리 코드)에 따라 두 자리 언어 코드를 사용해서 표현한다. 만약 필요하다면, KS X 1510(국명 및 지명 코드)을 따르는 지역적 사용을 위한 두 자리 코드나 ISO 15924(원고의 명칭)을 따르는 원고 코드와 조합할 수 있다.</p></div>
+<div class="block"><p>D.4.7 소괄호 및 대괄호</p>
+<p>소괄호 및 대괄호는 특정 용어의 일반적인 기록 형식의 일부분을 구성할 때에만 사용되어야 한다. 이들은 대체용어를 나타내기 위해 사용되어서는 안 된다.</p></div>
+<div class="block"><p>D.4.8 	보기, 비고 및 각주</p>
+<p class="nb"><b>보기</b>&ensp;(example)는 그 개념을 실제로 보여주는 정보를 제공한다. 보기에 숫자를 부여하는 것은 본문 내의 보기와 동일하다(6.5.1 참조). 보기는 정의 다음의 새로운 줄에 위치하여야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;(note to entry)는 본문 내에 삽입된 비고(note)와 다른 규칙을 따른다. 비고는 용어 데이터를 보충하는 추가적인 정보를 제공한다. 예를 들면, 비고(note to entry)는 용어의 사용과 관련된 조항, 양에 적용되는 단위와 관련된 정보, 단축된 형태의 표준용어의 선택 이유를 제공할 수 있다. 비고(note to entry)는 “비고 #(Note # to entry)”로 지정되며, 각 용어 개체에서 “1”부터 번호를 부여받아야 한다. 비고는 모든 보기 다음의 새로운 줄에 위치하여야 한다.</p>
+<p>[참고]  국제표준에서는 용어에서의 “개체에 대한 비고(note to entry)”와 본문에서의 “비고(note)”를 구분하고 있으나, KS에서는 “비고”라는 단일 용어를 사용한다.</p>
+<p>용어 개체의 어떤 부분에 대한 각주(footnote)도 허용되지 않는다.</p></div>
+
+<h2 class="annex" id="s16"><span class="ax">부속서 E</span><span class="axk">(규정)</span><span class="axt">표준의 명칭 작성</span></h2>
+<div class="block"><p>부속서 E</p>
+<p>(참고)</p>
+<p>머리말, 개요 등의 작성방법</p></div>
+
+<h4 id="s17">E.1.1&emsp;명칭의 구성요소) 2) 6.1.1 참조</h4>
+<div class="block"><p>E.1 	머리말의 작성</p>
+<p>6.1.3에 규정하는 머리말의 정형문은 다음과 같다.</p>
+<p>“다음에 나타내는 보기에서 저작권에 관련된 부분 및 특허권 등에 관련된 부분과 부 편성에 관련된 부분은 보기1 이외라도 해당하는 경우에는 기재한다.”</p>
+<p class="nb"><b>보기 1</b>&ensp;제정의 경우</p>
+<p>“이 표준은 산업표준화법 관련 규정에 따라 산업표준심의회의 심의를 거쳐 제정한 한국산업표준이다.”</p>
+<p>“이 표준은 저작권법에서 보호 대상이 되고 있는 저작물이다.”</p>
+<p>“이 표준의 일부가 기술적 성질을 가진 특허권, 출원공개 후의 특허출원, 실용신안권 또는 출원공개 후의 실용신안등록출원에 저촉될 가능성이 있다는 것에 주의를 환기한다. 관계 중앙행정기관의 장과 산업표준심의회는 이러한 기술적 성질을 가진 특허권, 출원공개 후의 특허출원, 실용신안권 또는 출원공개 후의 실용신안등록출원에 관계되는 확인에 대하여 책임을 지지 않는다.”</p>
+<p class="nb"><b>보기 2</b>&ensp;개정의 경우</p>
+<p>“이 표준은 산업표준화법 관련 규정에 따라 산업표준심의회의 심의를 거쳐 개정한 한국산업표준이다. 이에 따라 KS B ××××:20××은 개정되어 이 표준으로 바뀌었다.”</p>
+<p class="nb"><b>보기 3</b>&ensp;복수의 표준이 하나의 표준으로 통합되는 경우</p>
+<p>“이 표준은 산업표준화법 관련 규정에 따라 산업표준심의회의 심의를 거쳐 국가기술표준원장(또는 관계 중앙행정기관의 장)이 제정한 한국산업표준이다. 이에 따라 KS C ××××:20××, KS C ××××:20×× 및 KS C ××××:20××은 폐지되고 이 표준으로 바뀌었다.”</p>
+<p class="nb"><b>보기 4</b>&ensp;복수의 표준 중 하나가 개정되고 나머지가 폐지되는 경우</p>
+<p>“이 표준은 산업표준화법 관련 규정에 따라 산업표준심의회의 심의를 거쳐 개정한 한국산업표준이다. 이에 따라 KS D ××××:20××는 개정되어 이 표준으로 바뀌고, 또한 KS D ××××: 20×× 및 KS D ××××:20××는 폐지되어 이 표준으로 바뀌었다.”</p>
+<p class="nb"><b>보기 5</b>&ensp;하나의 표준을 복수의 표준으로 분할하고, 원래 표준의 일부가 분할하여 제정되는 표준 중 하나로 바뀌는 경우</p>
+<p>“이 표준은 산업표준화법 관련 규정에 따라 산업표준심의회의 심의를 거쳐 제정한 한국산업표준이다. 이에 따라 KS E ××××:20××는 폐지되고 그 일부를 분할하여 제정한 이 표준으로 바뀌었다.”</p>
+<p class="nb"><b>보기 6</b>&ensp;단체표준을 기초로 작성한 한국산업표준의 제정/개정인 경우</p>
+<p>“이 표준은 산업표준화법 제6조 제1항의 규정에 따라 [신청한 단체의 명칭]이/가 신청한 단체표준(단체표준번호, 발행연도 및 명칭)을 기초로 작성한 표준안/개정안에 대하여 산업표준심의회의 심의를 거쳐 제정/개정한 한국산업표준이다.</p></div>
+<div class="block"><p>E.1.1 도입요소</p>
+<p>도입요소 없이 주 요소에서 표시된 주제가 충분히 정의될 수 없다면 도입요소가 필요하다.</p>
+<p class="nb"><b>보기 1</b>&ensp;</p>
+<p>올바름	: 비가공 광학유리 — 다이아몬드 펠렛 연삭성 — 시험방법과 분류</p>
+<p>올바르지 않음	:                    다이아몬드 펠렛 연삭성 — 시험방법과 분류</p>
+<p>명칭의 주 요소(보완요소가 있는 경우에는 보완요소를 포함)가 표준 내에서 다루어지는 주제와 명백히 연관되면 도입요소는 생략되어야 한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p>올바름	:         산업용 과붕산 나트륨 — 체적밀도의 결정</p>
+<p>올바르지 않음	: 화학 — 산업용 과붕산 나트륨 — 체적밀도의 결정</p></div>
+<div class="block"><p>E.1.2 주 요소</p>
+<p>주 요소는 항상 포함되어야 한다.</p></div>
+<div class="block"><p>E.1.3 보완요소</p>
+<p>만일 해당 표준이 주성분에서 표시된 주제의 하나 또는 몇몇 측면만을 다룬다면 보완요소가 필요하다.</p>
+<p>어떤 표준이 일련의 부로 나뉘어서 출판되는 경우, 보완요소는 각 부를 구분하고 식별하는 역할을 한다[도입요소(존재할 경우) 및 주 요소는 각 부에서 동일하게 유지된다].</p>
+<p class="nb"><b>보기 1</b>&ensp;</p>
+<p>KS C IEC 60947－1, 저전압 개폐장치 및 제어장치 — 제1부: 일반 규정</p>
+<p>KS C IEC 60947－2, 저전압 개폐장치 및 제어장치 — 제2부: 차단기</p>
+<p>만일 해당 표준이 주 요소에서 표시된 주제의 전부가 아닌 여러 가지 측면을 다루고 있다면 취급된 측면은 하나하나 열거하기보다는 “시방서” 또는 “기계적 요구사항 및 시험방법” 등의 일반용어로 언급되어야 한다.</p>
+<p>만일 다음의 두 가지 사항이 다 만족된다면 보완요소는 생</p>
+<p>•주 요소에서 지시된 주제의 모든 기본적인 측면을 다루고 있으며, 그리고</p>
+<p>•해당 표준이 이 주제에 관계된 유일한 표준일 때</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p>올바름	: 커피 분쇄기</p>
+<p>올바르지 않음	: 커피 분쇄기 — 용어, 기호, 재료, 치수, 기계적 특성, 평가된 값, 시험방법</p></div>
+<div class="block"><p>E.2 개요의 기재의 작성</p>
+<p>6.2.1에 규정하는 개요의 정형문은 다음과 같다.</p>
+<p class="nb"><b>보기 1</b>&ensp;국제일치표준의 경우(대응국제표준에는 없는 참고사항을 추가한 경우)</p>
+<p>“이 표준은 20××년 제×판으로 발행된 ISO ××××를 기초로 기술적 내용 및 대응국제표준의 구성을 변경하지 않고 작성한 한국산업표준이다.</p>
+<p>그리고 이 표준에서 옆줄 및 밑줄을 그은 참고사항은 대응국제표준에는 없는 사항이다.”</p>
+<p class="nb"><b>보기 2</b>&ensp;국제일치표준의 경우(완전히 일치하고 있는 경우)</p>
+<p>“이 표준은 20××년 제×판으로 발행된 ISO ××××를 기초로 기술적 내용 및 대응국제표준의 구성을 변경하지 않고 작성한 한국산업표준이다.”</p>
+<p class="nb"><b>보기 3</b>&ensp;국제표준을 기초로 한 표준에서 기술적 내용의 변경이 없는 경우(서식 등의 경미한 변경은 있음.)</p>
+<p>“이 표준은 20××년 제×판으로 발행된 ISO ××××를 기초로 기술적 내용을 변경하지 않고 작성한 한국산업표준이다.”</p>
+<p class="nb"><b>보기 4</b>&ensp;국제표준을 기초로 하고 있지만 규정을 추가 또는 삭제하였거나 혹은 변경한 경우</p>
+<p>“이 표준은 20××년 제×판으로 발행된 ISO ××××를 기초로 작성한 한국산업표준이지만, [… …때문에(변경 이유)], 기술적 내용을 변경하여 작성한 한국산업표준이다. 그리고 이 표준에서 밑줄을 그은 곳은 대응국제표준을 변경하고 있는 사항이다.</p>
+<p class="nb"><b>보기 5</b>&ensp;대응국제표준에 대응하는 부분은 기술적 내용을 변경하고 있지 않지만, 대응국제표준에 없는 규정항목을 추가한 경우</p>
+<p>“이 표준은 19××년 제×판으로 발행된 ISO ××××를 기초로 대응하는 부분(모양 및 치수)에 대해서는 대응국제표준을 번역하여 기술적 내용을 변경하지 않고 작성한 한국산업표준이지만 대응국제표준에는 규정되어 있지 않은 규정항목(측정방법 및 표시)을 한국산업표준으로서 추가하고 있다.”</p>
+<p class="nb"><b>보기 6</b>&ensp;대응국제표준이 없는 한국산업표준의 개정인 경우</p>
+<p>“이 표준은 20××년에 제정되어 그 후 ×회의 개정을 거쳐 오늘에 이르렀다. 전회 개정은 20××년에 실시되었지만 그 후의 … …에 대응하기 위하여 개정하였다. 그리고 대응국제표준은 현시점에서 제정되어 있지 않다.”</p></div>
+<div class="block"><p>E.3 어법</p>
+<p>표준의 명칭에서 동일한 개념을 표시하기 위해 사용되는 용어에서는 일관성이 유지되어야 한다.</p>
+<p>용어에 대한 표준에서는 가능한 한 다음 표현 중의 하나를 사용하여야 한다. 용어의 정의가 포함되었다면 “어휘(vocabulary)”로, 서로 다른 언어에서의 동등한 용어만 제시되었다면 “동등한 용어 목록(list of equivalent terms)”으로 표현한다.</p>
+<p>시험방법을 다루는 표준에서는 “시험방법(test method)” 또는 “…의 결정(determination of…)”의 표현 중의 하나를 사용하여야 한다. “시험의 방법(method of testing)”, “…의 결정을 위한 방법(method for the determination of …)”, “…의 측정을 위한 시험법(test code for the measurement of …)”, “…에 관한 시험(Test on …)” 등의 표현은 피하여야 한다.</p>
+<p>명칭에는 국제표준, 기술시방서, 기술보고서 또는 가이드와 같은 표준의 종류 또는 성격을 서술하기 위한 표현은 필요하지 않다. 따라서, “…에 대한 국제 시험방법”, “…에 관한 기술보고서” 등의 표현을 사용하여서는 안 된다.</p>
+<p>[참고]  제목과 부제 사이에는 줄표(“—”: 특수문자에서의 “Em 대시”)가 쓰이며, 줄표의 앞뒤는 띄어 쓰는 것을 원칙으로 한다.</p></div>
+
+<h2 class="annex" id="s18"><span class="ax">부속서 F</span><span class="axk">(규정)</span><span class="axt">특허권</span></h2>
+<div class="block"><p>부속서 F</p>
+<p>(참고)</p>
+<p>구분 및 세부구분의 번호부여 보기</p>
+<p>한 절과 다섯 단계의 항으로 최대 5단계까지 가능</p></div>
+<div class="block"><p>F.1 의의</p>
+<p>기술 혁신이 현저한 분야의 표준 제정 활동을 할 때 특허권 등이 관련되는 경우가 있는데 지금까지 그 명확한 취급 절차가 없었다. 따라서 KS화 제안을 할 때 자신이 가진 특허권을 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 실시를 허락한다.”는 뜻의 승낙서 제출이 있을 경우에는 KS화가 가능하도록 KS 제정 시에 특허권 등의 취급 절차를 정한다.</p></div>
+<div class="block"><p>F.2 절차의 개요</p>
+<p>KS안에 특허권 등의 대상이 되는 기술이 포함되든가 포함될 가능성이 있는 경우에는 다음과 같은 KS 제정 절차를 취한다.</p>
+<p>또한 여기에서 “특허권 등”이란 『특허법』 제87조 및 『실용신안법』 제11조의 규정에 의하여 설정 등록된 특허권(실용신안권)을 말하며, 출원 공개 후의 특허출원 및 실용신안 등록출원이란 특허법 제64조 및 실용신안법 제15조에서 규정하는 공개된 출원을 말한다. 다만, 특허권(실용신안권)자는 KS 제정을 신청할 때 전용 실시권자 또는 통상 실시권자와 사전 협의하여 신청하여야 한다.</p>
+<p>a) 	제1단계: KS안 작성 단계</p>
+<p>1) 	산업표준화법 제5조에 근거하여 국가기술표준원장이 KS를 제정하고자 하는 경우</p>
+<p>1.1) 	특허권 등의 조사</p>
+<p>국가기술표준원장으로부터 KS안의 작성을 위탁 받은 자는 해당 안에 관계되는 기술을 대상으로 하는 특허권 등에 관한 조사를 하여 KS안에 그 결과를 첨부하여 국가기술표준원장에게 제출한다. 조사의 범위는 위탁을 받은 자가 알 수 있는 특허권 등을 초과할 필요는 없다.</p>
+<p>1.2) 	승낙서 제출 의향의 사전 확인</p>
+<p>위탁받은 자는 상기 조사의 결과, 해당 KS안이 특허권 등의 대상이 되는 기술을 포함한다고 인정할 때는 해당 특허권 등의 권리자 또는 발명(고안)자에 대하여 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 해당 특허권 등의 실시를 허락한다.”는 뜻의 승낙서를 제출할 용의가 있다는 취지를 서면으로 확인하고 해당 서면을 KS안에 첨부하여 국가기술표준원장에게 제출한다. 다만 작성한 KS안이 대응하는 ISO/IEC 표준(ISO/IEC Directive Part 2 부속서 A에 준하는 것에 한한다.)과 일치하는 경우는 이에 한하지 않는다.</p>
+<p>2) 	산업표준화법 제6조에 근거하여 이해 관계인이 KS 제정을 신청한 경우</p>
+<p>2.1) 	특허권 등의 조사</p>
+<p>KS를 제정 신청한 자는 KS안에 해당 KS안과 관계되는 특허권 등에 관련된 조사 결과를 첨부하여 국가기술표준원장에게 제출한다.</p>
+<p>2.2) 	승낙서 제출 의향의 사전 확인</p>
+<p>신청자는 상기 조사의 결과 해당 KS안이 특허권 등의 대상이 되는 기술을 포함한다고 인정할 때는 해당 특허권 등의 관리자 또는 발명(고안)자에 대하여 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 해당 특허권 등의 실시를 허락한다.”는 뜻의 승낙서를 제출할 용의가 있다는 취지를 서면으로 확인하고 해당 서면을 KS안에 첨부하여 국가기술표준원장에게 제출한다. 다만, 작성한 KS안이 대응하는 ISO/IEC 국제표준과 일치하는 경우는 관계없다.</p>
+<p>b) 	제2단계: 산업표준심의회의 심의 단계</p>
+<p>1) 	특허권 등의 조사</p>
+<p>산업표준심의회의 기술심의회 및 전문위원회는 KS안을 심의할 때 위원장은 위원들에게 심의 대상 KS안에 관련된 특허권 등에 관하여 그 존재, 권리자명, 등록 번호 등의 확인을 요청한다.</p>
+<p>2) 	승낙서 제출</p>
+<p>산업표준심의회에서의 심의 과정에서 심의되고 있는 KS안이 특허권 등의 대상이 되는 기술을 포함한다고 인정할 때는, 산업표준심의회 사무국은 해당 특허권 등의 관리자 또는 발명(고안)자에 대하여 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 해당 특허권 등의 실시를 허락함을 승낙한다.”는 취지를 서면으로 제출하도록 요청한다. 다만, 작성한 KS안이 대응하는 ISO/IEC 국제표준과 일치하는 경우는 관계없다.</p>
+<p>3) 	의결 조건</p>
+<p>전문위원회 및 기술심의회는 상기 승낙서의 제출이 있는 경우에 한하여 해당 KS안을 검토한다. 또한 KS안이 전문위원회를 거친 경우에 전문위원회의 심의 과정에서 제출된 승낙서가 있으면 기술심의회는 의결할 수가 있다.</p>
+<p>c) 	제3단계: 산업표준심의회의 완료 및 KS 제정 단계</p>
+<p>산업표준심의회 등의 결과 새롭게 해당 KS안이 특허권 등의 대상이 되는 기술을 포함한다는 것이 판명되었을 때, 산업표준심의회 사무국은 해당 특허권 등의 권리자 또는 발명(고안)자에 대하여 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 해당 특허권 등의 실시를 허락함을 승낙한다.”는 취지를 서면으로 제출하도록 요청한다.</p>
+<p>요청의 결과 상기 승낙서가 제출되지 않은 경우에는 해당 특허권 등의 대상이 되는 기술을 제외한 KS안을 산업표준심의회에 상정하여 재심의를 의뢰한다.</p>
+<p>d) 	제4단계: KS에 기재</p>
+<p>특허권 등의 대상이 되는 기술을 포함한다고 판단되는 KS를 제정하고자 할 때는 KS의 개요에 다음과 같이 기재하는 것이 좋다.</p>
+<p>아울러 KS의 해설에 다음과 같이 기재하는 것이 바람직하다.</p>
+<p>또 해당 특허권자의 동의가 얻어진 경우에는 아래 사항 등 참고가 되는 정보를 기재하기를 권장한다.</p>
+<p>또 특허권 등의 존재가 확인되지 않은 경우에는 KS의 머리말에 다음과 같이 기재하는 것이 좋다.</p>
+<p>e) 	제5단계: KS 제정 후</p>
+<p>1) 	특허권 등의 조사</p>
+<p>KS 제정 후 특허권 등이 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적인 조건으로 실시가 허락”되지 않고 KS의 이용에 지장이 생겼다고 의심이 갈 때는 국가기술표준원장은 해당 KS의 이용 상황 등을 조사한다. 국가기술표준원장은 이 조사 시에 해당 KS의 이용에 지장이 생긴 원인이 되는 특허권 등과 해당 KS의 관계에 대해 이의가 있을 경우에 해당 KS의 개정 또는 폐지로 인하여 사회, 경제에 미치는 영향이 특별히 큰 경우나 필요하다고 인정할 때는 특허출원의 심사청구(특허법 제59조) 및 실용신안등록출원 심사의 청구(실용신안법 제12조) 등에 따라 해당 저촉 관계를 명확히 할 수 있다. 또한 국가기술표준원장은 특허권 등이 확인된 KS 표준에 대하여 필요에 따라서 특허권 등이 권리의 하자(무효 심판 등), 내용 변경 등에 의하여 특허권 등의 변동 사항이 발생하였는지의 여부를 특허청에 확인할 필요가 있다.</p>
+<p>2) 	KS의 개정 또는 폐지</p>
+<p>국가기술표준원장은 상기 조사의 결과, KS의 적절한 이용이 방해받고 있다고 인정될 때는 KS의 적절한 이용이 확보되도록 KS의 개정 또는 폐지 등을 한다.</p>
+<p>f) 	제6단계: KS 확인 업무</p>
+<p>1) 	특허권 등의 조사</p>
+<p>국가기술표준원장은 KS 확인 시, 특허권 관련 사항을 점검한다. 특허권이 포함되지 않은 경우, KS 머리말에 해당 문구가 포함되어 있는지 여부를 조사하고 이에 따른 저작권 관련 정형문을 추가하고 관련 확인 업무를 수행한다. 또한 특허권이 포함된 경우는 머리말, 해설, 개요 모두에 적절히 선언되었는지 여부를 확인하고 해당 사항을 모두 개정하도록 한다.</p>
+<p>2) 	KS의 개정</p>
+<p>국가기술표준원장은 상기 조사의 결과, KS 확인 업무가 적절히 수행되었다고 인정될 때는 KS의 적절한 이용이 확보되도록 KS 개정 등을 한다.</p></div>
+<div class="block"><p>F.3 	KS 개정 절차의 준용</p>
+<p>이상의 절차는 KS 개정 시에도 준용한다.</p></div>
+<div class="block"><p>부속서 G</p>
+<p>(규정)</p>
+<p>용어와 정의 작성과 표현 방법</p></div>
+<div class="block"><p>G.1 일반원칙</p></div>
+<div class="block"><p>G.1.1 적용범위</p>
+<p>국제표준 및/또는 국가표준에서 가장 일반적인 용어와 정의에 적용되는 규칙을 다룬다.</p></div>
+<div class="block"><p>G.1.2 개발을 위한 규칙</p>
+<p>전문용어 제정 작업을 위한 원칙과 방법은 KS X ISO 704에 따른다. 표준에서 용어 엔트리(terminological entry)의 초안 작성 및 구조에 대한 요구사항은 ISO 10241－1에 제시되어 있다. 국제 전기전문용어의 개발에 대한 규정은 ISO/IEC Directive, IEC 증보판에 제시되어 있다.</p></div>
+<div class="block"><p>G.1.3 발행물의 형식</p>
+<p>전문용어는 독립된 전문용어 표준(어휘, 용어분류체계 또는 다른 언어에서 동등한 언어의 목록)의 형태를 취하거나 다른 측면도 함께 다루고 있는 표준 내의 “용어와 정의” 절에 포함시켜도 된다. 또한 용어는 데이터베이스에 포함될 수 있다.</p></div>
+<div class="block"><p>G.1.4 정의할 개념의 선정</p>
+<p>자명하지 않거나 일반적으로 알려지지 않았으며 서로 다른 문맥에서 다르게 해석될 수 있는 모든 용어, 기호 또는 명칭(간결하게 하기 위해서 “용어, 기호 및 명칭”은 이하 “용어”라 함)은 관련 개념을 정의하여 명확하게 하여야 한다.</p>
+<p>일반적 언어 표현 및 통상적으로 사용되는 용어는 관련 문맥 속에서 특정한 의미로 사용될 때만 포함될 수 있다(그래서 표현이나 용어가 정의되어 있지 않으면, 오해를 야기할 수 있다). 상품명(상표명)과 고어체 및 구어체 용어는 포함되지 않아야 한다.</p>
+<p>표준용어(preferred term), 허용용어(admitted term) 및 기피용어(deprecated term) 각각에서 한 개 이상의 용어가 있을지라도, 모든 용어 중에서 오직 한 가지 용어만 표준용어로 선택해야 한다.</p>
+<p>만약 표준의 용어 개체엔트리 개념을 표현하는 한 가지 용어가 있다면, 이 용어는 자동적으로 표준용어가 된다.</p>
+<p>약어 형식(abbreviated form)이 존재하는 용어는 만약 유용하다고 생각된다면, 약어 형식이 표준용어로 선택된 이유의 설명을 “비고”에 제시해야 하고(G.4.7 참조), 전체 형식(full form) 또는 약어 형식 중에서 어느 것이든 표준용어, 허용용어 또는 기피용어를 선정할 수 있다.</p>
+<p>독립적인 전문용어 표준으로 정의된 개념은 해당 표준의 적용범위에 관련된 분야에서만 제한적으로 적용해야한다. 다른 표준에서는 추가적인 개념과 그들의 용어를 제외하고 이런 정의를 이해하는 데 필요할 것으로 생각되는 개념만을 해당 표준에서 사용하여야 한다.</p></div>
+<div class="block"><p>G.1.5 중복 및 모순의 회피</p>
+<p>하나의 용어와 정의가 하나의 개념으로 성립되기 전에, 다른 국제표준에서 해당 개념에 대한 다른 용어와 정의가 존재하지 않는다는 사실이 확인되어야 할 것이다. ISO의 데이터베이스를 참고한다. &lt;http://www.iso.org/obp&gt;.</p>
+<p>전기 전문용어는 국제전기기술용어를 참고한다. &lt;http://www.electropedia.org&gt;.</p>
+<p>특정 개념이 여러 문서에서 사용된다면, 해당 문서에서 정의하거나 독자적인 용어표준으로 정의해야 한다. 다른 문서들은 그 개념의 정의를 반복할 필요 없이 그 문서나 용어표준을 적용한다.</p>
+<p>어떤 문서의 본문에서 어떤 개념이 참조될 때마다, 표준용어는 이 개념을 표시하기 위해 사용된다.</p>
+<p>이는 강조될 수 있고, 항목번호가 뒤따를 수 있다. 표준용어가 사용될 때, 용어에 쓰여진 것과 동일한 형태여야 하며(변형된 형태 제외), 오류와 불일치를 피하기 위해 특별히 주의를 기울여야 한다.</p>
+<p>하나의 정의가 반복될 필요가 있을 때에는, 해당 출처 문서에서 인용된 부분부터 일자가 명시된 정보적 참조사항(6.4.4.5.2 참조)을 포함한다.</p>
+<p>용어의 출처는 꺽쇠괄호 ”[  ]” 안에 기입한다.</p>
+<p>예를 들어 “출처”. 다른 분야나 주제에서 표준화된 정의가 수정되어야만 하는 곳에서는, 수정의 표시가 출처의 표시 뒤에 있어야 한다.</p>
+<p>만약 하나의 용어와 정의가 한 문서 내에서 성립되었다면, 다른 문서에 정의된 개념의 다른 용어(동의어)를 도입하는 것을 권장하지 않는다.</p>
+<p>표준화의 영역이나 주제에서 표준화된 정의에 반대되거나 벗어나는 새로운 정의는, 그 개념에 대한 기존 정의가 부분 혹은 전체적으로 새롭게 작성하지 않는다.</p>
+<p>이런 경우에는 새로운 정의의 초안 작성은 기존 표준화된 정의에 책임이 있는 조직과과 협의하여 실행해야 한다.</p></div>
+<div class="block"><p>G.1.6 정의 및 비언어적 표현</p>
+<p>정의에 대한 작성 규칙은 ISO 10241-1에 따르며, 요구사항의 형태를 취하거나 또는 요구사항이 포함하지 않아야 한다.</p>
+<p>정의의 형태는 문맥 내의 용어를 대체할 수 있어야 한다. 추가적인 정보는 보기나 비고의 형태로만 제시된다(G.4.7 참조).</p>
+<p>어떤 정의는 그 개념을 명시하고, 가능하다면 개념 계층에서 그 개념의 위치를 반영하는 단일 문구로 구성한다(G.2 참조).</p>
+<p>적용성에 대한 지시가 없이 제시된 용어와 정의는 해당 용어의 일반적인 의미를 표현하는 것처럼 하여도 된다. 특정 문맥 안의 특별한 의미는 주제란에 표시한다(G.4.2 참조).</p>
+<p>비언어적 표현은 그 개념의 보기를 들어 사용할 수 있다.</p>
+<p>보통 비언어적 표현이 정의 대신에 관습적으로 사용되는 영역이나 주제를 제외하고는 정의를 대체하면 안 되고 보완해야 한다.</p>
+<p>보통 그림, 표, 수학적 표현과 같은 시각 표현을 구성한다. 만약 하나 이상의 비언어적 표현이 용어 개체에 존재한다면, 그것들에 숫자를 부여하는 것을 허용한다.</p></div>
+
+<h3 id="s19">G.2&emsp;적용성</h3>
+<div class="block"><p>G.2 배열</p>
+<p>용어와 정의는 개념의 계층에 따라 우선적으로 체계화된다(즉, 체계적 순서).</p>
+<p>만약 체계적 순서를 사용할 수 없다면, 혼합 순서를 사용해도 된다. 언어-지정 순서는 체계적 순서와 혼합순서를 사용할 수 없을 때에만 허용된다. 알파벳순은 가장 적게 선호되는 순서체계이다.</p>
+<p>만약 체계적 순서를 선택했다면, 일반 개념의 용어와 정의는 덜 일반적인 개념보다 선행한다.</p>
+<p>그 개념 체계를 반영하는 제목(headings)을 사용해도 된다. 혼합 개념 계층이 여러 개로 그룹지어서(서로 다른 기준에 따라) 나타나고 있는 곳에서 사용되는 경우, 각 그룹은 별도로 구분되어야 하고 관련된 기준은 표시하여야 한다.</p>
+<p>용어를 그룹짓는 것은 그들의 번호부여에서부터 명백하여야 한다. 각 기재사항은 참조번호를 기입하여야 한다. 문서 내에서 엔트리 번호는 고유해야 하고, 세부구분의 숫자를 부여하는 규칙을 따라야 한다. 영문표준 작성의 경우, 각 언어마다 용어의 알파벳 색인은 각각의 언어에 대해서도 제시하여야 한다.</p>
+<p>서로 다른 언어에서 동등한 용어의 목록이 위에서 언급된 체계적인 순서에 따라(이 경우, 각 언어의 알파벳 색인이 제시되어야 함.) 표현되거나 해당 언어가 사용된 첫 부분에 용어의 알파벳 순서에 따라 표현되어도 된다(이 경우, 알파벳 색인은 서로 다른 각 언어마다 제시해야 한다).</p></div>
+<div class="block"><p>G.2.1 각 표준화 항목은 여러 특성을 가지고 있다. 시험방법에서 그들 특성과 관련시킨 값들은(예를 들면, 사용되는 황산 몰 용액의 부피나 시방서에서 접시머리 나사의 미세한 밀리미터 단위범위) 단수(산의 부피에서와 같은) 또는 복수(접시머리 나사의 길이 범위에서와 같은)라도 된다. 표준 내에서 각 특성에 대한 단일 수치만이 존재할 때에는 표준의 번호를 언급하는 것만으로 충분하며 구분도 명확해진다. 여러 수치가 제시된 경우에는 사용자가 선택한다. 이런 경우에 표준의 번호만을 인용하는 것으로 사용자에게 그들의 필요성을 나타내는 것은 충분하지 않으며 정확한 수치나 해당범위에서의 수치도 함께 호칭된다.</p></div>
+<div class="block"><p>G.2.2 설명된 호칭체계는 다음 형태의 표준에 적용되어도 된다.</p>
+<p>a) 두 개 이상의 선택사항이 있는 해당 표준 내에서 정의된 특성에 관련하여 시작하고 있는 문서</p>
+<p class="nb"><b>보기</b>&ensp;제품을 위한 시방서에서 대체 치수나 다른 특성 범위에서의 선택, 제품의 주어진 특성에 대한 가치를 결정하는 데 사용될 다양한 방법을 망라하는 포괄적인 표준에서 특정 시험방법의 선택, 해당표준에서 여러 개의 대안이 제시될 때 특정 시험변수에서 일정한 수치의 선택</p>
+<p>b) 	정보전달을 위해 선택되어야 할 용어 및 기호를 정의하는 표준</p>
+<p>c) 	제품이나 재료 분야에서는 관련 표준 그 자체에, 혹은 다른 표준을 참조하여 해당 제품 또는 재료가 의도된 목적에 맞는 적합한 대상인지 확인할 수 있을 정도로 완전한 시방서가 제공되어야 하며 해당 표준의 요구사항에서는 하나 또는 그 이상의 대안이 포함되어 있어야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;만약 호칭체계가 목적에 대한 해당 제품의 적합성을 불완전하게 정의한 설명서에 적용된 경우, 많은 해당 제도의 사용자는 해당 표준이 단지 “선택”의 측면에 관한 정보를 제공하기 위한 것이라고 하더라도 해당 표준이 특정 목적에 대한 적합성을 확인하는 데 필요한 다른 특성을 모두 포함하고 있을 것이라고 가정하게 되므로 구매자의 오해를 불러일으킬 수 있는 위험성을 내포하고 있다.</p></div>
+<div class="block"><p>G.2.3 호칭체계는 자동 정보처리를 포함한 모든 종류의 통신 용도에 적합하다.</p></div>
+
+<h3 id="s20">G.3&emsp;호칭체계</h3>
+<div class="block"><p>G.3 다른 언어의 용어</p>
+<p>한글 이외의 다른 언어를 포함하고 있는 표준은 다음의 적절하게 마련된 비고를 “적용범위” 절에 기입하여야 한다.</p>
+<p>—	“비고  KS에서 사용되는 언어(한글)에 추가하여, 이 표준은 …어[언어]로 된 대응 용어를 제공한다. 오직 한글로 제시된 용어와 정의만이 KS의 용어와 정의로 간주된다.”</p>
+<p>한글 이외의 언어를 포함할 수 있는 것은 용어와 정의 그리고 정의가 제시되지 않은 동등한 용어의 언어에만 적용되고, 특별한 합의하에 진행되고 있는 표준을 제외한 다른 요소(보기: 예비 참고요소 및 일반 규정요소 등)에는 적용되지 않는다.</p>
+<p>용어 엔트리의 구조는 언어-지정 차이점을 제외하고 문서에서 다루는 각각의 공식언어와 동일해야 한다.</p>
+<p>용어 엔트리(G.2 참조)에 선택된 순서에 상관없이 다국어 용어 표준에서 개체의 순서 및 용어 엔트리의 엔트리 번호는 그 문서에 포함된 각각의 언어 부분과 동일해야 한다.</p></div>
+<div class="block"><p>G.3.1 	각 호칭은 “설명구역(description block)”과 “식별구역(identity block)”을 포함한다. 이 체계는 그림 G.1에 설명되어 있다.</p>
+<p>그림 G.1 — 호칭 체계의 구조</p></div>
+<div class="block"><p>G.3.2 설명된 호칭체계에서 모든 필요 특성과 그들의 수치를 확인하는 표준번호는 국제표준번호 구역에 포함되어 있고, 해당 특성에서 허용된 여러 수치 중에서 선택된 수치는 개별 항목 구역에 포함된다. 각 특성이 오직 단일 수치만 허용된 표준의 경우에는 개별 항목 구역이 호칭체계에서 표현될 필요가 없다.</p></div>
+
+<h3 id="s21">G.4&emsp;문자의 사용</h3>
+<div class="block"><p>G.4 표현방법</p></div>
+<div class="block"><p>G.4.1 규칙</p>
+<p>표준화된 용어의 표현방법에 관한 규칙은 ISO 10241－1에 따른다.</p></div>
+<div class="block"><p>G.4.2 배치</p>
+<p>표준용어 또는 기호는 용어 번호(entry number) 다음, 새로운 줄에 배치해야 한다.</p>
+<p>복합 용어(예를 들면, 화합물이나 여러 단어로 된 용어)에서도 어순의 원래 뜻은 유지해야 한다.</p>
+<p>허용용어 또는 기호는 표준용어 다음 새로운 줄에 배치해야 한다.</p>
+<p>기피용어 또는 기호는 새로운 줄에 배치되어야 하며, 적절한 내용(예를 들면, “기피용어” 또는 “쓰이지 않음”)으로 식별해야 한다.</p>
+<p>정의는 새로운 줄에 위치하여야 하고, 뒤에 마침표를 찍지 않는다.</p>
+<p>양에 대한 기호 및 단위는 KS A ISO 80000, KS A IEC 80000 및 KS C IEC 60027에 따르며, KS A ISO 80000－1에서 규정된 방식으로 표현해야 한다. 즉, 양에 대한 기호는 이탤릭체, 단위에 대한 기호는 일반 활자형을 사용한다.</p>
+<p>만일 어떤 기호가 국제기구에서 채택된 것이라면, 국제기구를 출처에 표시해야 한다(G.4.7 참조).</p></div>
+
+<h4 id="s22">G.4.3&emsp;숫자는 아라비아 숫자가 사용되어야 한다.</h4>
+<div class="block"><p>G.4.3 작성 방법</p>
+<p>용어는 일반적으로 명사이다. 명사 이외의 용어는 용어다음 괄호에 품사를 표시한다.</p>
+<p>정의는 짧고 간결한 표현으로 내용을 분명하게 드러내는 명사구 또는 동사구같은 구문(phrase)이어야 한다. 정의를 보충하는 부가 설명은 비고에 작성한다.</p></div>
+<div class="block"><p>G.4.4 	복수 의미</p>
+<p>만약 한 용어가 여러 개의 개념을 대표하여 사용된다면, 해당 정의 앞에 각 개념이 속하는 주제분야를 화살괄호(“&lt;  &gt;”)로 표시하여야 한다.</p></div>
+<div class="block"><p>G.4.5 나라별 및 언어별 코드</p>
+<p>국가명에 대한 코드는 KS X 1510－1에 따라야 한다.</p>
+<p>지리적 또는 스크립트 변형(script variants)은 KS X ISO 639－1(언어명 표현 코드 — 제1부: 두 자리 코드)에 따라 두 자리 언어 코드를 사용해서 표현한다.</p>
+<p>만약 필요하다면, KS X 1510(국명 및 지명 코드)을 따르는 지역적 사용을 위한 두 자리 코드나 ISO 15924(원고의 명칭)을 따르는 원고 코드와 조합할 수 있다.</p></div>
+<div class="block"><p>G.4.6 	소괄호 및 대괄호</p>
+<p>소괄호 및 대괄호는 특정 용어의 일반적인 기록 형식의 일부분을 구성할 때에만 사용해야 한다. 이들은 대체용어를 나타내기 위해 사용하지 않는다.</p></div>
+<div class="block"><p>G.4.7 	보기, 비고 및 각주</p>
+<p class="nb"><b>보기</b>&ensp;(example)는 그 개념을 실제로 보여주는 정보를 제공한다. 보기에 숫자를 부여하는 것은 본문 내의 보기와 동일하다(6.5.2 참조). 보기는 정의 다음의 새로운 줄에 위치하여야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;(note to entry)는 본문 내에 삽입된 비고(note)와 다른 규칙을 따른다.</p>
+<p class="nb"><b>비고</b>&ensp;는 용어 데이터를 보충하는 추가적인 정보를 제공한다. 예를 들면, 비고(note to entry)는 용어의 사용과 관련된 조항, 양에 적용되는 단위와 관련된 정보, 단축된 형태의 표준용어의 선택 이유를 제공할 수 있다. 비고(note to entry)는 “비고 #(Note # to entry)”로 지정되며, 용어에 “1”부터 번호를 부여받아야 한다. 비고는 모든 보기 다음의 새로운 줄에 위치하여야 한다.</p>
+<p>국제표준에서는 용어에서의 “엔트리에 대한 비고(note to entry)”와 본문에서의 “비고(note)”를 구분하고 있으나, KS에서는 “비고”라는 단일 용어를 사용한다.</p>
+<p>용어의 어떤 부분에 대한 각주(footnote)도 허용되지 않는다.</p></div>
+<div class="block"><p>G.5 설명구역</p>
+<p>설명구역은 소관 위원회에 의해 표준화된 항목으로 할당되어야 한다. 이 설명구역은 가능한 한 짧게 하여야 하고 해당 표준의 주제 분류에서 표준화 항목을 가장 잘 묘사하는 설명문을 우선적으로 채택한다(보기: 주요단어, 국제표준 분류). 해당 표준을 참조할 때, 설명구역의 사용은 선택사항이지만 사용된 설명구역은 국제표준번호 구역의 앞에 위치하여야 한다.</p></div>
+<div class="block"><p>G.6 식별구역</p></div>
+<div class="block"><p>G.6.1 일반사항</p>
+<p>식별구역은 표준화된 항목을 명확하게 호칭하는 방식으로 구성되어야 한다. 이는 두 개의 연속된 문자구역으로 구성되어 있다.</p>
+<p>•	최대 8문자로 구성된 국제표준번호 구역(“ISO”나 “IEC” 문자에 추가적으로 최대 5문자)</p>
+<p>•	최대 18문자(권장)로 구성된 개별 항목 구역(숫자, 글자, 기호)</p>
+<p>국제표준 번호 구역과 개별 항목 구역 사이의 분리를 표시하기 위해서는 붙임표(–)가 개별 항목 구역의 첫 번째 문자가 되어야 한다.</p></div>
+<div class="block"><p>G.6.2 국제표준번호 구역</p></div>
+<div class="block"><p>G.6.2.1 국제표준번호 구역은 가능한 한 짧아야 한다(예를 들면, 첫 번째 ISO 표준의 경우 ISO 1로 표시함). 기계인식매체에 기록할 때에는 여백이나 영을 추가할 수 있다(예를 들면, “ISO 1” 또는 “ISO 00001”).</p></div>
+<div class="block"><p>G.6.2.2 만약 한 표준이 개정되고 이전 판에 표준화된 항목의 호칭방법이 포함되어 있다면 새로운 개정판에 호칭을 명시할 때 해당 표준의 이전 판에 따라 적용된 다른 호칭과 혼동되지 않도록 주의를 기울여야 한다. 일반적으로 이 요구사항은 쉽게 충족될 수 있고 따라서 국제표준번호 구역에 발행연도를 포함할 필요가 없다.</p></div>
+<div class="block"><p>G.6.2.3 추록이나 다른 개정판이 발행되었을 경우에 동일하게 적용하는 것은 그에 따라 표준화된 항목의 호칭도 변경되어야 한다.</p></div>
+<div class="block"><p>G.6.2.4 만약 해당 표준이 여러 부로 구성되어 발행되고 개별적으로 관련되었다면 각 부의 숫자(또는 표준 내에서 필요한 경우 해당 기호)를 붙임표의 바로 뒤 개별 항목 구역 안에 나타내어야 한다.</p></div>
+<div class="block"><p>G.6.3 개별 항목 구역</p></div>
+<div class="block"><p>G.6.3.1 개별 항목 구역은 또한 가능한 한 짧고 해당 표준을 작성한 위원회의 관점에서 최대로 호칭 목적을 만족시키도록 작성되어야 한다.</p></div>
+<div class="block"><p>G.6.3.2 화학약품, 플라스틱, 고무 등 특정한 제품에 대해 명확하게 호칭 항목에 관한 기호를 표기하기 위해서는 선택사항에도 불구하고 여러 방법이 존재하며 개별 항목 구역은 기호에 의해 대변되는 특정한 정보를 포함하고 있는 여러 개의 정보구역으로 더 세분되어도 된다(G.6.3.3 참조). 이 구역은 예를 들면 붙임표 등의 분리기호로 상호 간에 분리되어야 한다. 내포된 코드(code)의 의미는 그들의 배치에 의해 경계지어져야 한다. 그러므로 하나 또는 그 이상의 정보구역을 만드는 것은 바람직하지 못하지만 공백은 중복하는 분리기호로 나타내어야 한다.</p></div>
+<div class="block"><p>G.6.3.3 가장 중요한 변수는 가장 먼저 표시하여야 한다. 암호를 쓰지 않는 보통의 언어로 기입(예를 들면, “양모”)하는 것은 번역해야 할 필요가 있으므로 개별 항목 구역의 부분처럼 사용되어서는 안 된다. 따라서 기호입력으로 대체되어야 한다. 위의 기호입력에 대한 해설이 해당 표준에 제공되어야 한다.</p></div>
+<div class="block"><p>G.6.3.4 개별 항목 구역에서 문자 I 및 O를 사용하면 아라비아 숫자인 “일(one)” 및 “영(zero)”과 혼동을 일으킬 수 있으므로 피해야 한다.</p></div>
+<div class="block"><p>G.6.3.5 만약 설명서에서 요구되는 자료의 가장 단순한 열거방법이 많은 수의 문자를 사용할 것이 요구된다면(예를 들면, “1 500 × 1 000 × 15”는 12개의 문자로 구성되어, 허용오차에 대한 설명도 없이 단지 크기에 대한 측면만 포함됨), 하나 혹은 그 이상의 문자로 암호화하고 해당 측면의 모든 가능성이 열거되도록 이중기호 표기를 사용할 수 있다(예를 들어, 1 500 × 1 000 × 15 ＝ A, 1 500×  2 000 × 20 ＝ B 등).</p></div>
+<div class="block"><p>G.6.3.6 만약 둘 이상의 표준에서 하나의 제품에 대해 언급하고 있다면 그들 중의 하나는 제품을 호칭하기 위한 규칙(개별 표준화 항목의 호칭으로 구성됨)도 규정하고 있는 데에서 기초자료로 선정되어야 한다.</p></div>
+<div class="block"><p>G.7 보기</p></div>
+<div class="block"><p>G.7.1 	ISO 656에 따른 정밀용으로 사용하기 위한 눈금간격이 0.2 ℃이고 주눈금이 58 ℃에서 82 ℃인 단일 폐쇄눈금온도계(short enclosed–scale thermometer)의 호칭을 위한 보기는 다음과 같다.</p>
+<p>온도계 ISO 656-EC-0.2-58-82</p>
+<p>이 호칭에서 구성요소는 다음의 의미를 가진다.</p>
+<p>EC	짧은 폐쇄눈금온도계</p>
+<p>0.2	눈금간격 ＝ 0.2 ℃</p>
+<p>58-82	주눈금의 범위는 58 ℃에서 82 ℃</p>
+<p class="nb"><b>비고</b>&ensp;ISO 656에서는 오직 짧은 폐쇄눈금온도계만을 다루고 있으므로 이 호칭에서 “EC”라는 글자를 생략할 수 있다.</p></div>
+<div class="block"><p>G.7.2 ISO 883에 따른 스로우 어웨이 초경 인덱서블 인서트(throw away carbide indexable insert)의 호칭을 위한 예는 삼각형, 여유각, 공차등급 G(정밀가공), 공칭치수 16.5 mm, 두께 3.18 mm, 좌승수 및 우승수에 사용되는 절삭날을 가진 코너 R 0.8 mm(ISO 1832에 따른 호칭), ISO 513에 따라 P20 적용그룹의 경우 다음과 같다.</p>
+<p>Throwaway insert ISO 883-TPGN160308-EN-P20</p>
+<p>이 호칭에서 각 성분은 다음의 의미를 가진다.</p>
+<p>T	형상에 관한 기호(삼각형)</p>
+<p>P	여유각에 관한 기호(절삭날 여유각은 11°로 확인된다.)</p>
+<p>G	공차등급 G(삼각형의 높이에서의 공차는 ±0.025 mm이고 인서트의 두께 ±0.13 mm)</p>
+<p>N	단면형상에 관한 기호(N ＝ 특별한 형상 없음)</p>
+<p>16	날 길이에 관한 기호(삼각형 평균치수 ＝ 16.5 mm)</p>
+<p>03	두께에 관한 기호(3.18 mm)</p>
+<p>08	모서리 형상에 관한 기호(코너 R ＝ 0.8 mm)</p>
+<p>E	모서리 가공상태에 관한 기호(둥근 절삭날)</p>
+<p>N	절삭 방향에 관한 기호(좌승수 및 우승수 절삭 포함)</p>
+<p>P20	탄화물 첨가에 관한 기호[강, 주강품, 긴 칩(chip)을 가진 가단주철]</p></div>
+<div class="block"><p>G.7.3 ISO 1580에 따라 M5형 나사, 공칭길이 20 mm, 제품등급 A, 특성등급 4.8인 홈 있는 냄비머리 나사의 호칭에 대한 보기는 아래와 같다.</p>
+<p>홈붙이 냄비머리 나사 ISO 1580-M5×20-4.8(Slotted pan screw ISO 1580-M5× 20-4.8)</p>
+<p>이 호칭은 국제표준인 ISO 1580에 언급되어 있는데, 이 표준에는 홈붙이 냄비머리 나사의 호칭에 대한 보기는 아래와 같다.</p>
+<p>a) 	미터나사의 공차에 관한 국제표준(ISO 965－2)은 차례로 기본 데이터에 관한 국제표준(ISO 965－1), 기본윤곽(ISO 68), 일반 도면(ISO 261) 및 표준치수(ISO 1502)를 참조하고 있다. 호칭에서 “M5” 성분은 관련 나사의 공차 등급이 b)에 언급된 표준에 지정되어 있다는 가정하에 위의 표준들 중 어떤 데이터가 지정된 나사와 관련이 있는지를 결정한다.</p>
+<p>b) 	나사의 치수 및 다른 형상에서의 공차에 관한 국제표준(ISO 4759－1)은 범위 및 조립(ISO 286－1), 형상 및 위치의 공차(KS A ISO 1101), 나사 골(ISO 965－3) 및 표면 거칠기(KS A ISO 1101)에 관한 기호를 사용한다. 해당 나사의 관련 제품 등급(A)이 ISO 1580에서는 고정되어 있다. ISO 1580에서는 오직 하나의 제품 등급만을 지시하고 있으므로 호칭에서 제품등급이 A라고 언급하면 장황해진다.</p>
+<p>c) 	파스너(fastener)의 기계적 특성에 관한 표준(KS B ISO 898－1)은 차례로 강의 인장 시험(ISO 6892), 경도시험(ISO 6506 및 ISO 6568) 및 충격시험(ISO 83)에 관한 국제표준을 참조하고 있다. 호칭에서 “4.8” 성분은 표준에서 어떤 데이터가 적절한지 결정하기에 충분하다.</p>
+<p>상대적으로 짧은 호칭을 가지는 해당 나사는 여러 국제표준이 연관되어 있다하여도 완전하게 정의된다.</p></div>
+<div class="block"><p>G.7.4 연질 셀룰로오스 아세테이트 내에서 A 절차로 에틸에테르(ethyl ether) 가용성 물질의 양을 결정하는 호칭의 보기는 아래와 같다.</p>
+<p>시험방법, 셀룰로오스 아세테이트 ISO 1875-A</p></div>
+<div class="block"><p>G.8 국가적 도입</p></div>
+<div class="block"><p>G.8.1 국제 호칭체계의 국가적 도입은 국제표준 그대로 국가표준으로 채택될 때에만 해당된다.</p></div>
+<div class="block"><p>G.8.2 국제표준의 국가적 이행에서 국제 호칭은 수정 없이 사용된다. 그러나 국가표준 식별번호는 설명구역과 국제표준번호 구역 사이에 삽입되어도 된다.</p>
+<p class="nb"><b>보기</b>&ensp;만약 나사의 국제 호칭이 아래의 것이라면,</p>
+<p>홈붙이 냄비머리 나사 ISO 1580-M5×20-4.8</p>
+<p>VN 4183이 ISO 1580에 대응하는 수정 없이 채택된 국가표준이라면 그의 국가 호칭은 다음과 같다.</p>
+<p>홈붙이 냄비머리 나사 VN 4183-ISO 1580-M5×20-4.8</p></div>
+<div class="block"><p>G.8.3 만약 개별 항목이 국가 표준화되고 해당 항목이 대응되는 국제표준에서 설명된 항목과 일치하지는 않지만 동등하다면, 이 특정한 항목에 대한 표준화된 항목의 국제 호칭을 사용하는 것이 허용된다.</p>
+<p>만약 개별 항목이 국가 표준화되고 해당 항목이 대응되는 국제표준에서의 항목과 동등하지 않고 대응된다면, 표준화된 항목의 국가 호칭은 국제표준의 참조를 포함하지 않아야 한다.</p>
+<p>KS A ISO/IEC Guide 21의 지침에 따라, 국가표준이 국제표준과 동등하다면, 국가표준은 그 자체의 식별자가 국제표준 증명만을 사용하여도 된다.</p></div>
+<div class="block"><p>부속서 H</p>
+<p>(규정)</p>
+<p>문장 쓰는 방법</p></div>
+<div class="block"><p>H.1 문장을 쓰는 방법</p>
+<p>문장을 쓰는 방법은 다음에 따른다.</p>
+<p>—	문장은 한글로 한다.</p>
+<p>—	문체는 내용을 충실하게 전달하도록 간결하고 분명해야한다.</p>
+<p>—	쓰는 방법은 왼쪽 가로쓰기로 한다.</p></div>
+<div class="block"><p>H.2 용어</p></div>
+<div class="block"><p>H.2.1 전문용어(terminology)</p>
+<p>전문용어는 용어에 관한 한국산업표준에 규정되어 있는 용어, 해당 표준과 관련된 한국산업표준에서 규정하는 용어 및 학술용어집에 기재되어 있는 용어를 그 순위에 따라 사용한다.</p>
+<p>새로운 용어를 정하는 경우에는 그 개념의 명확화를 꾀하여 정의를 하고 그 정의에 대응하는 적절한 용어를 선정한다. 외래어를 채용하는 것은 그것이 일반적으로 도입되어 있는 것이 아닌 한 피한다.</p>
+<p>국제표준을 기초로 해서 표준을 작성하는 경우 역어의 작성에 있어서도 위의 규정을 적용한다. 이 경우에는 최초의 부분에서 원어를 괄호쓰기로 병기한다. 그 이후에는 병기하지 않는다.</p>
+<p>전문용어는 가능한 붙여쓰기를 원칙으로 한다.</p></div>
+<div class="block"><p>H.2.2 한정, 접속 등에 사용하는 말</p></div>
+<div class="block"><p>H.2.2.1	“이상”과 “이하” 그리고 “초과”와 “미만”의 사용법</p>
+<p>“이상”과 “이하” 그리고 “초과”와 “미만”의 사용법은 다음에 따른다.</p>
+<p>—	“이상”과 “이하”는 그 앞에 있는 수치를 포함시킨다.</p>
+<p>—	“초과”와 “미만”은 그 앞에 있는 수치를 포함시키지 않는다.</p>
+<p class="nb"><b>비고</b>&ensp;최대값 및 최소값을 나타내는 경우에는 각각 “최대” 및 “최소”를 사용한다.</p></div>
+<div class="block"><p>H.2.2.2 “와(과)”와 “및”의 사용법</p>
+<p>“와(과)”와 “및”의 사용법은 다음에 따른다.</p>
+<p>—	“와(과)”는 두 개의 용어를 연결할 때에 사용한다. 다만, 두 개의 용어가 밀접한 관계를 갖거나 직접적인 관련성이 있는 경우에 한하며, 관련성이 없는 용어의 단순한 나열인 경우, “와(과)”로 연결하는 것이 어울리지 않는 경우에는 “및”을 사용하여도 좋다.</p>
+<p class="nb"><b>보기</b>&ensp;용어와 정의</p>
+<p>—	“및”은 병합의 의미로 병렬하는 어구가 세 개 이상일 때 그 접속에 사용한다. 처음을 쉼표로 구분하고 마지막 어구를 잇는 데 사용한다. 병렬하는 어구의 관계가 복잡한 경우에 한하여 “및”의 바로 앞에 쉼표를 삽입하여도 좋다.</p>
+<p class="nb"><b>보기</b>&ensp;양, 단위 및 기호</p></div>
+<div class="block"><p>H.2.2.3 “또는”과 “혹은”의 사용법</p>
+<p>“또는”과 “혹은”의 사용법은 다음에 따른다.</p>
+<p>—	“또는”은 선택의 의미로 병렬하는 어구가 두 개일 때 그 접속에 사용하고 세 개 이상일 때는 처음에 있는 것을 쉼표로 구분하고 마지막 어구를 연결하는 데 사용한다. 애매함을 피하기 위하여 “(이)나”를 사용하지 않는다. 병렬하는 어구의 관계가 복잡한 경우에 한하여 “또는” 바로 앞에 쉼표를 삽입하여도 좋다.</p>
+<p>—	“혹은”은 선택의 의미로 “또는”을 사용하여 병렬한 어구를 다시 선택의 의미로 나눌 때 사용한다.</p></div>
+<div class="block"><p>H.2.2.4	“및/또는”의 사용법</p>
+<p>“및/또는”은 병렬하는 두 개의 어구 양자를 병합한 것 및 어느 한 쪽씩의 3가지를 일괄하여 엄밀하게 나타내는 데 이용한다.</p>
+<p>혼동되는 경우에는 분해하여 열거하면 된다.</p>
+<p class="nb"><b>보기</b>&ensp;“A법 및/또는 B법에 따라… …” 대신에 다음과 같이 한다.</p>
+<p>다음 중 어느 쪽에 따라… … .</p>
+<p>— A법 및 B법</p>
+<p>— A법</p>
+<p>— B법</p></div>
+<div class="block"><p>H.2.2.5 “경우”, “때” 및 “시”의 사용법</p>
+<p>“경우”, “때” 및 “시”의 사용법은 다음에 따른다.</p>
+<p>—	“경우”와 “때”는 한정조건을 나타내는 데 사용한다. 다만, 한정조건이 이중으로 있는 경우에는 큰 쪽의 조건에 “경우”를 사용하고, 작은 쪽의 조건에 “때”를 사용한다.</p>
+<p>—	“시”는 시기 또는 시각을 명확히 할 필요가 있을 경우에 사용한다.</p></div>
+<div class="block"><p>H.2.2.6 “부터”, “까지” 및 “보다”의 사용법</p>
+<p>“부터”와 “까지”는 각각 때, 장소 등의 기점 및 종점을 나타내는 데 사용하고, 그 앞에 있는 수치 등을 포함시킨다.</p>
+<p>“보다”는 비교를 나타내는 경우에만 사용하고, 그 앞에 있는 수치 등을 포함시키지 않는다.</p></div>
+<div class="block"><p>H.2.2.7 “또한”과 “다만”의 사용법</p>
+<p>문장의 처음에 접속사로 놓는 “또한”은 주로 본문 안에서 보충적 사항을 기재하는 데 사용한다. “다만”은 주로 본문 안에서 제외 보기 또는 예외적인 사항을 기재하는 데 사용한다.</p></div>
+<div class="block"><p>H.3 서술부호</p></div>
+<div class="block"><p>H.3.1 부호의 종류</p>
+<p>문장의 서술에 사용하는 부호는 구두점ㆍ인용부호ㆍ연속부호ㆍ생략부호ㆍ괄호로 한다.</p></div>
+<div class="block"><p>H.3.2 문장 부호</p>
+<p>구두점에는 마침표 “ . ”, 쉼표 “ , ”, 가운뎃점 “ㆍ” 및 쌍점 “ : ”을 사용하고, 이것들의 사용법은 다음에 따른다. 또한 반쌍점 “ ; ”은 사용하지 않는다.</p></div>
+<div class="block"><p>H.3.2.1 마침표</p>
+<p>마침표(.)는 문장의 끝에 붙이며, “...일 때”, “...경우” 등으로 끝나는 항목의 병렬 등에 사용한다.</p>
+<p>제명 또는 기타 간단한 어구를 드는 경우, 사물의 명칭을 병렬하는 경우 등에는 사용하지 않는다.</p>
+<p>마침표(.)는 아라비아 숫자만으로 연월일 표시, 특정한 월과 일을 나타내는 아라비아 숫자 사이에 쓰거나 조항을 이어 표시하는 문자나 숫자 다음에 쓰인다</p></div>
+<div class="block"><p>H.3.2.2 	쉼표</p>
+<p>쉼표(,)는 문장 안에서 어구의 끊김 또는 계속을 명확히 하기 위하여 다음과 같은 경우에 붙인다.</p>
+<p>—	“(은)는”, “도” 등을 수반한 주제가 되는 말의 뒤</p>
+<p>—	조건 및 제한을 나타내는 구의 뒤</p>
+<p>—	명사를 두 개 이상 병렬하고 뒤에 “및”, “또는” 등을 붙이는 경우</p>
+<p>—	대등 관계로 나열하는 두 개 이상의 같은 종류의 구를 “등”, “기타” 등으로 받는 경우 및 이러한 구를“및”, “또는” 등의 접속사로 연결하는 경우</p>
+<p>—	문장의 처음에 부사 또는 접속사를 놓는 경우에 그 부사 또는 접속사의 뒤</p>
+<p>—	기타, 쉼표가 없으면 오해를 일으킬 우려가 있는 경우</p>
+<p>—	같은 자격의 어구를 열거할 때 그 사이에 쓰거나 짝을 지어 구별하는 경우</p>
+<p>—	이웃하는 수를 개략적으로 나타내거나 열거의 순서를 나타내는 어구 뒤</p>
+<p>—	문장의 연결 관계를 분명히 하고자 할 때, 절과 절 사이에 쓰거나 같은 말이 되풀이되는 것을 피하기 위하여 일정한 부분을 줄여서 열거할 경우</p>
+<p>—	앞 문단을 ‘곧’, ‘다시 말해’ 등과 같은 어구로 다시 설명할 할 경우</p>
+<p>—	앞 문단 다음에 쓰거나 문단 앞부분에서 조사 없이 쓰인 제시어, 혹은 주제어 뒤에 쓰거나 한 문단에 같은 의미의 어구가 반복될 경우</p>
+<p>—	앞에 오는 어구 다음에 쓰거나 도치문에서 도치된 어구 사이에 쓰거나 바로 다음 말과 직접적인 관계에 있지 않음을 나타낼 때</p>
+<p>—	문장 중간에 끼어든 어구의 앞뒤에 쓰거나 특별한 효과를 위해 끊어 읽는 곳을 나타낼 때 쓰거나 짧게 더듬는 말을 표시할 때 ‘쉼표’ 대신 ‘반점’이라는 용어를 쓸 수 있다.</p></div>
+<div class="block"><p>H.3.2.3 가운뎃점</p>
+<p>가운뎃점(ㆍ)은 사용하지 않을 것을 권고한다. 다만, 다음과 같은 경우에 한하여 사용하는 것이 허용된다.</p>
+<p>—	명사를 병렬하는 경우 등, 쉼표로 구분 짓는 것으로 문장을 읽기 어려운 경우</p>
+<p>—	조항 제목, 항목, 표 등에서 명사의 연결 등의 경우에 배치를 잘 하고 싶은 경우</p>
+<p>—	두 개 이상의 명사의 각각에 같은 수식어구 등이 걸리는 경우</p>
+<p>가운뎃점을 사용하는 경우, 마지막 말을 “및”, “또는” 등의 접속사로는 잇지 않는다.</p>
+<p class="nb"><b>보기 1</b>&ensp;재료ㆍ치수ㆍ질량</p>
+<p class="nb"><b>보기 2</b>&ensp;반복 부호ㆍ구두점 등</p>
+<p class="nb"><b>보기 3</b>&ensp;시정조치ㆍ예방조치(이 경우, “시정ㆍ예방조치”라고 하지 않는다.)</p></div>
+<div class="block"><p>H.3.2.4 쌍점</p>
+<p>쌍점( : )은 식 또는 문장 중에 사용한 용어 또는 기호를 설명할 때 사용한다.</p></div>
+<div class="block"><p>H.3.3 인용부호</p>
+<p>인용부호(“ ”)는 어구를 인용하는 경우 또는 문자, 기호, 용어 등을 특히 명확히 할 필요가 있는 경우에 사용한다.</p>
+<p>“「 」”는 법령을 인용할 때 사용한다. 표준에서는 법령을 인용하지 않으므로 참고문헌에 배치한다.</p></div>
+<div class="block"><p>H.3.4 연속부호</p>
+<p>연속부호(물결표) “∼”는 “…부터 …까지”의 의미를 부호로 나타내는 경우에 사용한다. 연속부호로 나타내는 범위에는 앞뒤의 수치를 포함시킨다.</p>
+<p>이 경우에 단위를 나타낼 필요가 있을 때에는 수치 뒤에 모두 단위기호를 붙이거나 소괄호 “( )”로 묶고 뒤에 단위기호를 붙인다.</p></div>
+<div class="block"><p>H.3.5 생략부호</p>
+<p>생략부호 “…”는 어구를 생략하는 경우에 사용한다.</p></div>
+<div class="block"><p>H.3.6 괄호</p>
+<p>소괄호 “(  )”와 대괄호 “[  ]”를 보충, 주해 등에 사용하되, 일반적으로 소괄호를 사용한다. 대괄호는 이미 소괄호를 사용하고 있는 부분을 다시 괄호로 싸야 할 경우에 사용한다.</p>
+<p>중괄호 “{  }”는 다른 단위계에 의한 수치를 병기하는 경우에 한하여 사용한다.</p></div>
+<div class="block"><p>부속서 I</p>
+<p>(규정)</p>
+<p>조항의 문장말미 형태</p></div>
+<div class="block"><p>I.1 일반사항</p>
+<p>표준은 본질적으로 누구에게나 지켜야 할 의무사항을 부과하는 것은 아니다. 그러나, 법규 또는 계약에 의한 경우에는 의무가 부과되어도 된다. 표준 준수를 주장하기 위해서는 사용자가 만족시켜야 할 의무가 있는 요구사항을 식별할 수 있을 필요가 있다. 사용자는 또한 특정한 선택의 자유가 있는 그 외의 조항에서도 이들 요구사항을 식별할 수 있을 필요가 있다.</p>
+<p>따라서 문장말미 형태는 명확한 규칙에 따라 작성해야 한다.</p></div>
+<div class="block"><p>문장 말미의 형태</p>
+<p>표 I.1의 문장말미의 형태는 표준에 적합하기 위해서 그리고 벗어남을 허용하지 않게 하기 위해서 엄격하게 요구사항들을 지시하도록 사용되어야 한다.</p>
+<p>표 I.1 — 요구사항</p>
+<p>표 I.2 문장말미 형태는 여러 가능성 있는 대상 중에서 다른 것을 언급하거나 배제시키지 않고 특별히 적합한 하나의 대상을 지정할 경우, 어떤 조치 과정(course of action)이 필수적으로 필요한 것은 아니지만 선호될 경우, (부정적 형식으로 보면) 특정한 가능성이나 조치 과정이 금지된 것은 아니지만 피하는 것이 좋을 경우 사용되어야 한다.</p>
+<p>표 I.2 — 권고사항</p>
+<p>표 I.3의 문장말미 형태는 해당 표준의 한계 내에서 허용되는 시행요령을 지시하는 데 사용되어야 한다.</p>
+<p>표 I.3 — 허용</p>
+<p>표 I.4 의 문장말미 형태는 물질적, 물리적 또는 인과적 사항의 가능성 및 능력을 설명하는 데 사용되어야 한다.</p>
+<p>표 I.4 — 역량 및 가능성</p>
+<p>표 I.5 의 문장말미 형태는 문서 외부에서 정의된 제약 또는 의무를 설명하는데 사용해야 한다.</p>
+<p>외적 제약사항은 문서의 요구사항이 아니다.</p>
+<p>표 I.5 — 외적 제약사항</p></div>
+<div class="block"><p>부속서J</p>
+<p>(규정)</p>
+<p>그림, 표 및 수학 공식</p></div>
+
+<h3 id="s23">J.1&emsp;조항의 표현을 위한 문장말미의 형태</h3>
+<div class="block"><p>J.1 그림</p></div>
+<div class="block"><p>J.1.1 그림의 용도</p>
+<p>그림은 쉽게 이해할 수 있는 형태로 정보를 표현하기 위한 가장 효율적인 방법일 경우에 그림이 사용되는 것이 좋다. 본문 내에서 각 그림을 명확하게 참조할 수 있어야 한다.</p></div>
+<div class="block"><p>J.1.2 그림의 형태</p>
+<p>그림은 선으로 그린 그림(line drawing) 형태이어야 한다. 사진은 선으로 그린 그림으로 변형하는 것이 불가능할 때만 사용할 수 있다.</p>
+<p>그림은 컴퓨터로 생성된 삽화를 권장한다. 컴퓨터로 생성된 삽화는 ISO 및 IEC의 삽화 조항의 요구사항에 따라 제시하여야 한다</p>
+<p>비 고 ISO의 삽화 준비 및 교체를 위한 ITSIG 설명서 및 IEC 홈페이지</p>
+<p>&lt;http://www.iec.ch/standardsdev/resources/docpreparation/&gt;에서 이용 가능)</p></div>
+<div class="block"><p>J.1.3 그림의 호칭</p>
+<p>그림은 “그림”으로 호칭되어야 하고, 1부터 시작하는 아라비아 숫자로 번호가 부여되어야 한다. 여기서 부여된 번호는 그 절과 모든 표에 부여된 번호와 독립적이어야 한다. 그림이 하나만 있을 때도 “그림 1”로 호칭하여야 한다.</p>
+<p>부속서에서 그림에 번호를 부여하는 것은 5.2.6을 참조한다. 상세그림에 번호를 부여할 때에는 J.1.11을 참조한다.</p></div>
+<div class="block"><p>J.1.4 그림 호칭 및 제목의 배치</p>
+<p>그림의 호칭 및 제목(존재할 때)은 그림의 아래에 수평으로 중앙에 위치시키고 다음과 같이 배치하여야 한다.</p>
+<p>그림 # — 장치의 상세</p>
+<p>그림의 호칭과 제목은 줄표( — )로 분리하여야 한다.</p></div>
+<div class="block"><p>J.1.5 문자기호, 서체 및 라벨링의 선택</p>
+<p>각도의 양 또는 선형의 양에 대해 일반적인 경우를 표현하기 위해 그림에서 사용되는 문자기호는 KS A ISO 80000－3에 따라야 하며, 주어진 기호가 서로 다른 적용들 사이에서 구별될 필요가 있는 곳에서는 아래첨자가 사용한다.</p>
+<p>도면상에서 여러 가지의 길이를 지정하는 일련의 기호로  ,  ,   등을 사용하고, 보기를 들어 A, B, C 등 또는 a, b, c 등은 사용하지 않는다.</p>
+<p>기술 제품 문서상에서 문자를 적을 때는 KS B ISO 3098－2에 따라야 한다. 기울어진 문자(이탤릭체)는 다음 경우에 사용하여야 한다.</p>
+<p>—	양을 표현하는 기호</p>
+<p>—	양을 표현하는 기호의 아래첨자</p>
+<p>—	숫자를 표현하는 기호</p>
+<p>수직의 문체(직립 모양)는 다른 모든 문자에 사용하여야 한다.</p>
+<p>도면에 문자 표현은 식별부호(key)로 설명하거나 또는 그것들의 내용 일람표에 따르는 그림 각주(J.1.10 참조)의 의미를 항목참조(KS A ISO 6433 참조)로 대체하여야 한다.</p>
+<p>그래프에서 항목참조를 나타내는 숫자와 축의 수치를 나타내는 숫자 사이에 혼란을 일으킬 가능성을 피하기 위해 축의 명칭이 항목참조로 대체되어서는 안 된다. 그래프상에서 곡선, 직선 등에 명칭을 붙이는 것은 그 안에 얼마나 많은 곡선, 직선 등이 있든 항목참조로 대체되어야 한다.</p>
+<p>양에 대한 모든 단위가 동일한 경우에는 적절한 설명(보기를 들어, “단위: mm”)을 그림의 오른쪽 상단에 위치시켜야 한다.</p>
+<p class="nb"><b>보기</b>&ensp;</p>
+<p>식별부호</p>
+<p>1  맨드릴의 축부</p>
+<p>2  블라인드 리벳의 머리부</p>
+<p>맨드릴은 부착 중에 블라인드 리벳의 말단이 변형되어 축부가 팽창하도록 설계되어야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;상기 그림은 A형의 리벳 머리부를 나타낸다.</p>
+<p>a  파단 영역은 압연되어야 한다.</p>
+<p>b  맨드릴 머리부는 일반적으로 크로뮴으로 도금된다.</p>
+<p>그림 # — 블라인드 리벳</p></div>
+<div class="block"><p>J.1.6 기계공학 도면 및 그림 기호</p>
+<p>기계공학 도면은 관련 ISO 표준에 따라 작성하여야 한다(B.8과 B.10 참조).</p>
+<p>장비의 사용과 관련된 그림기호는 IEC 60417 및 KS S ISO 7000에 따라야 한다.</p></div>
+<div class="block"><p>J.1.7 다이어그램</p>
+<p>회로도 및 결선도와 같은 시험회로용 다이어그램은 KS C IEC 61082－1에 따라 작성되어야 한다. 도식적인 다이어그램에 사용되는 그림기호는 IEC 60617 및 ISO 14617에 따라야 한다. 참조 호칭 및 신호 호칭은 각각 KS C IEC 81346 및 KS C IEC 61175에 따라야 한다.</p>
+<p class="nb"><b>보기</b>&ensp;</p>
+<p>그림 # — 의도되지 않은 돌출부 생성 시 그 저항치를 검증하는 데 사용되는 시험 회로의 보기</p></div>
+<div class="block"><p>J.1.8 그림의 계속</p>
+<p>그림이 몇 장에 걸쳐 연속될 때에는 다음과 같이 그림의 호칭을 반복하고 뒤에 제목(선택적임)과 “(#의 1)”을 이어 붙이는 것이 유용하다. #는 그림이 나타난 페이지의 전체 숫자이다.</p>
+<p>그림 # (#의 1)</p>
+<p>적용할 수 있는 경우, 단위에 관련된 어떠한 설명도 첫 쪽 이후의 모든 쪽에 반복되어야 한다.</p></div>
+<div class="block"><p>J.1.9 그림의 비고</p>
+<p>그림의 비고는 본문에 통합된 비고와 독립적으로 취급하여야 한다(6.5.2 참조). 그림의 비고는 관련된 그림의 호칭 위에 배치하고 그림 각주의 앞에 위치해야 한다.</p>
+<p>그림에 하나의 비고만이 존재할 때는 비고 문장의 첫 번째 행의 도입부에 “비고”를 선행하여 배치시켜야 한다. 같은 그림에 여러 개의 비고가 있을 경우에는 “비고 1”, “비고 2”, “비고 3” 등으로 나타내어야 한다. 각각의 그림에서는 분리된 번호부여 체계가 사용되어야 한다. J.1.5의 보기를 참조한다.</p>
+<p>그림의 비고에는 요구사항 또는 표준을 사용하는 데 필수적이라 생각되는 어떠한 정보도 포함되어서는 안 된다. 그림의 내용과 연관된 모든 요구사항은 본문, 그림의 각주 또는 그림과 그림 제목 사이의 문단으로 제시되어야 한다. 그림에 비고가 참조될 필요는 없다.</p></div>
+<div class="block"><p>J.1.10 그림의 각주</p>
+<p>그림의 각주는 본문의 각주와 독립적으로 취급하여야 한다(6.5.3 참조). 그림의 각주는 해당 그림의 호칭 바로 위에 배치하여야 한다.</p>
+<p>그림의 각주는 “a”부터 시작하는 위첨자 형태의 소문자로 구분하고, 각주는 같은 위첨자 형태의 소문자를 삽입하여 그림에서 언급하여야 한다. J.1.5의 보기를 참조한다.</p>
+<p>그림의 각주는 요구사항을 포함하여도 된다. 결과적으로, 그림의 각주 문장을 작성할 때 적절한 문장 말미의 형태를 사용하여 서로 다른 형식의 조항을 명확히 구별하는 것이 특히 중요하다(부속서 I 참조).</p></div>
+<div class="block"><p>J.1.11 상세그림</p></div>
+<div class="block"><p>J.1.11.1 상세그림의 용도</p>
+<p>일반적으로 상세그림의 사용은 표준의 배치 및 관리를 복잡하게 하므로 가능한 한 피하는 것이 좋다.</p>
+<p>상세그림은 주제 내용의 이해를 위해 필수적일 때만 사용해야 한다.</p>
+<p>하나의 구성요소 또는 복수 구성요소 대상에 대해 다른 시각, 상세 및 단면이 상세그림으로 표현되지 않아야 하지만, KS A ISO 128－30, KS B ISO 128－34, KS A ISO 128－40 및 KS B ISO 128－44에 적합한 경우에는 가능하다.</p></div>
+<div class="block"><p>J.1.11.2 상세그림의 호칭 및 배치</p>
+<p>그림에는 하나의 세분화 단계만 허용된다. 세분화는 소문자로 구분하여야 한다[즉, 그림 1이 세부그림 a), b), c) 등으로 구성되어도 된다.] 다른 형태의 상세그림 식별법으로 1.1, 1.2, …, 1-1, 1-2, … 등이 사용되어서는 안 된다.</p>
+<p>다음의 보기는 세분된 그림의 배치를 묘사한 것이며 인쇄상 표현법을 묘사한 것은 아니다. 보기에서 사용된 틀은 구성요소의 논리적 배치를 묘사한 것에 불과하며 그림이나 그 구성요소에 틀이 사용되어서는 안 된다.</p>
+<p class="nb"><b>보기</b>&ensp;</p>
+<p>그림 # — 그림 제목</p>
+<p>각 상세그림이 식별부호, 비고, 각주를 가지고 있을 때(이 경우는 보기에서 예시되지 않았다.) 각 상세그림마다 독립적인 번호부여 체계를 적용하여야 한다.</p></div>
+<div class="block"><p>J.2 표</p></div>
+<div class="block"><p>J.2.1 표의 용도</p>
+<p>표는 쉽게 이해할 수 있는 형태로 정보를 표현하는 데 가장 효율적인 방법일 때 사용하는 것이 좋다. 본문 내에서 각 표를 명확하게 참조할 수 있어야 한다.</p>
+<p>표 안에 표를 삽입하는 것과, 표를 하위 표로 세분하는 것은 허용하지 않는다.</p></div>
+<div class="block"><p>J.2.2 표의 호칭</p>
+<p>표는 “표”라고 호칭되어야 하고, 1에서 시작하는 아라비아 숫자로 번호를 부여하여야 한다. 이 번호부여는 다른 그림이나 절의 번호부여와는 독립적이어야 한다. 단일의 표는 “표 1”로 호칭한다.</p>
+<p>부속서의 표에 번호를 부여할 때는 5.2.6을 참조한다.</p></div>
+<div class="block"><p>J.2.3 표의 호칭 및 제목의 배치</p>
+<p>표의 호칭 및 제목(있는 경우)은 표 위에 수평으로 중앙에 위치시키고, 다음과 같이 배치한다.</p>
+<p>표 # — 기계적 특성</p>
+<p>표의 호칭과 제목은 줄표( — )에 의해 구분한다.</p></div>
+<div class="block"><p>J.2.4 	머리부(heading)</p>
+<p>주어진 행에서 사용된 단위는 일반적으로 행 도입부에 표시한다(J.4.1 참조).</p>
+<p class="nb"><b>보기 1</b>&ensp;</p>
+<p>이 규칙의 예외사항으로서, 모든 단위가 동일한 경우에는 단위가 각 행에 표시되지 않고 표의 오른쪽 상단에 적절한 설명(보기를 들어, “단위: mm”)이 배치한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p class="nb"><b>보기 3</b>&ensp;에 나타낸 표현은 허용되지 않으며 보기 4에서 표현된 형태로 변경한다.</p>
+<p class="nb"><b>보기 3</b>&ensp;</p>
+<p class="nb"><b>보기 4</b>&ensp;</p></div>
+<div class="block"><p>J.2.5 표의 계속</p>
+<p>표가 몇 장에 걸쳐 연속될 때에는 다음과 같이 표의 호칭을 반복하고 뒤에 표의 제목(선택적임)과 “(#의 1)”을 이어 붙이는 것이 유용하다. 예에서와 같이 # 표는 페이지의 전체 수다.</p>
+<p>표 # (#의 1)</p>
+<p>단위에 관련하는 설명과 함께 표의 머리부는 모든 쪽의 첫 번째 행에 반복한다.</p></div>
+<div class="block"><p>J.2.6 	표의 비고</p>
+<p>표의 비고는 본문에서 통합된 비고와는 독립적으로 취급되어야 한다(6.5.2 참조). 표의 비고는 관련 표의 틀 내부에 배치되고 표의 각주 앞에 위치하여야 한다(아래의 보기를 참조).</p>
+<p>표에 하나의 비고만 있을 때는 앞에 “비고”를 배치하며 비고 본문의 첫 번째 줄의 도입부에 놓는다. 동일 표에 여러 개의 비고가 있을 때에는 각 비고를 “비고 1”, “비고 2”, “비고 3” 등으로 나타낸다. 각 표마다 분리된 번호부여 방식이 적용한다.</p>
+<p>표의 비고는 요구사항이나 해당 표준을 사용하는 데 필수적으로 고려될 어떠한 정보도 포함시켜서는 안 된다. 표의 내용과 관련된 모든 요구사항은 본문이나 표의 각주 또는 표 내부의 문단으로 제시한다. 표에 비고가 참조될 필요는 없다.</p>
+<p class="nb"><b>보기</b>&ensp;</p></div>
+<div class="block"><p>J.2.7 	표의 각주</p>
+<p>표의 각주는 본문의 각주와는 독립적으로 취급하여야 한다(6.5.3 참조). 표의 각주는 관련된 표의 틀 내부에 배치되고 표의 아랫부분에 표시한다.</p>
+<p>표의 각주는 “a”부터 시작되는 위첨자 형태의 소문자로 구분한다. 각주는 동일한 위첨자 형태의 소문자를 사용하여 표에서 언급한다.</p>
+<p>표의 각주는 요구사항을 포함하여도 된다. 결과적으로, 표의 각주 문장을 작성할 때는 적절한 문장말미의 형태를 사용하여 서로 다른 형식의 규정을 명백하게 구별하는 것이 특히 중요하다(부속서 I 참조).</p></div>
+<div class="block"><p>J.3 	숫자와 수치의 표시(representation of numbers and numerical values)</p>
+<p>모든 언어본에서 소수 부호는 그 선상에서 마침표( . )를 사용하여야 한다.</p>
+<p>만약 1보다 작은 어떤 값의 크기(절대값)가 소수 형태 안에서 사용된다면, 그 소수 부호는 0이 앞서 있어야 한다.</p>
+<p class="nb"><b>보기 0</b>&ensp;001</p>
+<p>연도를 지시하는 4자리 숫자를 제외하고는 소수 부호의 왼쪽이나 오른쪽으로 읽는 세자리 아라비아 숫자로 이루어진 각 묶음은 공백을 두어서 앞의 숫자와 뒤의 숫자를 각각 구분하여야 한다.</p>
+<p class="nb"><b>보기 23</b>&ensp;456  2 345  2.345  2.345 6  2.345 67  그러나 2015년과 같은 연도는 예외임.</p>
+<p>10진법, 벡터곱/외적(vector product) 및 데카르트곱(Cartesian product)으로 나타난 숫자 및 수치값의 곱셈을 표시할 때에는 곱셈기호를 사용한다.</p>
+<p>가운뎃점(ㆍ)은 벡터의 스칼라곱/내적(scalar product)과 유사한 경우(comparable cases)를 표시할 때 사용된다. 또한 가운뎃점은 보기 3과 보기 5에서 각각 보여지듯이, 스칼라곱과 복합단위(compound unit)를 표시할 때 사용될 수 있다.</p>
+<p class="nb"><b>보기 1</b>&ensp;A ＝ 80 mm × 25 mm</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p class="nb"><b>보기 3</b>&ensp;U ＝ RㆍI</p>
+<p class="nb"><b>보기 4</b>&ensp;＝ 2.5×10³ m</p>
+<p class="nb"><b>보기 5</b>&ensp;radㆍm2/kg</p>
+<p>숫자를 위한 곱셈기호의 개요는 KS A ISO 80000－2에 나와 있다.</p>
+<p>물리적 양의 값을 표현하기 위해 단위에 대한 국제기호(KS A ISO 80000 및 KS C IEC 60027 참조)를 사용한다.</p></div>
+<div class="block"><p>J.4 수학적 공식(mathematical formulae)</p></div>
+<div class="block"><p>J.4.1 	수학적 공식의 종류</p>
+<p>양 사이의 공식은 수치 사이의 공식보다 우선한다(양 사이의 수학적 공식은 단위 선택이 자유로운데 반해, 수치 사이의 공식은 그렇지 않기 때문).</p>
+<p>공식은 수학적으로 정확한 형태로 표현되어야 하고, 변수는 문자기호로 표시되며, “기호와 약어” 절에서 그 의미가 표시되지 않았다면 공식과 연결지어서 설명하여야 한다(6.5.1 참조).</p>
+<p>다음의 보기 1에서 표현된 형식을 따라야 한다.</p>
+<p class="nb"><b>보기 1</b>&ensp;</p>
+<p>여기에서</p>
+<p>V	：등속운동 시의 속도(km/h)</p>
+<p>l	：이동 거리(m)</p>
+<p>t	：걸린 시간(s)</p>
+<p>예외적으로, 수치 사이의 방정식이 사용된다면 다음의 보기 2에서 나타낸 형식을 따라야 한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p>여기에서</p>
+<p>V	：등속운동 시의 속도(km/h)</p>
+<p>l	：이동 거리(m)</p>
+<p>t	：걸린 시간(s)</p>
+<p>그러나 한 표준 내에서 양과 그에 대한 수치에 동일한 기호가 사용되어서는 안 된다. 예를들어, 보기 1의 방정식과 보기 2의 방정식을 동일 문맥에서 사용하면 명백히 부정확한 결과인 1 ＝ 3.6이라는 의미를 함축하게 된다.</p>
+<p>양의 서술적 용어 또는 명칭은 공식의 형태로 배열되어서는 안 된다. 예를들어, 기울임체나 아래첨자로 표현된 양의 명칭 또는 복수 문자로 이루어진 약어는 기호가 놓일 위치에 사용하지 않는다. 동일한 기호가 같은 표준 내에서 다른 양을 표현하는데 사용하지 않는다.</p>
+<p class="nb"><b>보기 3</b>&ensp;다음과 같이 쓴다.</p>
+<p>다음은 허용될 수 없다.</p>
+<p class="nb"><b>보기 4</b>&ensp;다음과 같이 쓴다.</p>
+<p>dim(E) ＝ dim(F)‧dim(l )</p>
+<p>여기에서</p>
+<p>E	：에너지</p>
+<p>F	：힘</p>
+<p>l	：길이</p>
+<p>다음은 허용될 수 없다.</p>
+<p>dim(에너지) ＝ dim(힘)‧dim(길이) 또는 dim(에너지 ) ＝ dim(힘 )‧dim(길이 )</p>
+<p class="nb"><b>보기 5</b>&ensp;다음과 같이 쓴다.</p>
+<p>여기에서</p>
+<p>ti	：i 시스템의 통계치</p>
+<p>SME,i	：i 시스템의 평균제곱오차</p>
+<p>SMR,i	：i 시스템의 회귀에 의한 평균제곱</p>
+<p>다음은 허용될 수 없다.</p>
+<p>여기에서</p>
+<p>ti 	：i 시스템의 통계치</p>
+<p>MSEi	：i 시스템의 평균제곱오차</p>
+<p>MSRi	：i 시스템의 회귀에 의한 평균제곱</p>
+<p>,   및   또는 V(km/h), l/m 및 t/s 등의 표기는 수치를 표현할 때 사용되며, 특히 그래프의 축에서와 표의 행 제목을 쓸 때 유용하다.</p></div>
+<div class="block"><p>J.4.2 표현</p>
+<p>수식의 표현에 대한 지침이 ISO eServies 지침서 및 IEC에서의 정보기술 수단의 사용에 대한 지침서 – IEC IT 사용지침서(IEC IT Tools Guides)에 제시되어 있다. 가능한 한 1단계 이상의 아래첨자나 위첨자를 가지고 있는 기호(보기 1 참조)는 사용하지 않으며, 또한 2줄 이상의 형태(보기 3 참조)로 인쇄물에 포함된 모든 기호 및 식도 마찬가지이다.</p>
+<p class="nb"><b>보기 1</b>&ensp;보다는  를 사용하는 것이 바람직하다.</p>
+<p class="nb"><b>보기 2</b>&ensp;보다는 a/b를 사용하는 것이 바람직하다.</p>
+<p class="nb"><b>보기 3</b>&ensp;수식은  보다는  의 형식을 사용할 것</p>
+<p>추가적인 수학적 식의 표현은 다음과 같다.</p>
+<p class="nb"><b>보기 4</b>&ensp;</p>
+<p>여기에서</p>
+<p>W	：역학 퍼텐셜</p>
+<p>x	：x 좌표</p>
+<p>t	：시간</p>
+<p>：x의 시간에 대한 미분계수</p>
+<p>Q	：전하</p>
+<p>V	：전위</p>
+<p>A	：자기벡터 퍼텐셜</p>
+<p>v	：속도</p>
+<p class="nb"><b>보기 5</b>&ensp;</p>
+<p>여기에서</p>
+<p>x	：x 좌표</p>
+<p>t1	：첫 번째 분기점에서의 시간</p>
+<p>T	：주기</p>
+<p>	：각진동수</p>
+<p>	：초기상</p>
+<p>	：감폭계수</p>
+<p>	：숫자 3.141 592 6…</p>
+<p class="nb"><b>보기 6</b>&ensp;질량부분을 표현하기 위해서는 다음의 표현방식으로도 충분하다.</p>
+<p>그러나 다음의 공식 표현도 가능하다.</p>
+<p>100 %</p>
+<p>“질량백분율” 등의 표현은 피하는 것이 좋다.</p></div>
+<div class="block"><p>J.4.3 번호 부여</p>
+<p>상호참조의 편의를 위해 표준 내의 모든 공식 또는 일부에 대해 번호를 붙여야 할 필요가 있다면 1부터 시작되는 아라비아 숫자에 괄호를 붙여 사용하여야 한다.</p>
+<p>(1)                   	(1)</p>
+<p>번호부여는 연속적이어야 하고 절, 표 및 그림의 번호부여 체계와 독립적이어야 한다. 수식의 세분[보기：(2a), (2b) 등]은 허용되지 않는다.</p>
+<p>부속서에서 공식의 번호부여는 6.6을 참조한다.</p></div>
+<div class="block"><p>J.4.4 수치, 치수 및 공차</p>
+<p>수치 및 치수는 최소값 또는 최대값로 표시하고, 공차는 다음과 같이 명확하게 명시해야한다.</p>
+<p class="nb"><b>보기 1</b>&ensp;80 mm × 25 mm × 50 mm (80×25×50 mm는 허용불가)</p>
+<p class="nb"><b>보기 2</b>&ensp;80 F ± 2 F 또는 (80 ± 2) F</p>
+<p class="nb"><b>보기 3</b>&ensp;＝ 220 × (1 ± 0.02) W/(m∙K)</p>
+<p class="nb"><b>보기 4</b>&ensp;(은 허용불가)</p>
+<p class="nb"><b>보기 5</b>&ensp;</p>
+<p class="nb"><b>보기 6</b>&ensp;m</p>
+<p class="nb"><b>보기 7</b>&ensp;10 kPa에서 12 kPa까지 (10에서 12 kPa까지, 또는 10 － 12 kPa은 허용불가)</p>
+<p class="nb"><b>보기 8</b>&ensp;0 ℃에서 10 ℃까지 (0에서 10 ℃까지, 또는 0 － 10 ℃는 허용불가)</p>
+<p>오해를 방지하기 위해 백분율로 표현된 수치에 대한 허용오차는 수학적으로 정확한 형태로 표현되어야 한다.</p>
+<p>—	범위를 나타내기 위해서는 “63 %부터 67 %까지”의 형태로 쓴다.</p>
+<p>—	공차의 중심값은 “(65 ± 2) %”의 형태로 쓴다. “65 ± 2 %”의 형태는 사용되어서는 안 된다.</p>
+<p>—	각도(degree)는 소수점으로 구분되어도 좋다. 예를 들면, 1715보다는 17.25로 쓴다.</p>
+<p>단지 참고용(for information)으로 언급된 모든 수치나 치수는 요구사항(requirement)과 명백하게 구분이 가능하여야 한다.</p></div>
+<div class="block"><p>J.5 그림</p></div>
+<div class="block"><p>J.5.1 그림의 용도</p>
+<p>그림은 쉽게 이해할 수 있는 형태로 정보를 표현하기 위한 가장 효율적인 방법일 경우에 그림이 사용되는 것이 좋다. 본문 내에서 각 그림을 명확하게 참조할 수 있어야 한다.</p></div>
+<div class="block"><p>J.5.2 그림의 형태</p>
+<p>그림은 선으로 그린 그림(line drawing) 형태이어야 한다. 사진은 선으로 그린 그림으로 변형하는 것이 불가능할 때만 사용될 수 있다.</p>
+<p>그림은 컴퓨터로 생성된 삽화가 제공되어야 한다. 컴퓨터로 생성된 삽화는 ISO 및 IEC의 삽화 조항의 요구사항에 따라 제시되어야 한다(ISO의 삽화 준비 및 교체를 위한 ITSIG 설명서 및 IEC 홈페이지 &lt;http://www.iec.ch/standardsdev/resources/docpreparation/ &gt;에서 이용 가능).</p></div>
+<div class="block"><p>J.5.3 그림의 호칭</p>
+<p>그림은 “그림”으로 호칭되어야 하고, 1부터 시작하는 아라비아 숫자로 번호가 부여되어야 한다. 여기서 부여된 번호는 그 절과 모든 표에 부여된 번호와 독립적이어야 한다. 그림이 하나만 있을 때도 “그림 1”로 호칭되어야 한다.</p>
+<p>부속서에서 그림에 번호를 부여하는 것은 5.2.6을 참조한다. 상세그림에 번호를 부여할 때에는 J.5.11을 참조한다.</p></div>
+<div class="block"><p>J.5.4 그림 호칭 및 제목의 배치</p>
+<p>그림의 호칭 및 제목(존재할 때)은 그림의 아래에 수평으로 중앙에 위치시키고 다음과 같이 배치되어야 한다.</p>
+<p>그림 # — 장치의 상세</p>
+<p>그림의 호칭과 제목은 줄표( — )로 분리되어야 한다.</p></div>
+<div class="block"><p>J.5.5 	문자기호, 글자체 및 라벨링의 선택</p>
+<p>각도의 양 또는 선형의 양에 대해 일반적인 경우를 표현하기 위해 그림에서 사용되는 문자기호는 KS A ISO 80000－3에 따라야 하며, 주어진 기호가 서로 다른 적용들 사이에서 구별될 필요가 있는 곳에서는 아래첨자가 사용된다.</p>
+<p>도면상에서 여러 가지의 길이를 지정하는 일련의 기호로  ,  ,   등을 사용하고, 보기를 들어 A, B, C 등 또는 a, b, c 등은 사용하지 않는다.</p>
+<p>기술 제품 문서상에서 문자를 적을 때는 KS B ISO 3098－2에 따라야 한다. 기울어진 문자(이탤릭체)는 다음 경우에 사용되어야 한다.</p>
+<p>•	양을 표현하는 기호</p>
+<p>•	양을 표현하는 기호의 아래첨자</p>
+<p>•	숫자를 표현하는 기호</p>
+<p>수직의 문체(직립 모양)는 다른 모든 문자에 사용되어야 한다.</p>
+<p>삽화에 있어서 문자에 의한 표현은 식별부호(key)로 설명하거나 또는 그것들의 내용 일람표에 따르는 그림 각주(J.5.10 참조)의 의미를 항목참조(KS A ISO 6433 참조)로 대체하여야 한다. 그래프에서는 항목참조를 나타내는 숫자와 축의 수치를 나타내는 숫자 사이에 혼란을 일으킬 가능성을 피하기 위해 축의 명칭이 항목참조로 대체되어서는 안 된다. 그래프상에서 곡선, 직선 등에 명칭을 붙이는 것은 그 안에 얼마나 많은 곡선, 직선 등이 있든 항목참조로 대체되어야 한다.</p>
+<p>양에 대한 모든 단위가 동일한 경우에는 적절한 설명(보기를 들어, “단위: mm”)을 그림의 오른쪽 상단에 위치시켜야 한다.</p>
+<p class="nb"><b>보기</b>&ensp;</p>
+<p>식별부호</p>
+<p>1  맨드릴의 축부</p>
+<p>2  블라인드 리벳의 머리부</p>
+<p>맨드릴은 부착 중에 블라인드 리벳의 말단이 변형되어 축부가 팽창하도록 설계되어야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;상기 그림은 A형의 리벳 머리부를 나타낸다.</p>
+<p>a	파단 영역은 압연되어야 한다.</p>
+<p>b	맨드릴 머리부는 일반적으로 크로뮴으로 도금된다.</p>
+<p>그림 # — 블라인드 리벳</p></div>
+<div class="block"><p>J.5.6 기계공학 도면 및 그림 기호</p>
+<p>기계공학 도면은 관련 ISO 표준에 따라 작성되어야 한다(B.8과 B.10 참조).</p>
+<p>장비의 사용과 관련된 그림기호는 IEC 60417 및 KS S ISO 7000에 따라야 한다.</p></div>
+<div class="block"><p>J.5.7 다이어그램</p>
+<p>회로도 및 결선도와 같은 시험회로용 다이어그램은 KS C IEC 61082－1에 따라 작성되어야 한다. 도식적인 다이어그램에 사용되는 그림기호는 IEC 60617 및 ISO 14617에 따라야 한다. 참조 호칭 및 신호 호칭은 각각 KS C IEC 81346 및 KS C IEC 61175에 따라야 한다.</p>
+<p class="nb"><b>보기</b>&ensp;</p>
+<p>a	시험 대상이 PE단자를 가지는 경우 연결되어야 함.</p>
+<p>그림 # — 의도되지 않은 돌출부 생성 시 그 저항치를 검증하는 데 사용되는 시험 회로의 보기</p></div>
+<div class="block"><p>J.5.8 	그림의 계속</p>
+<p>그림이 몇 장에 걸쳐 연속될 때에는 다음과 같이 그림의 호칭을 반복하고 뒤에 제목(선택적임)과 “(#의 1)”을 이어 붙이는 것이 유용하다. #는 그림이 나타난 페이지의 전체 숫자이다.</p>
+<p>그림 # (#의 1)</p>
+<p>적용할 수 있는 경우, 단위에 관련된 어떠한 설명도 첫 쪽 이후의 모든 쪽에 반복되어야 한다.</p></div>
+<div class="block"><p>J.5.9 그림의 비고</p>
+<p>그림의 비고는 본문에 통합된 비고와 독립적으로 취급되어야 한다(6.5.1 참조). 그림의 비고는 관련된 그림의 호칭 위에 배치되어야 하고 그림 각주의 앞에 위치되어야 한다. 그림에 하나의 비고만이 존재할 때는 비고 문장의 첫 번째 행의 도입부에 “비고”를 선행하여 배치시켜야 한다. 같은 그림에 여러 개의 비고가 있을 경우에는 “비고 1”, “비고 2”, “비고 3” 등으로 나타내어야 한다. 각각의 그림에서는 분리된 번호부여 체계가 사용되어야 한다. J.5.5의 보기를 참조한다.</p>
+<p>그림의 비고에는 요구사항 또는 표준을 사용하는 데 필수적이라 생각되는 어떠한 정보도 포함되어서는 안 된다. 그림의 내용과 연관된 모든 요구사항은 본문, 그림의 각주 또는 그림과 그림 제목 사이의 문단으로 제시되어야 한다. 그림에 비고가 참조될 필요는 없다.</p></div>
+<div class="block"><p>J.5.10 그림의 각주</p>
+<p>그림의 각주는 본문의 각주와 독립적으로 취급되어야 한다(6.5.2 참조). 그림의 각주는 해당 그림의 호칭 바로 위에 배치되어야 한다.</p>
+<p>그림의 각주는 “a”부터 시작하는 위첨자 형태의 소문자로 구분되어야 한다. 각주는 같은 위첨자 형태의 소문자를 삽입하여 그림에서 언급되어야 한다. J.5.5의 보기를 참조한다.</p>
+<p>그림의 각주는 요구사항을 포함하여도 된다. 결과적으로, 그림의 각주 문장을 작성할 때 적절한 문장 말미의 형태를 사용하여 서로 다른 형식의 조항을 명확히 구별하는 것이 특히 중요하다(부속서 H 참조).</p></div>
+<div class="block"><p>J.5.11 상세그림</p></div>
+<div class="block"><p>J.5.11.1 상세그림의 용도</p>
+<p>일반적으로 상세그림의 사용은 표준의 배치 및 관리를 복잡하게 하므로 가능한 한 피하는 것이 좋다.</p>
+<p>상세그림은 주제 내용의 이해를 위해 필수적일 때만 사용되어야 한다.</p>
+<p>하나의 구성요소 또는 복수 구성요소 대상에 대해 다른 시각, 상세 및 단면이 상세그림으로 표현되지 않아야 하지만, KS A ISO 128－30, KS B ISO 128－34, KS A ISO 128－40 및 KS B ISO 128－44에 적합한 경우에는 가능하다.</p></div>
+<div class="block"><p>J.5.11.2 상세그림의 호칭 및 배치</p>
+<p>그림에서는 하나의 세분화 단계만 허용된다. 세분화는 소문자로 구분되어야 한다[즉, 그림 1이 세부그림 a), b), c) 등으로 구성되어도 된다.] 다른 형태의 상세그림 식별법으로 1.1, 1.2, …, 1-1, 1-2, … 등이 사용되어서는 안 된다.</p>
+<p>다음의 보기는 세분된 그림의 배치를 묘사한 것이며 인쇄상 표현법을 묘사한 것은 아니다. 보기에서 사용된 틀은 구성요소의 논리적 배치를 묘사한 것에 불과하며 그림이나 그 구성요소에 틀이 사용되어서는 안 된다.</p>
+<p class="nb"><b>보기</b>&ensp;</p>
+<p>그림 # — 그림 제목</p>
+<p>각 상세그림이 식별부호, 비고, 각주를 가지고 있을 때(이 경우는 보기에서 예시되지 않았다.) 각 상세그림마다 독립적인 번호부여 체계가 적용되어야 한다.</p></div>
+<div class="block"><p>J.6 표</p></div>
+<div class="block"><p>J.6.1 표의 용도</p>
+<p>표는 쉽게 이해할 수 있는 형태로 정보를 표현하는 데 가장 효율적인 방법일 때 사용되는 것이 좋다. 본문 내에서 각 표를 명확하게 참조할 수 있어야 한다.</p>
+<p>표 안에 표를 삽입하는 것은 허용되지 않는다. 표를 하위 표로 세분하는 것도 허용되지 않는다.</p></div>
+<div class="block"><p>J.6.2 표의 호칭</p>
+<p>표는 “표”라고 호칭되어야 하고, 1에서 시작하는 아라비아 숫자로 번호가 부여되어야 한다. 이 번호부여는 다른 그림이나 절의 번호부여와는 독립적이어야 한다. 단일의 표는 “표 1”로 호칭되어야 한다.</p>
+<p>부속서의 표에 번호를 부여할 때는 5.2.6을 참조한다.</p></div>
+<div class="block"><p>J.6.3 표의 호칭 및 제목의 배치</p>
+<p>표의 호칭 및 제목(있는 경우)은 표 위에 수평으로 중앙에 위치시키고, 다음과 같이 배치되어야 한다.</p>
+<p>표 # — 기계적 특성</p>
+<p>표의 호칭과 제목은 줄표( — )에 의해 구분되어야 한다.</p></div>
+<div class="block"><p>J.6.4 머리부(heading)</p>
+<p>영문의 경우, 각 행이나 열에서 도입부의 첫 번째 단어는 대문자로 시작되어야 한다. 주어진 행에서 사용된 단위는 일반적으로 행 도입부 아래에 표시되어야 한다(J.10.1.1도 참조).</p>
+<p class="nb"><b>보기 1</b>&ensp;</p>
+<p>이 규칙의 예외사항으로서, 모든 단위가 동일한 경우에는 단위가 각 행에 표시되지 않고 표의 오른쪽 상단에 적절한 설명(보기를 들어, “단위: mm”)이 배치되어야 한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p class="nb"><b>보기 3</b>&ensp;에 나타낸 표현은 허용되지 않으며 보기 4에서 표현된 형태로 변경되어야 한다.</p>
+<p class="nb"><b>보기 3</b>&ensp;</p></div>
+<div class="block"><p>J.6.5 표의 계속</p>
+<p>표가 몇 장에 걸쳐 연속될 때에는 다음과 같이 표의 호칭을 반복하고 뒤에 표의 제목(선택적임)과 “(#의 1)”을 이어 붙이는 것이 유용하다. 예에서와 같이 # 표는 페이지의 전체 수다.</p>
+<p>표 # (#의 1)</p>
+<p>단위에 관련하는 설명과 함께 표의 머리부는 모든 쪽의 첫 번째 행에 반복되어야 한다.</p></div>
+<div class="block"><p>J.6.6 표의 비고</p>
+<p>표의 비고는 본문에서 통합된 비고와는 독립적으로 취급되어야 한다(6.5.1 참조). 표의 비고는 관련 표의 틀 내부에 배치되고 표의 각주 앞에 위치하여야 한다(아래의 보기를 참조). 표에 하나의 비고만 있을 때는 앞에 “비고”를 배치하며 비고 본문의 첫 번째 줄의 도입부에 놓는다. 동일 표에 여러 개의 비고가 있을 때에는 각 비고를 “비고 1”, “비고 2”, “비고 3” 등으로 나타낸다. 각 표마다 분리된 번호부여 방식이 적용되어야 한다.</p>
+<p>표의 비고는 요구사항이나 해당 표준을 사용하는 데 필수적으로 고려될 어떠한 정보도 포함시켜서는 안 된다. 표의 내용과 관련된 모든 요구사항은 본문이나 표의 각주 또는 표 내부의 문단으로 제시되어야 한다. 표에 비고가 참조될 필요는 없다.</p>
+<p class="nb"><b>보기</b>&ensp;</p></div>
+<div class="block"><p>J.6.7 표의 각주</p>
+<p>표의 각주는 본문의 각주와는 독립적으로 취급되어야 한다(6.5.2 참조). 표의 각주는 관련된 표의 틀 내부에 배치되어야 하고 표의 아랫부분에 표시되어야 한다(J.6.6의 보기 참조).</p>
+<p>표의 각주는 “a”부터 시작되는 위첨자 형태의 소문자로 구분되어야 한다. 각주는 동일한 위첨자 형태의 소문자를 사용하여 표에서 언급되어야 한다.</p>
+<p>표의 각주는 요구사항을 포함하여도 된다. 결과적으로, 표의 각주 문장을 작성할 때는 적절한 문장말미의 형태를 사용하여 서로 다른 형식의 규정을 명백하게 구별하는 것이 특히 중요하다(부속서 H 참조).</p></div>
+<div class="block"><p>J.7 참조(reference)</p></div>
+<div class="block"><p>J.7.1 일반사항</p>
+<p>일반적인 규칙으로, 원래의 출처 자료를 반복하기보다는 특정한 본문의 한 부분에 대한 참조를 사용하여야 한다. 왜냐하면, 이와 같은 반복은 오류나 모순의 위험성을 내포하고 있으며 표준의 길이를 길게 만들 수 있기 때문이다. 그러나 해당 자료를 반복할 필요가 있다고 생각될 때에는 그의 출처가 명확하게 식별되어야 한다.</p>
+<p>참조는 J.7.2부터 J.7.5까지에 제시된 형태로 구성되어야 하고 쪽 번호로 구성되어서는 안 된다.</p></div>
+<div class="block"><p>J.7.2 본문 전체에 대한 문서의 참조</p>
+<p>표준, 기술시방서(TS), PAS, 기술보고서(TR), 또한 가이드와 같은 관계된 문서 형식의 기능처럼 어법은 변경되어야 하고, 각 문서에서는 “이 표준”이라는 표현이 사용되기도 한다.</p>
+<p>분리된 부로 발행된 표준에서는 다음의 형식이 사용되어야 한다.</p>
+<p>•	“KS X ISO/IEC 2382의 이번 부”(한 부만을 참조)</p>
+<p>•	“KS C IEC 60335”(일련의 부 전체를 참조)</p>
+<p>위의 참조는 일자가 기입되지 않았으므로 해당 표준의 모든 추록과 개정판을 포함하는 것으로 취급된다(J.7.5.2 참조).</p></div>
+<div class="block"><p>J.7.3 본문 요소에의 참조</p></div>
+<div class="block"><p>J.7.3.1 예를 들면, 다음의 형태를 사용한다.</p>
+<p>•	“3절과 일치되도록”</p>
+<p>•	“3.1에 따라서”</p>
+<p>•	“3.1 b)에 규정된 대로”</p>
+<p>•	“3.1.1에서 제시된 세부사항”</p>
+<p>•	“부속서 B 참조”</p>
+<p>•	“B.2에서 제시된 요구사항”</p>
+<p>•	“표 2의 비고 참조”</p>
+<p>•	“부속서 J.3의 보기 2 참조”</p>
+<p>•	“3.1의 식(3) 참조”</p>
+<p>“항”이라는 용어를 사용할 필요는 없다.</p>
+<p>“이 절” 및 “이 부속서”와 같은 모호한 말은 사용하지 않는다.</p></div>
+<div class="block"><p>J.7.3.2 다른 표준에서 정렬되지 않은 항목을 언급할 필요가 있다면 다음의 어구가 사용되어야 한다.</p>
+<p>“ISO 15888:2000, 3.1, 두 번째 항목에서 규정된 대로”</p></div>
+<div class="block"><p>J.7.4 그림 및 표의 참조</p>
+<p>표준에 포함된 모든 그림 및 표는 일반적으로 본문 내에서 참조되어야 한다.</p>
+<p>예를 들면, 다음의 형식을 사용할 수 있다.</p>
+<p>•	“그림 A.6에서 나타낸”</p>
+<p>•	“(그림 3 참조)”</p>
+<p>•	“표 2에서 주어진”</p>
+<p>•	“(표 B.2 참조)”</p></div>
+<div class="block"><p>J.7.5 다른 표준의 참조</p></div>
+<div class="block"><p>J.7.5.1 일반사항</p>
+<p>다른 표준의 인용은 일자가 명시되거나 또는 명시되지 않아도 된다. 모든 인용표준은 일자가 명시 되었든 않았든 간에 “인용표준” 절에 제시되어야 한다(6.2.2 참조).</p></div>
+<div class="block"><p>J.7.5.2 일자가 명시되지 않은 참조</p>
+<p>일자가 명시되지 않은 인용은 전체 표준이나 그 표준의 한 부를 참조할 때에만 적용되고, 다음의 경우에만 가능하다.</p>
+<p>a) 	인용하는 표준의 목적을 위한 참조문서의 모든 추후 변경사항을 이용할 수 있도록 허용된 경우</p>
+<p>b) 	참고 인용의 경우</p>
+<p>일자가 명시되지 않은 참조는 참조된 문서의 추록과 개정판을 포함하는 것으로 간주되어야 한다.</p>
+<p>다음의 형식을 사용한다.</p>
+<p>•	“...KS A ISO 128－21 및 KS A ISO 80000...에서 규정된 대로 ...”</p>
+<p>•	“...KS C IEC 60027 참조...”</p></div>
+<div class="block"><p>J.7.5.3 일자가 명시된 참조</p>
+<p>일자가 명시된 참조는 다음 사항의 참조를 의미한다.</p>
+<p>a) 	발행연도가 표시된 특정 발행본</p>
+<p>b) 	줄표( — )에 의해 표시된 최종 KS안</p>
+<p>발행일은 연도를 표시하거나, 한 종류 이상의 편집본이 있거나 동일한 연도에 발행된 문서가 있는 경우에는 발행연도와 월(필요하면 날짜)을 표시한다.</p>
+<p>보충적인 추록이나 개정본이 있는 경우, 일자가 명시된 참조는 그를 참조하는 문서의 추록과 결합되어야 할 필요가 있다.</p>
+<p class="nb"><b>비고</b>&ensp;이 문맥에서 한 부(part)는 분리된 한 표준으로 간주된다.</p>
+<p>본문 내, 특정한 구분이나 세부 구분의 인용에서 다른 표준의 표 및 그림에는 항상 연도가 명시되어 있어야 한다.</p>
+<p>다음의 형태를 사용한다.</p>
+<p>•	“... KS C IEC 60068－1:2001에서 제시된 시험을 수행하여...”(발행된 표준의 연도가 기입된 인용)</p>
+<p>•	“... KS B ISO 1234:－, 제3절에 따라...”(최종 KS안의 연도가 기입된 인용)</p>
+<p>•	“... IEC 64321－4:1996, 표 1에서 서술된 대로...”(다른 발행 표준에 있는 특정 표의 연도가 기입된 인용)</p>
+<p>•	“… ISO/TS 10303－1000:2010-03에 규정된 대로...”(동일 연도에 여러 개의 편집본이 간행된 경우, 연월이 있는 참조)</p>
+<p>•	“… IEC 60417－5017:2002-10”(데이타베이스 표준의 입력 연월이 있는 참조)</p>
+<p>또한, J.7.3.2를 참조한다.</p></div>
+<div class="block"><p>J.8 숫자와 수치의 표시(representation of numbers and numerical values)</p></div>
+<div class="block"><p>J.8.1 모든 언어본에서 소수 부호는 그 선상에서 마침표( . )를 사용하여야 한다.</p></div>
+<div class="block"><p>J.8.2 만약 1보다 작은 어떤 값의 크기(절대값)가 소수 형태 안에서 사용된다면, 그 소수 부호는 0이 앞서 있어야 한다.</p>
+<p class="nb"><b>보기 0</b>&ensp;001</p></div>
+<div class="block"><p>J.8.3 연도를 지시하는 4자리 숫자를 제외하고는 소수 부호의 왼쪽이나 오른쪽으로 읽는 세자리 아라비아 숫자로 이루어진 각 묶음은 공백을 두어서 앞의 숫자와 뒤의 숫자를 각각 구분하여야 한다.</p>
+<p class="nb"><b>보기 23</b>&ensp;456  2 345  2.345  2.345 6  2.345 67  그러나 2015년과 같은 연도는 예외임.</p></div>
+<div class="block"><p>J.8.4 10진법, 벡터곱/외적(vector product) 및 데카르트곱(Cartesian product)으로 나타난 숫자 및 수치값의 곱셈을 표시할 때에는 곱셈기호(×)가 사용된다. 가운뎃점(ㆍ)은 벡터의 스칼라곱/내적(scalar product)과 유사한 경우(comparable cases)를 표시할 때 사용된다. 또한 가운뎃점은 보기 3과 보기 5에서 각각 보여지듯이, 스칼라곱과 복합단위(compound unit)를 표시할 때 사용될 수 있다.</p>
+<p class="nb"><b>보기 1</b>&ensp;A ＝ 80 mm × 25 mm</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p class="nb"><b>보기 3</b>&ensp;U ＝ RㆍI</p>
+<p class="nb"><b>보기 4</b>&ensp;＝ 2.5×10³ m</p>
+<p class="nb"><b>보기 5</b>&ensp;radㆍm2/kg</p>
+<p>숫자를 위한 곱셈기호의 개요는 KS A ISO 80000－2에 나와 있다.</p></div>
+<div class="block"><p>J.8.5 물리적 양의 값을 표현하기 위해 단위에 대한 국제기호(KS A ISO 80000 및 KS C IEC 60027 참조)가 사용되어야 한다.</p></div>
+<div class="block"><p>J.9 양, 단위, 기호 및 부호(quantities, units, symbols and signs)</p>
+<p>KS A ISO 80000 및 KS A IEC 80000에서 제시된 국제단위계(SI)를 사용한다. 양에 대한 기호는 가능한 한 KS C IEC 60027, KS A ISO 80000 및 KS A IEC 80000의 여러 부에서 선택되어야 한다.</p>
+<p>어떠한 값이라도 표현되는 단위는 표시되어야 한다.</p>
+<p>도, 분, 초(평면각의 경우)에 대한 단위 기호는 수치 바로 뒤에 위치되어야 하며, 모든 다른 단위 기호는 공백을 앞에 두어야 한다(부속서 I 참조).</p>
+<p>수학적 부호 및 기호는 KS A ISO 80000－2에 따라야 한다.</p>
+<p>사용된 양과 단위에 관련된 목록은 부속서 I에서 주어진다.</p></div>
+<div class="block"><p>J.10 수학적 공식(mathematical formulae)</p></div>
+<div class="block"><p>J.10.1 수학적 공식의 종류</p>
+<p>양 사이의 공식은 수치 사이의 공식보다 우선된다(왜냐하면 양 사이의 수학적 공식은 단위 선택이 자유로운데 반해, 수치 사이의 공식은 그렇지 않기 때문이다). 공식은 수학적으로 정확한 형태로 표현되어야 하고, 변수는 문자기호로 표시되며, “기호와 약어” 절에서 그 의미가 표시되지 않았다면 공식과 연결지어서 설명되어야 한다(6.3.2 참조).</p>
+<p>다음의 보기 1에서 표현된 형식을 따라야 한다.</p>
+<p class="nb"><b>보기 1</b>&ensp;</p>
+<p>여기에서</p>
+<p>V	：등속운동 시의 속도(km/h)</p>
+<p>l	：이동 거리(m)</p>
+<p>t	：걸린 시간(s)</p>
+<p>예외적으로, 수치 사이의 방정식이 사용된다면 다음의 보기 2에서 나타낸 형식을 따라야 한다.</p>
+<p class="nb"><b>보기 2</b>&ensp;</p>
+<p>여기에서</p>
+<p>V	：등속운동 시의 속도(km/h)</p>
+<p>l	：이동 거리(m)</p>
+<p>t	：걸린 시간(s)</p>
+<p>그러나 한 표준 내에서 양과 그에 대한 수치에 동일한 기호가 사용되어서는 안 된다. 보기를 들어, 보기 1의 방정식과 보기 2의 방정식을 동일 문맥에서 사용하면 명백히 부정확한 결과인 1 ＝ 3.6이라는 의미를 함축하게 된다.</p>
+<p>양의 서술적 용어 또는 명칭은 공식의 형태로 배열되어서는 안 된다. 보기를 들어, 기울임체나 아래첨자로 표현된 양의 명칭 또는 복수문자로 이루어진 약어는 기호가 놓일 위치에 사용되어서는 안 된다. 동일한 기호가 같은 표준 내에서 다른 양을 표현하는데 사용되어서는 안 된다.</p>
+<p class="nb"><b>보기 3</b>&ensp;다음과 같이 쓴다.</p>
+<p>다음은 허용될 수 없다.</p>
+<p class="nb"><b>보기 4</b>&ensp;다음과 같이 쓴다.</p>
+<p>dim(E) ＝ dim(F)‧dim(l )</p>
+<p>여기에서</p>
+<p>E	：에너지</p>
+<p>F	：힘</p>
+<p>l	：길이</p>
+<p>다음은 허용될 수 없다.</p>
+<p>dim(에너지) ＝ dim(힘)‧dim(길이) 또는 dim(에너지 ) ＝ dim(힘 )‧dim(길이 )</p>
+<p class="nb"><b>보기 5</b>&ensp;다음과 같이 쓴다.</p>
+<p>여기에서</p>
+<p>t    ：i 시스템의 통계치</p>
+<p>SME,i：i 시스템의 오차평균 제곱</p>
+<p>SMR,I ：i 시스템의 회귀에 의한 평균 제곱</p>
+<p>다음은 허용될 수 없다.</p>
+<p>여기에서</p>
+<p>ti ：i 시스템의 통계치</p>
+<p>MSEi ：i 시스템의 오차평균 제곱</p>
+<p>MSRi：i 시스템의 회귀에 의한 평균 제곱</p></div>
+<div class="block"><p>J.10.1.1  ,    및   또는 V(km/h), l/m 및 t/s 등의 표기는 수치를 표현할 때 사용되며, 특히 그래프의 축에서와 표의 행 제목을 쓸 때 유용하다.</p></div>
+<div class="block"><p>J.10.2 표현</p>
+<p>수식의 표현에 대한 지침이 ISO eServies 지침서 및 IEC에서의 정보기술 수단의 사용에 대한 지침서 – IEC IT 사용지침서(IEC IT Tools Guides)에 제시되어 있다. 가능한 한 1단계 이상의 아래첨자나 위첨자를 가지고 있는 기호(보기 1 참조)는 사용하지 않으며, 또한 2줄 이상의 형태(보기 3 참조)로 인쇄물에 포함된 모든 기호 및 식도 마찬가지이다.</p>
+<p>보다는 를 사용하는 것이 바람직하다.</p>
+<p>본문 내에서는  보다는 a/b를 사용하는 것이 바람직하다.</p>
+<p>수식을 표현할 때에는 보다는 의 형식을 사용할 것</p>
+<p>수학적 식의 표현에 대한 추가적인 보기가 보기 4부터 보기 6까지에 제시되어 있다.</p>
+<p>여기에서</p>
+<p>W	：역학 퍼텐셜</p>
+<p>x	：x 좌표</p>
+<p>t	：시간</p>
+<p>：x의 시간에 대한 미분계수</p>
+<p>Q	：전하</p>
+<p>V	：전위</p>
+<p>A	：자기벡터 퍼텐셜</p>
+<p>v	：속도</p>
+<p>여기에서</p>
+<p>x	：x 좌표</p>
+<p>t1	：첫 번째 분기점에서의 시간</p>
+<p>T	：주기</p>
+<p>：각진동수</p>
+<p>：초기상</p>
+<p>：감폭계수</p>
+<p>：숫자 3.141 592 6…</p>
+<p>질량부분을 표현하기 위해서는 다음의 표현방식으로도 충분하다.</p>
+<p>그러나 다음의 공식 표현도 가능하다.</p>
+<p>100 %</p>
+<p>“질량백분율” 등의 표현은 피하는 것이 좋다.</p></div>
+<div class="block"><p>J.10.3 	번호부여</p>
+<p>상호참조의 편의를 위해 표준 내의 모든 공식 또는 일부에 대해 번호를 붙여야 할 필요가 있다면 1부터 시작되는 아라비아 숫자에 괄호를 붙여 사용하여야 한다.</p>
+<p>(1)</p>
+<p>번호부여는 연속적이어야 하고 절, 표 및 그림의 번호부여 체계와 독립적이어야 한다. 수식의 세분[보기：(2a), (2b) 등]은 허용되지 않는다.</p>
+<p>부속서에서 공식의 번호부여는 5.2.6을 참조한다.</p></div>
+<div class="block"><p>J.10.4 	수치, 치수 및 공차</p>
+<p>수치 및 치수는 최소치 또는 최대치로 표시되어야 하고, 그들의 공차가 명확한 방식으로 명시되어야 한다.</p>
+<p class="nb"><b>보기 1</b>&ensp;80 mm×25 mm×50 mm (80×25×50 mm는 허용불가)</p>
+<p class="nb"><b>보기 2</b>&ensp;80 F ± 2 F 또는 (80 ± 2) F</p>
+<p class="nb"><b>보기 3</b>&ensp;＝ 220 × (1 ± 0.02) W/(m∙K)</p>
+<p class="nb"><b>보기 4</b>&ensp;(은 허용불가)</p>
+<p class="nb"><b>보기 5</b>&ensp;m</p>
+<p class="nb"><b>보기 6</b>&ensp;10 kPa에서 12 kPa까지 (10에서 12 kPa까지, 또는 10 － 12 kPa은 허용불가)</p>
+<p class="nb"><b>보기 7</b>&ensp;0 ℃에서 10 ℃까지 (0에서 10 ℃까지, 또는 0 － 10 ℃는 허용불가)</p>
+<p>오해를 방지하기 위해 백분율로 표현된 수치에 대한 허용오차는 수학적으로 정확한 형태로 표현되어야 한다.</p>
+<p class="nb"><b>보기 8</b>&ensp;범위를 나타내기 위해서는 “63 %부터 67 %까지”의 형태로 쓴다.</p>
+<p class="nb"><b>보기 9</b>&ensp;공차값과 함께 중심치를 표현하고자 할 때에는 “(65 ± 2) %”의 형태로 쓴다.</p>
+<p>“65 ± 2 %”의 형태는 사용되어서는 안 된다.</p>
+<p>각도(degree)는 소수점으로 구분되어도 좋다. 예를 들면, 1715보다는 17.25로 쓴다.</p>
+<p>또한, 부속서 I를 참조한다.</p>
+<p>단지 참고용(for information)으로 언급된 모든 수치나 치수는 요구사항(requirement)과 명백하게 구분이 가능하여야 한다.</p></div>
+<div class="block"><p>부속서 K</p>
+<p>(규정)</p>
+<p>국제적으로 표준화된 항목의 호칭</p></div>
+
+<h3 id="s24">K.1&emsp;표준의 체제</h3>
+<div class="block"><p>K.1 일반사항</p>
+<p>“국제적으로 표준화된 항목(internationally standardized item)”은 구체적 유형의 항목(재료 또는 제품)을 의미하거나 무형의 항목(프로세스 또는 시스템, 시험방법, 기호의 집합, 표기 및 어투의 요구사항)을 의미할 수 있다.</p>
+<p>한 항목에 대해 길게 설명하는 것보다 해당 항목이 독자적으로 구별되는 방법에 의해 간략한 호칭으로 표현하는 것이 편리한 경우가 많다. 위에 대한 보기로는 전시와 판매 시 문서, 카탈로그, 서면으로 된 정보문, 기술 및 과학 관련 문헌, 상품, 재료, 장비 주문서, 그리고 상품의 증여 등에서 항목에 제시된 참고문이 있다.</p>
+<p>항목에 대한 호칭체계(designation system)는 특정한 용도를 가진 비슷한 제품이 특정한 코드를 가지게 되는 상품 코드가 아니다. 또한 해당 제품이 표준화되었는지에 관계없이 모든 제품에 할당된 일반 제품 코드도 아니다. 오히려, 이것은 정보교환 시 신속하고 명확하게 항목설명을 전달되게 하는 표준화된 호칭 방식을 제공한다. 이 체계는 오직 동일한 국제표준, 지역표준, 국가표준에만 적용하기 위한 것이다. 그러므로 이는 관련 국제표준의 요구사항을 만족시키는 항목에 관해 국제적 수준의 상호 이해를 제공한다.</p>
+<p>이 호칭은 해당 표준의 전체 내용을 대신하는 것이 아니다. 어떤 표준이 무엇과 관련된 것인지 알기 위해서는 해당 표준을 참조할 필요가 있다.</p>
+<p>호칭체계는 상품 및 재료관련 표준에 특히 유용하다고 해도 선택항목을 포함하고 있는 모든 표준에 표현되어야 할 필요가 없다는 것을 주지하여야 한다. 제시된 표준에 호칭체계를 포함해야 할지를 판단하는 권한은 해당 기술심의회에 있다.</p></div>
+<div class="block"><p>K.1.1 제1쪽</p>
+<p>표준의 제1쪽 체제는 그림 K.1과 그림 K.2에 따른다.</p>
+<p>그림 K.1 — KS의 제1쪽의 체제</p>
+<p>그림 K.2 — 국제표준 부합화 KS의 제1쪽의 체제</p>
+<p class="nb"><b>비고 1</b>&ensp;발효연도는 제정연도(개정된 경우에는 최종 개정연도)를 기재한다. 다만 동일연도 내에 개정했을 때에는 개정연도 뒤에 “R”를 기재한다. 또한 이미 제정 또는 개정된 것을 확인했을 때에는 마지막 확인연도와 “확인” 문자를 괄호에 넣어서 “(○○○○ 확인)”으로 기재한다.</p>
+<p>다만, KS를 국제표준과 일치(IDT)시켜 제정 또는 개정하는 경우에는 KS의 발행연도 대신 국제표준의 발행연도를 사용한다.</p>
+<p class="nb"><b>비고 2</b>&ensp;KS인증대상 품목에 관한 표준에 대해서는 ㉿마크를 표준 명칭의 왼쪽에 기재한다.</p>
+<p class="nb"><b>비고 3</b>&ensp;국제표준과의 부합화 정도 등을 쉽게 구분하기 위하여，다음과 같은 방법으로 KS의 번호를 부여한다.</p>
+<p>a) 	KS를 국제표준과 일치(IDT)시켜 제정 또는 개정하는 경우에는 KS 및 분류기호와 국제표준의 종류, 번호 및 연도를 함께 표기한다.</p>
+<p class="nb"><b>보기 1</b>&ensp;ISO 9001:2015를 KS로 채택하여 2016년에 KS로 제정한 경우,</p>
+<p>KS Q ISO 9001:2015로 표기 (국제표준 발행연도를 그대로 표기)</p>
+<p>b) 	기존의 KS를 국제표준과 수정(MOD) 부합화하여 개정하는 경우에는 기존의 KS 번호를 그대로 사용하고 표준번호 밑부분에 국제표준번호를 표기한다.</p>
+<p class="nb"><b>보기</b>&ensp;KS C 6506을 IEC 60758:2001과 수정 부합화하여 2015년에 개정하는 경우에는</p>
+<p>KS C 6506:2015</p>
+<p>(MOD IEC 60758:2001)로 표기</p>
+<p>c) 	국제표준이 없는 품목을 KS로 신규 제정하는 경우와 기존 KS를 개정하는 경우는 현행 KS 번호부여방식에 따른다.</p>
+<p class="nb"><b>보기</b>&ensp;국제표준이 없는 기계분야 중 열 가스기기의 KS를 신규 제정하는 경우에는</p>
+<p>KS B 8207로 표기</p>
+<p>d) 	잠정표준의 경우에는 지침에 따른다.</p>
+<p class="nb"><b>보기</b>&ensp;IEC 표준(IEC 60100)을 KS로 채택하기 전에 잠정표준을 제정하는 경우에는</p>
+<p>PR-KS C 60100으로 표기</p></div>
+<div class="block"><p>K.1.2 제2쪽 이후</p>
+<p>표준서의 제2쪽 이후의 체제는 그림 K.3에 따른다.</p>
+<p>그림 K.3 — 표준의 제2쪽 이후의 체제</p>
+<p class="nb"><b>보기 1</b>&ensp;“한국산업표준 번호:연도”는 지면의 위쪽 모서리에 기재한다.</p></div>
+<div class="block"><p>K.1.3 	쪽 번호</p>
+<p>쪽 번호는 본체ㆍ부속서ㆍ해설을 통해서 일련 번호로 한다.</p></div>
+
+<h3 id="s25">K.2&emsp;표지</h3>
+<div class="block"><p>K.2 적용성</p></div>
+<div class="block"><p>K.2.1 각 표준화 항목은 여러 특성을 가지고 있다.</p>
+<p>시험방법에서 그들 특성과 관련시킨 값들은(예를 들면, 사용되는 황산 몰 용액의 부피나 시방서에서 접시머리 나사의 미세한 밀리미터 단위범위) 단수(산의 부피에서와 같은) 또는 복수(접시머리 나사의 길이 범위에서와 같은)라도 된다.</p>
+<p>표준 내에서 각 특성에 대한 단일 수치만이 존재할 때에는 표준의 번호를 언급하는 것만으로 충분하며 구분도 명확해진다. 여러 수치가 제시된 경우에는 사용자가 선택한다. 이런 경우에 표준의 번호만을 인용하는 것으로 사용자에게 그들의 필요성을 나타내는 것은 충분하지 않으며 정확한 수치나 해당범위에서의 수치도 함께 호칭된다.</p></div>
+<div class="block"><p>K.2.2 설명된 호칭체계는 다음 형태의 표준에 적용되어도 된다.</p>
+<p>—	두 개 이상의 선택사항이 있는 경우, 정의된 특성에 관련하여 시작하고 있는 문서</p>
+<p class="nb"><b>보기</b>&ensp;제품을 위한 시방서에서 대체 치수나 다른 특성 범위에서의 선택, 제품의 주어진 특성에 대한 가치를 결정하는 데 사용될 다양한 방법을 망라하는 포괄적인 표준에서 특정 시험방법의 선택, 해당표준에서 여러 개의 대안이 제시될 때 특정 시험변수에서 일정한 수치의 선택</p>
+<p>—	정보전달을 위해 선택되어야 할 용어 및 기호를 정의하는 표준</p>
+<p>d)	제품이나 재료 분야에서는 관련 표준 그 자체에, 혹은 다른 표준을 참조하여 해당 제품 또는 재료가 의도된 목적에 맞는 적합한 대상인지 확인할 수 있을 정도로 완전한 시방서가 제공되어야 하며 해당 표준의 요구사항에서는 하나 또는 그 이상의 대안이 포함되어 있어야 한다.</p>
+<p class="nb"><b>비고</b>&ensp;만약 호칭체계가 목적에 대한 해당 제품의 적합성을 불완전하게 정의한 설명서에 적용된 경우, 많은 해당 제도의 사용자는 해당 표준이 단지 “선택”의 측면에 관한 정보를 제공하기 위한 것이라고 하더라도 해당 표준이 특정 목적에 대한 적합성을 확인하는 데 필요한 다른 특성을 모두 포함하고 있을 것이라고 가정하게 되므로 구매자의 오해를 불러일으킬 수 있는 위험성을 내포하고 있다.</p></div>
+<div class="block"><p>K.2.3 호칭 체계는 자동 정보처리를 포함한 모든 종류의 통신 용도에 적합하다.</p></div>
+<div class="block"><p>K.3 호칭체계</p></div>
+<div class="block"><p>K.3.1 각 호칭은 “설명구역(description block)”과 “식별구역(identity block)”을 포함한다. 이 체계는 그림 J.1에 설명되어 있다.</p>
+<p>그림 K.1 — 호칭 체계의 구조</p></div>
+<div class="block"><p>K.3.2 설명된 호칭체계에서 모든 필요 특성과 그들의 수치를 확인하는 표준번호는 국제표준번호 구역에 포함되어 있고, 해당 특성에서 허용된 여러 수치 중에서 선택된 수치는 개별 항목 구역에 포함된다. 각 특성이 오직 단일 수치만 허용된 표준의 경우에는 개별 항목 구역이 호칭체계에서 표현될 필요가 없다.</p></div>
+<div class="block"><p>K.4 문자의 사용</p></div>
+<div class="block"><p>K.4.1 	호칭은 글자(letter), 숫자(digit), 기호(sign) 등의 문자로 구성되어야 한다.</p></div>
+<div class="block"><p>K.4.2 영문표준의 경우 글자는 주로 로마자가 사용되어야 한다. 대문자와 소문자 사이에는 어떤 의미 차이도 없어야 한다. 설명구역에서 일반적으로 기록과 인쇄에 사용되는 소문자는 자동 정보처리에서 대문자로 변환되어도 된다. 식별구역에서는 대문자가 선호된다</p></div>
+<div class="block"><p>K.4.3 숫자는 아라비아 숫자가 사용되어야 한다.</p></div>
+<div class="block"><p>K.4.4 오직 허용되는 기호는 붙임표(–), 덧셈부호(＋), 빗금(/), 쉼표/반점(,) 및 마침표/온점(.), 곱셈부호( )이어야 한다. 자동정보처리분야에서 곱셈부호는 문자 “X”를 사용한다.</p></div>
+<div class="block"><p>K.4.5 호칭에서는 읽기 쉽게 하기 위해 여백을 두어도 된다. 그러나 여백은 문자로 산출되지 않으며 자동정보처리분야에서 사용되는 호칭에서는 생략되어도 된다.</p></div>
+<div class="block"><p>K.5 설명구역</p>
+<p>설명구역은 소관 위원회에 의해 표준화된 항목으로 할당되어야 한다. 이 설명구역은 가능한 한 짧게 하여야 하고 해당 표준의 주제 분류에서 표준화 항목을 가장 잘 묘사하는 설명문을 우선적으로 채택한다(보기: 주요단어, 국제표준 분류). 해당 표준을 참조할 때, 설명구역의 사용은 선택사항이지만 사용된 설명구역은 국제표준번호 구역의 앞에 위치하여야 한다.</p></div>
+<div class="block"><p>K.6 식별구역</p></div>
+<div class="block"><p>K.6.1 일반사항</p>
+<p>식별구역은 표준화된 항목을 명확하게 호칭하는 방식으로 구성되어야 한다. 이는 두 개의 연속된 문자구역으로 구성되어 있다.</p>
+<p>—	최대 8문자로 구성된 국제표준번호 구역(“ISO”나 “IEC” 문자에 추가적으로 최대 5문자)</p>
+<p>—	최대 18문자(권장)로 구성된 개별 항목 구역(숫자, 글자, 기호)</p>
+<p>국제표준번호 구역과 개별 항목 구역 사이의 분리를 표시하기 위해서는 붙임표(–)가 개별 항목 구역의 첫 번째 문자가 되어야 한다.</p></div>
+<div class="block"><p>K.6.2 국제표준번호 구역</p></div>
+<div class="block"><p>K.6.2.1 국제표준번호 구역은 가능한 한 짧아야 한다(예를 들면, 첫 번째 ISO 표준의 경우 ISO 1로 표시함). 기계인식매체에 기록할 때에는 여백이나 영을 추가할 수 있다(예를 들면, “ISO 1” 또는 “ISO 00001”).</p></div>
+<div class="block"><p>K.6.2.2 만약 한 표준이 개정되고 이전 판에 표준화된 항목의 호칭방법이 포함되어 있다면 새로운 개정판에 호칭을 명시할 때 해당 표준의 이전 판에 따라 적용된 다른 호칭과 혼동되지 않도록 주의를 기울여야 한다. 일반적으로 이 요구사항은 쉽게 충족될 수 있고 따라서 국제표준번호 구역에 발행연도를 포함할 필요가 없다.</p></div>
+<div class="block"><p>K.6.2.3	추록이나 다른 개정판이 발행되었을 경우에 동일하게 적용하는 것은 그에 따라 표준화된 항목의 호칭도 변경되어야 한다.</p></div>
+<div class="block"><p>K.6.2.4 	만약 해당 표준이 여러 부로 구성되어 발행되고 개별적으로 관련되었다면 각 부의 숫자(또는 표준 내에서 필요한 경우 해당 기호)를 붙임표의 바로 뒤 개별 항목 구역 안에 나타내어야 한다.</p></div>
+<div class="block"><p>K.6.3 	개별 항목 구역</p></div>
+<div class="block"><p>K.6.3.1 	개별 항목 구역은 또한 가능한 한 짧고 해당 표준을 작성한 위원회의 관점에서 최대로 호칭 목적을 만족시키도록 작성되어야 한다.</p></div>
+<div class="block"><p>K.6.3.2 	화학약품, 플라스틱, 고무 등 특정한 제품에 대해 명확하게 호칭 항목에 관한 기호를 표기하기 위해서는 선택사항에도 불구하고 여러 방법이 존재하며 개별 항목 구역은 기호에 의해 대변되는 특정한 정보를 포함하고 있는 여러 개의 정보구역으로 더 세분되어도 된다. 이 구역은 예를 들면 붙임표 등의 분리기호로 상호 간에 분리되어야 한다. 내포된 코드(code)의 의미는 그들의 배치에 의해 경계지어져야 한다. 그러므로 하나 또는 그 이상의 정보구역을 만드는 것은 바람직하지 못하지만 공백은 중복하는 분리기호로 나타내어야 한다.</p></div>
+<div class="block"><p>K.6.3.3 	가장 중요한 변수는 가장 먼저 표시하여야 한다. 암호를 쓰지 않는 보통의 언어로 기입(예를 들면, “양모”)하는 것은 번역해야 할 필요가 있으므로 개별 항목 구역의 부분처럼 사용되어서는 안 된다. 따라서 기호입력으로 대체되어야 한다. 위의 기호입력에 대한 해설이 해당 표준에 제공되어야 한다.</p></div>
+<div class="block"><p>K.6.3.4	개별 항목 구역에서 문자 I 및 O를 사용하면 아라비아 숫자인 “일(one)” 및 “영(zero)”과 혼동을 일으킬 수 있으므로 피해야 한다.</p></div>
+<div class="block"><p>K.6.3.5 	만약 설명서에서 요구되는 자료의 가장 단순한 열거방법이 많은 수의 문자를 사용할 것이 요구된다면(예를 들면, “1 500 × 1 000 × 15”는 12개의 문자로 구성되어, 허용오차에 대한 설명도 없이 단지 크기에 대한 측면만 포함됨), 하나 혹은 그 이상의 문자로 암호화하고 해당 측면의 모든 가능성이 열거되도록 이중기호 표기를 사용할 수 있다(예를 들어, 1 500 × 1 000 × 15 ＝ A, 1 500×  2 000 × 20 ＝ B 등).</p></div>
+<div class="block"><p>K.6.3.6 	만약 둘 이상의 표준에서 하나의 제품에 대해 언급하고 있다면 그들 중의 하나는 제품을 호칭하기 위한 규칙(개별 표준화 항목의 호칭으로 구성됨)도 규정하고 있는 데에서 기초자료로 선정되어야 한다.</p></div>
+<div class="block"><p>K.7 보기</p></div>
+<div class="block"><p>K.7.1 ISO 656에 따른 정밀용으로 사용하기 위한 눈금간격이 0.2 ℃이고 주눈금이 58 ℃에서 82 ℃인 단일 폐쇄눈금온도계(short enclosed–scale thermometer)의 호칭을 위한 보기는 다음과 같다.</p>
+<p>온도계 ISO 656-EC-0.2-58-82</p>
+<p>이 호칭에서 구성요소는 다음의 의미를 가진다.</p>
+<p>—EC 짧은 폐쇄눈금온도계</p>
+<p>—0.2 눈금간격 ＝ 0.2 ℃</p>
+<p>—58-82 주눈금의 범위는 58 ℃에서 82 ℃</p>
+<p class="nb"><b>비고</b>&ensp;ISO 656에서는 오직 짧은 폐쇄눈금온도계만을 다루고 있으므로 이 호칭에서 “EC”라는 글자    를 생략할 수 있다.</p></div>
+<div class="block"><p>K.7.2 ISO 883에 따른 스로우 어웨이 초경 인덱서블 인서트(throw away carbide indexable insert)의 호칭을 위한 예는 삼각형, 여유각, 공차등급 G(정밀가공), 공칭치수 16.5 mm, 두께 3.18 mm, 좌승수 및 우승수에 사용되는 절삭날을 가진 코너 R 0.8 mm(ISO 1832에 따른 호칭), ISO 513에 따라 P20 적용그룹의 경우 다음과 같다.</p>
+<p>—Throwaway insert ISO 883-TPGN160308-EN-P20</p>
+<p>이 호칭에서 각 성분은 다음의 의미를 가진다.</p>
+<p>—T 형상에 관한 기호(삼각형)</p>
+<p>—P 여유각에 관한 기호(절삭날 여유각은 11°로 확인된다.)</p>
+<p>—G 공차등급 G(삼각형의 높이에서의 공차는 ±0.025 mm이고 인서트의 두께 ±0.13 mm)</p>
+<p>—N 단면형상에 관한 기호(N ＝ 특별한 형상 없음)</p>
+<p>—16 날 길이에 관한 기호(삼각형 평균치수 ＝ 16.5 mm)</p>
+<p>—03 두께에 관한 기호(3.18 mm)</p>
+<p>—08 모서리 형상에 관한 기호(코너 R ＝ 0.8 mm)</p>
+<p>—	E 모서리 가공상태에 관한 기호(둥근 절삭날)</p>
+<p>—N 절삭 방향에 관한 기호(좌승수 및 우승수 절삭 포함)</p>
+<p>—P20 화물 첨가에 관한 기호[강, 주강품, 긴 칩(chip)을 가진 가단주철]</p></div>
+<div class="block"><p>K.7.3 ISO 1580에 따라 M5형 나사, 공칭길이 20 mm, 제품등급 A, 특성등급 4.8인 홈 있는 냄비머리 나사의 호칭에 대한 보기는 아래와 같다.</p>
+<p>—홈붙이 냄비머리 나사 ISO 1580-M5×20-4.8(Slotted pan screw ISO 1580-M5× 20-4.8)</p>
+<p>이 호칭은 국제표준인 ISO 1580에 언급되어 있는데, 이 표준에는 홈붙이 냄비머리 나사의 호칭에 대한 보기는 아래와 같다.</p>
+<p>—미터나사의 공차에 관한 국제표준(ISO 965－2)은 차례로 기본 데이터에 관한 국제표준(ISO 965－1), 기본윤곽(ISO 68), 일반 도면(ISO 261) 및 표준치수(ISO 1502)를 참조하고 있다. 호칭에서 “M5” 성분은 관련 나사의 공차 등급이 b)에 언급된 표준에 지정되어 있다는 가정하에 위의 표준들 중 어떤 데이터가 지정된 나사와 관련이 있는지를 결정한다.</p>
+<p>—나사의 치수 및 다른 형상에서의 공차에 관한 국제표준(ISO 4759－1)은 범위 및 조립(ISO 286－1), 형상 및 위치의 공차(KS A ISO 1101), 나사 골(ISO 965－3) 및 표면 거칠기(KS A ISO 1101)에 관한 기호를 사용한다. 해당 나사의 관련 제품 등급(A)이 ISO 1580에서는 고정되어 있다. ISO 1580에서는 오직 하나의 제품 등급만을 지시하고 있으므로 호칭에서 제품등급이 A라고 언급하면 장황해진다.</p>
+<p>—파스너(fastener)의 기계적 특성에 관한 표준(KS B ISO 898－1)은 차례로 강의 인장 시험(ISO 6892), 경도시험(ISO 6506 및 ISO 6568) 및 충격시험(ISO 83)에 관한 국제표준을 참조하고 있다. 호칭에서 “4.8” 성분은 표준에서 어떤 데이터가 적절한지 결정하기에 충분하다.</p>
+<p>상대적으로 짧은 호칭을 가지는 해당 나사는 여러 국제표준이 연관되어 있다하여도 완전하게 정의된다.</p></div>
+<div class="block"><p>K.7.4 연질 셀룰로오스 아세테이트 내에서 A 절차로 에틸에테르(ethyl ether) 가용성 물질의 양을 결정하는 호칭의 보기는 아래와 같다.</p>
+<p>—시험방법, 셀룰로오스 아세테이트 ISO 1875-A</p></div>
+<div class="block"><p>K.8 국가적 도입</p></div>
+<div class="block"><p>K.8.1 	국제 호칭체계의 국가적 도입은 국제표준 그대로 국가표준으로 채택될 때에만 해당된다.</p></div>
+<div class="block"><p>K.8.2 국제표준의 국가적 이행에서 국제 호칭은 수정 없이 사용된다. 그러나 국가표준 식별번호는 설명구역과 국제표준번호 구역 사이에 삽입되어도 된다.</p>
+<p class="nb"><b>보기</b>&ensp;만약 나사의 국제 호칭이 아래의 것이라면,</p>
+<p>홈붙이 냄비머리 나사 ISO 1580-M5×20-4.8</p>
+<p>VN 4183이 ISO 1580에 대응하는 수정 없이 채택된 국가표준이라면 그의 국가 호칭은 다음과 같다.</p>
+<p>—홈붙이 냄비머리 나사 VN 4183-ISO 1580-M5×20-4.8</p></div>
+<div class="block"><p>K.8.3 만약 개별 항목이 국가 표준화되고 해당 항목이 대응되는 국제표준에서 설명된 항목과 일치하지는 않지만 동등하다면, 이 특정한 항목에 대한 표준화된 항목의 국제 호칭을 사용하는 것이 허용된다.</p>
+<p>만약 개별 항목이 국가 표준화되고 해당 항목이 대응되는 국제표준에서의 항목과 동등하지 않고 대응된다면, 표준화된 항목의 국가 호칭은 국제표준의 참조를 포함하지 않아야 한다.</p>
+<p>KS A ISO/IEC Guide 21-1 및 21-2의 지침에 따라, 국가표준이 국제표준과 동등하다면, 국가표준은 그 자체의 식별자가 국제표준 증명만을 사용하여도 된다.</p></div>
+
+<h2 class="annex" id="s26"><span class="ax">부속서 L</span><span class="axk">(참고)</span><span class="axt">머리말, 개요 등의 작성방법</span></h2>
+<div class="block"><p>부속서 L</p>
+<p>(참고)</p>
+<p>양과 단위</p></div>
+<div class="block"><p>L.1 일반사항</p>
+<p>ISO/IEC 기술작업지침서, 제2부 또는 양과 단위에 관련된 국제표준 및 국가표준에서 규정한 사항을 설명한다.</p></div>
+<div class="block"><p>L.2 단위 선택</p></div>
+<div class="block"><p>L.2.1 KS는 다음의 단위만을 사용하여야 한다.</p>
+<p>―	KS A ISO 80000과 KS A IEC 80000의 여러 부에서 제시된 SI 단위</p>
+<p>―	SI 단위와 함께 추가적인 몇 가지 단위가 사용된다. 즉, KS A ISO 80000－1:2012의 표 5와 표 6에서 나타낸 분(min), 시(h), 일(d), 도(°), 분(), 초(), 리터(L 또는 l), 톤(t), 전자볼트(eV) 및 돌턴(Da)이 있다.</p>
+<p>―	네퍼(Np)와 벨(B) 단위는 KS A ISO 80000－1 및 KS A ISO 80000－3에, 옥타브(oct) 단위는 KS A ISO 80000－8에 제시되어 있다.</p>
+<p>―	보(Bd), 비트(bit), 옥텟(o), 바이트(B), 얼랑(E), 하틀리(Hart), 정보측정량의 나트(nat) 및 샤논(Sh) 단위는 KS A IEC 80000－13에, 바(var) 단위는 전기기술 및 정보기술 용도로 KS A IEC 80000－6에 제시되어 있다.</p>
+<p class="nb"><b>비고</b>&ensp;KS A ISO 80000－3에서는 부피 단위 리터의 기호가 “l, L”로 제시되어 있다(1979년 CGPM은 대문자 L을 단위 리터의 두 번째 기호로 채택). 리터 기호 소문자 “l”(엘)은 숫자 “1”(일)과 혼돈되므로,  KS에서는 대문자 “L”을 소문자 “l”보다 우선적으로 사용한다.</p></div>
+<div class="block"><p>L.2.2 단위의 기호와 단위명을 결합시키지 않는다. 예를 들면, “시간당 킬로미터”나 “km/h”를 사용하고 “시간당 km”나 “킬로미터/시간”을 사용하지 않는다.</p>
+<p>“5 m”와 같이 숫자로 기록된 수치와 단위기호를 조합한다. “오 m” 및 “5미터” 등으로 조합하는 것을 피한다. 평면각에 사용되는 위첨자형 단위기호(보기: 5°67)의 경우를 제외하고, 수치와 단위기호 사이에 공간을 두어야 한다. 그러나, 각도(수치)는 십진법으로 세분되는 것이 좋다.</p></div>
+<div class="block"><p>L.2.3 초의 단위로 “s”를 사용하는 대신에 “sec”를 사용하거나 분의 단위로 “min” 대신에 “mins”를, 시간의 단위로 “h” 대신에 “hrs”를, 세제곱센티미터(cubic centimetre)의 단위로 “cm3” 대신에 “cc”를, 리터 단위로 “l” 대신에 “lit”를, 암페어의 단위로 “A” 대신에 “amps”를, 분당 회전수 “r/min” 대신에 “rpm”을 사용하는 등의 비표준화된 약어를 단위로 사용하지 않는다.</p></div>
+<div class="block"><p>L.2.4 국제적으로 표준화된 단위 기호는 아래첨자나 다른 정보를 첨가하여 수정되지 않아야 한다. 예를 들면, 아래와 같이 쓸 것.</p>
+<p>—	“Umax ＝ 500 V”이지, “U ＝ 500 Vmax”가 아니다.</p>
+<p>—	“질량분율 5 %”이지, “5 % (m/m)”이 아니다.</p>
+<p>—	“부피분율 7 %”이지, “7 % (V/V )”가 아니다.</p>
+<p>—	[% ＝ 0.01 및 ‰ ＝ 0.001은 순수한 숫자(pure number)임을 주지할 것]</p></div>
+<div class="block"><p>L.2.5 단위기호와 정보사항을 결합시키지 않는다. 예를 들면, “수분함량은 20 mL/kg”이지 “20 mL H2O/kg” 또는 “20 mL의 수분/kg”이 아니다.</p>
+<p>“ppm”, “pphm”, “ppb” 등의 약어는 사용되어서는 안 된다. 이것은 언어에 좌우되기 때문에 모호하고, 단지 숫자를 나타내며 언제나 숫자로 표현하는 것이 더 명확하므로 실제적으로는 필요하지 않다. 예를 들면, 다음과 같이 쓸 것.</p>
+<p>—	“질량분율은 4.2 g/g” 또는 “질량분율은 4.2 × 10－6”이지, “질량분율은 4.2 ppm”이 아니다.</p>
+<p>—	“상대불확도(relative uncertainty)는 6.7 × 10－12”이지, “상대불확도는 6.7 ppb”가 아니다.</p>
+<p>단위기호는 항상 정자체이고, 양기호는 항상 기울임체이다. 수치를 나타내는 기호는 그에 따른 양을 나타내는 기호와 구분되어야 한다.</p></div>
+<div class="block"><p>L.2.6 양 사이의 공식이 수치 사이의 공식보다 선호된다.</p>
+<p>“무게(weight)”의 양은 힘(중력)이며 뉴턴(N)으로 측정된다. “질량(mass)”값은 킬로그램(kg)으로 측정된다.</p>
+<p>몫 값은 해당 분모에 “단위”라는 단어가 포함되어서는 안 된다. 예를 들면 “길이당 질량” 또는 “선형 질량”이지 “단위길이당 질량”이 아니다.</p></div>
+<div class="block"><p>L.2.7 “표면”과 “면적”, “물체”와 “질량”, “저항기”와 “저항”, “도선”과 “유도전류” 등과 같이 대상과 해당 대상을 묘사하는 모든 양을 구분한다.</p>
+<p>다음 예와 같이 쓴다.</p>
+<p>—	“10 mm에서 20 mm”로 쓰며, “10에서 20 mm” 또는 “10 － 20 mm”로 쓰지 않는다.</p>
+<p>—	“0 ℃에서 10 ℃”로 쓰며, “0에서 10 ℃” 또는 “0－10 ℃”로 쓰지 않는다.</p>
+<p>—	“24 mm × 36 mm”로 쓰며, “24 × 36 mm” 또는 “(24 × 36) mm”로 쓰지 않는다.</p>
+<p>—	“23 ℃ ± 2℃” 또는 “(23 ± 2) ℃로 쓰며, “23 ± 2 ℃”로 쓰지 않는다.</p>
+<p>—	“(60 ± 3) %”로 쓰며, “60 ± 3 %” 또는 “60 % ± 3 %”로 쓰지 않는다.</p></div>
+<div class="block"><p>L.2.8 둘 이상의 물리량은 그들이 동일한 범주의 상호 비교 가능한 양의 범주에 속하지 않으면 더하거나 뺄 수 없다. 따라서, 230 V ± 5 % 등의 상대허용오차(relative tolerance)의 표현방법은 대수 기본법칙에 일치하지 않는다. 그 대신에 다음의 표현방법을 이용한다.</p>
+<p>—	“230 × (1 ± 5 %) V ”</p>
+<p>—	“(230 ± 11.5) V”</p>
+<p>—	“230 V, 상대허용오차 ±5 %”</p>
+<p>올바른 형식은 아니지만 다음의 형식도 자주 이용된다: (230 ± 5 %) V</p></div>
+<div class="block"><p>L.2.9 밑(base)이 명시될 필요가 있다면 공식에서 “log”를 쓰지 않는다. 대신 “lg”, “ln”, “lb”, 또는 “ ”로 쓴다.</p>
+<p>KS A ISO 80000－2에서 권장하는 수학기호와 부호를 사용할 것. 예를 들면, “tan”으로 쓰며 “tg”로 쓰지 않는다.</p>
+<p>수학적 공식과 표현에서 줄바꿈은 KS A ISO 80000－2를 따른다. 예를 들면, ＝, ＋, －, ± 및, 필요하다면 ×, ㆍ또는 / 기호의 앞이 아니라 뒤에서 행바꿈을 한다.</p></div>
+<div class="block"><p>L.3 국제표준을 신규 도입하는 경우</p>
+<p>Contents, Foreword, Introduction, Scope, Normative references, Terms and definitions 등은 다음과 같이 번역 또는 수록한다.</p>
+<p>•	Contents는 내용이 많지 않은 경우에는 생략하고, 내용이 많은 경우에는 목차로 수록함.</p>
+<p>•	Foreword 및 Introduction은 내용을 요약하여 머리말, 개요 또는 해설에 수록함.</p>
+<p>•	Scope는 적용범위에, Normtive references는 인용표준에, Terms and definitions는 용어와 정의에 수록함.</p></div>
+<div class="block"><p>부속서 M</p>
+<p>(규정)</p>
+<p>특허권</p></div>
+<div class="block"><p>M.1 일반사항</p>
+<p>기술 혁신이 현저한 분야의 표준 제정 활동을 할 때 특허권 등이 관련되는 경우가 있는데 지금까지 그 명확한 취급 절차가 없었다. 따라서 국가표준을 제안 할 때 자신이 가진 특허권을 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 실시를 허락한다.”는 뜻의 승낙서 제출이 있을 경우에는 국가표준이 가능하도록 특허권 등의 취급 절차를 정한다.</p></div>
+
+<h3 id="s27">M.2&emsp;용어</h3>
+<div class="block"><p>M.2 절차의 개요</p>
+<p>표준안에 특허권 등의 대상이 되는 기술이 포함되든가 포함될 가능성이 있는 경우에는 다음과 같은  절차를 취한다.</p>
+<p>여기에서 “특허권 등”이란 『특허법』 제87조 및 『실용신안법』 제11조의 규정에 의하여 설정 등록된 특허권(실용신안권)을 말하며, 출원 공개 후의 특허출원 및 실용신안 등록출원이란 특허법 제64조 및 실용신안법 제15조에서 규정하는 공개된 출원을 말한다. 다만, 특허권(실용신안권)자는 표준안을 신청할 때 전용 실시권자 또는 통상 실시권자와 사전 협의하여 신청하여야 한다.</p></div>
+<div class="block"><p>M.2.1 표준안 작성 단계</p>
+<p>A.산업표준화법 제5조에 근거하여 국가표준기관이 KS를 제정하고자 하는 경우</p>
+<p>—	특허권 등의 조사</p>
+<p>국가표준기관으로부터 표준안의 작성을 위탁 받은 자는 해당 안에 관계되는 기술을 대상으로 하는 특허권 등에 관한 조사를 하여 표준안에 그 결과를 첨부하여 국가표준기관에게 제출한다. 조사의 범위는 위탁을 받은 자가 알 수 있는 특허권 등을 초과할 필요는 없다.</p>
+<p>—승낙서 제출 의향의 사전 확인</p>
+<p>위탁받은 자는 상기 조사의 결과, 해당 표준안이 특허권 등의 대상이 되는 기술을 포함한다고 인정할 때는 해당 특허권 등의 권리자 또는 발명(고안)자에 대하여 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 해당 특허권 등의 실시를 허락한다.”는 뜻의 승낙서를 제출할 용의가 있다는 취지를 서면으로 확인하고 해당 서면을 표준안에 첨부하여 국가표준기관에게 제출한다. 다만 작성한 표준안이 대응하는 ISO/IEC 표준(ISO/IEC 기술작업지침서, 제2부 부속서 A에 준하는 것에 한한다.)과 일치하는 경우는 이에 한하지 않는다.</p>
+<p>B.산업표준화법 제6조에 근거하여 이해 관계인이 KS 제정을 신청한 경우</p>
+<p>—특허권 등의 조사</p>
+<p>표준안을 신청한 자는 표준안에 해당 표준안과 관계되는 특허권 등에 관련된 조사 결과를 첨부하여 국가표준기관에게 제출한다.</p>
+<p>—승낙서 제출 의향의 사전 확인</p>
+<p>신청자는 상기 조사의 결과 해당 표준안이 특허권 등의 대상이 되는 기술을 포함한다고 인정할 때는 해당 특허권 등의 관리자 또는 발명(고안)자에 대하여 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 해당 특허권 등의 실시를 허락한다.”는 뜻의 승낙서를 제출할 용의가 있다는 취지를 서면으로 확인하고 해당 서면을 표준안에 첨부하여 국가표준기관에게 제출한다. 다만, 작성한 표준안이 대응하는 ISO/IEC 국제표준과 일치하는 경우는 관계없다.</p></div>
+
+<h4 id="s28">M.2.2&emsp;한정, 접속 등에 사용하는 말</h4>
+<div class="block"><p>M.2.2 산업표준심의회의 심의 단계</p>
+<p>—특허권 등의 조사</p>
+<p>산업표준심의회의 기술심의회 및 전문위원회는 표준안을 심의할 때 위원장은 위원들에게 심의 대상 표준안에 관련된 특허권 등에 관하여 그 존재, 권리자명, 등록 번호 등의 확인을 요청한다.</p>
+<p>—승낙서 제출</p>
+<p>산업표준심의회에서의 심의 과정에서 심의되고 있는 표준안이 특허권 등의 대상이 되는 기술을 포함한다고 인정할 때는, 산업표준심의회 사무국은 해당 특허권 등의 관리자 또는 발명(고안)자에 대하여 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 해당 특허권 등의 실시를 허락함을 승낙한다.”는 취지를 서면으로 제출하도록 요청한다. 다만, 작성한 표준안이 대응하는 ISO/IEC 국제표준과 일치하는 경우는 관계없다.</p>
+<p>C.</p>
+<p>—의결 조건</p>
+<p>전문위원회 및 기술심의회는 상기 승낙서의 제출이 있는 경우에 한하여 해당 표준안을 검토한다. 또한 표준안이 전문위원회를 거친 경우에 전문위원회의 심의 과정에서 제출된 승낙서가 있으면 기술심의회는 의결할 수가 있다.</p></div>
+<div class="block"><p>M.2.2.1 “이상”과 “이하” 그리고 “초과”와 “미만”의 사용법</p>
+<p>“이상”과 “이하” 그리고 “초과”와 “미만”의 사용법은 다음에 따른다.</p>
+<p>a) “이상”과 “이하”는 그 앞에 있는 수치를 포함시킨다.</p>
+<p>b) “초과”와 “미만”은 그 앞에 있는 수치를 포함시키지 않는다.</p>
+<p class="nb"><b>비고</b>&ensp;최대허용치 및 최소허용치를 나타내는 경우에는 각각 “최대” 및 “최소”를 사용한다.</p></div>
+<div class="block"><p>M.2.2.2 “와(과)”와 “및”의 사용법</p>
+<p>“와(과)”와 “및”의 사용법은 다음에 따른다.</p>
+<p>a) “와(과)”는 두 개의 용어를 연결할 때에 사용한다. 다만, 두 개의 용어가 밀접한 관계를 갖거나 직접적인 관련성이 있는 경우에 한하며, 관련성이 없는 용어의 단순한 나열인 경우, “와(과)”로 연결하는 것이 어울리지 않는 경우에는 “및”을 사용하여도 좋다.</p>
+<p class="nb"><b>보기</b>&ensp;용어와 정의</p>
+<p>b) “및”은 병합의 의미로 병렬하는 어구가 세 개 이상일 때 그 접속에 사용한다. 처음을 쉼표로 구분하고 마지막 어구를 잇는 데 사용한다. 병렬하는 어구의 관계가 복잡한 경우에 한하여 “및”의 바로 앞에 쉼표를 삽입하여도 좋다.</p>
+<p class="nb"><b>보기</b>&ensp;양, 단위 및 기호</p></div>
+<div class="block"><p>M.2.2.3 “또는”과 “혹은”의 사용법</p>
+<p>“또는”과 “혹은”의 사용법은 다음에 따른다.</p>
+<p>a) “또는”은 선택의 의미로 병렬하는 어구가 두 개일 때 그 접속에 사용하고 세 개 이상일 때는 처음에 있는 것을 쉼표로 구분하고 마지막 어구를 연결하는 데 사용한다. 애매함을 피하기 위하여 “(이)나”를 사용하지 않는다. 병렬하는 어구의 관계가 복잡한 경우에 한하여 “또는” 바로 앞에 쉼표를 삽입하여도 좋다.</p>
+<p>b) “혹은”은 선택의 의미로 “또는”을 사용하여 병렬한 어구를 다시 선택의 의미로 나눌 때 사용한다.</p></div>
+<div class="block"><p>M.2.2.4 “및/또는”의 사용법</p>
+<p>“및/또는”은 병렬하는 두 개의 어구 양자를 병합한 것 및 어느 한 쪽씩의 3가지를 일괄하여 엄밀하게 나타내는 데 이용한다.</p>
+<p>혼동되는 경우에는 분해하여 열거하면 된다.</p>
+<p class="nb"><b>보기</b>&ensp;“A법 및/또는 B법에 따라… …” 대신에 다음과 같이 한다.</p>
+<p>다음 중 어느 쪽에 따라… … .</p>
+<p>— A법 및 B법</p>
+<p>— A법</p>
+<p>— B법</p></div>
+<div class="block"><p>M.2.2.5 “경우”, “때” 및 “시”의 사용법</p>
+<p>“경우”, “때” 및 “시”의 사용법은 다음에 따른다.</p>
+<p>a) “경우”와 “때”는 한정조건을 나타내는 데 사용한다. 다만, 한정조건이 이중으로 있는 경우에는 큰 쪽의 조건에 “경우”를 사용하고, 작은 쪽의 조건에 “때”를 사용한다.</p>
+<p>b) “시”는 시기 또는 시각을 명확히 할 필요가 있을 경우에 사용한다.</p></div>
+<div class="block"><p>M.2.2.6 “부터”, “까지” 및 “보다”의 사용법</p>
+<p>“부터”와 “까지”는 각각 때, 장소 등의 기점 및 종점을 나타내는 데 사용하고, 그 앞에 있는 수치 등을 포함시킨다.</p>
+<p>“보다”는 비교를 나타내는 경우에만 사용하고, 그 앞에 있는 수치 등을 포함시키지 않는다.</p></div>
+<div class="block"><p>M.2.2.7 “또한”과 “다만”의 사용법</p>
+<p>문장의 처음에 접속사로 놓는 “또한”은 주로 본문 안에서 보충적 사항을 기재하는 데 사용한다. “다만”은 주로 본문 안에서 제외 보기 또는 예외적인 사항을 기재하는 데 사용한다.</p></div>
+<div class="block"><p>M.2.3 산업표준심의회의 검토 완료 단계</p>
+<p>산업표준심의회 등의 결과 새롭게 해당 표준안이 특허권 등의 대상이 되는 기술을 포함한다는 것이 판명되었을 때, 산업표준심의회 사무국은 해당 특허권 등의 권리자 또는 발명(고안)자에 대하여 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적 조건으로 해당 특허권 등의 실시를 허락함을 승낙한다.”는 취지를 서면으로 제출하도록 요청한다.</p>
+<p>요청의 결과 상기 승낙서가 제출되지 않은 경우에는 해당 특허권 등의 대상이 되는 기술을 제외한 표준안을 산업표준심의회에 상정하여 재심의를 의뢰한다.</p></div>
+<div class="block"><p>M.2.4 표준안 기재</p>
+<p>특허권 등의 대상이 되는 기술을 포함한다고 판단되는 국가표준을 제정하고자 할 때는 국가표준의 개요에 다음과 같이 기재하는 것이 좋다.</p>
+<p>아울러 국가표준의 해설에 다음과 같이 기재하는 것이 바람직하다.</p>
+<p>또 해당 특허권자의 동의가 얻어진 경우에는 아래 사항 등 참고가 되는 정보를 기재하기를 권장한다.</p>
+<p>또 특허권 등의 존재가 확인되지 않은 경우에는 국가표준의 머리말에 다음과 같이 기재하는 것이 좋다.</p></div>
+<div class="block"><p>M.2.5 국가표준 발행 후</p>
+<p>—특허권 등의 조사</p>
+<p>국가표준 발행 후, 특허권 등이 누구에게나 “무상으로 허락”, 또는 “비차별적이고 합리적인 조건으로 실시가 허락”되지 않고 국가표준의 이용에 지장이 생겼다고 의심이 갈 때는 국가표준기관은 해당 국가표준의 이용 상황 등을 조사한다. 국가표준기관은 이 조사 시에 해당 국가표준의 이용에 지장이 생긴 원인이 되는 특허권 등과 해당 국가표준의 관계에 대해 이의가 있을 경우에 해당 국가표준의 개정 또는 폐지로 인하여 사회, 경제에 미치는 영향이 특별히 큰 경우나 필요하다고 인정할 때는 특허출원의 심사청구(특허법 제59조) 및 실용신안등록출원 심사의 청구(실용신안법 제12조) 등에 따라 해당 저촉 관계를 명확히 할 수 있다. 또한 국가표준기관은 특허권 등이 확인된 표준에 대하여 필요에 따라서 특허권 등이 권리의 하자(무효 심판 등), 내용 변경 등에 의하여 특허권 등의 변동 사항이 발생하였는지의 여부를 특허청에 확인할 필요가 있다.</p>
+<p>—	국가표준의 개정 또는 폐지</p>
+<p>국가표준기관은 특허권 등의 조사 결과, 국가표준의 적절한 이용이 방해받고 있다고 인정될 때는 적절한 이용이 확보되도록 국가표준을 개정 또는 폐지한다.</p></div>
+<div class="block"><p>M.2.6 	국가표준 확인 업무</p>
+<p>—특허권 등의 조사</p>
+<p>국가표준기관은 국가표준 확인 시, 특허권 관련 사항을 점검한다. 특허권이 포함되지 않은 경우, 국가표준 머리말에 해당 문구가 포함되어 있는지 여부를 조사하고 이에 따른 저작권 관련 정형문을 추가하고 관련 확인 업무를 수행한다.</p>
+<p>D.	특허권이 포함된 경우는 머리말 및 해설에 적절히 선언되었는지 여부를 확인하고 해당 사항을 모두 개정하도록 한다.</p>
+<p>—국가표준의의 개정</p>
+<p>국가표준기관은 상기 조사의 결과, 국가표준 확인 업무가 적절히 수행되었다고 인정될 때는 국가표준이 적절하게 이용되도록 국가표준을 개정한다.</p></div>
+
+<h3 id="s29">M.3&emsp;서술부호</h3>
+<div class="block"><p>M.3 개정 절차의 준용</p>
+<p>이 부속서의 절차는 개정 업무에도 준용한다.</p></div>
+<div class="block"><p>M.3.1 부호의 종류</p>
+<p>문장의 서술에 사용하는 부호는 구두점ㆍ인용부호ㆍ연속부호ㆍ생략부호ㆍ괄호로 한다.</p></div>
+<div class="block"><p>M.3.2 문장 부호</p>
+<p>구두점에는 마침표 “ . ”, 쉼표 “ , ”, 가운뎃점 “ㆍ” 및 쌍점 “ : ”을 사용하고, 이것들의 사용법은 다음에 따른다. 또한 반쌍점 “ ; ”은 사용하지 않는다.</p></div>
+<div class="block"><p>M.3.2.1 마침표 “ . ”은 문장의 끝에 붙인다. 또한 “...일 때”, “...경우” 등으로 끝나는 항목의 병렬 등에 사용한다. 다만, 제명, 기타 간단한 어구를 드는 경우, 사물의 명칭을 병렬하는 경우 등에는 사용하지 않는다.</p></div>
+<div class="block"><p>M.3.2.2 쉼표 “ , ”는 보통, 문장 중에서 어구의 끊김 또는 계속을 명확히 하기 위하여 다음과 같은 경우에 붙인다.</p>
+<p>—“(은)는”, “도” 등을 수반한 주제가 되는 말의 뒤</p>
+<p>—조건 및 제한을 나타내는 구의 뒤</p>
+<p>—명사를 두 개 이상 병렬하고 뒤에 “및”, “또는” 등을 붙이는 경우</p>
+<p>—대등 관계로 나열하는 두 개 이상의 같은 종류의 구를 “등”, “기타” 등으로 받는 경우 및 이러한 구를 “및”, “또는” 등의 접속사로 연결하는 경우</p>
+<p>—문장의 처음에 부사 또는 접속사를 놓는 경우에 그 부사 또는 접속사의 뒤</p>
+<p>—기타, 쉼표가 없으면 오해를 일으킬 우려가 있는 경우</p></div>
+<div class="block"><p>M.3.2.3 가운뎃점 “ㆍ”은 가능한 한 사용하지 않는 것이 좋다. 다만, 다음과 같은 경우에 한하여 사용하는 것이 허용된다. 중점을 사용하는 경우에는 마지막 말을 “및”, “또는” 등의 접속사로는 잇지 않는다. 가운뎃점은 5.2.5의 가운데 큰점(bullet)과 다르다.</p>
+<p>—명사를 병렬하는 경우 등, 쉼표로 구분 짓는 것으로 문장을 읽기 어려운 경우</p>
+<p>—조항 제목, 항목, 표 등에서 명사의 연결 등의 경우에 배치를 잘 하고 싶은 경우</p>
+<p>—두 개 이상의 명사의 각각에 같은 수식어구 등이 걸리는 경우</p>
+<p class="nb"><b>보기 1</b>&ensp;재료ㆍ치수ㆍ질량</p>
+<p class="nb"><b>보기 2</b>&ensp;반복 부호ㆍ구두점 등</p>
+<p class="nb"><b>보기 3</b>&ensp;시정조치ㆍ예방조치(이 경우, “시정ㆍ예방조치”라고 하지 않는다.)</p></div>
+<div class="block"><p>M.3.2.4 쌍점 “ : ”은 식 또는 문장 중에 사용한 용어ㆍ기호를 설명할 때에 그 용어ㆍ기호 다음에 붙인다.</p></div>
+<div class="block"><p>M.3.4 연속부호</p>
+<p>연속부호(물결표) “∼”는 “…부터 …까지”의 의미를 부호로 나타내는 경우에 사용한다. 연속부호로 나타내는 범위에는 앞뒤의 수치를 포함시킨다.</p>
+<p>그리고 이 경우에 단위를 나타낼 필요가 있을 때에는 수치 뒤에 모두 단위기호를 붙이거나 소괄호 “( )”로 묶고 뒤에 단위기호를 붙인다.</p></div>
+<div class="block"><p>M.3.5 생략부호</p>
+<p>생략부호 “…”는 어구를 생략하는 경우에 사용한다.</p></div>
+<div class="block"><p>M.3.6 괄호</p>
+<p>소괄호 “(  )”와 대괄호 “[  ]”를 보충, 주해 등에 사용하되, 일반적으로 소괄호를 사용한다. 대괄호는 이미 소괄호를 사용하고 있는 부분을 다시 괄호로 싸야 할 경우에 사용한다.</p>
+<p>중괄호 “{  }”는 다른 단위계에 의한 수치를 병기하는 경우에 한하여 사용한다.</p></div>
+<div class="block"><p>부속서 N</p>
+<p>(참고)</p>
+<p>해설 작성방법</p></div>
+<div class="block"><p>N.1 해설서의 머리말</p>
+<p>해설서의 일반적인 정형문은 다음과 같다.</p>
+<p>“이 해설은 본체 및 부속서(규정)에 규정한 사항, 부속서(참고)에 기재한 사항 및 이들과 관련된 사항을 설명하는 것”으로 표준의 일부는 아니다.”</p></div>
+<div class="block"><p>N.2 해설의 내용</p>
+<p>해설에 서술하는 내용은 각각의 표준에 따라 다르므로 일률적으로 지정할 수는 없지만, 다음 사항 중에서 필요한 것을 골라서 작성한다</p>
+<p>국제표준을 부합화하여 KS를 제정 또는 개정하는 경우에는 위의 사항을 변경하여 작성할 수 있다</p></div>
+<div class="block"><p>N.3 제정 또는 개정의 취지</p>
+<p>표준을 제정 또는 개정할 때에는 제정 또는 개정의 취지, 즉 배경, 목적 또는 이유가 있다. 표준의 제정 또는 개정의 취지는 먼저 원안의 작성에 앞서 명확하게 해둠으로써 표준의 사용자가 표준의 내용을 이해하고 효과적으로 활용하기 위해서 필요하며, 또한 차기의 표준의 재검토, 개정을 맡는 자에게도 필요한 것이다.</p>
+<p>표준을 신규 제정하는 경우에 표준의 규정항목 및 규정내용을 결정짓는 것은 표준화의 목적이다.</p>
+<p>e) 표준의 개정은 그 표준 내용이 관계되는 기술의 진보, 수용의 변화, 사회 환경의 변화(행정상, 국제화 등) 등 이유가 다양하므로 주된 개정 내용과 그 이유에 대하여 구체적으로 서술한다. 개정의 경우에 신규 제정 시의 취지 개요, 또한 몇 회의 개정을 거친 경우에는 중요한 개정별로 써서 남겨 둘 필요가 있다.</p>
+<p>f) 그 표준의 제정ㆍ개정에 의해 다른 표준에 영향을 미치는 경우에는 그 관계, 경과조치 등에 대하여 여기서 서술해 두면 좋다.</p></div>
+<div class="block"><p>N.5 심의 중에 특히 문제가 된 사항</p>
+<p>원안 작성, 검토 및 심의 단계에서 특별히 문제가 된 사항으로, 그 표준의 이해와 적용에 도움이 된다고 생각되는 것을 기록한다. 여기에서 기재하는 문제사항 중 다음 회의 재검토, 개정 시의 재검토하여야 할 사항은 현안사항의 항에도 정리하여 기록한다(M.9 참조).</p>
+<p>표준의 규정항목의 내용 설명에 관계되는 것을 별항(M.8 참조)을 만들어서 상술하는 경우에는 이 항에서는 그 표준에 정해진 규정항목의 결정에 관한 논의, 시기상조라서 다뤄지지 않았던 사항, 소수의견으로 채택되지 않았던 사항 등 표준에 나타내지 않았지만 중요하다고 인정된 사항을 서술한다.</p>
+<p>특정한 의견을 서술하는 경우에는 회의록에 기재되어 있는 것 중에서 고르도록 하고, 편파적이지 않고 균형감 있는 서술이 되도록 하여야 한다.</p></div>
+<div class="block"><p>N.7 적용범위</p>
+<p>—	관련된 법령(고시, 지침을 포함)을 고려해야 하는 경우, KS와의 관계에 대하여 기재한다.</p>
+<p>—	대응국제표준이 있는 경우에는 그 국제표준의 적용범위와 그 KS의 적용범위의 차이에 대하여 상세하게 나타낸다. 적용범위의 차이는 국제표준과의 부합성의 판단을 위하여 중요하다.</p></div>
+<div class="block"><p>N.8 규정요소의 규정항목의 내용</p>
+<p>b)표준수 및 값의 근거</p></div>
+<div class="block"><p>N.10 그 밖의 해설사항</p>
+<p>—참고문헌에 기재한 표준, 그 밖의 문서에 관한 특기사항</p>
+<p>—국제표준의 국가표준 채택의 경우, 표준 용어를 선정할 때 경합이 있어 심의회 및 차기 개정에 계속 검토가 필요한 용어와 정의</p>
+<p>—부속서(규정), 부속서(참고)에 대한 경위, 붙인 이유, 이것의 취급, 필요하다면 내용의 보충설명. 앞으로 폐지할 예정으로 부속서(규정), 부속서(참고)로서 기재된 경우에는 가능하면 폐지의 목표 시기, 준비체제 등</p>
+<p>—그 표준에 관계되는 주변 기술의 설명</p>
+<p>—참고문헌 일람 표준의 본체ㆍ부속서(규정)만이 아니라 부속서(참고), 해설에 기재한 사항에 대하여 참조하면 좋은 문헌</p></div>
+<div class="block"><p>N.11 해설 작성 시의 전반적 주의사항</p>
+<p>—해설은 표준을 사용하는 많은 사람들이 규정 내용의 배경과 취지를 이해하여 보다 적절하게 활용할 수 있도록 표준 본체를 보충하는 것이므로, 해설의 서술내용은 공정하고 객관적이어야 한다. 따라서 해설의 내용이 표준의 일부분인 것 같은 오해를 주지 않도록 서술하여야 한다. 그러기 위해서는 표준에 정해져 있지 않은 사항의 설명은 최소한에 그치는 것이 좋다.</p>
+<p>—해설의 문장을 쓰는 방법, 사용하는 용어와 정의, 비고 및 보기, 그림과 표, 양과 단위와 수학적 표현은 표준안 작성 방법과 같다. 해설에서 각주 번호는 해설 안에서 일련번호로 하고 그림 및 표와 부도 및 부표는 그 해설 안에서 일련번호를 붙인다.</p>
+<p>—해설에서 본체, 부속서(규정), 부속서(참고)의 조항, 그림, 표 등에 참조 할 때. 참조되는 내용을 쓰고 굵은 글자체로 괄호 안에 부기한다.</p>
+<p class="nb"><b>보기 11</b>&ensp;양와 단위, 수학식(8절)</p>
+<p>11.1 양의 기호(7.4.1, d)</p>
+<p>g)</p>
+<p>—연도는 원칙적으로 서기로 나타낸다. 표준의 제정ㆍ개정의 경위 등에서 구 표준, 개정 경력을  부르는 경우에는 1962년판, 1982년 개정, 제3회 개정 등과 같이 기록한다.</p>
+<p>—해설은 본체와 부속서(규정)와 달리 산업표준심의회의 의결 대상은 아니다. 그러나 그 내용은 표준의 해석에도 영향을 줄 우려가 있으므로, 해설도 표준안에 붙여서 기술심의회 및 전문위원회에 제출할 것을 권고한다. 해설의 작성자 성명 및 소속을 해설의 말미에 기재한다.</p></div>
+<div class="block"><p>부속서 O</p>
+<p>(참고)</p>
+<p>한국산업표준의 부문과 부문 기호</p>
+<p>O.1 	한국산업표준의 분류체계</p></div>
+
+<h2 class="annex" id="s30"><span class="ax">부속서 P</span><span class="axk">(규정)</span><span class="axt">추록</span></h2>
+<div class="block"><p>-삭  제-</p></div>
+<div class="block"><p>P.1 일반사항</p>
+<p>추록에 의한 개정은 표준을 신속하게 개정하고, 개정 내용을 원활하게 실시하기 위하여 그 시점에서 유효한 표준의 규정요소에 한정된 일부의 변경, 추가 또는 삭제하는 경우에 추록을 발행함으로써 실시한다.</p>
+<p class="nb"><b>비고</b>&ensp;추록을 사용할 것인지 표준 전체를 개정판으로 할 것인지는 개정 내용의 규모, 표준 사용자의 편의 등을 고려하여 결정한다.</p></div>
+<div class="block"><p>P.2 운용</p>
+<p>추록의 운용은 다음에 따른다.</p>
+<p>a)하나의 추록은 하나의 기술적 내용의 이유에 의한 개정을 다루고, 두 개 이상의 기술적 내용을 개정하는 경우에는 추록에서의 개정은 실시하지 않는다.</p>
+<p>b)동일한 표준의 추록에 의한 개정은 보통 2회까지로 한다. 다만, 표준의 특성에 따라 본문을 빈번하게 개정하는 것이 합리적이지 않은 경우 등은 이에 따르지 않는다. 또한 전회의 추록에서 개정된 부분에 대해서는 추록에 의하여 개정하지는 않는다.</p>
+<p>c)국제일치표준으로 하는 경우에는 위의 각 항에 따르지 않아도 좋다.</p>
+<p>d)복수의 대응국제표준의 추록을 정리하여 하나의 추록으로 하는 경우, 표준의 추록의 번호가 어긋나지 않도록 한다.</p>
+<p>e)대응국제표준의 기술적 정오표 및 추록을 정리하여 하나의 추록으로 하는 경우, 표준의 기술적 정오표 및 추록의 번호가 어긋나지 않도록 한다.</p></div>
+<div class="block"><p>P.3 서술방법</p>
+<p>추록의 서술은 다음에 따른다.</p>
+<p>a) 추록에는 다음의 보기와 같은 머리말을 만든다.</p>
+<p>1) 대응국제표준이 있는 경우의 추록의 보기</p>
+<p>“이 추록은 20××년 제×판으로 발행된 ISO ×××××:…(영문 명칭)…의 Amendment ×를 기초로 기술적 내용 및 추록의 서식을 변경하지 않고 작성한 한국산업표준의 추록이다.”</p>
+<p>2) 대응국제표준이 없는 경우의 추록의 보기</p>
+<p>“이 추록은 KS × ××××：19××(개정 전의 발행연도)가 20××년 ××월 ××일자로 개정됨에 따라 발행된 것이다.”</p>
+<p>b) 추록의 서술은 개정의 대상이 되는 조항, 단락, 세별, 그림 또는 표를 단위로 해서 구분한다. 공통된 개정 내용이라도 복수의 단위를 일괄하여 서술하지는 않는다.</p>
+<p>c) 각 단위의 표기는 가는 가로선을 사용하여 구분하고, 대상으로 하는 표준의 조항 등의 배열 순서에 따라 배열한다.</p>
+<p>d) 개정 부분의 지시는 다음의 보기에 따른다.</p>
+<p class="nb"><b>보기 1</b>&ensp;5.5.8(표시, 라벨 및 포장)을 다음의 문장으로 바꾼다.</p>
+<p class="nb"><b>보기 2</b>&ensp;A.5.7의 제2단락을 삭제한다.</p>
+<p class="nb"><b>보기 3</b>&ensp;6.8.2(특정분야의 품질경영시스템 내용의 취급방법)와 7.(국제표준을 기초로 해서 표준을 작성하는 경우의 특별한 보충사항)과의 사이에 다음 세분조항을 삽입한다.</p>
+<p class="nb"><b>보기 4</b>&ensp;조항 10.(표시)의 다음에 부속서 A를 추가한다.</p>
+<p>e) 대응국제표준의 추록에 대응하는 추록에서의 개정은 b)에서 d)까지의 규정에 관계없이 대응국제표준의 추록에 준한 것으로 한다.</p></div>
+<div class="block"><p>P.4 체제</p>
+<p>추록의 체제는 표준의 체제에 따른다(부속서 K 참조).</p></div>
+<div class="block"><p>부속서 Q</p>
+<p>(참고)</p>
+<p>한국산업표준의 부문과 부문 기호</p>
+<p>한국산업표준의 부문과 부문 기호는 다음과 같다.</p></div>
+
+<div class="foot">ⓒ 2026 한국디지털문서플랫폼협회 · AcademiQ(www.academiq.life) · 무단 복제·배포 금지 — 교육 목적 외 사용을 금합니다<br>
+비공식 재구성 발췌본 · KS A 0001의 저작권은 원 저작권자에게 있습니다</div>
+
+</body>
+</html>
