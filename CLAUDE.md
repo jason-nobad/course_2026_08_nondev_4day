@@ -8,13 +8,14 @@ Course materials for **「AX 워크톤 부트캠프 — 비개발자 4일 오후
 
 All content is in Korean. Write new or edited material in Korean and reuse the course's own vocabulary (see below).
 
-Participants **fork this repo** as their pair's team repository and commit all four days of deliverables into it. `README.md` is the participant-facing entry point (Korean): pre-course prep, fork instructions, day-by-day roadmap, the recommended output folders (`skills/`, `workflow/`, `docs/`, `tool/`, `_workspace/`, root `index.html`), a Day-4 package template section, and GitHub Pages steps. Keep README.md, `Docs/01_participant_guide.pdf`, and the slides consistent with each other when any of them changes.
+Participants **fork this repo** as their pair's team repository and commit all four days of deliverables into it. `README.md` is the participant-facing entry point (Korean): pre-course prep, fork instructions, day-by-day roadmap, the pre-created output folders (`Skills/`, `Workflow/`, `Outputs/`, `Tool/`, `_workspace/{01_input,02_working,03_final}/` — each with its own Korean README saying what goes there and when — plus root `index.html` made on Day 2), a Day-4 package template section, and GitHub Pages steps. Keep README.md, `Docs/01_participant_guide.pdf`, and the slides consistent with each other when any of them changes.
 
 ## Working with the files
 
 - **PDFs have no editable source here.** `Docs/*.pdf` are exports; the authoring files are not in the repo. Read them with `pdftotext -layout Docs/<file>.pdf -` (installed at `/opt/homebrew/bin/pdftotext`). Do not try to "edit" a PDF — if content must change, report what needs to change and where.
 - **Editable files** are the `.md` and `.html` files in `References/`. `References/KSA0001_20230329.hwp` is Hangul Word Processor format and cannot be read with standard tools; the same standard is available as `.pdf`, `.docx`, and `.html` alongside it.
 - Filenames in `Docs/` are numbered in the order participants encounter them (`01`–`03` pre-course handouts, `04`–`07` day-1…day-4 slides). Keep that scheme for any new handout.
+- Top-level folders use a capitalized first letter (`Docs/`, `References/`, `Skills/`, `Workflow/`, `Outputs/`, `Tool/`); `_workspace/` is lowercase because that is the course's own term. Learner outputs go in `Outputs/`, **not** `Docs/` — macOS/Windows are case-insensitive, so a `docs/` folder would silently merge into `Docs/`.
 
 ## Layout and how the pieces relate
 
@@ -41,12 +42,22 @@ References/  reference material and worked examples used in class
 2. Numbered sections: 목적과 사용자 → 입력 → 작업 절차 → (domain-specific rules) → 완성 기준 (checklist) → 금지 행동 (each with a reason) → 버전과 변경 기록 (table, with a 개정 트리거)
 3. A `> **근거/출처:**` blockquote near the top naming the source and its date
 
+## The worked sample case (`sample_*` files)
+
+Every output folder contains `sample_*` files that walk **one fictional case** end-to-end: ㈜가온물산 구매팀 (fictional mid-size manufacturer), practice topic 01 "주간 업무 보고 자동화", report week 2026-08-10 → 08-14, people 김가온 팀장(승인자) · 이하늘 대리(스킬 담당) · 박서준 사원 · 최유진 주임, suppliers 한빛부품 · 미래소재 · 누리패키징. The files reference each other by name and share the same items/dates, so **edit them together**: `Outputs/sample_00_priority` → `sample_01_weekly-report` → `Skills/sample_weekly-report` (+ glossary, prohibited) → `Workflow/sample_workflow` + `sample_raci` → `Tool/sample_weekly_report_tool.py` + `sample_USAGE` → `_workspace/01_input/sample_{normal,edge,error}` → `02_working/sample_…초안_v1` → `03_final/sample_…최종` → `Outputs/sample_checklist` → `sample_kpi` → `sample_brief`.
+
+- The tool is real, stdlib-only Python 3. Verify it after any change with the three cases from the repo root:
+  `python3 Tool/sample_weekly_report_tool.py sample_normal --date 2026-08-14` (writes a draft), `… sample_edge …` (writes with ⚠ review items), `… sample_error …` (must exit 1 and write nothing). It writes `_workspace/02_working/<date>_주간보고초안_v<n>.md`; delete those run artifacts afterwards — only the `sample_`-prefixed draft is meant to stay committed. `sample_2026-08-14_주간보고초안_v1.md` is the tool's actual `sample_normal` output plus one banner line; regenerate it if the tool's output format changes.
+- Root `index.html` is the sample **Day-4 package cover** for the same case (deployable as-is via GitHub Pages: Settings → Pages → main / root). It is a single self-contained HTML file (inline CSS, no external assets, no CDN) following `References/design.md` principles with a *different* single accent color (deep blue) so nothing of Orderful's brand is copied. Its "열기" links carry `data-repo="path"`; a small inline script rewrites them to `https://github.com/<owner>/<repo>/blob/main/<path>` when served from `*.github.io`, and leaves them relative otherwise — keep that attribute on any new link to a repo file. Numbers on the page (90분→20분, 3/3, 10항목, 4개, KPI table) mirror `Outputs/sample_kpi.md`; update both together. Preview locally with `python3 -m http.server <port>` from the repo root.
+- Root `.nojekyll` (empty) disables Jekyll on GitHub Pages so `_workspace/` (underscore folder) and front-matter `.md` files are published untouched. Do not delete it.
+- Every sample starts with a `> 📎 **샘플(가상 사례)**` banner and uses only dummy data (the "PII" in `sample_error/` is deliberately fake: `010-0000-0000`, `000000-0000000`). Keep it that way.
+
 ## Course concepts and vocabulary (use these terms consistently)
 
 - **스킬** = "AI에게 주는 업무 매뉴얼" — a team-managed technical document, contrasted with a one-off 프롬프트.
 - **하네스** = the five parts participants build over the four days: 스킬 · 금지 행동 · 폴더 규칙(`_workspace`: 원본/작업 중/최종) · 승인 게이트 · 검증 체크리스트.
 - **바이브코딩** = 지시 → 생성 → 확인 → 수정 loop; **프롬프트 4요소** is the prompt structure taught on Day 2.
-- Day → deliverable: Day 1 업무 문서 + 스킬 v0 (`skills/` folder in the team repo) → Day 2 안내 홈페이지 (`index.html`, merged via PR review) → Day 3 업무용 프로그램 built with Claude Code and verified against 샘플 3종 (정상·경계·오류) → Day 4 통합 파일럿 패키지 deployed on GitHub Pages (README 목차 + `index.html`).
+- Day → deliverable: Day 1 업무 문서 + 스킬 v0 (`Skills/` folder in the team repo) → Day 2 안내 홈페이지 (`index.html`, merged via PR review) → Day 3 업무용 프로그램 built with Claude Code and verified against 샘플 3종 (정상·경계·오류) → Day 4 통합 파일럿 패키지 deployed on GitHub Pages (README 목차 + `index.html`).
 - Guiding line: **"초안은 AI가, 확인과 책임은 사람이."** No 자동 발송 without human approval; 비식별 샘플 데이터 only (no real names, amounts, or confidential data) — apply this to any sample data you generate for the course too.
 
 ## Content conventions

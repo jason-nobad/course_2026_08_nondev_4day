@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구매팀 주간 보고 AI 파일럿 — 통합 패키지 (샘플)</title>
+<meta name="description" content="AX 워크톤 부트캠프 4일차 통합 파일럿 패키지 표지 샘플 — 가상 사례 ㈜가온물산 구매팀 주간 업무 보고 자동화">
+<!--
+  📎 샘플(가상 사례) — AX 워크톤 부트캠프 4일차 "패키지 통합 · GitHub Pages 배포"의 결과물 예시입니다.
+  · 이 파일이 저장소 루트에 있으면 Settings → Pages → Deploy from a branch (main / root) 만으로 웹 주소가 생깁니다.
+  · 2일차에 본인 업무 안내 홈페이지로 이 파일을 교체하고, 4일차에 아래처럼 "패키지 표지"로 확장하세요.
+  · 디자인은 References/design.md 의 원칙(단색 포인트 · 모노 대문자 아이브로 · 흰 패널 스택 · 큰 라운드 · 명암 리듬)을 따랐습니다.
+    포인트 색은 원 사이트의 오렌지를 복제하지 않고 딥 블루 하나로 바꿨습니다 (design.md 금지 행동: 상표·색 복제 금지, 원칙만 참조).
+  · 아래 링크는 배포되면 자동으로 "내 저장소(github.com/계정/저장소)"의 파일을 가리킵니다 (맨 아래 스크립트).
+  · 회사·인물·수치는 모두 가상입니다. 실데이터·개인정보는 절대 넣지 마세요 — 이 페이지는 공개됩니다.
+-->
+<style>
+  :root{
+    --accent:#1e4fd8; --accent-hi:#3b82f6; --accent-lo:#1233a8;
+    --ink:#080808; --ink2:#1f1f1f; --body:#3b3b3b; --mut:#676767; --faint:#ababab;
+    --bg:#f5f5f5; --card:#ffffff; --line:#e6e6e6;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Segoe UI',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);font-family:var(--sans);color:var(--body);font-size:17px;line-height:1.65;word-break:keep-all}
+  a{color:inherit}
+  .panel{background:var(--card);margin:8px;border-radius:22px;overflow:hidden}
+  .panel.dark{background:var(--ink);color:#d8d8d8}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 44px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--mut);text-transform:uppercase;margin-bottom:16px}
+  .dark .eyebrow{color:#9a9a9a}
+  h1,h2,h3{color:var(--ink2);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .dark h2,.dark h3{color:#fff}
+  h2{font-size:38px;margin-bottom:14px}
+  .lead{font-size:18px;color:var(--mut);max-width:640px}
+  .dark .lead{color:#b5b5b5}
+  section{padding:96px 0}
+  .btn{display:inline-block;font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+       padding:15px 26px;border-radius:12px;text-decoration:none;transition:transform .15s,box-shadow .15s;white-space:nowrap}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-accent{background:var(--accent);color:#fff}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink2);background:#fff}
+  .dark .btn-ghost{border-color:#3a3a3a;color:#fff;background:transparent}
+
+  /* sample banner */
+  .banner{margin:8px 8px 0;background:#fff8e6;border:1px solid #f1dfae;border-radius:14px;padding:12px 18px;font-size:14px;color:#6b4e00;display:flex;gap:10px;align-items:flex-start}
+  .banner b{color:#4a3600}
+
+  /* nav */
+  nav{display:flex;align-items:center;gap:8px;padding:12px 16px;flex-wrap:wrap}
+  .logo{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-right:auto;background:#fff;border-radius:12px;padding:10px 16px}
+  .logo em{font-style:normal;color:var(--accent)}
+  nav a.nv{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink2);text-decoration:none;background:#fff;border-radius:10px;padding:12px 16px}
+  nav a.cta{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:#fff;text-decoration:none;background:var(--accent);border-radius:10px;padding:12px 18px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center;padding:72px 0 64px}
+  .hero h1{font-size:58px;margin-bottom:22px}
+  .hero h1 span{color:var(--accent)}
+  .hero p{font-size:19px;max-width:480px;margin-bottom:30px;color:var(--mut)}
+  .hero .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .demo{position:relative;background:var(--ink);border-radius:22px;padding:28px;color:#eee;
+        box-shadow:0 0 0 2px #262626 inset,0 0 70px rgba(30,79,216,.35);overflow:hidden}
+  .demo:before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at 75% 20%,rgba(59,130,246,.45),transparent 55%);pointer-events:none}
+  .demo *{position:relative}
+  .demo .eyebrow{color:#8fb0ff}
+  .demo h3{color:#fff;font-size:22px;margin-bottom:18px}
+  .steps{display:grid;gap:10px}
+  .step{display:flex;gap:14px;align-items:flex-start;background:#141414;border:1px solid #2b2b2b;border-radius:14px;padding:14px 16px}
+  .step .n{font-family:var(--mono);font-size:12px;color:var(--accent-hi);letter-spacing:.1em;padding-top:3px;min-width:64px;white-space:nowrap}
+  .step b{display:block;color:#fff;font-size:15px}
+  .step small{color:#9a9a9a;font-size:13px}
+  .demo code{display:block;margin-top:16px;background:#0f0f0f;border:1px solid #2b2b2b;border-radius:12px;padding:12px 14px;font-family:var(--mono);font-size:12.5px;color:#cfe0ff;overflow-x:auto;white-space:nowrap}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .stat{background:var(--bg);border-radius:18px;padding:26px 24px}
+  .stat .v{font-size:44px;font-weight:800;color:var(--ink2);letter-spacing:-.03em;line-height:1}
+  .stat .v small{font-size:20px;color:var(--mut);font-weight:700}
+  .stat .k{margin-top:10px;font-size:14px;color:var(--mut)}
+  .dark .stat{background:#161616;border:1px solid #262626}
+  .dark .stat .v{color:#fff}
+
+  /* cards */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+  .card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+  .card h3{font-size:19px}
+  .card p{font-size:15px;color:var(--mut);flex:1}
+  .card a.more{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-decoration:none;color:var(--ink2);text-transform:uppercase}
+  .card a.more:hover{color:var(--accent)}
+  .card .files{font-size:13px;color:var(--faint);font-family:var(--mono);word-break:break-all}
+
+  /* timeline */
+  .days{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .day{background:var(--bg);border-radius:18px;padding:22px 22px}
+  .day .d{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--accent);margin-bottom:8px}
+  .day h3{font-size:18px;margin-bottom:8px}
+  .day p{font-size:14px;color:var(--mut)}
+
+  /* harness table */
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
+  .dark th,.dark td{border-color:#2b2b2b}
+  .dark td{color:#d8d8d8}
+  .dark td b{color:#fff}
+  .tablewrap{overflow-x:auto}
+
+  /* flow */
+  .flow{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
+  .node{flex:1 1 150px;background:var(--bg);border-radius:14px;padding:16px 16px;font-size:14px;color:var(--ink2);border:1px solid var(--line)}
+  .node .t{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--mut);margin-bottom:6px;text-transform:uppercase}
+  .node.gate{background:#eef3ff;border:2px solid var(--accent);color:var(--accent-lo)}
+  .node.gate .t{color:var(--accent)}
+  .rules{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .rule{font-size:14px;color:var(--mut);background:var(--bg);border-radius:14px;padding:14px 16px}
+  .rule b{color:var(--ink2);display:block;margin-bottom:4px}
+
+  /* KPI */
+  .kpi td .before{color:var(--faint);text-decoration:line-through;margin-right:8px}
+  .kpi td .goal{color:var(--accent);font-weight:700}
+  .crit{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .crit .box{border:1px solid var(--line);border-radius:18px;padding:22px}
+  .crit h3{font-size:17px;margin-bottom:10px}
+  .crit ol{padding-left:20px;font-size:15px;color:var(--mut)}
+  .crit ol li{margin-bottom:6px}
+
+  /* CTA band */
+  .band{background:linear-gradient(120deg,var(--accent-hi),var(--accent) 55%,var(--accent-lo));color:#fff;text-align:center;padding:96px 0}
+  .band .eyebrow{color:#cfe0ff}
+  .band h2{color:#fff;font-size:44px}
+  .band p{color:#e4ecff;max-width:620px;margin:14px auto 30px;font-size:18px}
+  .band .asks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:900px;margin:0 auto 34px;text-align:left}
+  .band .ask{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:16px 18px;font-size:14.5px}
+  .band .ask b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#cfe0ff;margin-bottom:6px}
+
+  /* footer */
+  footer{padding:52px 0 40px;font-size:14px;color:var(--mut)}
+  footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px;margin-bottom:34px}
+  footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:10px}
+  footer ul{list-style:none}
+  footer li{margin-bottom:6px}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--accent)}
+  footer .fine{border-top:1px solid var(--line);padding-top:20px;font-size:12.5px;color:var(--faint);line-height:1.8}
+
+  @media (max-width:900px){
+    .wrap{padding:0 22px}
+    section{padding:64px 0}
+    h2{font-size:30px}
+    .hero{grid-template-columns:1fr;padding:44px 0 40px}
+    .hero h1{font-size:40px}
+    .stats,.days,.grid3,.rules,.crit,.band .asks{grid-template-columns:1fr 1fr}
+    footer .cols{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:560px){
+    .stats,.days,.grid3,.rules,.crit,.band .asks,footer .cols{grid-template-columns:1fr}
+    .logo{margin-right:0;width:100%}
+    .band h2{font-size:32px}
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">📎 <div><b>샘플(가상 사례)</b> — 4일차 "통합 파일럿 패키지" 표지 예시입니다. ㈜가온물산 구매팀·등장 인물·수치는 모두 가상입니다. 2일차에 본인 안내 홈페이지로 이 파일을 교체하고, 4일차에 이런 패키지 표지로 확장하세요. 아래 "열기" 링크는 배포되면 자동으로 내 저장소를 가리킵니다.</div></div>
+
+<nav>
+  <a class="logo" href="#top" style="text-decoration:none">가온물산 구매팀 <em>· AI 파일럿</em></a>
+  <a class="nv" href="#package">결과물</a>
+  <a class="nv" href="#flow">흐름·게이트</a>
+  <a class="nv" href="#kpi">KPI</a>
+  <a class="nv" href="#brief">브리프</a>
+  <a class="cta" data-repo-root href="#">저장소 열기 →</a>
+</nav>
+
+<!-- HERO -->
+<div class="panel" id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">AX Work-thon Bootcamp · Day 4 · 통합 파일럿 패키지</div>
+        <h1>주간 보고 초안,<br><span>90분에서 20분</span>으로.</h1>
+        <p>구매팀 주간 업무 보고 자동화 파일럿 — 스킬·흐름도·도구·검증·KPI·브리프를 한 곳에 모았습니다. 초안은 AI가, 확인과 책임은 사람이. <b>팀장 승인 없이는 아무것도 밖으로 나가지 않습니다.</b></p>
+        <div class="actions">
+          <a class="btn btn-accent" href="#package">패키지 둘러보기 ↓</a>
+          <a class="btn btn-ghost" data-repo="Outputs/sample_brief.md" href="Outputs/sample_brief.md">스폰서 브리프 읽기</a>
+        </div>
+      </div>
+      <div class="demo">
+        <div class="eyebrow">90초 데모 · Live Demo</div>
+        <h3>메모 3건 → 초안 → 승인본</h3>
+        <div class="steps">
+          <div class="step"><span class="n">STEP 01</span><div><b>팀원 메모 3건 저장</b><small>_workspace/01_input/ · 금요일 11:00까지 · 비식별 샘플만</small></div></div>
+          <div class="step"><span class="n">STEP 02</span><div><b>취합 도구 실행 → 초안 v1</b><small>완료/진행/지연 분류 · 지난주 대비 변경점 · 검토 필요 항목 자동 표시</small></div></div>
+          <div class="step"><span class="n">STEP 03</span><div><b>🚧 승인 게이트 → 최종본</b><small>담당자 자체 점검 10항목 → 팀장 승인 → 03_final/ 저장</small></div></div>
+        </div>
+        <code>python3 Tool/sample_weekly_report_tool.py sample_normal --date 2026-08-14</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="panel">
+  <div class="wrap" style="padding-top:56px;padding-bottom:56px">
+    <div class="eyebrow">숫자로 보는 파일럿</div>
+    <div class="stats">
+      <div class="stat"><div class="v">90<small>분</small> → 20<small>분</small></div><div class="k">주간 보고 초안 작성 소요 시간 · 전(8/21 기록) → 8주 목표</div></div>
+      <div class="stat"><div class="v">3<small>/3</small></div><div class="k">샘플 3종(정상·경계·오류) 도구 검증 통과 — 오류 샘플은 "멈춤"으로 통과</div></div>
+      <div class="stat"><div class="v">10<small>항목</small></div><div class="k">검증 체크리스트 — 첫 회 통과 9/10, 목표 통과율 95%</div></div>
+      <div class="stat"><div class="v">4<small>개</small></div><div class="k">중단 조건(Kill Criteria) — 브레이크가 있어야 승인받는다</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGE TOUR -->
+<div class="panel" id="package">
+  <div class="wrap">
+    <section style="padding-bottom:72px">
+      <div class="eyebrow">Package Tour · 패키지 투어</div>
+      <h2>4일 동안 만든 것, 전부 저장소에</h2>
+      <p class="lead" style="margin-bottom:34px">하네스의 다섯 부품(스킬·금지 행동·폴더 규칙·승인 게이트·검증 체크리스트)이 어디에 있는지 한눈에. 각 카드의 "열기"는 저장소의 실제 파일로 갑니다.</p>
+      <div class="grid3">
+        <div class="card"><div class="tag">Skill · 스킬 v1.0</div><h3>주간 보고 초안 작성 스킬</h3><p>목적·입력·절차·완성 기준·용어집·금지 행동·버전 기록의 7항목. 좋은 예시/나쁜 예시와 프롬프트 카드 포함. PR 교차 리뷰로 승인·병합.</p><div class="files">Skills/sample_weekly-report.md</div><a class="more" data-repo="Skills/sample_weekly-report.md" href="Skills/sample_weekly-report.md">열기 →</a></div>
+        <div class="card"><div class="tag">Glossary · Prohibited</div><h3>용어집 · 금지 행동 8개</h3><p>"PR은 구매 요청" 같은 우리 팀 말과, 지연 사유 추정 금지·금액 계산 금지처럼 이유가 붙은 울타리. 1일차 과제가 스킬 §5·§6이 됐습니다.</p><div class="files">Skills/sample_glossary.md · sample_prohibited.md</div><a class="more" data-repo="Skills/sample_prohibited.md" href="Skills/sample_prohibited.md">열기 →</a></div>
+        <div class="card"><div class="tag">Workflow · 승인 게이트</div><h3>업무 흐름도 (Mermaid)</h3><p>금요일 09:00부터 공유까지. 입력 검사 → 도구 → 자체 점검 → 🚧 팀장 승인 게이트 → 03_final. 대행 게이트와 지연·긴급 규칙 5개.</p><div class="files">Workflow/sample_workflow.md</div><a class="more" data-repo="Workflow/sample_workflow.md" href="Workflow/sample_workflow.md">열기 →</a></div>
+        <div class="card"><div class="tag">RACI · Exceptions</div><h3>RACI · 예외 경로</h3><p>단계마다 책임자 1명. 사실 오류·개인정보 유입·도구 오작동·팀장 부재 — 잘못됐을 때 누가 무엇을 하는지, 자산 소유자와 백업까지.</p><div class="files">Workflow/sample_raci.md</div><a class="more" data-repo="Workflow/sample_raci.md" href="Workflow/sample_raci.md">열기 →</a></div>
+        <div class="card"><div class="tag">Tool · 업무용 프로그램</div><h3>취합 도구 v1.1 + 사용법</h3><p>메모 3건 → 초안. 스킬의 금지 행동을 코드로 옮겨, 빈 메모·개인정보 패턴이면 멈추고 지연 사유·수치는 "검토 필요"로 표시. 파이썬 3, 외부 설치 없음.</p><div class="files">Tool/sample_weekly_report_tool.py · sample_USAGE.md</div><a class="more" data-repo="Tool/sample_USAGE.md" href="Tool/sample_USAGE.md">열기 →</a></div>
+        <div class="card"><div class="tag">_workspace · 폴더 규칙</div><h3>샘플 3종 · 원본/작업 중/최종</h3><p>01_input(양식·지난주 보고·정상/경계/오류 샘플) → 02_working(도구 초안) → 03_final(승인본 + 검토 반영 내역). 폴더만 따라가도 같은 결과.</p><div class="files">_workspace/sample_folder-rules.md</div><a class="more" data-repo="_workspace/sample_folder-rules.md" href="_workspace/sample_folder-rules.md">열기 →</a></div>
+        <div class="card"><div class="tag">Checklist · 검증</div><h3>검증 체크리스트 10항목</h3><p>양식 순서·담당자 표기·미제출 표시·지연 사유·변경점·계산 금지·수치 원본 대조·비식별·초안 표시·성과 비교 금지. 통과/실패 예시 포함.</p><div class="files">Outputs/sample_checklist.md</div><a class="more" data-repo="Outputs/sample_checklist.md" href="Outputs/sample_checklist.md">열기 →</a></div>
+        <div class="card"><div class="tag">KPI · Kill Criteria</div><h3>KPI 3개 · 성공 기준 · 중단 조건</h3><p>시간(90분→20분) + 품질(통과율 95%, 반려 월 4→1건). "전" 숫자를 8/21에 기록. 이 선을 넘으면 멈춘다 — 중단 조건 4개.</p><div class="files">Outputs/sample_kpi.md</div><a class="more" data-repo="Outputs/sample_kpi.md" href="Outputs/sample_kpi.md">열기 →</a></div>
+        <div class="card"><div class="tag">Brief · 보고</div><h3>스폰서 브리프 1페이지</h3><p>한 줄 요약 → 배경 → 파일럿 결과 → 위험과 통제 → 비용과 계획 → 요청 사항(거버넌스 인계 포함). "하겠습니다"가 아니라 "이미 했습니다".</p><div class="files">Outputs/sample_brief.md</div><a class="more" data-repo="Outputs/sample_brief.md" href="Outputs/sample_brief.md">열기 →</a></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- 4 DAYS -->
+<div class="panel">
+  <div class="wrap">
+    <section style="padding-top:72px;padding-bottom:72px">
+      <div class="eyebrow">How it was built · 4일의 기록</div>
+      <h2>매일 하나씩, 결과물이 쌓였습니다</h2>
+      <p class="lead" style="margin-bottom:30px">저장소 커밋 이력이 곧 작업 기록입니다. 도구는 소모품, 하네스는 자산.</p>
+      <div class="days">
+        <div class="day"><div class="d">DAY 1 · 8/18 화</div><h3>업무 문서 + 스킬 v0</h3><p>후보 5건 × 5기준 점수화 → 주간 보고 확정. 4요소 프롬프트로 초안 1건, "뭘 알려줬더니 잘 됐나" 메모.</p></div>
+        <div class="day"><div class="d">DAY 2 · 8/19 수</div><h3>스킬 v1.0 · 홈페이지</h3><p>7항목 스킬로 승격 → PR 교차 리뷰·승인·병합(승인 게이트 체험). 안내 홈페이지 index.html 첫 커밋.</p></div>
+        <div class="day"><div class="d">DAY 3 · 8/20 목</div><h3>취합 도구 · 검증</h3><p>Claude Code로 도구 제작 → 샘플 3종 검증(경계에서 오탐 발견 → v1.1). _workspace 규칙·RACI.</p></div>
+        <div class="day"><div class="d">DAY 4 · 8/21 금</div><h3>KPI · 브리프 · 배포</h3><p>체크리스트 확정, KPI "전" 기록, 중단 조건, 브리프 6단. 이 페이지를 GitHub Pages로 배포 → URL로 발표.</p></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- HARNESS (dark) -->
+<div class="panel dark">
+  <div class="wrap">
+    <section>
+      <div class="eyebrow">Harness · 하네스 다섯 부품</div>
+      <h2>AI를 안전하게 부리는 장치</h2>
+      <p class="lead" style="margin-bottom:30px">특정 프로그램이 아니라, 우리 업무에 대한 문서들의 묶음. 이 패키지의 어디에 있는지.</p>
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>부품</th><th>역할</th><th>이 패키지에서</th><th>위치</th></tr></thead>
+        <tbody>
+          <tr><td><b>스킬</b></td><td>무엇을 어떻게 할지 — 업무 매뉴얼</td><td>주간 보고 초안 작성 스킬 v1.0 (7항목)</td><td>Skills/</td></tr>
+          <tr><td><b>금지 행동</b></td><td>무엇을 하면 안 되는지 — 울타리</td><td>지어내지 않기 · 사유 추정 금지 · 계산 금지 · 성과 비교 금지 · 공유 범위 임의 결정 금지 · 개인정보 시 중단 (+2)</td><td>Skills/ · Tool/(코드로)</td></tr>
+          <tr><td><b>폴더 규칙</b></td><td>어디서 일하고 기록을 남기는지 — 작업장</td><td>01_input / 02_working / 03_final · 이름·보존·접근·금지 데이터 규칙</td><td>_workspace/</td></tr>
+          <tr><td><b>승인 게이트</b></td><td>어디서 사람이 확인·승인하는지 — 관문</td><td>팀장 승인 게이트(금 15:00) · 대행 게이트 · 승인 전 "대외 공유 금지" 표시 고정</td><td>Workflow/</td></tr>
+          <tr><td><b>검증 체크리스트</b></td><td>무엇이 "통과"인지 — 검사 기준</td><td>10항목(통과/실패 예시) · 샘플 3종 검증 기록 · 통과율은 KPI로</td><td>Outputs/ · Tool/</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="stats" style="margin-top:34px">
+        <div class="stat"><div class="v">6<small>+2</small></div><div class="k">금지 행동 — 항목마다 "왜"가 붙어 있다</div></div>
+        <div class="stat"><div class="v">2</div><div class="k">게이트 — 팀장 승인 + 부재 시 대행</div></div>
+        <div class="stat"><div class="v">3</div><div class="k">폴더 — 원본은 손대지 않는다</div></div>
+        <div class="stat"><div class="v">0<small>건</small></div><div class="k">실데이터·개인정보 — 비식별 샘플만 (중단 조건 1)</div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- FLOW -->
+<div class="panel" id="flow">
+  <div class="wrap">
+    <section>
+      <div class="eyebrow">Flow · 금요일의 흐름</div>
+      <h2>사람이 승인하는 지점이 어디인지</h2>
+      <p class="lead" style="margin-bottom:30px">흐름도 전체(Mermaid)는 Workflow/sample_workflow.md에. 아래는 요약입니다.</p>
+      <div class="flow">
+        <div class="node"><div class="t">09:00 – 11:00</div>팀원 3명 메모 저장<br><small>_workspace/01_input/</small></div>
+        <div class="node"><div class="t">입력 검사</div>3건 존재 · 형식 · 비식별<br><small>위반 시 ⛔ 중단</small></div>
+        <div class="node"><div class="t">도구 실행</div>초안 v1 생성<br><small>변경점 · 검토 필요 표시</small></div>
+        <div class="node"><div class="t">자체 점검</div>체크리스트 10항목<br><small>미달 → 보완 → v2</small></div>
+        <div class="node gate"><div class="t">🚧 승인 게이트</div><b>팀장 검토·승인</b><br><small>금 15:00까지 · 수정 요청 가능</small></div>
+        <div class="node"><div class="t">최종·공유</div>03_final 저장<br><small>본부 발췌는 팀장 지정분만</small></div>
+      </div>
+      <div class="rules">
+        <div class="rule"><b>① 메모 미제출 (11:30 이후)</b>해당 팀원 [미제출] 표기하고 진행 — 지어내지 않는다.</div>
+        <div class="rule"><b>② 승인 지연 (15:00 초과)</b>공유 보류. 월 09:00 본부 회의 전까지 없으면 대행 게이트.</div>
+        <div class="rule"><b>③ 긴급 — 임원 요청</b>초안을 그대로 보내지 않는다. 팀장이 직접 구두·요약 보고.</div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- KPI -->
+<div class="panel" id="kpi">
+  <div class="wrap">
+    <section>
+      <div class="eyebrow">KPI · Success Criteria · Kill Criteria</div>
+      <h2>측정 없는 파일럿은 증명하지 못한다</h2>
+      <p class="lead" style="margin-bottom:30px">"전" 숫자를 2026-08-21에 기록했습니다. 속도 지표에는 반드시 품질 지표를 짝으로 — 지표는 3개.</p>
+      <div class="tablewrap">
+      <table class="kpi">
+        <thead><tr><th>유형</th><th>KPI</th><th>전 → 8주 목표</th><th>측정 방법</th></tr></thead>
+        <tbody>
+          <tr><td>시간</td><td><b>초안 작성 소요 시간</b></td><td><span class="before">약 90분</span><span class="goal">20분 이내</span></td><td>금 메모 취합 시작 ~ 승인 요청까지</td></tr>
+          <tr><td>품질</td><td><b>체크리스트 통과율</b></td><td><span class="before">첫 회 9/10</span><span class="goal">95% 이상</span></td><td>자체 점검 통과 항목 / 10, 주별</td></tr>
+          <tr><td>품질</td><td><b>팀장 반려·재작업</b></td><td><span class="before">월 4건</span><span class="goal">월 1건 이하</span></td><td>승인 게이트 "수정 요청" 횟수, 월별</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="crit">
+        <div class="box"><h3>✅ 성공 기준 — 언제 확산해도 되는가</h3><ol><li>작성 시간 50% 이상 절감 (90분 → 45분 이하)</li><li>체크리스트 통과율 95% 이상</li><li>비식별 위반·보안 사고 0건</li></ol><p style="font-size:14px;color:var(--mut);margin-top:8px">→ 8주 후 구매팀 정례화 + 자재팀·품질팀 확산 제안</p></div>
+        <div class="box"><h3>⛔ 중단 조건 — 이 선을 넘으면 멈춘다</h3><ol><li>초안·저장소에 개인정보·실데이터 1건이라도 포함</li><li>통과율 2주 연속 80% 미만</li><li>승인본의 사실 오류(환각)가 본부 회의까지 전달</li><li>8주 후에도 소요 시간 30% 이상 안 줄면 확산 철회</li></ol></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="panel band" id="brief">
+  <div class="wrap">
+    <div class="eyebrow">Sponsor Brief · 요청 사항</div>
+    <h2>지금 열어보시죠</h2>
+    <p>"검토해 보겠다"가 아니라 "이미 했습니다". 8주 파일럿(8/24 ~ 10/16)을 위해 결정 가능한 형태로 세 가지를 요청합니다.</p>
+    <div class="asks">
+      <div class="ask"><b>REQUEST 01</b>파일럿 8주 승인 — 성공 기준 충족 시 10월 셋째 주 확산 제안</div>
+      <div class="ask"><b>REQUEST 02</b>IT·보안 검토 30분(9월 첫째 주) — 저장소 공개 범위·비식별 규칙</div>
+      <div class="ask"><b>REQUEST 03 · 거버넌스 인계</b>파일럿 종료 시 IT·보안 담당에게 저장소 URL·스킬·체크리스트 인계 → 부서 표준 자산 등록</div>
+    </div>
+    <a class="btn btn-dark" data-repo="Outputs/sample_brief.md" href="Outputs/sample_brief.md">브리프 1페이지 열기 →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="panel">
+  <div class="wrap">
+    <footer>
+      <div class="cols">
+        <div>
+          <div class="logo" style="display:inline-block;padding:0;margin-bottom:12px">가온물산 구매팀 <em>· AI 파일럿</em></div>
+          <p>주간 업무 보고 자동화 파일럿 패키지 (v1.0 · 2026-08-21)<br>페어: 이하늘 대리(스킬 담당) · 박서준 사원 · 승인: 김가온 팀장<br>스킬·문서 소유자: 이하늘 · 도구 소유자: 박서준</p>
+        </div>
+        <div><h4>결과물</h4><ul>
+          <li><a data-repo="Skills/sample_weekly-report.md" href="Skills/sample_weekly-report.md">스킬 v1.0</a></li>
+          <li><a data-repo="Workflow/sample_workflow.md" href="Workflow/sample_workflow.md">흐름도 · 게이트</a></li>
+          <li><a data-repo="Tool/sample_USAGE.md" href="Tool/sample_USAGE.md">도구 사용법 · 검증 기록</a></li>
+          <li><a data-repo="Outputs/sample_checklist.md" href="Outputs/sample_checklist.md">검증 체크리스트</a></li>
+        </ul></div>
+        <div><h4>보고</h4><ul>
+          <li><a data-repo="Outputs/sample_kpi.md" href="Outputs/sample_kpi.md">KPI · 중단 조건</a></li>
+          <li><a data-repo="Outputs/sample_brief.md" href="Outputs/sample_brief.md">스폰서 브리프</a></li>
+          <li><a data-repo="Outputs/sample_00_priority.md" href="Outputs/sample_00_priority.md">우선순위 표 (1일차)</a></li>
+          <li><a data-repo="README.md" href="README.md">패키지 목차 (README)</a></li>
+        </ul></div>
+        <div><h4>저장소</h4><ul>
+          <li><a data-repo-root href="#">GitHub 저장소 열기</a></li>
+          <li><a data-repo="_workspace/01_input/sample_README.md" href="_workspace/01_input/sample_README.md">샘플 3종 (입력)</a></li>
+          <li><a data-repo="_workspace/03_final/sample_2026-08-14_주간보고_최종.md" href="_workspace/03_final/sample_2026-08-14_주간보고_최종.md">승인본 예시</a></li>
+          <li><a href="https://github.com/settings" rel="noopener">배포: Settings → Pages</a></li>
+        </ul></div>
+      </div>
+      <div class="fine">
+        비식별 원칙 — 이 페이지와 저장소에는 가명·더미 값만 있습니다. 실명 고객·실제 계약 금액·개인 연락처는 넣지 않습니다.<br>
+        본 페이지는 「AX 워크톤 부트캠프 — 비개발자 4일 오후 집중 과정」의 실습 샘플(가상 사례)입니다. ㈜가온물산·등장 인물·협력사·수치는 모두 교육용 가상 설정입니다.<br>
+        디자인은 References/design.md의 원칙만 참조했습니다 (상표·로고·문구·색 복제 없음). · ⓒ 2026 한국디지털문서플랫폼협회 · AcademiQ(www.academiq.life)
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script>
+  // 배포된 주소(계정.github.io/저장소/)에서 계정·저장소 이름을 읽어, "열기" 링크를 내 GitHub 저장소의 파일 페이지로 바꿉니다.
+  // GitHub 파일 페이지는 마크다운(.md)을 예쁘게 보여 주고 _workspace/ 도 열립니다. 로컬에서 열면 상대 경로 그대로 둡니다.
+  (function () {
+    var m = location.hostname.match(/^([^.]+)\.github\.io$/i);
+    if (!m) return;
+    var owner = m[1];
+    var seg = location.pathname.split('/').filter(Boolean);
+    var repo = (seg.length && seg[0].indexOf('.') === -1) ? seg[0] : owner + '.github.io';
+    var root = 'https://github.com/' + owner + '/' + repo;
+    document.querySelectorAll('a[data-repo]').forEach(function (a) {
+      a.href = root + '/blob/main/' + a.getAttribute('data-repo');
+    });
+    document.querySelectorAll('a[data-repo-root]').forEach(function (a) { a.href = root; });
+  })();
+</script>
+</body>
+</html>
