@@ -77,7 +77,8 @@ materials/    참가자 배포 문서 (PDF) — 번호 순서대로 보면 됩�
   07_slides_day4.pdf         4일차 슬라이드 — AX 도입과 확산
 
 docs/         슬라이드의 웹 버전 (GitHub Pages로 배포됨: …/docs/day1.html)
-  day1.html ~ day4.html      브라우저에서 열면 발표 모드 — ← → 로 넘김 · 타이머 · ? 도움말 · 인쇄하면 PDF와 동일
+  day1.html ~ day4.html      발표용 — 브라우저에서 열면 한 장씩 표시, ← → 클릭으로 넘김, 슬라이드별 배분 시간 타이머·시계·진행 바, F 전체 화면, R 타이머 리셋
+  slides_day1~4.html         같은 내용의 인쇄용(발표 기능 없음, 전체 슬라이드가 세로로 이어짐)
 
 References/   실습 참고 자료와 예시 — "잘 만든 결과물은 이렇게 생겼다"
   skills.md                  스킬(AI 업무 매뉴얼) 문서 예시 — KS A 0001 표준 문서 작성 규칙을 스킬로 만든 것
