@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정책건의서 — 종이문서 사용 관행 타파 및 관련 제도 정비</title>
+<meta name="description" content="전자문서법 개정에도 지속되는 종이 원본 요구 관행과 개선 방향에 관한 정책건의서">
+<!--
+  디자인: References/DESIGN_APPLE.md 의 디자인 토큰을 그대로 적용했습니다 (index.html과 동일한 :root 변수).
+  원본 콘텐츠: Outputs/정책건의서.md
+-->
+<style>
+  :root{
+    --primary:#ff385c; --primary-active:#e00b41; --primary-disabled:#ffd1da; --on-primary:#ffffff;
+    --ink:#222222; --body:#3f3f3f; --muted:#6a6a6a; --muted-soft:#929292;
+    --hairline:#dddddd; --hairline-soft:#ebebeb; --border-strong:#c1c1c1;
+    --canvas:#ffffff; --surface-soft:#f7f7f7; --surface-card:#ffffff; --surface-strong:#f2f2f2;
+    --r-xs:4px; --r-sm:8px; --r-md:14px; --r-lg:20px; --r-xl:32px; --r-full:9999px;
+    --s-xxs:2px; --s-xs:4px; --s-sm:8px; --s-md:12px; --s-base:16px; --s-lg:24px; --s-xl:32px; --s-xxl:48px; --s-section:64px;
+    --shadow:rgba(0,0,0,.02) 0 0 0 1px, rgba(0,0,0,.04) 0 2px 6px 0, rgba(0,0,0,.1) 0 4px 8px 0;
+    --font:"Airbnb Cereal VF",Circular,Inter,"Pretendard",-apple-system,system-ui,"Apple SD Gothic Neo","Malgun Gothic",Roboto,"Helvetica Neue",sans-serif;
+    --nav-h:72px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--canvas);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+  .display-xl{font-size:28px;font-weight:700;line-height:1.43}
+  .display-md{font-size:21px;font-weight:700;line-height:1.43}
+  .display-sm{font-size:20px;font-weight:600;line-height:1.2;letter-spacing:-.18px}
+  .title-md{font-size:16px;font-weight:600;line-height:1.25}
+  .body-md{font-size:16px;font-weight:400;line-height:1.5}
+  .body-sm{font-size:14px;font-weight:400;line-height:1.43}
+  .caption{font-size:14px;font-weight:500;line-height:1.29}
+  .caption-sm{font-size:13px;font-weight:400;line-height:1.23}
+  .badge{font-size:11px;font-weight:600;line-height:1.18}
+  .rating{font-size:64px;font-weight:700;line-height:1.1;letter-spacing:-1px}
+  .muted{color:var(--muted)} .bodyc{color:var(--body)}
+
+  header.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--hairline)}
+  header.top .wrap{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .wordmark{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;letter-spacing:-.2px}
+  .wordmark .dot{width:9px;height:9px;border-radius:var(--r-full);background:var(--primary);flex:none}
+  .wordmark small{font-weight:500;color:var(--muted);font-size:13px}
+  .top-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.32px;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink);border-radius:var(--r-full);padding:4px 10px;white-space:nowrap}
+
+  .hero{padding:var(--s-section) 0 var(--s-xl)}
+  .hero .eyebrow{display:flex;align-items:center;gap:8px;color:var(--muted);margin-bottom:var(--s-base)}
+  .hero .eyebrow .sep{width:4px;height:4px;border-radius:var(--r-full);background:var(--muted-soft)}
+  .hero h1{font-size:28px;font-weight:700;line-height:1.35;margin-bottom:var(--s-base);max-width:680px}
+  .hero p.lead{color:var(--body);max-width:640px}
+
+  .quote{border-left:3px solid var(--primary);padding:var(--s-base) var(--s-lg);background:var(--surface-soft);border-radius:0 var(--r-sm) var(--r-sm) 0;margin:var(--s-xl) 0;color:var(--body)}
+  .quote b{color:var(--ink)}
+  .quote div+div{margin-top:6px}
+
+  section{padding:var(--s-xl) 0;border-top:1px solid var(--hairline-soft)}
+  section .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--r-full);background:var(--ink);color:#fff;font-size:13px;font-weight:700;margin-right:10px;flex:none}
+  section h2{display:flex;align-items:center;font-size:21px;font-weight:700;line-height:1.43;margin-bottom:var(--s-lg)}
+
+  .card{background:var(--surface-card);border:1px solid var(--hairline);border-radius:var(--r-md);padding:var(--s-lg)}
+  .card+.card{margin-top:var(--s-base)}
+
+  table.info{width:100%;border-collapse:collapse;font-size:14px}
+  table.info th,table.info td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--hairline-soft)}
+  table.info th{width:140px;color:var(--muted);font-weight:500}
+  table.info tr:last-child th,table.info tr:last-child td{border-bottom:0}
+
+  .law-list{list-style:none}
+  .law-list li{display:flex;gap:12px;padding:var(--s-md) 0;border-bottom:1px solid var(--hairline-soft)}
+  .law-list li:last-child{border-bottom:0}
+  .law-list li .chip{flex:none;font-size:11px;font-weight:600;color:var(--primary);border:1px solid var(--primary-disabled);background:#fff5f7;border-radius:var(--r-full);padding:3px 10px;height:fit-content;white-space:nowrap}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-base)}
+  .split .card h3{font-size:14px;font-weight:600;margin-bottom:var(--s-sm)}
+  .split .card ul{padding-left:18px;color:var(--body);font-size:14px;line-height:1.6}
+  .split .card.ok{border-color:var(--hairline)}
+  .split .card.no{border-color:var(--border-strong)}
+  .tag-ok{display:inline-block;font-size:11px;font-weight:600;color:#157a4a;background:#eafbf2;border:1px solid #b9ecd0;border-radius:var(--r-full);padding:3px 10px;margin-bottom:var(--s-sm)}
+  .tag-no{display:inline-block;font-size:11px;font-weight:600;color:var(--muted);background:var(--surface-strong);border:1px solid var(--hairline);border-radius:var(--r-full);padding:3px 10px;margin-bottom:var(--s-sm)}
+
+  .stat-band{display:grid;grid-template-columns:auto 1fr;gap:var(--s-xl);align-items:center;background:var(--surface-soft);border-radius:var(--r-md);padding:var(--s-lg);margin-top:var(--s-base)}
+  .stat-band .num-wrap{text-align:center}
+  .stat-band .num-wrap b{font-size:64px;font-weight:700;line-height:1.1;letter-spacing:-1px}
+  .stat-band .num-wrap b small{font-size:18px;font-weight:600;color:var(--muted);margin-left:2px}
+  .stat-band .num-wrap span{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+  .stat-band p{font-size:14px;color:var(--body)}
+
+  .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-base)}
+  .benefit-grid .card{display:flex;flex-direction:column;gap:var(--s-sm)}
+  .benefit-grid .icon{width:40px;height:40px;border-radius:var(--r-full);background:var(--surface-strong);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;margin-bottom:var(--s-xs)}
+  .benefit-grid h3{font-size:16px;font-weight:600}
+  .benefit-grid ul{padding-left:18px;font-size:14px;color:var(--body);line-height:1.6}
+  .benefit-grid .sub{margin-top:var(--s-sm);padding-top:var(--s-sm);border-top:1px solid var(--hairline-soft)}
+  .benefit-grid .sub b{font-size:13px;color:var(--ink)}
+
+  .proposal{list-style:none;counter-reset:p}
+  .proposal li{counter-increment:p;display:flex;gap:var(--s-base);padding:var(--s-base) 0;border-bottom:1px solid var(--hairline-soft)}
+  .proposal li:last-child{border-bottom:0}
+  .proposal li::before{content:counter(p);flex:none;width:36px;height:36px;border-radius:var(--r-full);background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+  .proposal li b{display:block;font-size:15px;margin-bottom:2px}
+  .proposal li span{font-size:14px;color:var(--body)}
+
+  .checklist{list-style:none}
+  .checklist li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;font-size:14px;color:var(--body)}
+  .checklist li::before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:5px;border:1.5px solid var(--border-strong);background:#fff}
+
+  .prohibit{list-style:none}
+  .prohibit li{padding:var(--s-base) 0;border-bottom:1px solid var(--hairline-soft)}
+  .prohibit li:last-child{border-bottom:0}
+  .prohibit li .rule{font-size:15px;font-weight:600;margin-bottom:4px}
+  .prohibit li .why{font-size:13px;color:var(--muted)}
+
+  footer.pf{border-top:1px solid var(--hairline);margin-top:var(--s-xxl)}
+  footer.pf .wrap{padding:var(--s-xl) 24px}
+  .version-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:var(--s-lg)}
+  .version-table th,.version-table td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--hairline-soft);color:var(--muted)}
+  .version-table th{color:var(--ink);font-weight:600}
+  .legal{font-size:13px;color:var(--muted-soft);text-align:center}
+
+  @media (max-width:720px){
+    .wrap{padding:0 16px}
+    .hero h1{font-size:24px}
+    .split,.benefit-grid{grid-template-columns:1fr}
+    .stat-band{grid-template-columns:1fr;text-align:center}
+    table.info th{width:110px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="wordmark"><span class="dot"></span>정책건의서<small>한국디지털문서플랫폼협회</small></div>
+    <span class="top-tag">Policy Recommendation</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" style="border-top:0">
+    <div class="eyebrow caption">2026-08-18<span class="sep"></span>v1.3<span class="sep"></span>일반 처리</div>
+    <h1>종이문서 사용 관행 타파 및 관련 제도 정비</h1>
+    <p class="lead body-md">전자문서법 개정으로 전자문서의 서면 효력이 인정되고 종이 원본 폐기가 가능해졌음에도, 일부 기관은 여전히 종이 원본서류 제출을 요구하고 있습니다. 이로 인한 이중 보관 부담과 개인정보 유출 위험을 해소하기 위한 정책적 제언입니다.</p>
+
+    <div class="quote body-sm">
+      <div><b>근거</b> · 「종이문서 사용관행 타파 및 관련 제도 정비」(하나금융TI Datarium 공인전자문서센터, 2025.08.28 정책토론회 발제자료) 실측 분석</div>
+      <div><b>활용</b> · 협회 정책건의·대외 협의 절차(Workflow/workflow.md)의 산출물. 국회·과학기술정보통신부 등 유관기관 협의에 사용.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">1</span>목적과 제출자</h2>
+    <div class="card">
+      <table class="info">
+        <tr><th>발제 기관/단체</th><td>하나금융TI 공인전자문서센터(DATARIUM)</td></tr>
+        <tr><th>담당자</th><td>이승섭 센터장</td></tr>
+        <tr><th>연락처</th><td>010-3217-5245</td></tr>
+        <tr><th>이메일</th><td>subby777@hanafn.com</td></tr>
+        <tr><th>접수 경위</th><td>2025-08-28 정책토론회 발제(발제2) — 한국디지털문서플랫폼협회 접수</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>관련 법령·제도</h2>
+    <ul class="law-list">
+      <li><span class="chip">전자문서법 §4의2</span><span class="body-sm bodyc">전자문서의 서면 요건 — 특정 조건을 갖춘 전자문서에 서면성을 인정 (2020.6 신설)</span></li>
+      <li><span class="chip">전자문서법 §31의6②</span><span class="body-sm bodyc">공인전자문서센터를 통한 보관의 효력 — 전자화 대상 종이문서를 폐기할 수 있음을 명시 (2020.6 신설)</span></li>
+      <li><span class="chip">민사집행법 §159②③</span><span class="body-sm bodyc">법원행정처의 전자문서증명서 활용(배당금지급증 교부) 근거</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>현황과 사례</h2>
+    <div class="split">
+      <div class="card ok">
+        <span class="tag-ok">수용 사례</span>
+        <h3>전자문서증명서를 수용하는 기관</h3>
+        <ul>
+          <li>법원행정처 — 2020.12.18부터 정본 채택, 100% 활용 (배당금지급증 교부)</li>
+          <li>신용보증기금 — 2021.12부터 대위변제금 수령 서류 대체 가능</li>
+          <li>기술신용보증기금·한국주택금융공사·주택도시보증공사·기금·서울보증보험 — 협조요청 이후 효력 인정</li>
+        </ul>
+      </div>
+      <div class="card no">
+        <span class="tag-no">원본 요구 지속</span>
+        <h3>여전히 종이 원본을 요구하는 기관</h3>
+        <ul>
+          <li>한국자산관리공사 — 여신 주요서류 일체 원본</li>
+          <li>신용회복위원회·국민행복기금 — 1차 사본, 원본 요구 시 원본</li>
+          <li>서민금융진흥원 — 햇살론 주요서류 일체</li>
+          <li>신용보증재단중앙회 — 서울·강원·충남 외 전 지부 원본 제출</li>
+          <li>소상공인시장진흥공단 — 소상공인예적금담보대출</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stat-band">
+      <div class="num-wrap">
+        <b>0.02<small>억 장</small></b>
+        <span>여신 서류 파기 (전자화 5.2억 장 대비)</span>
+      </div>
+      <p>은행권 누적(2008.12~현재) 전자화 15.1억 장 중 파기 9.1억 장. 이 중 <b>여신 서류</b>는 5.2억 장이 전자화됐으나 파기는 0.02억 장에 불과해, 비여신(7.6억 장 중 7.2억 장 파기)과 대조적으로 이중보관 부담이 특히 심각합니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>이해관계자별 기대 편익</h2>
+    <div class="benefit-grid">
+      <div class="card">
+        <div class="icon">🏭</div>
+        <h3>산업계 (이용기업)</h3>
+        <ul>
+          <li>이중 보관 부담 해소 — 관리 비용·보관 공간 절감</li>
+          <li>원본서류 분실·훼손 리스크 감소, 재제출 부담 완화</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🗄️</div>
+        <h3>공인전자문서센터 사업자</h3>
+        <ul>
+          <li>전자문서증명서 발급·유통 서비스 수요 확대</li>
+          <li>협조요청 사례 확산에 따른 신규 서비스 연계 기회</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🙋</div>
+        <h3>금융소비자</h3>
+        <ul>
+          <li>처리 속도 개선 — 3~4영업일 → 3~4분 단축 사례</li>
+          <li>원본 분실·재발급 불편 감소, 비대면 접근성 향상</li>
+        </ul>
+        <div class="sub">
+          <b>개인정보보호 측면</b>
+          <ul>
+            <li>물리적 보관·이관 과정의 유출 위험 감소</li>
+            <li>파기를 통한 최소 보유 원칙 부합</li>
+            <li>전자적 접근통제·열람이력 추적성 강화</li>
+            <li>중복 제출 경로 축소로 노출 기관 수 감소</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>정책적 제언</h2>
+    <ul class="proposal">
+      <li><b>정부 주도의 인식 전환 캠페인</b><span>전자문서의 법적 효력에 대한 사회적 인식 제고</span></li>
+      <li><b>주무 부처 합동 행정지도</b><span>금융위원회·중소벤처기업부 등 관계 부처가 산하·유관 기관에 전자문서증명서 수용을 위한 합동 행정지도 실시</span></li>
+      <li><b>분산형 전자화 서비스 활성화</b><span>공인전자문서센터 등 분산형 전자화 인프라 확산 지원</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>완성 기준 (체크리스트)</h2>
+    <ul class="checklist">
+      <li>애로사항 요약이 추측·평가성 표현 없이 사실관계에 근거하는가</li>
+      <li>관련 법령·제도가 조문 번호까지 명시되었는가</li>
+      <li>현황·사례에 기관명과 시점(연·월)이 포함되었는가</li>
+      <li>이해관계자(산업계·공인전자문서센터사업자·금융소비자)별 편익이 모두 제시되었는가</li>
+      <li>정책적 제언마다 실행 주체(소관 부처 등)가 특정되어 있는가</li>
+      <li>증빙 자료(원자료)가 첨부·명시되었는가</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>금지 행동</h2>
+    <ul class="prohibit">
+      <li><div class="rule">원자료에 없는 통계·수치를 추정해 삽입하지 않는다</div><div class="why">근거 없는 숫자는 정책건의서 전체의 신뢰도를 떨어뜨린다 — 원자료에 명시된 수치만 인용</div></li>
+      <li><div class="rule">법령 조문을 확인하지 않고 인용하지 않는다</div><div class="why">조문 오인용은 유관기관 협의 단계에서 즉시 신뢰를 잃는 원인이 된다</div></li>
+      <li><div class="rule">제출자 식별 정보를 비식별 처리 없이 대외 공유 자료에 포함하지 않는다</div><div class="why">개인정보 보호 — 대외 공유본에는 기관명만 남긴다</div></li>
+      <li><div class="rule">이사회 승인 전에 대외(언론·유관기관)에 확정된 협회 입장으로 표명하지 않는다</div><div class="why">협회 공식 입장과 배치될 위험 (Skills/prohibited.md #2 참고)</div></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">8</span>부속 정보</h2>
+    <div class="card">
+      <table class="info">
+        <tr><th>증빙 자료</th><td>「종이문서 사용관행 타파 및 관련 제도 정비」 발제자료 (하나금융TI Datarium, 2025.08.28, 정책토론회 발제2, PDF)</td></tr>
+        <tr><th>긴급 여부</th><td>일반 처리 — 협회 내부 검토(현황조사·내부 의사결정) 후 정책건의·대외 협의 절차(Workflow/workflow.md)로 진행</td></tr>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pf">
+  <div class="wrap">
+    <table class="version-table">
+      <tr><th>버전</th><th>날짜</th><th>변경</th></tr>
+      <tr><td>v1.0</td><td>2026-08-18</td><td>최초 작성 — 하나금융TI Datarium 발제자료 분석, Tool/suj_form.html 항목 구성 참조</td></tr>
+      <tr><td>v1.1</td><td>2026-08-18</td><td>이해관계자별 기대 편익 절 추가</td></tr>
+      <tr><td>v1.2</td><td>2026-08-18</td><td>금융소비자 기대편익에 개인정보보호 측면 추가</td></tr>
+      <tr><td>v1.3</td><td>2026-08-18</td><td>Skills/design.md 형식(프론트매터+완성기준+금지행동)으로 전환</td></tr>
+      <tr><td>v2.0</td><td>2026-08-18</td><td>References/DESIGN_APPLE.md 디자인 토큰을 적용한 HTML 버전 제작 (원본: Outputs/정책건의서.md)</td></tr>
+    </table>
+    <p class="legal">이 문서는 한국디지털문서플랫폼협회 내부 검토용 정책건의서입니다. 원본 발제자료의 회사명·통계는 공개된 정책토론회 발표 내용을 근거로 합니다.</p>
+  </div>
+</footer>
+
+</body>
+</html>
