@@ -35,13 +35,13 @@
 
 ### 1-2. 사전 학습 (약 2시간)
 
-[`Docs/03_prelearning.pdf`](Docs/03_prelearning.pdf)를 순서대로 읽고 4장의 "직접 해보기"까지 마치면 완료입니다.
+[`materials/03_prelearning.pdf`](materials/03_prelearning.pdf)를 순서대로 읽고 4장의 "직접 해보기"까지 마치면 완료입니다.
 첫날 강의는 이 자료를 읽었다는 전제로 진행됩니다.
 
 ### 1-3. 자동화 후보 업무 3건 메모 (약 30분)
 
 본인 업무 중 "AI가 해줬으면 하는 일" 3건을 **업무명 · 반복 주기 · 현재 소요 시간**과 함께 메모해 오세요.
-첫날 실습에서 이 중 하나를 골라 4일 내내 발전시킵니다. 고르기 어려우면 [`Docs/02_practice_topics.pdf`](Docs/02_practice_topics.pdf)의 11가지 사례를 참고하세요.
+첫날 실습에서 이 중 하나를 골라 4일 내내 발전시킵니다. 고르기 어려우면 [`materials/02_practice_topics.pdf`](materials/02_practice_topics.pdf)의 11가지 사례를 참고하세요.
 
 ### 1-4. 교육 당일 지참물
 
@@ -67,7 +67,7 @@
 ## 3. 저장소 구성
 
 ```
-Docs/         참가자 배포 문서 (PDF) — 번호 순서대로 보면 됩니다
+materials/    참가자 배포 문서 (PDF) — 번호 순서대로 보면 됩니다
   01_participant_guide.pdf   강의 참여 안내서 — 일정·준비물·FAQ
   02_practice_topics.pdf     실습 주제 카탈로그 — 공통 업무 11가지 + Best Practice 8가지
   03_prelearning.pdf         사전 학습 자료 — AI 원리·스킬·하네스 (개강 전 필독)
@@ -75,6 +75,9 @@ Docs/         참가자 배포 문서 (PDF) — 번호 순서대로 보면 됩�
   05_slides_day2.pdf         2일차 슬라이드 — 프롬프트에서 스킬로
   06_slides_day3.pdf         3일차 슬라이드 — 신뢰할 수 있는 AI 활용 기본기
   07_slides_day4.pdf         4일차 슬라이드 — AX 도입과 확산
+
+docs/         슬라이드의 웹 버전 (GitHub Pages로 배포됨: …/docs/day1.html)
+  day1.html ~ day4.html      브라우저에서 열면 발표 모드 — ← → 로 넘김 · 타이머 · ? 도움말 · 인쇄하면 PDF와 동일
 
 References/   실습 참고 자료와 예시 — "잘 만든 결과물은 이렇게 생겼다"
   skills.md                  스킬(AI 업무 매뉴얼) 문서 예시 — KS A 0001 표준 문서 작성 규칙을 스킬로 만든 것
@@ -122,7 +125,8 @@ References/   실습 참고 자료와 예시 — "잘 만든 결과물은 이렇
 ├── README.md            ← 4일차에 "우리 팀 파일럿 패키지" 목차로 완성 (아래 6절)
 ├── index.html           ← 샘플 패키지 표지(4일차 완성 모습). 2일차에 본인 안내 홈페이지로 교체 → 4일차에 패키지 표지로 확장
 ├── .nojekyll            ← Pages가 파일을 그대로 배포하게 하는 빈 파일 — 지우지 마세요
-├── Docs/                ← 강의 자료 PDF (참가자 안내서·카탈로그·사전학습·슬라이드) — 읽기용
+├── materials/           ← 강의 자료 PDF (참가자 안내서·카탈로그·사전학습·슬라이드) — 읽기용
+├── docs/                ← 슬라이드 웹 버전(day1~4.html, 발표 모드) — 읽기용
 ├── References/          ← 스킬·디자인 예시와 근거 문서 — 읽기용
 ├── Skills/              ← 스킬 v0 메모(1일) → 스킬 v1.0(2일, PR 병합) · 용어집 · 금지 행동
 ├── Workflow/            ← 업무 흐름도(Mermaid, 2일 과제) · RACI · 예외 경로(3일)
@@ -180,7 +184,7 @@ python3 Tool/sample_weekly_report_tool.py sample_normal --date 2026-08-14
 
 ## 7. 꼭 지켜주세요 — 모든 실습에 공통
 
-교육 첫날부터 실무까지 동일하게 적용되는 원칙입니다. (상세: `Docs/02_practice_topics.pdf` 4장 "Best Practice 8가지")
+교육 첫날부터 실무까지 동일하게 적용되는 원칙입니다. (상세: `materials/02_practice_topics.pdf` 4장 "Best Practice 8가지")
 
 1. **비식별 원칙** — 고객 실명, 실제 계약 금액, 사내 기밀이 담긴 실데이터는 교육장과 이 저장소에 **절대 올리지 않습니다.** 반드시 가명·더미 값으로 바꾼 비식별 샘플만 사용합니다. (이 저장소는 GitHub Pages로 **공개**됩니다.)
 2. **사람 검토 없는 자동 발송 금지** — 외부로 나가는 산출물은 반드시 사람의 승인을 거칩니다. 흐름도에 승인자를 이름 또는 역할로 명시합니다.
@@ -200,7 +204,7 @@ python3 Tool/sample_weekly_report_tool.py sample_normal --date 2026-08-14
 | 질문 | 답변 |
 |------|------|
 | 코딩을 전혀 못하는데 괜찮나요? | 네. 코드를 한 줄도 직접 쓰지 않습니다. 한국어 대화와 웹 화면 클릭만으로 진행하며, 강사 시연 후 2인 1조로 함께 합니다. |
-| 실습 주제는 꼭 제 업무로 해야 하나요? | 협회가 준비한 사례(`Docs/02_practice_topics.pdf`) 중에서 골라도 됩니다. 다만 본인 업무로 하면 수료 직후 바로 활용할 수 있어 권장합니다. |
+| 실습 주제는 꼭 제 업무로 해야 하나요? | 협회가 준비한 사례(`materials/02_practice_topics.pdf`) 중에서 골라도 됩니다. 다만 본인 업무로 하면 수료 직후 바로 활용할 수 있어 권장합니다. |
 | 유료 결제가 필요한가요? | Claude만 Pro 이상 요금제가 필요합니다. Cursor·GitHub·ChatGPT는 무료 계정으로 충분합니다. |
 | 과제를 못 하면 어떻게 되나요? | 다음 날 12:30 오픈 클리닉에서 보완할 수 있습니다. 과제가 다음 날 실습의 재료가 되므로 가급적 완료를 부탁드립니다. |
 | Fork한 저장소 이름을 바꿔도 되나요? | 됩니다 (Settings → General → Repository name). 배포 URL의 뒷부분이 저장소 이름이 됩니다. |
@@ -215,5 +219,5 @@ python3 Tool/sample_weekly_report_tool.py sample_normal --date 2026-08-14
 ## 라이선스와 저작권
 
 - 이 저장소의 구성과 코드는 [MIT License](LICENSE)를 따릅니다.
-- `Docs/`·`References/`의 교육 자료는 ⓒ 2026 한국디지털문서플랫폼협회 · AcademiQ(www.academiq.life)에 저작권이 있으며, **교육 참가자 외 제3자에게 전재·배포할 수 없습니다.** Fork한 저장소를 공개(Pages)로 운영할 때도 이 점을 유의해 주세요.
+- `materials/`·`docs/`·`References/`의 교육 자료는 ⓒ 2026 한국디지털문서플랫폼협회 · AcademiQ(www.academiq.life)에 저작권이 있으며, **교육 참가자 외 제3자에게 전재·배포할 수 없습니다.** Fork한 저장소를 공개(Pages)로 운영할 때도 이 점을 유의해 주세요.
 - `References/design.md`·`anchor_page.html`은 orderful.com의 **디자인 원칙만** 참고한 것입니다. 해당 사의 로고·상표·문구·고객 로고를 복제하지 마세요.
