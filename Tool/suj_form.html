@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>정책 애로사항 건의 접수</title>
+<style>
+  :root {
+    --ink: #222;
+    --sub: #666;
+    --line: #ddd;
+    --line-soft: #ebebeb;
+    --accent: #ff385c;
+    --bg: #fff;
+    --bg-soft: #f7f7f7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg-soft);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+    line-height: 1.5;
+    padding: 32px 16px 64px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  header { margin-bottom: 24px; }
+  h1 { font-size: 21px; font-weight: 700; margin: 0 0 8px; }
+  p.lead { color: var(--sub); font-size: 14px; margin: 0; }
+  form {
+    background: var(--bg);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  fieldset { border: none; padding: 0; margin: 0 0 24px; }
+  legend { font-size: 16px; font-weight: 600; margin-bottom: 12px; padding: 0; }
+  .field { margin-bottom: 16px; }
+  label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  label .req { color: var(--accent); margin-left: 2px; }
+  .hint { font-size: 12px; color: var(--sub); margin-top: 4px; }
+  input[type="text"], input[type="tel"], input[type="email"], textarea, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .radio-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .radio-row label { display: flex; align-items: center; gap: 6px; font-weight: 400; margin-bottom: 0; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  button {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #btn-submit { background: var(--accent); color: #fff; }
+  #btn-copy { background: var(--bg-soft); color: var(--ink); border: 1px solid var(--line); }
+  .notice {
+    background: var(--bg-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--sub);
+    margin-bottom: 20px;
+  }
+  .status {
+    margin-top: 16px;
+    font-size: 13px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: none;
+  }
+  .status.show { display: block; }
+  .status.ok { background: #eefaf1; color: #1b7a3d; }
+  .status.err { background: #fdeeee; color: #b3261e; }
+  footer { text-align: center; font-size: 12px; color: var(--sub); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>전자문서산업계 정책 애로사항 건의 접수</h1>
+    <p class="lead">아래 항목을 작성해 제출해 주세요. 작성 기준은 <code>Workflow/suj.md</code> 건의 가이드라인을 따릅니다.</p>
+  </header>
+
+  <div class="notice">
+    이 페이지는 정적 파일이라 서버로 자동 전송되지 않습니다. 작성 후 <strong>이메일로 보내기</strong> 버튼을 누르면 메일 초안이
+    열립니다(첨부파일은 메일에서 직접 붙여 주세요). 또는 <strong>내용 복사</strong>로 정리된 텍스트를 복사해 담당자에게
+    전달할 수 있습니다.
+  </div>
+
+  <form id="suj-form">
+    <fieldset>
+      <legend>1. 제출자 정보</legend>
+      <div class="field">
+        <label for="org">제출 회사/단체명<span class="req">*</span></label>
+        <input type="text" id="org" name="org" required />
+      </div>
+      <div class="field">
+        <label for="contact-name">담당자 이름<span class="req">*</span></label>
+        <input type="text" id="contact-name" name="contact-name" required />
+      </div>
+      <div class="field">
+        <label for="contact-phone">연락처(전화)<span class="req">*</span></label>
+        <input type="tel" id="contact-phone" name="contact-phone" required />
+        <div class="hint">대외 공유 자료에는 회사명만 표기되고 담당자 연락처는 비식별 처리됩니다.</div>
+      </div>
+      <div class="field">
+        <label for="contact-email">이메일</label>
+        <input type="email" id="contact-email" name="contact-email" />
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. 애로사항 내용</legend>
+      <div class="field">
+        <label for="summary">애로사항 요약<span class="req">*</span></label>
+        <input type="text" id="summary" name="summary" placeholder="한두 문장으로 요약" required />
+      </div>
+      <div class="field">
+        <label for="law">관련 법령·제도명</label>
+        <input type="text" id="law" name="law" placeholder="알고 있는 범위에서 작성 (선택)" />
+      </div>
+      <div class="field">
+        <label for="detail">구체적 사례<span class="req">*</span></label>
+        <textarea id="detail" name="detail" required
+          placeholder="언제, 어떤 절차에서, 무엇이 문제였는지 — 날짜·기관명을 포함해 작성해 주세요."></textarea>
+      </div>
+      <div class="field">
+        <label for="direction">희망하는 개선 방향</label>
+        <textarea id="direction" name="direction" placeholder="선택 사항이나 작성 시 검토가 빨라집니다."></textarea>
+      </div>
+      <div class="field">
+        <label>증빙 자료 첨부 여부</label>
+        <div class="radio-row">
+          <label><input type="radio" name="has-evidence" value="있음" checked /> 있음 (메일에 직접 첨부)</label>
+          <label><input type="radio" name="has-evidence" value="없음" /> 없음</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. 긴급 여부</legend>
+      <div class="field">
+        <div class="radio-row">
+          <label><input type="radio" name="urgent" value="일반" checked /> 일반 처리</label>
+          <label><input type="radio" name="urgent" value="긴급" /> 긴급 (즉시 대응 필요)</label>
+        </div>
+        <div class="hint">긴급 선택 시 담당자가 우선 유선으로 연락드립니다. (<code>Skills/exceptions.md</code> #1 참고)</div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit" id="btn-submit">이메일로 보내기</button>
+      <button type="button" id="btn-copy">내용 복사</button>
+    </div>
+    <div class="status" id="status"></div>
+  </form>
+
+  <footer>제출 정보는 접수 대장에만 등록되며, 대외 공유 시 비식별 처리됩니다.</footer>
+</div>
+
+<script>
+  const RECIPIENT = "policy@example.or.kr"; // 실제 접수 이메일로 교체하세요
+
+  function buildSummary(data) {
+    return [
+      "[전자문서산업계 정책 애로사항 건의]",
+      "",
+      "■ 제출자 정보",
+      `- 회사/단체명: ${data.org}`,
+      `- 담당자: ${data["contact-name"]}`,
+      `- 연락처: ${data["contact-phone"]}`,
+      `- 이메일: ${data["contact-email"] || "(미기재)"}`,
+      "",
+      "■ 애로사항",
+      `- 요약: ${data.summary}`,
+      `- 관련 법령·제도: ${data.law || "(미기재)"}`,
+      `- 구체적 사례:`,
+      `  ${data.detail.replace(/\n/g, "\n  ")}`,
+      `- 희망 개선 방향: ${data.direction || "(미기재)"}`,
+      `- 증빙 자료: ${data["has-evidence"]}`,
+      "",
+      `■ 긴급 여부: ${data.urgent}`,
+    ].join("\n");
+  }
+
+  function readForm() {
+    const form = document.getElementById("suj-form");
+    const fd = new FormData(form);
+    const data = {};
+    fd.forEach((v, k) => (data[k] = v));
+    return data;
+  }
+
+  function showStatus(msg, ok) {
+    const el = document.getElementById("status");
+    el.textContent = msg;
+    el.className = "status show " + (ok ? "ok" : "err");
+  }
+
+  document.getElementById("suj-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!this.reportValidity()) return;
+    const data = readForm();
+    const body = buildSummary(data);
+    const subject = encodeURIComponent(`[정책건의] ${data.org} - ${data.summary}`);
+    const mailto = `mailto:${RECIPIENT}?subject=${subject}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    showStatus("메일 앱이 열립니다. 증빙 자료가 있으면 메일에 직접 첨부해 주세요.", true);
+  });
+
+  document.getElementById("btn-copy").addEventListener("click", async function () {
+    const form = document.getElementById("suj-form");
+    if (!form.reportValidity()) return;
+    const data = readForm();
+    const text = buildSummary(data);
+    try {
+      await navigator.clipboard.writeText(text);
+      showStatus("내용이 클립보드에 복사되었습니다.", true);
+    } catch (err) {
+      showStatus("복사에 실패했습니다. 직접 선택해 복사해 주세요.", false);
+    }
+  });
+</script>
+</body>
+</html>
