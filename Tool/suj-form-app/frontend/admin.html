@@ -108,6 +108,7 @@
     <div class="toolbar">
       <span class="count" id="count-label"></span>
       <div class="actions">
+        <button id="btn-export" type="button">⬇ 엑셀 다운로드</button>
         <button id="btn-refresh" type="button">새로고침</button>
         <button id="btn-logout" type="button" class="logout">키 지우기</button>
       </div>
@@ -161,6 +162,7 @@
   const app = document.getElementById("app");
   const keyInput = document.getElementById("admin-key");
   const gateError = document.getElementById("gate-error");
+  let currentRows = []; // 마지막으로 불러온 목록 (엑셀 다운로드가 이 값을 그대로 씀)
 
   function escapeHtml(str) {
     return String(str).replace(/[&<>"']/g, (c) => ({
@@ -198,6 +200,7 @@
       }
 
       const rows = result.data || [];
+      currentRows = rows;
       countEl.textContent = `총 ${rows.length}건`;
       if (rows.length === 0) {
         emptyEl.style.display = "block";
@@ -260,6 +263,62 @@
   document.getElementById("btn-refresh").addEventListener("click", () => {
     const key = localStorage.getItem(STORAGE_KEY);
     if (key) fetchList(key);
+  });
+
+  // 엑셀(Excel)에서 바로 열리는 CSV로 내보내기. 첨부파일은 공개 폼이 파일을
+  // 아예 받지 않아(증빙은 담당자에게 별도 전달) 다운로드 대상 자체가 없음.
+  const CSV_COLUMNS = [
+    ["receipt_no", "접수번호"],
+    ["org", "회사/단체명"],
+    ["contact_name", "담당자"],
+    ["contact_phone", "연락처"],
+    ["contact_email", "이메일"],
+    ["summary", "요약"],
+    ["law", "관련 법령·제도"],
+    ["detail", "구체적 사례"],
+    ["direction", "희망 개선 방향"],
+    ["has_evidence", "증빙 자료"],
+    ["urgent", "긴급 여부"],
+    ["status", "처리 상태"],
+    ["created_at", "접수일시"],
+  ];
+
+  function csvEscape(value) {
+    const s = value === null || value === undefined ? "" : String(value);
+    if (/[",\n]/.test(s)) {
+      return `"${s.replace(/"/g, '""')}"`;
+    }
+    return s;
+  }
+
+  function buildCsv(rows) {
+    const header = CSV_COLUMNS.map(([, label]) => csvEscape(label)).join(",");
+    const lines = rows.map((r) =>
+      CSV_COLUMNS.map(([key]) => {
+        const v = key === "created_at" ? new Date(r[key]).toLocaleString("ko-KR") : r[key];
+        return csvEscape(v);
+      }).join(",")
+    );
+    // 엑셀에서 한글이 깨지지 않도록 UTF-8 BOM을 앞에 붙인다.
+    return "﻿" + [header, ...lines].join("\r\n");
+  }
+
+  document.getElementById("btn-export").addEventListener("click", () => {
+    if (currentRows.length === 0) {
+      showToast("내보낼 접수 건이 없습니다.", true);
+      return;
+    }
+    const csv = buildCsv(currentRows);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `정책건의_접수내역_${stamp}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
   });
 
   document.getElementById("rows").addEventListener("change", async (e) => {
