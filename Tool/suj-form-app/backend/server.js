@@ -25,6 +25,9 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
 });
 
 const app = express();
+// Render는 리버스 프록시 뒤에서 실행되므로 X-Forwarded-For 헤더를 신뢰해야
+// express-rate-limit이 접속자 IP를 정확히 구분합니다.
+app.set("trust proxy", 1);
 app.use(express.json({ limit: "200kb" }));
 
 const allowedOrigins = (ALLOWED_ORIGIN || "")
