@@ -141,16 +141,22 @@ app.get("/api/complaints/:receiptNo", async (req, res) => {
   return res.json({ ok: true, data });
 });
 
-// 내부 접수 목록 조회 (간단한 관리 화면용). 공개 API가 아니므로 ADMIN_KEY로 최소 보호.
-app.get("/api/admin/complaints", async (req, res) => {
+// suj-form-app/supabase/schema.sql의 complaints.status check 제약과 반드시 일치시킬 것.
+const STATUS_VALUES = ["접수", "검토중", "현황조사", "이사회보고", "기관협의", "완료", "반려"];
+
+function requireAdminKey(req, res, next) {
   if (!ADMIN_KEY) {
-    return res.status(503).json({ ok: false, message: "관리자 조회 기능이 아직 설정되지 않았습니다." });
+    return res.status(503).json({ ok: false, message: "관리자 기능이 아직 설정되지 않았습니다." });
   }
   const key = req.header("x-admin-key") || "";
   if (key !== ADMIN_KEY) {
     return res.status(401).json({ ok: false, message: "접근 키가 올바르지 않습니다." });
   }
+  next();
+}
 
+// 내부 접수 목록 조회 (간단한 관리 화면용). 공개 API가 아니므로 ADMIN_KEY로 최소 보호.
+app.get("/api/admin/complaints", requireAdminKey, async (req, res) => {
   const { data, error } = await supabase
     .from("complaints")
     .select(
@@ -162,6 +168,35 @@ app.get("/api/admin/complaints", async (req, res) => {
   if (error) {
     console.error("접수 목록 조회 실패:", error);
     return res.status(500).json({ ok: false, message: "목록 조회 중 오류가 발생했습니다." });
+  }
+  return res.json({ ok: true, data });
+});
+
+// 접수 건 상태 변경 (간단한 관리 화면용).
+app.patch("/api/admin/complaints/:receiptNo/status", requireAdminKey, async (req, res) => {
+  const { receiptNo } = req.params;
+  const status = (req.body && req.body.status) || "";
+
+  if (!STATUS_VALUES.includes(status)) {
+    return res.status(400).json({
+      ok: false,
+      message: `status 값은 다음 중 하나여야 합니다: ${STATUS_VALUES.join(", ")}`,
+    });
+  }
+
+  const { data, error } = await supabase
+    .from("complaints")
+    .update({ status })
+    .eq("receipt_no", receiptNo)
+    .select("receipt_no, status")
+    .maybeSingle();
+
+  if (error) {
+    console.error("상태 변경 실패:", error);
+    return res.status(500).json({ ok: false, message: "상태 변경 중 오류가 발생했습니다." });
+  }
+  if (!data) {
+    return res.status(404).json({ ok: false, message: "해당 접수번호를 찾을 수 없습니다." });
   }
   return res.json({ ok: true, data });
 });

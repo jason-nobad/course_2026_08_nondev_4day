@@ -72,6 +72,21 @@
   }
   .error { color: #b3261e; }
 
+  select.status-select {
+    font-size: 13px; font-family: inherit; color: var(--ink);
+    border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; background: var(--bg);
+  }
+  select.status-select:disabled { opacity: 0.5; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(12px);
+    background: var(--ink); color: #fff; font-size: 13px; font-weight: 600;
+    padding: 10px 18px; border-radius: 999px; opacity: 0; pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease; z-index: 10;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.err { background: #b3261e; }
+
   footer { text-align: center; font-size: 12px; color: var(--sub); margin-top: 24px; }
 </style>
 </head>
@@ -124,10 +139,23 @@
   <footer>이 화면은 검색엔진에 노출되지 않으며, 링크를 아는 사람만 접근합니다. 접근 키는 외부에 공유하지 마세요.</footer>
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script src="config.js"></script>
 <script>
   const API_BASE = (window.API_BASE_URL || "").replace(/\/$/, "");
   const STORAGE_KEY = "suj_admin_key";
+  // Tool/suj-form-app/supabase/schema.sql의 complaints.status check 제약과 반드시 일치시킬 것.
+  const STATUS_VALUES = ["접수", "검토중", "현황조사", "이사회보고", "기관협의", "완료", "반려"];
+
+  let toastTimer = null;
+  function showToast(message, isError) {
+    const el = document.getElementById("toast");
+    el.textContent = message;
+    el.className = "toast show" + (isError ? " err" : "");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
+  }
 
   const gate = document.getElementById("gate");
   const app = document.getElementById("app");
@@ -186,7 +214,11 @@
           <td class="detail">${escapeHtml(r.detail)}</td>
           <td>${r.urgent === "긴급" ? '<span class="badge urgent">긴급</span>' : '<span class="badge normal">일반</span>'}</td>
           <td>${escapeHtml(r.has_evidence)}</td>
-          <td>${escapeHtml(r.status)}</td>
+          <td>
+            <select class="status-select" data-receipt="${escapeHtml(r.receipt_no)}" data-current="${escapeHtml(r.status)}">
+              ${STATUS_VALUES.map((s) => `<option value="${escapeHtml(s)}" ${s === r.status ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}
+            </select>
+          </td>
           <td>${escapeHtml(new Date(r.created_at).toLocaleString("ko-KR"))}</td>
         </tr>
       `).join("");
@@ -228,6 +260,45 @@
   document.getElementById("btn-refresh").addEventListener("click", () => {
     const key = localStorage.getItem(STORAGE_KEY);
     if (key) fetchList(key);
+  });
+
+  document.getElementById("rows").addEventListener("change", async (e) => {
+    const select = e.target.closest("select.status-select");
+    if (!select) return;
+
+    const key = localStorage.getItem(STORAGE_KEY);
+    const receiptNo = select.dataset.receipt;
+    const newStatus = select.value;
+    const previousStatus = select.dataset.current || newStatus;
+
+    select.disabled = true;
+    try {
+      const res = await fetch(
+        `${API_BASE}/api/admin/complaints/${encodeURIComponent(receiptNo)}/status`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json", "x-admin-key": key },
+          body: JSON.stringify({ status: newStatus }),
+        }
+      );
+      const result = await res.json();
+      if (!res.ok || !result.ok) {
+        if (res.status === 401) {
+          showGate(result.message || "접근 키가 올바르지 않습니다.");
+          return;
+        }
+        select.value = previousStatus;
+        showToast(result.message || "상태 변경에 실패했습니다.", true);
+        return;
+      }
+      select.dataset.current = newStatus;
+      showToast(`${receiptNo} 상태를 "${newStatus}"(으)로 변경했습니다.`);
+    } catch (err) {
+      select.value = previousStatus;
+      showToast("서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.", true);
+    } finally {
+      select.disabled = false;
+    }
   });
 
   document.getElementById("btn-logout").addEventListener("click", () => {
