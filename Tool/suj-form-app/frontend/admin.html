@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>정책 애로사항 접수 내역 (내부용)</title>
+<style>
+  :root {
+    --ink: #222;
+    --sub: #666;
+    --line: #ddd;
+    --line-soft: #ebebeb;
+    --accent: #ff385c;
+    --bg: #fff;
+    --bg-soft: #f7f7f7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg-soft);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+    line-height: 1.5;
+    padding: 32px 16px 64px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { margin-bottom: 20px; }
+  h1 { font-size: 20px; font-weight: 700; margin: 0 0 6px; }
+  p.lead { color: var(--sub); font-size: 13px; margin: 0; }
+
+  .gate {
+    background: var(--bg); border: 1px solid var(--line-soft); border-radius: 14px;
+    padding: 24px; max-width: 420px; margin: 40px auto;
+  }
+  .gate label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .gate input {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px;
+    font-size: 14px; margin-bottom: 12px;
+  }
+  .gate button {
+    width: 100%; padding: 10px; border: none; border-radius: 8px;
+    background: var(--accent); color: #fff; font-weight: 600; font-size: 14px; cursor: pointer;
+  }
+
+  .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .toolbar .count { font-size: 13px; color: var(--sub); }
+  .toolbar .actions { display: flex; gap: 8px; }
+  .toolbar button {
+    border: 1px solid var(--line); background: var(--bg); border-radius: 8px;
+    padding: 8px 14px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--ink);
+  }
+  .toolbar button:hover { background: var(--bg-soft); }
+  .toolbar button.logout { color: var(--accent); border-color: var(--accent); }
+
+  .table-wrap {
+    background: var(--bg); border: 1px solid var(--line-soft); border-radius: 14px;
+    overflow: auto; max-width: 100%;
+  }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; white-space: nowrap; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line-soft); }
+  th { color: var(--sub); font-weight: 600; background: var(--bg-soft); position: sticky; top: 0; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg-soft); }
+  td.detail { white-space: normal; max-width: 280px; }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .badge.urgent { background: #fdecec; color: #b3261e; }
+  .badge.normal { background: var(--bg-soft); color: var(--sub); }
+
+  .empty, .error, .loading {
+    padding: 48px 16px; text-align: center; color: var(--sub); font-size: 14px;
+  }
+  .error { color: #b3261e; }
+
+  footer { text-align: center; font-size: 12px; color: var(--sub); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>정책 애로사항 접수 내역 (내부용)</h1>
+    <p class="lead">공개 접수 폼(suj-form.vercel.app)으로 들어온 접수 건을 그대로 보여줍니다. 담당자 확인용 — 접근 키를 아는 사람만 열람할 수 있습니다.</p>
+  </header>
+
+  <div id="gate" class="gate">
+    <label for="admin-key">접근 키</label>
+    <input type="password" id="admin-key" placeholder="관리자에게 전달받은 키" autocomplete="off" />
+    <button id="btn-enter" type="button">열람하기</button>
+    <div class="error" id="gate-error" style="display:none; padding: 8px 0 0; text-align:left; font-size:12px;"></div>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div class="toolbar">
+      <span class="count" id="count-label"></span>
+      <div class="actions">
+        <button id="btn-refresh" type="button">새로고침</button>
+        <button id="btn-logout" type="button" class="logout">키 지우기</button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>접수번호</th>
+            <th>회사/단체명</th>
+            <th>담당자</th>
+            <th>연락처</th>
+            <th>요약</th>
+            <th>구체적 사례</th>
+            <th>긴급</th>
+            <th>증빙</th>
+            <th>상태</th>
+            <th>접수일시</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="empty-msg" style="display:none;">아직 접수된 건이 없습니다.</div>
+    <div class="loading" id="loading-msg" style="display:none;">불러오는 중...</div>
+    <div class="error" id="list-error" style="display:none;"></div>
+  </div>
+
+  <footer>이 화면은 검색엔진에 노출되지 않으며, 링크를 아는 사람만 접근합니다. 접근 키는 외부에 공유하지 마세요.</footer>
+</div>
+
+<script src="config.js"></script>
+<script>
+  const API_BASE = (window.API_BASE_URL || "").replace(/\/$/, "");
+  const STORAGE_KEY = "suj_admin_key";
+
+  const gate = document.getElementById("gate");
+  const app = document.getElementById("app");
+  const keyInput = document.getElementById("admin-key");
+  const gateError = document.getElementById("gate-error");
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    }[c]));
+  }
+
+  async function fetchList(key) {
+    const loadingEl = document.getElementById("loading-msg");
+    const emptyEl = document.getElementById("empty-msg");
+    const errorEl = document.getElementById("list-error");
+    const rowsEl = document.getElementById("rows");
+    const countEl = document.getElementById("count-label");
+
+    rowsEl.innerHTML = "";
+    emptyEl.style.display = "none";
+    errorEl.style.display = "none";
+    loadingEl.style.display = "block";
+
+    try {
+      const res = await fetch(`${API_BASE}/api/admin/complaints`, {
+        headers: { "x-admin-key": key },
+      });
+      const result = await res.json();
+      loadingEl.style.display = "none";
+
+      if (!res.ok || !result.ok) {
+        if (res.status === 401) {
+          showGate(result.message || "접근 키가 올바르지 않습니다.");
+          return;
+        }
+        errorEl.textContent = result.message || "목록을 불러오지 못했습니다.";
+        errorEl.style.display = "block";
+        return;
+      }
+
+      const rows = result.data || [];
+      countEl.textContent = `총 ${rows.length}건`;
+      if (rows.length === 0) {
+        emptyEl.style.display = "block";
+        return;
+      }
+
+      rowsEl.innerHTML = rows.map((r) => `
+        <tr>
+          <td>${escapeHtml(r.receipt_no)}</td>
+          <td>${escapeHtml(r.org)}</td>
+          <td>${escapeHtml(r.contact_name)}</td>
+          <td>${escapeHtml(r.contact_phone)}</td>
+          <td>${escapeHtml(r.summary)}</td>
+          <td class="detail">${escapeHtml(r.detail)}</td>
+          <td>${r.urgent === "긴급" ? '<span class="badge urgent">긴급</span>' : '<span class="badge normal">일반</span>'}</td>
+          <td>${escapeHtml(r.has_evidence)}</td>
+          <td>${escapeHtml(r.status)}</td>
+          <td>${escapeHtml(new Date(r.created_at).toLocaleString("ko-KR"))}</td>
+        </tr>
+      `).join("");
+    } catch (err) {
+      loadingEl.style.display = "none";
+      errorEl.textContent = "서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.";
+      errorEl.style.display = "block";
+    }
+  }
+
+  function showApp(key) {
+    gate.style.display = "none";
+    app.style.display = "block";
+    fetchList(key);
+  }
+
+  function showGate(message) {
+    localStorage.removeItem(STORAGE_KEY);
+    app.style.display = "none";
+    gate.style.display = "block";
+    if (message) {
+      gateError.textContent = message;
+      gateError.style.display = "block";
+    }
+  }
+
+  document.getElementById("btn-enter").addEventListener("click", () => {
+    const key = keyInput.value.trim();
+    if (!key) return;
+    localStorage.setItem(STORAGE_KEY, key);
+    gateError.style.display = "none";
+    showApp(key);
+  });
+
+  keyInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") document.getElementById("btn-enter").click();
+  });
+
+  document.getElementById("btn-refresh").addEventListener("click", () => {
+    const key = localStorage.getItem(STORAGE_KEY);
+    if (key) fetchList(key);
+  });
+
+  document.getElementById("btn-logout").addEventListener("click", () => {
+    showGate();
+  });
+
+  const savedKey = localStorage.getItem(STORAGE_KEY);
+  if (savedKey) {
+    showApp(savedKey);
+  }
+</script>
+</body>
+</html>

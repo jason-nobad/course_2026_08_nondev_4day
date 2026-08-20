@@ -15,7 +15,7 @@ flowchart LR
 
 | 계층 | 폴더 | 배포처 | 역할 |
 |---|---|---|---|
-| Presentation | [`frontend/`](frontend/) | Vercel (정적 사이트) | 접수 폼 + 접수번호 조회 화면. DB에 직접 접근하지 않고 백엔드 API만 호출 |
+| Presentation | [`frontend/`](frontend/) | Vercel (정적 사이트) | 접수 폼 + 접수번호 조회 화면 + [내부 접수 목록 조회](#내부-접수-목록-조회-adminhtml). DB에 직접 접근하지 않고 백엔드 API만 호출 |
 | Application | [`backend/`](backend/) | Render.com (Node 웹 서비스) | 입력값 검증, 접수번호(`EDPA-연도-번호`) 채번, Supabase 호출, 속도 제한 |
 | Data | [`supabase/schema.sql`](supabase/schema.sql) | Supabase (Postgres) | `complaints` 테이블. RLS로 잠겨 있어 서비스 키를 가진 백엔드만 접근 가능 |
 
@@ -52,6 +52,14 @@ flowchart LR
 - 같은 접수번호 + 연락처로 페이지 하단 "처리 현황 확인"에서 조회되는지 확인
 - 필수 항목을 비운 채 제출 시 저장되지 않고 안내 메시지만 뜨는지 확인 (오류 샘플)
 
+## 내부 접수 목록 조회 (`admin.html`)
+
+담당자가 접수된 건을 한 화면에서 훑어보기 위한 간단한 읽기 전용 목록입니다. `Tool/complaint_management_system.html`(회원사·처리이력·정책건의까지 다루는 별도의 본격 관리자 도구)과는 다른, 훨씬 가벼운 화면입니다.
+
+- 위치: `frontend/admin.html` → 배포 후 `https://<Vercel 주소>/admin.html`
+- 보호 방식: 공개 접수 폼과 달리 인증이 필요합니다. Render 환경변수 `ADMIN_KEY`에 임의의 긴 문자열을 설정하면, `admin.html`에서 그 값을 입력해야 목록이 보입니다. `ADMIN_KEY`를 설정하지 않으면 `/api/admin/*`가 통째로 비활성화됩니다.
+- 이 페이지는 nav 메뉴 등으로 링크되어 있지 않습니다 — URL과 접근 키를 아는 사람만 씁니다. 접근 키는 코드/커밋에 넣지 말고 담당자에게 별도로 전달하세요.
+
 ## 로컬에서 백엔드만 먼저 확인하고 싶다면
 
 ```bash
@@ -67,11 +75,12 @@ curl -X POST http://localhost:3000/api/complaints \
 ## 알려진 한계
 
 - 첨부파일 업로드는 아직 없습니다. 증빙 자료는 접수 후 담당자에게 별도로 전달하는 방식입니다 (필요해지면 Supabase Storage 연동으로 확장 가능).
-- 접수 상태(`status`)는 기본값 `접수`로만 생성됩니다. 담당자가 검토·완료 등으로 바꾸는 관리 화면은 아직 없고, 현재는 Supabase 대시보드 → Table Editor에서 직접 수정합니다. `Tool/complaint_management_system.html`(localStorage 기반 내부 관리 도구)과 이 DB를 연동하는 것은 다음 단계 과제입니다.
-- 관리자 인증은 없습니다(공개 접수 폼이므로 인증 불필요). 향후 담당자용 조회·상태변경 화면을 추가한다면 Supabase Auth로 로그인을 붙이는 것을 권장합니다.
+- 접수 상태(`status`)는 기본값 `접수`로만 생성됩니다. `admin.html`은 목록을 보여주기만 하고 상태를 바꾸는 기능은 없습니다 — 상태 변경은 현재도 Supabase 대시보드 → Table Editor에서 직접 합니다. `Tool/complaint_management_system.html`(회원사·처리이력·정책건의까지 다루는 별도의 본격 관리자 도구, localStorage 기반)과 이 DB를 연동하는 것은 별도의 더 큰 작업으로 남겨둡니다.
+- `admin.html`의 접근 제어는 공유 키 하나로 여는 최소한의 방식입니다(로그인·역할 구분 없음). 여러 담당자가 각자 로그인하고 권한을 나누는 화면이 필요해지면 Supabase Auth 도입을 권장합니다.
 
 ## 버전과 변경 기록
 
 | 버전 | 날짜 | 변경 내용 |
 |---|---|---|
 | v1.0 | 2026-08-20 | 최초 제작 — `docs/suj_form.html`(정적 mailto 양식)을 Vercel(프런트)·Render(백엔드)·Supabase(DB) 3-tier로 재구성. 접수번호 자동 채번, 접수번호+연락처 처리 현황 조회 추가 |
+| v1.1 | 2026-08-20 | 내부용 접수 목록 조회 화면(`frontend/admin.html`) 및 보호된 목록 API(`GET /api/admin/complaints`, `ADMIN_KEY` 필요) 추가. Render `trust proxy` 설정 추가 |

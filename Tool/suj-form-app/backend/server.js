@@ -11,6 +11,7 @@ const {
   SUPABASE_URL,
   SUPABASE_SERVICE_ROLE_KEY,
   ALLOWED_ORIGIN, // 쉼표로 여러 origin 지정 가능. 비워두면 모든 origin 허용(테스트용)
+  ADMIN_KEY, // 내부 조회 페이지(/api/admin/*) 접근 키. 미설정 시 관리자 API 전체 비활성화
   PORT = 3000,
 } = process.env;
 
@@ -136,6 +137,31 @@ app.get("/api/complaints/:receiptNo", async (req, res) => {
     return res
       .status(404)
       .json({ ok: false, message: "접수번호와 연락처가 일치하는 건을 찾을 수 없습니다." });
+  }
+  return res.json({ ok: true, data });
+});
+
+// 내부 접수 목록 조회 (간단한 관리 화면용). 공개 API가 아니므로 ADMIN_KEY로 최소 보호.
+app.get("/api/admin/complaints", async (req, res) => {
+  if (!ADMIN_KEY) {
+    return res.status(503).json({ ok: false, message: "관리자 조회 기능이 아직 설정되지 않았습니다." });
+  }
+  const key = req.header("x-admin-key") || "";
+  if (key !== ADMIN_KEY) {
+    return res.status(401).json({ ok: false, message: "접근 키가 올바르지 않습니다." });
+  }
+
+  const { data, error } = await supabase
+    .from("complaints")
+    .select(
+      "receipt_no, org, contact_name, contact_phone, contact_email, summary, law, detail, direction, has_evidence, urgent, status, created_at"
+    )
+    .order("created_at", { ascending: false })
+    .limit(200);
+
+  if (error) {
+    console.error("접수 목록 조회 실패:", error);
+    return res.status(500).json({ ok: false, message: "목록 조회 중 오류가 발생했습니다." });
   }
   return res.json({ ok: true, data });
 });
