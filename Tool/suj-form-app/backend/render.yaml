@@ -1,0 +1,17 @@
+# Render.com Blueprint — Render 대시보드 → New → Blueprint 에서 이 저장소를 연결하면
+# 아래 설정대로 서비스가 자동 생성됩니다. (Root Directory를 Tool/suj-form-app/backend 로 지정)
+services:
+  - type: web
+    name: suj-form-backend
+    runtime: node
+    plan: free
+    rootDir: Tool/suj-form-app/backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ALLOWED_ORIGIN
+        sync: false

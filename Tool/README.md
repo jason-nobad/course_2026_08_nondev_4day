@@ -34,6 +34,14 @@
 - 도구는 **비식별 샘플**로만 시험합니다. 실데이터는 여기에도, `_workspace/`에도 올리지 않습니다.
 - 비개발자의 유지보수 전략: ① 도구의 용도·전제를 스킬로 문서화 ② 샘플 3종 검증 기록 보관 ③ 고장 나면 Claude Code에게 검증 기록과 함께 다시 요청.
 
+## 우리 팀 산출물
+
+| 파일 | 무엇 |
+|------|------|
+| [`complaint_management_system.html`](complaint_management_system.html) | 전자문서산업계 애로사항·민원 통합관리 시스템 (`Downloads/prd.txt` PRD + `docs/prd_img/` 화면 목업 기반). 브라우저에서 더블클릭으로 실행되는 단일 HTML, 데이터는 localStorage에 저장 |
+| [`complaint_management_system_USAGE.md`](complaint_management_system_USAGE.md) | 한 줄 명세 · 화면 구성표 · **샘플 3종 검증 기록(통과 33/33)** · 알려진 한계 · 버전 기록 |
+| [`suj-form-app/`](suj-form-app/) | `docs/suj_form.html`(정적 mailto 양식)을 3-tier로 재구성한 접수 프로그램 — Vercel(프런트)·Render.com(백엔드 API)·Supabase(DB). 구조·배포 순서는 [`suj-form-app/README.md`](suj-form-app/README.md) 참고 |
+
 ## 샘플 (가상 사례: 주간 보고 초안 취합 도구)
 
 | 파일 | 무엇 |

@@ -1,0 +1,2072 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>전자문서산업계 애로사항·민원 통합관리 시스템</title>
+<style>
+  :root{
+    --bg:#efe9dd; --panel:#efe9dd; --card:#ffffff;
+    --ink:#2a2620; --sub:#8a8375; --sub2:#a39c8c;
+    --line:#e7e0d0; --line-soft:#f1ebdd;
+    --accent:#3b6fe0; --accent-soft:#e7edfb;
+    --danger:#b23b3b; --danger-soft:#fbe4e1;
+    --warn:#b87a2e; --warn-soft:#f6e6cb;
+    --ok:#2f8f5b; --ok-soft:#e3f5ea;
+    --ink-soft:#57503f;
+    --r-lg:18px; --r-md:12px; --r-sm:8px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit}
+  a{color:inherit}
+  .shell{max-width:1400px;margin:0 auto;padding:20px;display:flex;gap:20px;align-items:flex-start;min-height:100vh}
+  /* sidebar */
+  .sidebar{width:212px;flex:none;background:var(--panel);border-radius:var(--r-lg);padding:18px 12px;position:sticky;top:20px}
+  .brand{font-size:15px;font-weight:700;padding:6px 10px 16px;color:var(--ink)}
+  .nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .nav li{border-radius:10px}
+  .nav button{
+    width:100%;text-align:left;background:transparent;border:none;padding:10px 12px;border-radius:10px;
+    font-size:14px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:500;
+  }
+  .nav button .ic{width:16px;text-align:center;opacity:.85}
+  .nav button:hover{background:#e4ddcd}
+  .nav li.active button{background:#fff;color:var(--ink);font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .nav .sep{height:1px;background:var(--line);margin:10px 4px}
+
+  /* main */
+  .main{flex:1;min-width:0;display:flex;flex-direction:column;gap:16px}
+  .topbar{background:var(--card);border-radius:var(--r-lg);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .topbar h1{font-size:19px;margin:0;font-weight:700}
+  .topbar .right{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--sub)}
+  .bell{position:relative;cursor:pointer;font-size:16px;padding:6px;border-radius:8px}
+  .bell:hover{background:var(--line-soft)}
+  .bell .dot{position:absolute;top:2px;right:2px;background:var(--danger);color:#fff;font-size:10px;line-height:1;border-radius:10px;padding:2px 5px;font-weight:700}
+  .userpick{position:relative}
+  .userpick select{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;font-size:13px;color:var(--ink);cursor:pointer}
+
+  .content{background:transparent;display:flex;flex-direction:column;gap:16px}
+  .card{background:var(--card);border-radius:var(--r-lg);padding:20px 22px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .card h2{font-size:16px;margin:0 0 14px;font-weight:700}
+  .card h2 small{font-weight:500;color:var(--sub);font-size:12px;margin-left:6px}
+  .grid{display:grid;gap:14px}
+  .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+  .grid.cols-2{grid-template-columns:1fr 1fr}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .grid.cols-5{grid-template-columns:repeat(5,1fr)}
+  @media (max-width:1050px){.grid.cols-4,.grid.cols-5{grid-template-columns:repeat(2,1fr)}.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
+
+  .kpi{background:var(--card);border-radius:14px;padding:16px 18px}
+  .kpi .lbl{font-size:12px;color:var(--sub);margin-bottom:6px}
+  .kpi .val{font-size:26px;font-weight:700}
+  .kpi .val small{font-size:13px;color:var(--sub);font-weight:500}
+
+  .badge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px}
+  .badge.danger{background:var(--danger-soft);color:var(--danger)}
+  .badge.warn{background:var(--warn-soft);color:var(--warn)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .badge.info{background:var(--accent-soft);color:var(--accent)}
+  .badge.gray{background:var(--line-soft);color:var(--sub)}
+
+  .toprow{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{text-align:left;color:var(--sub);font-weight:600;font-size:12px;padding:8px 10px;border-bottom:1px solid var(--line)}
+  tbody td{padding:10px 10px;border-bottom:1px solid var(--line-soft)}
+  tbody tr{cursor:pointer}
+  tbody tr:hover td{background:var(--line-soft)}
+  tbody tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right}
+
+  .btn{border:none;border-radius:9px;padding:9px 15px;font-size:13.5px;font-weight:700;cursor:pointer;background:var(--line-soft);color:var(--ink)}
+  .btn.primary{background:#26221c;color:#fff}
+  .btn.accent{background:var(--accent);color:#fff}
+  .btn.danger{background:var(--danger);color:#fff}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .btn.sm{padding:6px 11px;font-size:12.5px;border-radius:7px}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap}
+
+  input[type=text],input[type=date],input[type=search],input[type=email],input[type=tel],input[type=number],select,textarea{
+    width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-size:13.5px;font-family:inherit;background:#fff;color:var(--ink);
+  }
+  textarea{resize:vertical;min-height:70px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+  label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-soft);margin-bottom:5px}
+  .field{margin-bottom:13px}
+  .req::after{content:" *";color:var(--danger)}
+  .hint{font-size:11.5px;color:var(--sub);margin-top:4px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+
+  .searchbar{display:flex;gap:8px;margin-bottom:10px}
+  .searchbar input{flex:1}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .filters select,.filters input{width:auto;min-width:120px}
+
+  .tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin:10px 0 16px;flex-wrap:wrap}
+  .tabs button{background:transparent;border:none;padding:9px 4px;margin-right:18px;font-size:13.5px;font-weight:600;color:var(--sub);cursor:pointer;border-bottom:2px solid transparent}
+  .tabs button.active{color:var(--ink);border-bottom-color:var(--ink)}
+
+  .timeline{list-style:none;margin:0;padding:0}
+  .timeline li{position:relative;padding:0 0 20px 22px;border-left:2px solid var(--line-soft)}
+  .timeline li:last-child{border-color:transparent}
+  .timeline li::before{content:"";position:absolute;left:-6px;top:2px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+  .timeline li.pending::before{background:#fff;border:2px solid var(--sub2)}
+  .timeline li .t{font-weight:700;font-size:13.5px}
+  .timeline li .d{color:var(--sub);font-size:12.5px;margin-top:2px}
+  .timeline li .who{color:var(--sub);font-size:12px}
+
+  .pillbox{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .pill{background:var(--line-soft);border-radius:999px;padding:6px 12px;font-size:12.5px;color:var(--ink-soft);font-weight:600}
+
+  .modal-backdrop{position:fixed;inset:0;background:rgba(30,26,18,.42);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:100}
+  .modal-backdrop.show{display:flex}
+  .modal{background:#fff;border-radius:16px;max-width:640px;width:100%;padding:24px 26px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  .modal.wide{max-width:840px}
+  .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .modal-head h3{margin:0;font-size:17px}
+  .modal-head .x{cursor:pointer;font-size:20px;color:var(--sub);background:none;border:none}
+
+  .empty{color:var(--sub);font-size:13px;padding:18px 4px;text-align:center}
+  .muted{color:var(--sub)}
+  .link{color:var(--accent);cursor:pointer;font-weight:600}
+
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#26221c;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s, bottom .25s;z-index:200}
+  .toast.show{opacity:1;bottom:34px}
+
+  .stepbar{display:flex;gap:14px;font-size:12.5px;color:var(--sub);margin-bottom:16px;font-weight:600}
+  .stepbar b{color:var(--ink)}
+  .stepblock{border-top:1px solid var(--line-soft);padding:16px 0}
+  .stepblock:first-of-type{border-top:none;padding-top:0}
+  .stepblock h4{margin:0 0 12px;font-size:14px}
+
+  .kv{display:grid;grid-template-columns:110px 1fr;font-size:13px;padding:6px 0;border-bottom:1px solid var(--line-soft)}
+  .kv:last-child{border-bottom:none}
+  .kv .k{color:var(--sub)}
+
+  .company-list{display:grid;grid-template-columns:1fr;gap:0}
+  .split2{display:grid;grid-template-columns:340px 1fr;gap:16px}
+  @media (max-width:900px){.split2{grid-template-columns:1fr}}
+
+  .barlist .brow{margin-bottom:12px}
+  .barlist .blab{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px;color:var(--ink-soft);font-weight:600}
+  .btrack{background:#e9e2d1;border-radius:999px;height:9px;overflow:hidden}
+  .bfill{background:var(--accent);height:100%;border-radius:999px}
+
+  .donutwrap{display:flex;align-items:center;gap:22px}
+  .donut{width:120px;height:120px;border-radius:50%;flex:none}
+  .legend{list-style:none;margin:0;padding:0;font-size:12.5px;display:flex;flex-direction:column;gap:7px}
+  .legend li{display:flex;align-items:center;gap:8px}
+  .legend .sw{width:9px;height:9px;border-radius:2px;flex:none}
+
+  .linechart{width:100%;height:170px}
+
+  .noteitem{padding:11px 4px;border-bottom:1px solid var(--line-soft);font-size:13px;cursor:pointer}
+  .noteitem:last-child{border-bottom:none}
+  .noteitem .nt{font-weight:700}
+  .noteitem .nd{color:var(--sub);font-size:12px;margin-top:2px}
+
+  .checkbox-row{display:flex;align-items:center;gap:8px;padding:6px 2px;font-size:13px}
+  .filechip{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:var(--line-soft);border-radius:9px;margin-bottom:8px;font-size:12.8px}
+
+  footer.foot{text-align:center;color:var(--sub2);font-size:11.5px;padding:6px 0 18px}
+  @media print{ .sidebar,.topbar,.btnrow,.tabs,.searchbar,.filters,.modal-backdrop,.bell,.userpick{display:none !important} .shell{padding:0} .card{box-shadow:none} }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <nav class="sidebar">
+    <div class="brand">전자문서산업협회</div>
+    <ul class="nav" id="nav-list"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <h1 id="page-title">대시보드</h1>
+      <div class="right">
+        <div class="bell" id="bell-btn" onclick="toggleNotifPanel()">
+          🔔<span class="dot" id="notif-count" style="display:none">0</span>
+        </div>
+        <div class="userpick">
+          <select id="user-select" onchange="setCurrentUser(this.value)"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="content" id="app-main"></div>
+    <footer class="foot">전자문서산업계 애로사항·민원 통합관리 시스템 · 데모(로컬 브라우저 저장) · 실제 문서번호·연락처는 더미 데이터입니다</footer>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="notif-panel-backdrop" onclick="if(event.target===this) closeNotifPanel()">
+  <div class="modal" style="max-width:420px;margin-top:70px" onclick="event.stopPropagation()">
+    <div class="modal-head"><h3>알림</h3><button class="x" onclick="closeNotifPanel()">&times;</button></div>
+    <div id="notif-panel-body"></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop" onclick="if(event.target===this) closeModal()">
+  <div class="modal" id="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-head"><h3 id="modal-title"></h3><button class="x" onclick="closeModal()">&times;</button></div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== 공통 유틸 ===================== */
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function fmtDate(iso){ if(!iso) return "-"; return iso; }
+function todayISO(){ return new Date().toISOString().slice(0,10); }
+function addDays(iso,n){ const d=new Date(iso+"T00:00:00"); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
+function diffDays(fromISO,toISO){ const a=new Date(fromISO+"T00:00:00"), b=new Date(toISO+"T00:00:00"); return Math.round((b-a)/86400000); }
+function monthLabel(iso){ return iso.slice(0,7); }
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(window.__toastT); window.__toastT=setTimeout(()=>t.classList.remove("show"),2200); }
+function uid(prefix){ DB.seq[prefix]=(DB.seq[prefix]||0)+1; return prefix+"_"+DB.seq[prefix]; }
+
+const STATUS_LIST = ["신규접수","검토중","내부협의","관계기관 협의중","정책건의중","답변대기","회원사 회신대기","처리완료","종결","보류","이관"];
+const IMPORTANCE_LIST = ["긴급","높음","보통","낮음"];
+const DEFAULT_CHANNELS = ["전화","이메일","홈페이지","온라인 민원","간담회","협회 행사","정부/공공기관 요청","회원사 방문","임원/경영진 전달","기타"];
+const DEFAULT_TYPES = {
+  "법·제도":["법령 개정 요구","법령 해석","제도 개선","행정절차 개선"],
+  "규제":["규제 신설","규제 완화","규제 해석","규제 애로"],
+  "행정":["행정처리 지연","서류 요구 과다","절차 안내 미흡"],
+  "기술":["기술 표준 문의","인증 절차 문의","시스템 연계"],
+  "사업":["정부사업","공공사업","사업 참여","지원사업"],
+  "계약/조달":["입찰 참가 자격","계약 조건"],
+  "세제":["세제 지원 문의","세무 처리"],
+  "인증":["인증 취득 절차","인증 갱신"],
+  "보안":["보안 인증 요구","개인정보 처리"],
+  "표준":["표준 제정 요청","표준 해석"],
+  "시장/산업":["시장 진입 애로","산업 통계 요청"],
+  "기타":["기타 문의"]
+};
+const CLOSE_REASONS = ["요구사항 수용","제도개선","관계기관 답변 완료","회원사 안내 완료","단순 문의","타 기관 이관","회원사 요청 철회","기타"];
+const POLICY_STATUS = ["발굴","내부검토","건의안 작성","기관 제출","기관 검토","답변완료","반영","일부반영","미반영","지속추진","종결"];
+const DEPTS = ["산업정책팀","정책기획팀","회원지원팀"];
+
+/* ===================== 시드 데이터 ===================== */
+function buildSeed(){
+  const companies=[
+    {id:"co_1",name:"A기업",bizNo:"111-11-11111",manager:"박정호",phone:"02-111-1111",email:"contact@a-corp.co.kr",joinedAt:"2020-03-02"},
+    {id:"co_2",name:"B기업",bizNo:"222-22-22222",manager:"오세영",phone:"02-222-2222",email:"contact@b-corp.co.kr",joinedAt:"2019-11-15"},
+    {id:"co_3",name:"C기업",bizNo:"333-33-33333",manager:"윤가람",phone:"02-333-3333",email:"contact@c-corp.co.kr",joinedAt:"2021-05-20"},
+    {id:"co_4",name:"D기업",bizNo:"444-44-44444",manager:"신동혁",phone:"02-444-4444",email:"contact@d-corp.co.kr",joinedAt:"2018-07-09"},
+    {id:"co_5",name:"E기업",bizNo:"555-55-55555",manager:"장미래",phone:"02-555-5555",email:"contact@e-corp.co.kr",joinedAt:"2022-02-11"},
+  ];
+  const agencies=[
+    {id:"ag_1",name:"○○부",dept:"전자정책과 · 산업정책과 · 정보화정책과",manager:"김사무관",position:"사무관",phone:"044-000-1111",email:"agency1@go.kr",duties:"전자문서 제도 소관 부처"},
+    {id:"ag_2",name:"△△청",dept:"산업진흥과",manager:"이주무관",position:"주무관",phone:"044-000-2222",email:"agency2@go.kr",duties:"공공사업 참여 절차 소관"},
+    {id:"ag_3",name:"□□원",dept:"표준정책실",manager:"최연구위원",position:"연구위원",phone:"044-000-3333",email:"agency3@go.kr",duties:"전자문서 인증·표준 소관"},
+  ];
+  const users=[
+    {id:"u_1",name:"홍길동",dept:"산업정책팀",role:"담당자"},
+    {id:"u_2",name:"김철수",dept:"산업정책팀",role:"담당자"},
+    {id:"u_3",name:"이영희",dept:"정책기획팀",role:"담당자"},
+    {id:"u_4",name:"박민수",dept:"회원지원팀",role:"담당자"},
+    {id:"u_5",name:"최유진",dept:"경영지원팀",role:"관리자"},
+    {id:"u_6",name:"정지원",dept:"임원실",role:"임원/조회자"},
+    {id:"u_7",name:"김태영",dept:"산업정책팀",role:"팀장"},
+  ];
+
+  function C(no,receivedAt,channel,companyId,companyManager,title,content,type,subtype,importance,dept,assignee,deadline,status,extra){
+    return Object.assign({
+      id:"cp_"+no, no:"EDPA-2026-"+String(no).padStart(4,"0"),
+      receivedAt, channel, companyId, companyManager,
+      title, content, type, subtype, field:type, importance,
+      dept, assignee, deadline, status,
+      completedAt:null, relatedLaw:"", relatedAgencyIds:[], closeReason:"",
+      nextAction:"", nextActionDate:"", similarComplaintIds:[]
+    }, extra||{});
+  }
+
+  const complaints=[
+    C(101,"2026-05-04","전화","co_1","박정호","전자문서 보관기간 관련 규정이 기업별로 상이함","전자문서 보관기간에 대한 기준이 기관마다 달라 실무 처리에 혼선이 있음. 통일된 기준 마련 요청.","법·제도","제도 개선","높음","산업정책팀","홍길동","2026-05-18","종결",
+      {relatedAgencyIds:["ag_1"], closeReason:"제도개선", completedAt:"2026-05-20", nextAction:"", relatedLaw:"전자문서 및 전자거래 기본법"}),
+    C(104,"2026-05-11","이메일","co_2","오세영","전자문서 보관제도 관련 기업별 상이한 요구사항","공인전자문서센터 보관 기준에 대한 해석이 기관별로 달라 대응에 어려움을 겪고 있음.","법·제도","제도 개선","높음","산업정책팀","홍길동","2026-05-25","종결",
+      {relatedAgencyIds:["ag_1"], closeReason:"제도개선", completedAt:"2026-05-27"}),
+    C(107,"2026-06-02","홈페이지","co_3","윤가람","공공사업 참여 시 전자문서 인증 요건이 상이함","공공사업 입찰 참여 시 요구하는 전자문서 인증 요건이 사업마다 달라 준비 부담이 큼.","사업","공공사업","보통","회원지원팀","박민수","2026-06-16","처리완료",
+      {relatedAgencyIds:["ag_2"], completedAt:"2026-06-14"}),
+    C(110,"2026-06-20","간담회","co_1","박정호","전자서명 인증 절차 문의","전자서명 인증 갱신 절차와 소요기간에 대한 안내 요청.","기술","인증 절차 문의","낮음","회원지원팀","박민수","2026-06-27","처리완료",{completedAt:"2026-06-25"}),
+    C(113,"2026-07-05","온라인 민원","co_4","신동혁","전자문서 보관기간 관련 제도 개선 요청","타사 대비 보관기간 산정 기준이 불명확하여 감사 대응에 어려움이 있음. 개선 요청.","법·제도","제도 개선","높음","산업정책팀","김철수","2026-07-19","종결",
+      {relatedAgencyIds:["ag_1"], closeReason:"제도개선", completedAt:"2026-07-21"}),
+    C(115,"2026-07-10","회원사 방문","co_5","장미래","전자문서 보관 규정 관련 애로","전자문서 보관 관련 사내 규정과 정부 요구사항이 상충되는 부분이 있어 확인 요청.","법·제도","제도 개선","보통","산업정책팀","김철수","2026-07-24","처리완료",{relatedAgencyIds:["ag_1"], completedAt:"2026-07-23"}),
+    C(117,"2026-07-14","전화","co_2","오세영","공공사업 참여절차 관련 서류 과다 요구","공공사업 참여 시 동일 서류를 반복 제출해야 하는 부담이 있음.","행정","서류 요구 과다","보통","회원지원팀","박민수","2026-07-28","처리완료",{relatedAgencyIds:["ag_2"], completedAt:"2026-07-26"}),
+    C(118,"2026-07-16","협회 행사","co_3","윤가람","전자문서 인증절차 관련 소요기간 문의","인증 취득까지 소요 기간이 길어 사업 일정에 차질이 발생함.","인증","인증 취득 절차","보통","정책기획팀","이영희","2026-07-30","답변대기",{relatedAgencyIds:["ag_3"]}),
+    C(119,"2026-07-18","정부/공공기관 요청","co_1","박정호","전자문서 인증절차 개선 관련 의견 요청","○○원의 인증절차 개선 관련 산업계 의견 수렴 요청 접수.","인증","인증 취득 절차","보통","정책기획팀","이영희","2026-08-01","정책건의중",{relatedAgencyIds:["ag_3"]}),
+    C(120,"2026-07-25","임원/경영진 전달","co_4","신동혁","전자문서 보관제도 개선 관련 추가 애로","타 회원사와 동일한 보관기간 산정 문제 재차 제기.","법·제도","제도 개선","높음","산업정책팀","홍길동","2026-08-08","답변대기",{relatedAgencyIds:["ag_1"], nextAction:"서면 답변 요청", nextActionDate:"2026-08-22"}),
+    C(121,"2026-08-02","이메일","co_5","장미래","공공사업 참여절차 개선 관련 서류 부담","전자 제출 시스템 부재로 서류를 이중 제출하고 있음.","사업","공공사업","보통","회원지원팀","박민수","2026-08-16","관계기관 협의중",{relatedAgencyIds:["ag_2"]}),
+    C(122,"2026-08-17","홈페이지","co_4","신동혁","전자서명 인증 절차 문의","전자서명 인증서 재발급 절차 문의.","기술","인증 절차 문의","보통","회원지원팀","박민수","2026-08-24","처리완료",{completedAt:"2026-08-18"}),
+    C(123,"2026-08-18","전화","co_3","윤가람","공공사업 참여 애로","공공사업 입찰 시 전자문서 제출 오류로 참여가 지연됨.","사업","공공사업","높음","회원지원팀","이영희","2026-08-22","정책건의중",{relatedAgencyIds:["ag_2"]}),
+    C(124,"2026-08-18","전화","co_2","오세영","○○ 규정 해석 요청","전자문서 관련 신설 규정의 적용 범위에 대한 해석 요청.","법·제도","법령 해석","보통","산업정책팀","김철수","2026-08-21","검토중",{}),
+    C(125,"2026-08-19","전화","co_1","박정호","전자문서 보관기간 관련 제도 개선 요청","보관기간 산정 기준이 회원사별로 다르게 적용되어 있어 통일된 기준과 관계기관 협의를 요청함.","법·제도","제도 개선","높음","산업정책팀","홍길동","2026-08-25","관계기관 협의중",{relatedAgencyIds:["ag_1"], nextAction:"기관 답변 확인", nextActionDate:"2026-08-25"}),
+  ];
+  complaints.forEach(c=>{ if(!c.status) c.status="검토중"; });
+
+  const p1LinkedIds=["cp_101","cp_104","cp_113","cp_115","cp_120","cp_125"];
+  const p2LinkedIds=["cp_107","cp_117","cp_121","cp_123"];
+  const p3LinkedIds=["cp_118","cp_119"];
+  p1LinkedIds.forEach(id=>similarLink(complaints,id,p1LinkedIds));
+  p2LinkedIds.forEach(id=>similarLink(complaints,id,p2LinkedIds));
+  p3LinkedIds.forEach(id=>similarLink(complaints,id,p3LinkedIds));
+
+  const policies=[
+    {id:"po_1",title:"전자문서 보관제도 개선",background:"회원사 다수가 전자문서 보관기간 산정 기준이 기관별로 상이하여 실무 및 감사 대응에 어려움을 겪고 있음을 반복적으로 제기함.",
+      industryIssue:"회원사 6개사에서 동일한 보관기간 관련 제도개선을 요청. 해석 차이·보관비용 증가·중복 보관이 주요 문제로 지목됨.",
+      currentSystem:"전자문서법상 보관기간 관련 세부 산정 기준이 기관별 지침에 위임되어 있어 통일 기준이 부재.",
+      problem:"기업이 기관별로 상이한 보관기준을 개별 대응해야 하며, 자체 판단에 따른 법적 리스크를 부담.",
+      improvement:"○○부 공통 가이드라인 제정 및 보관기간 산정 기준 표준화.",
+      effect:"이중 보관 비용 절감, 법적 불확실성 해소, 산업계 컴플라이언스 부담 완화.",
+      targetAgencyId:"ag_1", proposedAt:"2026-07-01", status:"기관 검토", answer:"", followup:"기관 답변 확인 예정",
+      linkedComplaintIds:p1LinkedIds},
+    {id:"po_2",title:"공공사업 참여절차 개선",background:"공공사업 참여 시 전자문서 제출 관련 서류가 사업별로 상이하고 중복 제출 요구가 많음.",
+      industryIssue:"회원사 4개사에서 공공사업 참여절차 관련 애로를 제기.",
+      currentSystem:"사업별로 개별 서류 양식을 요구하며 전자 제출 표준 시스템이 없음.",
+      problem:"참여 기업의 행정 부담 증가, 서류 오류로 인한 참여 지연 사례 발생.",
+      improvement:"전자문서 제출 표준 양식 및 시스템 도입.",
+      effect:"참여 기업의 행정 부담 완화, 사업 참여 지연 사례 감소.",
+      targetAgencyId:"ag_2", proposedAt:"2026-07-20", status:"기관 제출", answer:"", followup:"기관 검토 결과 대기",
+      linkedComplaintIds:p2LinkedIds},
+    {id:"po_3",title:"전자문서 인증절차 개선",background:"전자문서 인증 취득까지 소요기간이 길어 사업 일정에 영향을 미침.",
+      industryIssue:"회원사 2개사에서 인증 소요기간 관련 애로를 제기.",
+      currentSystem:"인증 심사 절차가 다단계로 구성되어 평균 소요기간이 김.",
+      problem:"인증 지연으로 사업 참여·계약 일정에 차질 발생.",
+      improvement:"인증 심사 절차 간소화 및 처리기한 단축.",
+      effect:"사업 일정 준수율 향상, 산업계 인증 취득 부담 완화.",
+      targetAgencyId:"ag_3", proposedAt:"2026-06-10", status:"일부반영", answer:"심사 절차 일부 간소화 반영, 처리기한 단축은 지속 검토 중",
+      followup:"처리기한 단축 관련 후속 협의 예정", linkedComplaintIds:p3LinkedIds},
+  ];
+
+  const consultations=[
+    {id:"cs_1",complaintId:"cp_125",agencyId:"ag_1",date:"2026-08-21",method:"공문 질의",content:"전자문서 보관기간 산정 기준 통일 관련 제도개선 질의서 송부",answer:"",followup:"기관 답변 대기",replyDeadline:"2026-08-25"},
+    {id:"cs_2",complaintId:"cp_120",agencyId:"ag_1",date:"2026-08-08",method:"유선 협의",content:"보관기간 산정 기준 관련 추가 애로 전달",answer:"검토 중이라는 회신 수령",followup:"서면 답변 요청",replyDeadline:"2026-08-22"},
+    {id:"cs_3",complaintId:"cp_121",agencyId:"ag_2",date:"2026-08-05",method:"공문 질의",content:"공공사업 전자 제출 시스템 도입 관련 질의",answer:"",followup:"기관 답변 대기",replyDeadline:"2026-08-19"},
+    {id:"cs_4",complaintId:"cp_119",agencyId:"ag_3",date:"2026-07-22",method:"간담회",content:"인증절차 개선 관련 산업계 의견 전달",answer:"절차 간소화 검토 착수 회신",followup:"정책건의로 전환",replyDeadline:"2026-08-05"},
+  ];
+
+  const history=[];
+  function H(complaintId,at,by,category,content,extra){
+    history.push(Object.assign({id:uidLocal("hi"),complaintId,at,by,category,content,agency:"",counterpart:"",answer:"",nextAction:"",nextActionDate:""},extra||{}));
+  }
+  let hiSeq=0; function uidLocal(p){ hiSeq++; return p+"_"+hiSeq; }
+  H("cp_125","2026-08-19 10:20","시스템","접수","민원 접수 (회원사 A기업)");
+  H("cp_125","2026-08-19 14:00","최유진","배정","담당자 홍길동 배정");
+  H("cp_125","2026-08-21 15:00","홍길동","관계기관 협의","○○부 전자정책과에 제도개선 관련 질의서 송부",{agency:"○○부",counterpart:"김사무관",nextAction:"기관 답변 확인",nextActionDate:"2026-08-25"});
+  H("cp_120","2026-07-25","시스템","접수","민원 접수 (회원사 D기업)");
+  H("cp_120","2026-07-26","최유진","배정","담당자 홍길동 배정");
+  H("cp_120","2026-08-08","홍길동","관계기관 협의","○○부에 추가 애로사항 전달, 검토 중이라는 회신 수령",{agency:"○○부",answer:"검토 중",nextAction:"서면 답변 요청",nextActionDate:"2026-08-22"});
+  H("cp_119","2026-07-18","시스템","접수","민원 접수 (회원사 A기업)");
+  H("cp_119","2026-07-22","이영희","관계기관 협의","□□원과 간담회, 절차 간소화 검토 착수 회신 수령",{agency:"□□원",answer:"절차 간소화 검토 착수",nextAction:"정책건의로 전환",nextActionDate:"2026-08-05"});
+  H("cp_119","2026-08-05","이영희","정책건의 연결","정책건의 '전자문서 인증절차 개선'에 연결");
+  H("cp_101","2026-05-04","시스템","접수","민원 접수 (회원사 A기업)");
+  H("cp_101","2026-05-20","홍길동","처리완료","○○부 제도개선 반영, 회원사 회신 완료",{nextAction:"",nextActionDate:""});
+  H("cp_101","2026-05-20","최유진","종결","종결 처리 (사유: 제도개선)");
+
+  const auditLog=[
+    {id:"au_1",at:"2026-08-19 10:20",user:"시스템",target:"cp_125",field:"등록",before:"",after:"신규 민원 등록",reason:""},
+    {id:"au_2",at:"2026-08-19 14:00",user:"최유진",target:"cp_125",field:"담당자",before:"미배정",after:"홍길동",reason:"산업정책팀 담당 배정"},
+    {id:"au_3",at:"2026-08-21 15:10",user:"홍길동",target:"cp_125",field:"상태",before:"검토중",after:"관계기관 협의중",reason:"○○부 질의서 발송"},
+  ];
+
+  const notiflog=[];
+
+  return {companies,agencies,users,complaints,policies,consultations,history,auditLog,notiflog,
+    codes:{ types: JSON.parse(JSON.stringify(DEFAULT_TYPES)), channels: DEFAULT_CHANNELS.slice() },
+    seq:{receiptNo:125,hi:hiSeq,co:5,ag:3,us:7,po:3,cs:4,au:3,at:0,ty:0,ch:0}};
+}
+function similarLink(complaints,id,groupIds){
+  const c=complaints.find(x=>x.id===id); if(!c) return;
+  c.similarComplaintIds = groupIds.filter(g=>g!==id);
+}
+
+/* ===================== 상태 저장/로드 ===================== */
+const STORE_KEY="edpa_complaint_system_v1";
+let DB, UI;
+function loadDB(){
+  const raw=localStorage.getItem(STORE_KEY);
+  if(raw){
+    try{
+      const db=JSON.parse(raw);
+      if(!db.codes) db.codes={ types: JSON.parse(JSON.stringify(DEFAULT_TYPES)), channels: DEFAULT_CHANNELS.slice() };
+      if(!db.seq) db.seq={};
+      if(db.seq.ty==null) db.seq.ty=0;
+      if(db.seq.ch==null) db.seq.ch=0;
+      return db;
+    }catch(e){}
+  }
+  return buildSeed();
+}
+function persist(){ localStorage.setItem(STORE_KEY, JSON.stringify(DB)); }
+
+/* =====================================================================
+   BACKEND — 데이터 저장·조회·업무규칙(검증·권한·감사로그) 계층
+   화면(FRONTEND, 아래쪽 render/view/tab/open*Form/submit* 함수들)은
+   데이터를 직접 건드리지 않고 이 Backend.* 메서드만 호출한다.
+   모든 메서드는 {ok:true, data, message} 또는 {ok:false, message} 형태로 응답한다
+   (실제 서버 API를 로컬 함수 호출로 흉내낸 것 — 네트워크는 없음).
+   ===================================================================== */
+const Backend = (function(){
+  function fail(message){ return {ok:false, message}; }
+  function ok(data, message){ return {ok:true, data, message}; }
+  function entityOf(id){
+    if(!id) return "기타";
+    if(id==="codes") return "분류체계";
+    if(id.startsWith("cp_")) return "민원";
+    if(id.startsWith("co_")) return "회원사";
+    if(id.startsWith("ag_")) return "관계기관";
+    if(id.startsWith("po_")) return "정책건의";
+    if(id.startsWith("us_")||id.startsWith("u_")) return "사용자";
+    return "기타";
+  }
+  function targetLabel(id){
+    const c=complaintById(id); if(c) return `${c.no} ${c.title}`;
+    const co=companyById(id); if(co) return co.name;
+    const ag=agencyById(id); if(ag) return ag.name;
+    const p=policyById(id); if(p) return p.title;
+    const u=DB.users.find(x=>x.id===id); if(u) return u.name;
+    return id;
+  }
+  function audit(target,field,before,after,reason){
+    DB.auditLog.push({id:uid("au"),at:new Date().toISOString().slice(0,16).replace("T"," "),user:currentUser().name,
+      entity:entityOf(target),target,field,before:before||"",after:after||"",reason:reason||""});
+  }
+  function history(complaintId,category,content,extra){
+    DB.history.push(Object.assign({id:uid("hi"),complaintId,at:new Date().toISOString().slice(0,16).replace("T"," "),
+      by:currentUser().name,category,content,agency:"",counterpart:"",answer:"",nextAction:"",nextActionDate:""},extra||{}));
+  }
+
+  return {
+    entityOf, targetLabel,
+
+    /* ---------- 민원 ---------- */
+    createComplaint(d){
+      if(isReadOnlyRole()) return fail("조회 전용 계정은 민원을 등록할 수 없습니다");
+      if(!d.companyId) return fail("회원사를 선택해 주세요");
+      if(!d.title) return fail("민원 제목을 입력해 주세요");
+      if(!d.deadline) return fail("처리기한을 입력해 주세요");
+      const company=companyById(d.companyId);
+      if(!company) return fail("회원사 정보를 찾을 수 없습니다");
+      const year=new Date(d.receivedAt).getFullYear();
+      DB.seq.receiptNo=(DB.seq.receiptNo||0)+1;
+      const no=`EDPA-${year}-${String(DB.seq.receiptNo).padStart(4,"0")}`;
+      const id="cp_"+DB.seq.receiptNo+"_"+Date.now();
+      const c={ id, no, receivedAt:d.receivedAt, channel:d.channel, companyId:d.companyId, companyManager:d.companyManager||company.manager,
+        title:d.title, content:d.content, type:d.type, subtype:d.subtype, field:d.type, importance:d.importance,
+        dept:d.dept, assignee:d.assignee, deadline:d.deadline, status:"신규접수", completedAt:null, relatedLaw:d.relatedLaw,
+        relatedAgencyIds:[], closeReason:"", nextAction:"", nextActionDate:"",
+        similarComplaintIds: findSimilarComplaints(d.title+" "+d.content).map(x=>x.id) };
+      DB.complaints.push(c);
+      DB.attachments = DB.attachments||[];
+      (d.attachments||[]).forEach(fn=>{
+        DB.attachments.push({id:uid("att"),complaintId:c.id,name:fn,type:"기타",uploadedBy:currentUser().name,uploadedAt:todayISO()});
+        audit(c.id,"첨부파일","","등록: "+fn);
+      });
+      history(c.id,"접수",`민원 접수 (회원사 ${company.name}, 접수경로: ${d.channel})`);
+      if(d.assignee) history(c.id,"배정",`담당자 ${d.assignee} 배정`);
+      audit(c.id,"등록","",`신규 민원 등록 (${no})`);
+      persist();
+      return ok(c, `민원이 등록되었습니다 (${no})`);
+    },
+
+    addHistory(complaintId, d){
+      const c=complaintById(complaintId); if(!c) return fail("민원을 찾을 수 없습니다");
+      if(!canEditComplaint(c)) return fail("담당 건이 아니어서 처리이력을 등록할 수 없습니다");
+      if(!d.content) return fail("처리내용을 입력해 주세요");
+      history(complaintId, d.category, d.content, {nextAction:d.nextAction, nextActionDate:d.nextActionDate});
+      c.nextAction=d.nextAction; c.nextActionDate=d.nextActionDate;
+      if(d.status && d.status!==c.status){ const before=c.status; c.status=d.status; audit(complaintId,"상태",before,d.status); }
+      audit(complaintId,"처리이력","",d.category+": "+d.content);
+      persist();
+      return ok(c, "처리이력이 등록되었습니다");
+    },
+
+    setStatus(complaintId, status){
+      const c=complaintById(complaintId); if(!c) return fail("민원을 찾을 수 없습니다");
+      if(!canEditComplaint(c)) return fail("담당 건이 아니어서 상태를 변경할 수 없습니다");
+      const before=c.status; c.status=status;
+      if(status==="처리완료") c.completedAt=todayISO();
+      history(complaintId,"상태변경",`상태 변경: ${before} → ${status}`);
+      audit(complaintId,"상태",before,status);
+      persist();
+      return ok(c, "상태가 변경되었습니다");
+    },
+
+    addConsultation(complaintId, d){
+      const c=complaintById(complaintId); if(!c) return fail("민원을 찾을 수 없습니다");
+      if(!canEditComplaint(c)) return fail("담당 건이 아니어서 기관협의를 등록할 수 없습니다");
+      if(!d.content) return fail("협의내용을 입력해 주세요");
+      const cs={id:uid("cs"),complaintId,agencyId:d.agencyId,date:d.date,method:d.method,content:d.content,answer:d.answer,followup:d.followup,replyDeadline:d.replyDeadline};
+      DB.consultations.push(cs);
+      if(!c.relatedAgencyIds.includes(d.agencyId)) c.relatedAgencyIds.push(d.agencyId);
+      if(c.status!=="관계기관 협의중" && c.status!=="답변대기"){ const before=c.status; c.status = d.answer? "답변대기" : "관계기관 협의중"; audit(complaintId,"상태",before,c.status); }
+      history(complaintId, "관계기관 협의", d.content, {agency:agencyName(d.agencyId), answer:d.answer, nextAction:d.followup, nextActionDate:d.replyDeadline});
+      c.nextAction=d.followup; c.nextActionDate=d.replyDeadline;
+      audit(complaintId,"기관협의","","등록: "+agencyName(d.agencyId));
+      persist();
+      return ok(cs, "기관협의 이력이 등록되었습니다");
+    },
+
+    linkPolicy(complaintId, policyId){
+      const c=complaintById(complaintId); if(!c) return fail("민원을 찾을 수 없습니다");
+      if(!canEditComplaint(c)) return fail("담당 건이 아니어서 정책건의를 연결할 수 없습니다");
+      const p=policyById(policyId); if(!p) return fail("정책건의를 선택해 주세요");
+      if(!p.linkedComplaintIds.includes(complaintId)) p.linkedComplaintIds.push(complaintId);
+      const before=c.status; c.status="정책건의중";
+      history(complaintId,"정책건의 연결",`정책건의 '${p.title}'에 연결`);
+      audit(complaintId,"정책건의","",p.title);
+      if(before!==c.status) audit(complaintId,"상태",before,c.status);
+      persist();
+      return ok(p, "정책건의에 연결되었습니다");
+    },
+
+    reassign(complaintId, d){
+      const c=complaintById(complaintId); if(!c) return fail("민원을 찾을 수 없습니다");
+      if(!canEditComplaint(c)) return fail("담당 건이 아니어서 담당자·중요도를 변경할 수 없습니다");
+      if(d.assignee!==c.assignee){
+        audit(complaintId,"담당자",c.assignee||"미배정",d.assignee||"미배정",d.reason);
+        history(complaintId,"담당자 변경",`담당자 변경: ${c.assignee||'미배정'} → ${d.assignee||'미배정'}`);
+        c.assignee=d.assignee;
+      }
+      if(d.importance!==c.importance){
+        audit(complaintId,"중요도",c.importance,d.importance,d.reason);
+        history(complaintId,"중요도 변경",`중요도 변경: ${c.importance} → ${d.importance}`);
+        c.importance=d.importance;
+      }
+      persist();
+      return ok(c, "변경되었습니다");
+    },
+
+    closeComplaint(complaintId, d){
+      const c=complaintById(complaintId); if(!c) return fail("민원을 찾을 수 없습니다");
+      if(!canEditComplaint(c)) return fail("담당 건이 아니어서 종결할 수 없습니다");
+      if(!d.reason) return fail("종결사유를 선택해 주세요");
+      const before=c.status;
+      c.status="종결"; c.closeReason=d.reason; if(!c.completedAt) c.completedAt=todayISO();
+      history(complaintId,"종결",`종결 처리 (사유: ${d.reason})${d.note? ' — '+d.note:''}`);
+      audit(complaintId,"상태",before,"종결",d.reason);
+      persist();
+      return ok(c, "민원이 종결 처리되었습니다");
+    },
+
+    addAttachments(complaintId, files){
+      const c=complaintById(complaintId); if(!c) return fail("민원을 찾을 수 없습니다");
+      if(!canEditComplaint(c)) return fail("담당 건이 아니어서 파일을 첨부할 수 없습니다");
+      DB.attachments=DB.attachments||[];
+      files.forEach(f=>{
+        DB.attachments.push({id:uid("att"),complaintId,name:f,type:"기타",uploadedBy:currentUser().name,uploadedAt:todayISO()});
+        audit(complaintId,"첨부파일","","등록: "+f);
+      });
+      persist();
+      return ok(null, "파일이 첨부되었습니다");
+    },
+    removeAttachment(attId){
+      const a=(DB.attachments||[]).find(x=>x.id===attId); if(!a) return fail("파일을 찾을 수 없습니다");
+      const c=complaintById(a.complaintId);
+      if(c && !canEditComplaint(c)) return fail("담당 건이 아니어서 파일을 삭제할 수 없습니다");
+      DB.attachments = DB.attachments.filter(x=>x.id!==attId);
+      audit(a.complaintId,"첨부파일",a.name,"삭제");
+      persist();
+      return ok(null, "파일이 삭제되었습니다");
+    },
+
+    /* ---------- 정책건의 ---------- */
+    savePolicy(existingId, d){
+      if(isReadOnlyRole()) return fail("조회 전용 계정은 정책건의를 등록할 수 없습니다");
+      if(!d.title) return fail("정책건의 제목을 입력해 주세요");
+      if(existingId){
+        const p=policyById(existingId); if(!p) return fail("정책건의를 찾을 수 없습니다");
+        const beforeStatus=p.status;
+        Object.assign(p, d, {proposedAt:p.proposedAt});
+        audit(existingId,"정책건의","",d.title);
+        if(beforeStatus!==p.status) audit(existingId,"정책건의 상태",beforeStatus,p.status);
+        persist();
+        return ok(p, "정책건의가 저장되었습니다");
+      }
+      const p=Object.assign({id:uid("po"), proposedAt:todayISO()}, d);
+      DB.policies.push(p);
+      (d.linkedComplaintIds||[]).forEach(cid=>{
+        history(cid,"정책건의 연결",`신규 정책건의 '${d.title}'에 연결`);
+        audit(cid,"정책건의","",d.title);
+      });
+      audit(p.id,"등록","",`신규 정책건의 등록 (${d.title})`);
+      persist();
+      return ok(p, "정책건의가 저장되었습니다");
+    },
+
+    /* ---------- 회원사·관계기관 ---------- */
+    saveCompany(existingId, d){
+      if(isReadOnlyRole()) return fail("조회 전용 계정은 회원사를 등록·수정할 수 없습니다");
+      if(!d.name) return fail("회원사명을 입력해 주세요");
+      if(existingId){
+        const co=companyById(existingId); if(!co) return fail("회원사를 찾을 수 없습니다");
+        Object.assign(co, d); audit(existingId,"회원사","",`정보 수정: ${d.name}`);
+        persist(); return ok(co, "회원사 정보가 수정되었습니다");
+      }
+      const co=Object.assign({id:uid("co")}, d); DB.companies.push(co);
+      audit(co.id,"등록","",`신규 회원사 등록 (${d.name})`);
+      persist(); return ok(co, "회원사가 추가되었습니다");
+    },
+    saveAgency(existingId, d){
+      if(isReadOnlyRole()) return fail("조회 전용 계정은 기관을 등록·수정할 수 없습니다");
+      if(!d.name) return fail("기관명을 입력해 주세요");
+      if(existingId){
+        const a=agencyById(existingId); if(!a) return fail("기관을 찾을 수 없습니다");
+        Object.assign(a, d); audit(existingId,"관계기관","",`정보 수정: ${d.name}`);
+        persist(); return ok(a, "기관 정보가 수정되었습니다");
+      }
+      const a=Object.assign({id:uid("ag")}, d); DB.agencies.push(a);
+      audit(a.id,"등록","",`신규 기관 등록 (${d.name})`);
+      persist(); return ok(a, "기관이 추가되었습니다");
+    },
+
+    /* ---------- 사용자 ---------- */
+    saveUser(existingId, d){
+      if(!isAdmin()) return fail("사용자 관리는 관리자만 가능합니다");
+      if(!d.name) return fail("이름을 입력해 주세요");
+      if(existingId){
+        const u=DB.users.find(x=>x.id===existingId); if(!u) return fail("사용자를 찾을 수 없습니다");
+        const beforeRole=u.role;
+        Object.assign(u, d);
+        audit(existingId,"사용자","",`정보 수정: ${d.name}(${d.role})`);
+        if(beforeRole!==d.role) audit(existingId,"권한",beforeRole,d.role);
+        persist(); return ok(u, "사용자 정보가 수정되었습니다");
+      }
+      const u=Object.assign({id:uid("us")}, d); DB.users.push(u);
+      audit(u.id,"등록","",`신규 사용자 등록 (${d.name}, ${d.role})`);
+      persist(); return ok(u, "사용자가 추가되었습니다");
+    },
+    deleteUser(id){
+      if(!isAdmin()) return fail("사용자 관리는 관리자만 가능합니다");
+      if(DB.users.length<=1) return fail("최소 1명의 사용자가 필요합니다");
+      if(id===UI.currentUserId) return fail("현재 로그인한 사용자는 삭제할 수 없습니다");
+      const u=DB.users.find(x=>x.id===id); if(!u) return fail("사용자를 찾을 수 없습니다");
+      DB.users=DB.users.filter(x=>x.id!==id);
+      audit(id,"삭제",u.name,"");
+      persist();
+      return ok(null, "사용자가 삭제되었습니다");
+    },
+
+    /* ---------- 분류체계·코드 관리 (관리자 전용) ---------- */
+    addType(name){
+      if(!isAdmin()) return fail("분류체계 관리는 관리자만 가능합니다");
+      if(!name) return fail("대분류명을 입력해 주세요");
+      if(DB.codes.types[name]) return fail("이미 존재하는 대분류입니다");
+      DB.codes.types[name]=[]; audit("codes","분류체계","",`대분류 추가: ${name}`); persist();
+      return ok(null, "대분류가 추가되었습니다");
+    },
+    removeType(name){
+      if(!isAdmin()) return fail("분류체계 관리는 관리자만 가능합니다");
+      if(Object.keys(DB.codes.types).length<=1) return fail("최소 1개의 대분류가 필요합니다");
+      delete DB.codes.types[name]; audit("codes","분류체계",name,"대분류 삭제"); persist();
+      return ok(null, "대분류가 삭제되었습니다");
+    },
+    addSubtype(major,name){
+      if(!isAdmin()) return fail("분류체계 관리는 관리자만 가능합니다");
+      if(!name) return fail("세부유형명을 입력해 주세요");
+      if(!DB.codes.types[major]) return fail("대분류를 찾을 수 없습니다");
+      if(DB.codes.types[major].includes(name)) return fail("이미 존재하는 세부유형입니다");
+      DB.codes.types[major].push(name); audit("codes","분류체계","",`${major} 세부유형 추가: ${name}`); persist();
+      return ok(null, "세부유형이 추가되었습니다");
+    },
+    removeSubtype(major,name){
+      if(!isAdmin()) return fail("분류체계 관리는 관리자만 가능합니다");
+      if(!DB.codes.types[major]) return fail("대분류를 찾을 수 없습니다");
+      DB.codes.types[major]=DB.codes.types[major].filter(s=>s!==name);
+      audit("codes","분류체계",`${major}/${name}`,"세부유형 삭제"); persist();
+      return ok(null, "세부유형이 삭제되었습니다");
+    },
+    addChannel(name){
+      if(!isAdmin()) return fail("접수경로 관리는 관리자만 가능합니다");
+      if(!name) return fail("접수경로명을 입력해 주세요");
+      if(DB.codes.channels.includes(name)) return fail("이미 존재하는 접수경로입니다");
+      DB.codes.channels.push(name); audit("codes","접수경로","",`추가: ${name}`); persist();
+      return ok(null, "접수경로가 추가되었습니다");
+    },
+    removeChannel(name){
+      if(!isAdmin()) return fail("접수경로 관리는 관리자만 가능합니다");
+      if(DB.codes.channels.length<=1) return fail("최소 1개의 접수경로가 필요합니다");
+      DB.codes.channels=DB.codes.channels.filter(c=>c!==name);
+      audit("codes","접수경로",name,"삭제"); persist();
+      return ok(null, "접수경로가 삭제되었습니다");
+    },
+
+    /* ---------- 데이터 관리(백업·복원·초기화·내보내기) ---------- */
+    resetData(){
+      if(!isAdmin()) return fail("데이터 초기화는 관리자만 가능합니다");
+      DB=buildSeed(); persist();
+      return ok(null, "샘플 데이터로 초기화되었습니다");
+    },
+    buildComplaintsCSV(list){
+      const headers=["접수번호","접수일","접수경로","회원사","제목","유형","세부유형","중요도","담당부서","담당자","상태","처리기한","완료일"];
+      const rows=list.map(c=>[c.no,c.receivedAt,c.channel,companyName(c.companyId),c.title,c.type,c.subtype,c.importance,c.dept,c.assignee,c.status,c.deadline,c.completedAt||""]);
+      return "﻿"+[headers, ...rows].map(r=>r.map(v=>`"${String(v==null?"":v).replace(/"/g,'""')}"`).join(",")).join("\r\n");
+    },
+    buildBackupJSON(){
+      if(!isAdmin()) return fail("백업 내보내기는 관리자만 가능합니다");
+      return ok(JSON.stringify(DB, null, 2), "백업 파일을 생성했습니다");
+    },
+    restoreFromBackup(text){
+      if(!isAdmin()) return fail("백업 복원은 관리자만 가능합니다");
+      let parsed;
+      try{ parsed=JSON.parse(text); }catch(e){ return fail("백업 파일 형식이 올바르지 않습니다(JSON 파싱 실패)"); }
+      const required=["companies","agencies","users","complaints","policies","consultations","history","auditLog"];
+      const missing=required.filter(k=>!Array.isArray(parsed[k]));
+      if(missing.length) return fail("백업 파일에 필수 항목이 없습니다: "+missing.join(", "));
+      if(!parsed.codes) parsed.codes={ types: JSON.parse(JSON.stringify(DEFAULT_TYPES)), channels: DEFAULT_CHANNELS.slice() };
+      if(!parsed.seq) parsed.seq={};
+      DB=parsed;
+      if(!DB.users.some(u=>u.id===UI.currentUserId)) UI.currentUserId=DB.users[0].id;
+      persist();
+      return ok(null, "백업 데이터를 복원했습니다");
+    },
+
+    /* ---------- 전체 감사로그 조회 ---------- */
+    globalAuditLog(filters){
+      filters=filters||{};
+      let list=DB.auditLog.slice();
+      if(filters.entity) list=list.filter(a=>(a.entity||entityOf(a.target))===filters.entity);
+      if(filters.q){
+        const q=filters.q.toLowerCase();
+        list=list.filter(a=> [a.user,a.field,a.before,a.after,a.reason,targetLabel(a.target)].join(" ").toLowerCase().includes(q));
+      }
+      return list.sort((a,b)=> a.at<b.at?1:-1);
+    },
+  };
+})();
+function resetSeed(){
+  if(!confirm("모든 데이터를 초기 샘플 상태로 되돌립니다. 계속할까요?")) return;
+  const r=Backend.resetData();
+  if(!r.ok){ toast(r.message); return; }
+  UI.view="dashboard"; toast(r.message); render();
+}
+
+/* ===================== 파생 로직 ===================== */
+function ddayInfo(c){
+  if(c.status==="종결" || c.status==="처리완료") return {label:"-", cls:"gray"};
+  if(!c.deadline) return {label:"-", cls:"gray"};
+  const d=diffDays(todayISO(), c.deadline);
+  if(d<0) return {label:"D+"+(-d), cls:"danger", state:"초과"};
+  if(d===0) return {label:"D-Day", cls:"warn", state:"임박"};
+  if(d<=3) return {label:"D-"+d, cls:"warn", state:"임박"};
+  return {label:"D-"+d, cls:"ok", state:"정상"};
+}
+function isOverdue(c){ return ddayInfo(c).state==="초과"; }
+function isDueSoon(c){ return ddayInfo(c).state==="임박"; }
+function companyName(id){ const c=DB.companies.find(x=>x.id===id); return c?c.name:"-"; }
+function agencyName(id){ const a=DB.agencies.find(x=>x.id===id); return a?a.name:"-"; }
+function userName(id){ const u=DB.users.find(x=>x.id===id); return u?u.name:id; }
+function complaintById(id){ return DB.complaints.find(x=>x.id===id); }
+function policyById(id){ return DB.policies.find(x=>x.id===id); }
+function companyById(id){ return DB.companies.find(x=>x.id===id); }
+function agencyById(id){ return DB.agencies.find(x=>x.id===id); }
+function currentUser(){ return DB.users.find(u=>u.id===UI.currentUserId) || DB.users[0]; }
+function isReadOnlyRole(){ return currentUser().role==="임원/조회자"; }
+function isAdmin(){ return currentUser().role==="관리자"; }
+function canEditComplaint(c){
+  const u=currentUser();
+  if(u.role==="관리자") return true;
+  if(u.role==="임원/조회자") return false;
+  if(u.role==="팀장") return c.dept===u.dept;
+  return !c.assignee || c.assignee===u.name;
+}
+
+function computeNotifications(){
+  const list=[];
+  DB.complaints.forEach(c=>{
+    const dd=ddayInfo(c);
+    if(dd.state==="초과") list.push({type:"기한초과", complaintId:c.id, text:`[${c.no}] ${c.title} — 처리기한 초과(${dd.label})`, at:c.deadline});
+    else if(dd.state==="임박") list.push({type:"기한임박", complaintId:c.id, text:`[${c.no}] ${c.title} — 처리기한 임박(${dd.label})`, at:c.deadline});
+    if(c.status==="답변대기") list.push({type:"답변대기", complaintId:c.id, text:`[${c.no}] ${c.title} — 관계기관 답변 대기 중`, at:c.receivedAt});
+    if(c.status==="회원사 회신대기") list.push({type:"회신필요", complaintId:c.id, text:`[${c.no}] ${c.title} — 회원사 회신 필요`, at:c.receivedAt});
+    if(!c.assignee) list.push({type:"미배정", complaintId:c.id, text:`[${c.no}] ${c.title} — 담당자 미배정`, at:c.receivedAt});
+  });
+  DB.consultations.forEach(cs=>{
+    if(cs.followup && !cs.answer){
+      const c=complaintById(cs.complaintId);
+      if(c) list.push({type:"후속조치", complaintId:c.id, text:`[${c.no}] ${agencyName(cs.agencyId)} 회신기한 ${cs.replyDeadline} — ${cs.followup}`, at:cs.replyDeadline});
+    }
+  });
+  list.sort((a,b)=> (a.at<b.at?-1:1));
+  return list;
+}
+
+/* ===================== 렌더 기반 ===================== */
+const NAV_ITEMS=[
+  {id:"dashboard",label:"대시보드",icon:"▦"},
+  {id:"complaints",label:"민원관리",icon:"📂"},
+  {id:"mywork",label:"오늘의 업무",icon:"✅"},
+  {id:"companies",label:"회원사",icon:"🏢"},
+  {id:"agencies",label:"관계기관",icon:"🏛"},
+  {id:"policies",label:"정책건의·현안",icon:"📑"},
+  {id:"stats",label:"통계",icon:"📊"},
+  {id:"admin",label:"관리자",icon:"⚙"},
+];
+const PAGE_TITLES={dashboard:"산업계 애로사항 현황",complaints:"민원·애로사항 관리",mywork:"오늘의 업무",companies:"회원사 관리",agencies:"관계기관 협의 현황",policies:"정책건의·산업현안",stats:"통계·정책성과 분석",admin:"관리자"};
+
+function setView(v, params){
+  UI.view=v; UI.params=params||{};
+  render();
+}
+function setCurrentUser(id){ UI.currentUserId=id; render(); }
+
+function render(){
+  renderNav();
+  renderUserSelect();
+  document.getElementById("page-title").textContent = pageTitleFor();
+  const main=document.getElementById("app-main");
+  main.innerHTML = renderView();
+  renderNotifBadge();
+}
+function pageTitleFor(){
+  if(UI.view==="complaint-detail"){ const c=complaintById(UI.params.id); return c? `[${c.no}] ${c.title}` : "민원 상세"; }
+  if(UI.view==="policy-detail"){ const p=policyById(UI.params.id); return p? p.title : "현안 상세"; }
+  return PAGE_TITLES[UI.view] || "";
+}
+function renderNav(){
+  const el=document.getElementById("nav-list");
+  el.innerHTML = NAV_ITEMS.map(n=>{
+    const active = (UI.view===n.id) || (UI.view==="complaint-detail" && n.id==="complaints") || (UI.view==="policy-detail" && n.id==="policies");
+    return `<li class="${active?'active':''}"><button onclick="setView('${n.id}')"><span class="ic">${n.icon}</span>${n.label}</button></li>`;
+  }).join("");
+}
+function renderUserSelect(){
+  const el=document.getElementById("user-select");
+  el.innerHTML = DB.users.map(u=>`<option value="${u.id}" ${u.id===UI.currentUserId?"selected":""}>${esc(u.name)} · ${esc(u.role)}</option>`).join("");
+}
+function renderNotifBadge(){
+  const n=computeNotifications().length;
+  const badge=document.getElementById("notif-count");
+  if(n>0){ badge.style.display="inline-block"; badge.textContent=n; } else { badge.style.display="none"; }
+}
+
+function renderView(){
+  switch(UI.view){
+    case "dashboard": return viewDashboard();
+    case "complaints": return viewComplaintList();
+    case "complaint-detail": return viewComplaintDetail(UI.params.id);
+    case "mywork": return viewMyWork();
+    case "companies": return viewCompanies();
+    case "agencies": return viewAgencies();
+    case "policies": return viewPolicies();
+    case "policy-detail": return viewPolicyDetail(UI.params.id);
+    case "stats": return viewStats();
+    case "admin": return viewAdmin();
+    default: return viewDashboard();
+  }
+}
+
+/* ===================== 대시보드 ===================== */
+function viewDashboard(){
+  const all=DB.complaints;
+  const cnt = s => all.filter(c=>c.status===s).length;
+  const total=all.length;
+  const done = all.filter(c=>c.status==="처리완료"||c.status==="종결").length;
+  const inProgress = all.filter(c=>!["처리완료","종결"].includes(c.status)).length;
+  const overdue = all.filter(isOverdue).length;
+  const dueSoon = all.filter(isDueSoon).length;
+  const urgent = all.filter(c=>c.importance==="긴급").length;
+
+  const months=[]; for(let i=5;i>=0;i--){ const d=new Date(); d.setMonth(d.getMonth()-i); months.push(d.toISOString().slice(0,7)); }
+  const monthCounts=months.map(m=>all.filter(c=>monthLabel(c.receivedAt)===m).length);
+
+  const typeCounts={}; all.forEach(c=>{ typeCounts[c.type]=(typeCounts[c.type]||0)+1; });
+
+  const todayDeadline = all.filter(c=>c.deadline===todayISO() && !["처리완료","종결"].includes(c.status)).length;
+  const waitingAnswer = all.filter(c=>c.status==="답변대기").length;
+  const newlyAssigned = all.filter(c=>c.receivedAt>=addDays(todayISO(),-3) && !["처리완료","종결"].includes(c.status)).length;
+
+  const recent=[...all].sort((a,b)=> a.receivedAt<b.receivedAt?1:-1).slice(0,6);
+
+  return `
+  <div class="grid cols-4">
+    ${kpiCard("전체", total)}
+    ${kpiCard("신규접수", cnt("신규접수"))}
+    ${kpiCard("처리중", inProgress)}
+    ${kpiCard("처리완료·종결", done)}
+  </div>
+  <div class="toprow">
+    ${urgent? `<span class="badge danger">🔴 긴급 ${urgent}</span>`:""}
+    ${dueSoon? `<span class="badge warn">🟠 기한임박 ${dueSoon}</span>`:""}
+    ${overdue? `<span class="badge danger">⚠ 기한초과 ${overdue}</span>`:""}
+    <span class="badge info">📑 정책건의 진행 ${DB.policies.filter(p=>!["반영","일부반영","미반영","종결"].includes(p.status)).length}건</span>
+  </div>
+  <div class="grid cols-2">
+    <div class="card">
+      <h2>월별 접수 추이</h2>
+      ${lineChart(months.map(m=>m.slice(5)+"월"), monthCounts)}
+    </div>
+    <div class="card">
+      <h2>민원 유형별 현황</h2>
+      ${donutChart(typeCounts)}
+    </div>
+  </div>
+  <div class="card">
+    <h2>오늘의 업무</h2>
+    <div class="toprow">
+      <span class="badge danger">🔴 기한초과 ${overdue}건</span>
+      <span class="badge warn">🟠 오늘 마감 ${todayDeadline}건</span>
+      <span class="badge info">🔵 답변대기 ${waitingAnswer}건</span>
+      <span class="badge gray">신규(3일 이내) ${newlyAssigned}건</span>
+    </div>
+    <div class="btnrow" style="margin-top:8px"><button class="btn ghost sm" onclick="setView('mywork')">오늘의 업무 전체 보기 →</button></div>
+  </div>
+  <div class="card">
+    <h2>최근 접수 민원</h2>
+    ${complaintTable(recent)}
+  </div>`;
+}
+function kpiCard(label,val){ return `<div class="kpi"><div class="lbl">${esc(label)}</div><div class="val">${val}</div></div>`; }
+
+function lineChart(labels, values){
+  const w=520,h=150,pad=28;
+  const max=Math.max(1,...values);
+  const stepX=(w-pad*2)/Math.max(1,values.length-1);
+  const pts=values.map((v,i)=>{
+    const x=pad+i*stepX;
+    const y=h-pad-( (v/max) * (h-pad*2) );
+    return [x,y];
+  });
+  const path=pts.map((p,i)=> (i===0?"M":"L")+p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ");
+  const dots=pts.map(p=>`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3.5" fill="#3b6fe0"/>`).join("");
+  const labelsSvg = labels.map((l,i)=>`<text x="${pts[i][0].toFixed(1)}" y="${h-6}" font-size="10" fill="#8a8375" text-anchor="middle">${esc(l)}</text>`).join("");
+  return `<svg class="linechart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet">
+    <line x1="${pad}" y1="${h-pad}" x2="${w-pad}" y2="${h-pad}" stroke="#e7e0d0" stroke-width="1"/>
+    <path d="${path}" fill="none" stroke="#3b6fe0" stroke-width="2.5"/>
+    ${dots}${labelsSvg}
+  </svg>`;
+}
+const DONUT_COLORS=["#3b6fe0","#b23b3b","#b87a2e","#2f8f5b","#8a63d2","#c9a227","#5aa9c9","#a3a39c"];
+function donutChart(counts){
+  const entries=Object.entries(counts).filter(([,v])=>v>0);
+  const total=entries.reduce((s,[,v])=>s+v,0) || 1;
+  let acc=0;
+  const stops=entries.map(([k,v],i)=>{
+    const start=acc/total*360; acc+=v; const end=acc/total*360;
+    return `${DONUT_COLORS[i%DONUT_COLORS.length]} ${start}deg ${end}deg`;
+  }).join(", ");
+  const legend=entries.map(([k,v],i)=>`<li><span class="sw" style="background:${DONUT_COLORS[i%DONUT_COLORS.length]}"></span>${esc(k)} ${v}건</li>`).join("");
+  return `<div class="donutwrap">
+    <div class="donut" style="background:conic-gradient(${stops || '#e7e0d0 0deg 360deg'})"></div>
+    <ul class="legend">${legend || '<li class="muted">데이터 없음</li>'}</ul>
+  </div>`;
+}
+
+function complaintTable(list){
+  if(!list.length) return `<div class="empty">표시할 민원이 없습니다.</div>`;
+  return `<table><thead><tr><th>접수번호</th><th>회원사</th><th>제목</th><th>담당자</th><th>상태</th><th>기한</th></tr></thead><tbody>
+    ${list.map(c=>{
+      const dd=ddayInfo(c);
+      return `<tr onclick="setView('complaint-detail',{id:'${c.id}'})">
+        <td>${esc(c.no)}</td><td>${esc(companyName(c.companyId))}</td><td>${esc(c.title)}</td>
+        <td>${c.assignee? esc(c.assignee): '<span class="badge gray">미배정</span>'}</td>
+        <td>${statusBadge(c.status)}</td><td><span class="badge ${dd.cls}">${dd.label}</span></td>
+      </tr>`;
+    }).join("")}
+  </tbody></table>`;
+}
+function statusBadge(status){
+  const map={"신규접수":"info","검토중":"info","내부협의":"info","관계기관 협의중":"info","정책건의중":"info",
+    "답변대기":"warn","회원사 회신대기":"warn","처리완료":"ok","종결":"gray","보류":"gray","이관":"gray"};
+  return `<span class="badge ${map[status]||'gray'}">${esc(status)}</span>`;
+}
+function importanceBadge(imp){
+  const map={"긴급":"danger","높음":"danger","보통":"gray","낮음":"gray"};
+  return `<span class="badge ${map[imp]||'gray'}">${esc(imp)}</span>`;
+}
+
+/* ===================== 민원관리 목록 ===================== */
+function viewComplaintList(){
+  const f=UI.filters;
+  let list=DB.complaints.slice();
+  if(f.q){
+    const q=f.q.toLowerCase();
+    list=list.filter(c=> [c.no,c.title,c.content,companyName(c.companyId),c.assignee,c.relatedLaw].join(" ").toLowerCase().includes(q));
+  }
+  if(f.status) list=list.filter(c=>c.status===f.status);
+  if(f.type) list=list.filter(c=>c.type===f.type);
+  if(f.assignee) list=list.filter(c=>c.assignee===f.assignee);
+  if(f.importance) list=list.filter(c=>c.importance===f.importance);
+  list.sort((a,b)=> a.receivedAt<b.receivedAt?1:-1);
+
+  const assignees=[...new Set(DB.complaints.map(c=>c.assignee).filter(Boolean))];
+
+  return `
+  <div class="card">
+    <div class="toprow" style="justify-content:space-between;display:flex;align-items:center;margin-bottom:12px">
+      <div class="muted">전체 ${DB.complaints.length}건 · 검색 결과 ${list.length}건</div>
+      <div class="btnrow">
+        ${isReadOnlyRole()?"":`<button class="btn primary" onclick="openRegisterWizard()">+ 민원 등록</button>`}
+      </div>
+    </div>
+    <div class="searchbar">
+      <input type="search" placeholder="접수번호 / 회원사 / 제목 / 내용 / 담당자 / 법령 검색" value="${esc(f.q||'')}" oninput="UI.filters.q=this.value; renderListOnly()" />
+      <button class="btn ghost" onclick="exportCSV(currentFilteredComplaints())">⬇ 엑셀 다운로드</button>
+    </div>
+    <div class="filters">
+      <select onchange="UI.filters.status=this.value; render()"><option value="">상태 전체</option>${STATUS_LIST.map(s=>`<option value="${s}" ${f.status===s?'selected':''}>${s}</option>`).join("")}</select>
+      <select onchange="UI.filters.type=this.value; render()"><option value="">유형 전체</option>${Object.keys(DB.codes.types).map(t=>`<option value="${t}" ${f.type===t?'selected':''}>${t}</option>`).join("")}</select>
+      <select onchange="UI.filters.importance=this.value; render()"><option value="">중요도 전체</option>${IMPORTANCE_LIST.map(t=>`<option value="${t}" ${f.importance===t?'selected':''}>${t}</option>`).join("")}</select>
+      <select onchange="UI.filters.assignee=this.value; render()"><option value="">담당자 전체</option>${assignees.map(a=>`<option value="${a}" ${f.assignee===a?'selected':''}>${a}</option>`).join("")}</select>
+      ${(f.q||f.status||f.type||f.assignee||f.importance) ? `<button class="btn ghost sm" onclick="UI.filters={}; render()">필터 초기화</button>`:""}
+    </div>
+    <div id="complaint-list-body">${complaintFullTable(list)}</div>
+  </div>`;
+}
+function currentFilteredComplaints(){
+  const f=UI.filters; let list=DB.complaints.slice();
+  if(f.q){ const q=f.q.toLowerCase(); list=list.filter(c=> [c.no,c.title,c.content,companyName(c.companyId),c.assignee].join(" ").toLowerCase().includes(q)); }
+  if(f.status) list=list.filter(c=>c.status===f.status);
+  if(f.type) list=list.filter(c=>c.type===f.type);
+  if(f.assignee) list=list.filter(c=>c.assignee===f.assignee);
+  if(f.importance) list=list.filter(c=>c.importance===f.importance);
+  return list;
+}
+function renderListOnly(){
+  document.getElementById("complaint-list-body").innerHTML = complaintFullTable(currentFilteredComplaints());
+}
+function complaintFullTable(list){
+  if(!list.length) return `<div class="empty">조건에 맞는 민원이 없습니다.</div>`;
+  list=[...list].sort((a,b)=> a.receivedAt<b.receivedAt?1:-1);
+  return `<table><thead><tr>
+    <th>접수번호</th><th>접수일</th><th>회원사</th><th>민원제목</th><th>유형</th><th>중요도</th><th>담당자</th><th>상태</th><th>기한</th>
+  </tr></thead><tbody>
+    ${list.map(c=>{
+      const dd=ddayInfo(c);
+      return `<tr onclick="setView('complaint-detail',{id:'${c.id}'})">
+        <td>${esc(c.no)}</td><td>${esc(c.receivedAt)}</td><td>${esc(companyName(c.companyId))}</td>
+        <td>${esc(c.title)}</td><td>${esc(c.type)}</td><td>${importanceBadge(c.importance)}</td>
+        <td>${c.assignee? esc(c.assignee): '<span class="badge gray">미배정</span>'}</td>
+        <td>${statusBadge(c.status)}</td><td><span class="badge ${dd.cls}">${dd.label}</span></td>
+      </tr>`;
+    }).join("")}
+  </tbody></table>`;
+}
+function downloadTextFile(text, filename, mime){
+  const blob=new Blob([text],{type:mime});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url; a.download=filename; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+function exportCSV(list){
+  const csv=Backend.buildComplaintsCSV(list);
+  downloadTextFile(csv, `민원목록_${todayISO()}.csv`, "text/csv;charset=utf-8;");
+  toast("CSV 파일이 다운로드되었습니다");
+}
+
+/* ===================== 민원 등록 마법사 ===================== */
+function openRegisterWizard(){
+  UI.wizard = { step:1, data:{ receivedAt:todayISO(), channel:"전화", companyId:"", companyManager:"", title:"", content:"", type:Object.keys(DB.codes.types)[0], subtype:"", importance:"보통", dept:DEPTS[0], assignee:"", deadline:addDays(todayISO(),14), relatedLaw:"", attachments:[] } };
+  openModalWide("신규 민원 등록", renderWizard());
+}
+function renderWizard(){
+  const s=UI.wizard.step, d=UI.wizard.data;
+  const steps=["접수정보","민원내용","담당정보","첨부자료","확인"];
+  const similar = d.title.length>1 ? findSimilarComplaints(d.title+" "+d.content) : [];
+  return `
+  <div class="stepbar">${steps.map((t,i)=> `<span>${i+1===s?'<b>':''}${i+1}. ${t}${i+1===s?'</b>':''}</span>`).join(" · ")}</div>
+  <div class="split2" style="grid-template-columns:1fr 260px">
+    <div>
+      ${s===1?`
+        <div class="stepblock"><h4>Step 1. 접수정보</h4>
+          <div class="row3">
+            <div class="field"><label class="req">접수일</label><input type="date" id="w-receivedAt" value="${d.receivedAt}"></div>
+            <div class="field"><label class="req">접수경로</label><select id="w-channel">${DB.codes.channels.map(c=>`<option ${c===d.channel?'selected':''}>${c}</option>`).join("")}</select></div>
+            <div class="field"><label class="req">회원사</label><select id="w-companyId"><option value="">선택</option>${DB.companies.map(co=>`<option value="${co.id}" ${co.id===d.companyId?'selected':''}>${esc(co.name)}</option>`).join("")}</select></div>
+          </div>
+          <div class="field"><label>회원사 담당자</label><input type="text" id="w-companyManager" value="${esc(d.companyManager)}" placeholder="선택 입력"></div>
+        </div>`:""}
+      ${s===2?`
+        <div class="stepblock"><h4>Step 2. 민원내용</h4>
+          <div class="field"><label class="req">제목</label><input type="text" id="w-title" value="${esc(d.title)}" placeholder="민원 제목을 입력하세요" oninput="UI.wizard.data.title=this.value; refreshWizardSimilar()"></div>
+          <div class="field"><label class="req">상세내용</label><textarea id="w-content" oninput="UI.wizard.data.content=this.value; refreshWizardSimilar()">${esc(d.content)}</textarea></div>
+          <div class="row2">
+            <div class="field"><label class="req">유형(대분류)</label><select id="w-type" onchange="onWizardTypeChange(this.value)">${Object.keys(DB.codes.types).map(t=>`<option ${t===d.type?'selected':''}>${t}</option>`).join("")}</select></div>
+            <div class="field"><label>세부유형</label><select id="w-subtype">${(DB.codes.types[d.type]||[]).map(t=>`<option ${t===d.subtype?'selected':''}>${t}</option>`).join("")}</select></div>
+          </div>
+          <div class="field"><label class="req">중요도</label><select id="w-importance">${IMPORTANCE_LIST.map(t=>`<option ${t===d.importance?'selected':''}>${t}</option>`).join("")}</select></div>
+          <div class="field"><label>관련 법령(선택)</label><input type="text" id="w-relatedLaw" value="${esc(d.relatedLaw)}"></div>
+        </div>`:""}
+      ${s===3?`
+        <div class="stepblock"><h4>Step 3. 담당정보</h4>
+          <div class="row3">
+            <div class="field"><label class="req">담당부서</label><select id="w-dept">${DEPTS.map(t=>`<option ${t===d.dept?'selected':''}>${t}</option>`).join("")}</select></div>
+            <div class="field"><label>담당자</label><select id="w-assignee"><option value="">미배정</option>${DB.users.filter(u=>u.role==="담당자").map(u=>`<option value="${u.name}" ${u.name===d.assignee?'selected':''}>${esc(u.name)}</option>`).join("")}</select></div>
+            <div class="field"><label class="req">처리기한</label><input type="date" id="w-deadline" value="${d.deadline}"></div>
+          </div>
+        </div>`:""}
+      ${s===4?`
+        <div class="stepblock"><h4>Step 4. 첨부자료</h4>
+          <div class="field"><label>파일 첨부 (데모: 파일명만 기록)</label><input type="file" id="w-file" multiple onchange="onWizardFilesPicked(this.files)"></div>
+          <div id="w-file-list">${(d.attachments||[]).map((f,i)=>`<div class="filechip"><span>📎 ${esc(f)}</span><span class="link" onclick="UI.wizard.data.attachments.splice(${i},1); refreshWizardFiles()">삭제</span></div>`).join("") || '<div class="empty">첨부된 파일이 없습니다.</div>'}</div>
+        </div>`:""}
+      ${s===5?`
+        <div class="stepblock"><h4>Step 5. 확인 후 저장</h4>
+          <div class="kv"><div class="k">회원사</div><div>${esc(companyName(d.companyId)||'-')}</div></div>
+          <div class="kv"><div class="k">제목</div><div>${esc(d.title)}</div></div>
+          <div class="kv"><div class="k">유형</div><div>${esc(d.type)} / ${esc(d.subtype||'-')}</div></div>
+          <div class="kv"><div class="k">중요도</div><div>${importanceBadge(d.importance)}</div></div>
+          <div class="kv"><div class="k">담당자</div><div>${esc(d.assignee||'미배정')} (${esc(d.dept)})</div></div>
+          <div class="kv"><div class="k">처리기한</div><div>${esc(d.deadline)}</div></div>
+          <div class="kv"><div class="k">첨부파일</div><div>${(d.attachments||[]).length}건</div></div>
+          <div class="hint">저장하면 접수번호가 자동 생성됩니다 (예: EDPA-${new Date(d.receivedAt).getFullYear()}-${String(DB.seq.receiptNo+1).padStart(4,'0')}).</div>
+        </div>`:""}
+      <div class="btnrow" style="margin-top:16px">
+        ${s>1?`<button class="btn ghost" onclick="wizardGo(${s-1})">이전</button>`:""}
+        ${s<5?`<button class="btn primary" onclick="wizardGo(${s+1})">다음</button>`:""}
+        ${s===5?`<button class="btn accent" onclick="submitWizard()">등록하기</button>`:""}
+        <button class="btn" onclick="closeModal()">임시저장(닫기)</button>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="padding:14px 16px;background:#faf7f0">
+        <h2 style="font-size:13px">접수내용 요약</h2>
+        <div class="kv"><div class="k">회원사</div><div>${esc(companyName(d.companyId)||'-')}</div></div>
+        <div class="kv"><div class="k">유형</div><div>${esc(d.type)}</div></div>
+        <div class="kv"><div class="k">중요도</div><div>${esc(d.importance)}</div></div>
+        <div class="kv"><div class="k">담당자</div><div>${esc(d.assignee||'미배정')}</div></div>
+        <div class="kv"><div class="k">처리기한</div><div>${esc(d.deadline)}</div></div>
+        <div class="hint">접수번호는 저장 후 자동 생성됩니다.</div>
+      </div>
+      <div class="card" style="padding:14px 16px;margin-top:12px" id="w-similar-box">
+        ${similarBox(similar)}
+      </div>
+    </div>
+  </div>`;
+}
+function similarBox(similar){
+  return `<h2 style="font-size:13px">유사 민원 검색</h2>
+    ${similar.length? similar.map(c=>`<div class="noteitem" onclick="window.open('','_self')" style="cursor:default">
+        <div class="nt">${esc(c.no)} · ${esc(companyName(c.companyId))}</div>
+        <div class="nd">${esc(c.title)} · ${statusBadge(c.status)}</div>
+      </div>`).join("") : '<div class="empty">제목/내용을 입력하면 과거 유사 민원을 찾아드립니다.</div>'}`;
+}
+function findSimilarComplaints(text){
+  const tokens = text.toLowerCase().replace(/[^가-힣a-z0-9\s]/g," ").split(/\s+/).filter(t=>t.length>=2);
+  if(!tokens.length) return [];
+  const scored = DB.complaints.map(c=>{
+    const hay=(c.title+" "+c.content).toLowerCase();
+    let score=0; tokens.forEach(t=>{ if(hay.includes(t)) score++; });
+    return {c, score};
+  }).filter(x=>x.score>=2).sort((a,b)=>b.score-a.score);
+  return scored.slice(0,4).map(x=>x.c);
+}
+function refreshWizardSimilar(){
+  const d=UI.wizard.data;
+  const similar = findSimilarComplaints(d.title+" "+d.content);
+  const box=document.getElementById("w-similar-box");
+  if(box) box.innerHTML = similarBox(similar);
+}
+function onWizardTypeChange(val){
+  UI.wizard.data.type=val; UI.wizard.data.subtype=(DB.codes.types[val]||[])[0]||"";
+  document.getElementById("modal-body").innerHTML = renderWizard();
+}
+function onWizardFilesPicked(files){
+  UI.wizard.data.attachments = (UI.wizard.data.attachments||[]).concat(Array.from(files).map(f=>f.name));
+  refreshWizardFiles();
+}
+function refreshWizardFiles(){
+  const d=UI.wizard.data;
+  document.getElementById("w-file-list").innerHTML = (d.attachments||[]).map((f,i)=>`<div class="filechip"><span>📎 ${esc(f)}</span><span class="link" onclick="UI.wizard.data.attachments.splice(${i},1); refreshWizardFiles()">삭제</span></div>`).join("") || '<div class="empty">첨부된 파일이 없습니다.</div>';
+}
+function readWizardStepInputs(step){
+  const d=UI.wizard.data;
+  if(step===1){ d.receivedAt=val("w-receivedAt")||d.receivedAt; d.channel=val("w-channel")||d.channel; d.companyId=val("w-companyId"); d.companyManager=val("w-companyManager"); }
+  if(step===2){ d.title=val("w-title"); d.content=val("w-content"); d.type=val("w-type")||d.type; d.subtype=val("w-subtype"); d.importance=val("w-importance")||d.importance; d.relatedLaw=val("w-relatedLaw"); }
+  if(step===3){ d.dept=val("w-dept")||d.dept; d.assignee=val("w-assignee"); d.deadline=val("w-deadline")||d.deadline; }
+}
+function val(id){ const el=document.getElementById(id); return el? el.value : ""; }
+function wizardGo(next){
+  readWizardStepInputs(UI.wizard.step);
+  if(UI.wizard.step===1 && next>1 && !UI.wizard.data.companyId){ toast("회원사를 선택해 주세요"); return; }
+  if(UI.wizard.step===2 && next>2 && !UI.wizard.data.title){ toast("민원 제목을 입력해 주세요"); return; }
+  UI.wizard.step=next;
+  document.getElementById("modal-body").innerHTML = renderWizard();
+}
+function submitWizard(){
+  readWizardStepInputs(5);
+  const r=Backend.createComplaint(UI.wizard.data);
+  if(!r.ok){ toast(r.message); return; }
+  closeModal();
+  toast(r.message);
+  setView("complaint-detail",{id:r.data.id});
+}
+
+/* ===================== 민원 상세 ===================== */
+function viewComplaintDetail(id){
+  const c=complaintById(id);
+  if(!c) return `<div class="card"><div class="empty">민원을 찾을 수 없습니다.</div><button class="btn" onclick="setView('complaints')">목록으로</button></div>`;
+  UI.detailTab = UI.detailTab || "info";
+  const dd=ddayInfo(c);
+  const tabs=[["info","기본정보"],["history","처리이력"],["agency","기관협의"],["policy","정책건의"],["files","첨부파일"],["related","관련 민원"],["audit","감사로그"]];
+  return `
+  <div class="card">
+    <div class="muted" style="font-size:12.5px">${esc(c.no)}</div>
+    <div style="font-size:19px;font-weight:700;margin:4px 0 10px">${esc(c.title)}</div>
+    <div class="toprow">
+      ${importanceBadge(c.importance)} ${statusBadge(c.status)}
+      <span class="badge gray">담당자 ${esc(c.assignee||'미배정')}</span>
+      <span class="badge gray">접수 ${esc(c.receivedAt)}</span>
+      <span class="badge ${dd.cls}">기한 ${esc(c.deadline)} (${dd.label})</span>
+    </div>
+    <div class="tabs">${tabs.map(([k,l])=>`<button class="${UI.detailTab===k?'active':''}" onclick="UI.detailTab='${k}'; render()">${l}</button>`).join("")}</div>
+    <div>${renderDetailTab(c)}</div>
+    ${isReadOnlyRole()?"": canEditComplaint(c) ? `<div class="btnrow" style="margin-top:18px;border-top:1px solid var(--line-soft);padding-top:16px">
+      <button class="btn" onclick="openHistoryForm('${c.id}')">처리이력 등록</button>
+      <button class="btn" onclick="openConsultForm('${c.id}')">기관협의 등록</button>
+      <button class="btn" onclick="openLinkPolicy('${c.id}')">정책건의 연결</button>
+      <button class="btn" onclick="openAssignForm('${c.id}')">담당자/중요도 변경</button>
+      ${c.status!=="회원사 회신대기"?`<button class="btn ghost" onclick="quickStatus('${c.id}','회원사 회신대기')">회원사 회신대기로</button>`:`<button class="btn ghost" onclick="quickStatus('${c.id}','처리완료')">회신 완료(처리완료)</button>`}
+      ${c.status!=="종결" ? `<button class="btn primary" onclick="openCloseForm('${c.id}')">종결</button>` : `<span class="badge gray">종결됨</span>`}
+      ${c.status!=="보류"&&c.status!=="종결" ? `<button class="btn ghost" onclick="quickStatus('${c.id}','보류')">보류</button>`:""}
+    </div>` : `<div class="hint" style="margin-top:18px;border-top:1px solid var(--line-soft);padding-top:16px">이 민원은 담당(${esc(c.assignee||'미배정')}) · 담당부서(${esc(c.dept)}) 건이 아니어서 처리 버튼이 제한됩니다. 재배정이 필요하면 팀장·관리자에게 요청하세요.</div>`}
+  </div>`;
+}
+function renderDetailTab(c){
+  if(UI.detailTab==="info") return tabInfo(c);
+  if(UI.detailTab==="history") return tabHistory(c);
+  if(UI.detailTab==="agency") return tabAgency(c);
+  if(UI.detailTab==="policy") return tabPolicy(c);
+  if(UI.detailTab==="files") return tabFiles(c);
+  if(UI.detailTab==="related") return tabRelated(c);
+  if(UI.detailTab==="audit") return tabAudit(c);
+  return "";
+}
+function tabInfo(c){
+  return `<div class="row2">
+    <div>
+      <div class="kv"><div class="k">회원사</div><div class="link" onclick="setView('companies'); UI.selectedCompanyId='${c.companyId}'">${esc(companyName(c.companyId))}</div></div>
+      <div class="kv"><div class="k">회원사 담당자</div><div>${esc(c.companyManager||'-')}</div></div>
+      <div class="kv"><div class="k">접수경로</div><div>${esc(c.channel)}</div></div>
+      <div class="kv"><div class="k">유형</div><div>${esc(c.type)} / ${esc(c.subtype||'-')}</div></div>
+      <div class="kv"><div class="k">관련 법령</div><div>${esc(c.relatedLaw||'-')}</div></div>
+      <div class="kv"><div class="k">담당부서</div><div>${esc(c.dept)}</div></div>
+    </div>
+    <div>
+      <div class="kv"><div class="k">완료일</div><div>${esc(c.completedAt||'-')}</div></div>
+      <div class="kv"><div class="k">종결사유</div><div>${esc(c.closeReason||'-')}</div></div>
+      <div class="kv"><div class="k">다음 조치</div><div>${esc(c.nextAction||'-')} ${c.nextActionDate?`(예정일 ${esc(c.nextActionDate)})`:''}</div></div>
+      <div class="kv"><div class="k">관계기관</div><div>${(c.relatedAgencyIds||[]).map(agencyName).join(", ")||'-'}</div></div>
+    </div>
+  </div>
+  <div class="field" style="margin-top:12px"><label>민원 내용</label>
+    <div class="card" style="background:#faf7f0;padding:14px 16px;font-size:13.5px;line-height:1.6">${esc(c.content)||'<span class="muted">내용 없음</span>'}</div>
+  </div>`;
+}
+function tabHistory(c){
+  const list=DB.history.filter(h=>h.complaintId===c.id).sort((a,b)=>a.at<b.at?-1:1);
+  const pendingNext = c.nextAction ? `<li class="pending"><div class="t">${esc(c.nextActionDate||'예정일 미정')} 예정 — ${esc(c.nextAction)}</div><div class="d">다음 조치 예정</div></li>` : "";
+  if(!list.length && !pendingNext) return `<div class="empty">처리이력이 없습니다.</div>`;
+  return `<ul class="timeline">
+    ${list.map(h=>`<li><div class="t">${esc(h.at)} · ${esc(h.category)}</div><div class="d">${esc(h.content)}</div><div class="who">처리자: ${esc(h.by)}${h.agency?` · 협의기관: ${esc(h.agency)}`:''}${h.answer?` · 답변: ${esc(h.answer)}`:''}</div></li>`).join("")}
+    ${pendingNext}
+  </ul>`;
+}
+function tabAgency(c){
+  const list=DB.consultations.filter(cs=>cs.complaintId===c.id).sort((a,b)=>a.date<b.date?1:-1);
+  if(!list.length) return `<div class="empty">등록된 기관협의 이력이 없습니다.</div>`;
+  return `<table><thead><tr><th>협의일</th><th>기관</th><th>방법</th><th>내용</th><th>답변</th><th>회신기한</th></tr></thead><tbody>
+    ${list.map(cs=>`<tr style="cursor:default"><td>${esc(cs.date)}</td><td>${esc(agencyName(cs.agencyId))}</td><td>${esc(cs.method)}</td><td>${esc(cs.content)}</td><td>${esc(cs.answer||'대기중')}</td><td>${esc(cs.replyDeadline||'-')}</td></tr>`).join("")}
+  </tbody></table>`;
+}
+function tabPolicy(c){
+  const linked=DB.policies.filter(p=>p.linkedComplaintIds.includes(c.id));
+  if(!linked.length) return `<div class="empty">연결된 정책건의가 없습니다.</div>`;
+  return linked.map(p=>`<div class="card" style="padding:14px 16px;margin-bottom:10px;background:#faf7f0">
+    <div style="font-weight:700;margin-bottom:4px" class="link" onclick="setView('policy-detail',{id:'${p.id}'})">${esc(p.title)}</div>
+    <div class="toprow"><span class="badge info">${esc(p.status)}</span><span class="badge gray">관련 민원 ${p.linkedComplaintIds.length}건</span><span class="badge gray">대상기관 ${esc(agencyName(p.targetAgencyId))}</span></div>
+  </div>`).join("");
+}
+function tabFiles(c){
+  const list=(DB.attachments||[]).filter(a=>a.complaintId===c.id);
+  return `
+  ${canEditComplaint(c)?`<div class="field"><label>파일 첨부 (데모: 파일명만 기록)</label><input type="file" multiple onchange="addAttachments('${c.id}', this.files)"></div>`:""}
+  ${list.length? list.map(f=>`<div class="filechip"><span>📎 ${esc(f.name)} <span class="muted">· ${esc(f.type)} · ${esc(f.uploadedBy)} · ${esc(f.uploadedAt)}</span></span>${canEditComplaint(c)?`<span class="link" onclick="removeAttachment('${f.id}')">삭제</span>`:""}</div>`).join("") : `<div class="empty">첨부된 파일이 없습니다.</div>`}`;
+}
+function tabRelated(c){
+  const ids=c.similarComplaintIds||[];
+  const list=ids.map(complaintById).filter(Boolean);
+  if(!list.length) return `<div class="empty">등록된 유사·관련 민원이 없습니다.</div>`;
+  return complaintTable(list);
+}
+function tabAudit(c){
+  const list=DB.auditLog.filter(a=>a.target===c.id).sort((a,b)=>a.at<b.at?1:-1);
+  if(!list.length) return `<div class="empty">감사로그가 없습니다.</div>`;
+  return `<table><thead><tr><th>일시</th><th>사용자</th><th>항목</th><th>변경전</th><th>변경후</th><th>사유</th></tr></thead><tbody>
+    ${list.map(a=>`<tr style="cursor:default"><td>${esc(a.at)}</td><td>${esc(a.user)}</td><td>${esc(a.field)}</td><td>${esc(a.before)}</td><td>${esc(a.after)}</td><td>${esc(a.reason)}</td></tr>`).join("")}
+  </tbody></table>`;
+}
+function addAttachments(complaintId, files){
+  const r=Backend.addAttachments(complaintId, Array.from(files).map(f=>f.name));
+  if(!r.ok){ toast(r.message); return; }
+  render(); toast(r.message);
+}
+function removeAttachment(attId){
+  const r=Backend.removeAttachment(attId);
+  if(!r.ok){ toast(r.message); return; }
+  render(); toast(r.message);
+}
+function quickStatus(complaintId,status){
+  const r=Backend.setStatus(complaintId,status);
+  if(!r.ok){ toast(r.message); return; }
+  render(); toast(r.message);
+}
+
+/* ---- 처리이력 등록 ---- */
+function openHistoryForm(complaintId){
+  const c=complaintById(complaintId);
+  openModal("처리이력 등록", `
+    <div class="field"><label class="req">처리구분</label><select id="hf-category"><option>검토</option><option>내부협의</option><option>관계기관 협의</option><option>기관 답변</option><option>정책건의 연결</option><option>회원사 회신</option><option>기타</option></select></div>
+    <div class="field"><label class="req">처리내용</label><textarea id="hf-content" placeholder="처리 내용을 입력하세요"></textarea></div>
+    <div class="field"><label>상태 변경(선택)</label><select id="hf-status"><option value="">변경 없음</option>${STATUS_LIST.map(s=>`<option ${s===c.status?'selected':''}>${s}</option>`).join("")}</select></div>
+    <div class="row2">
+      <div class="field"><label>다음 조치사항</label><input type="text" id="hf-next" value="${esc(c.nextAction||'')}"></div>
+      <div class="field"><label>다음 조치 예정일</label><input type="date" id="hf-nextdate" value="${esc(c.nextActionDate||'')}"></div>
+    </div>
+    <div class="btnrow"><button class="btn primary" onclick="submitHistoryForm('${complaintId}')">저장</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function submitHistoryForm(complaintId){
+  const r=Backend.addHistory(complaintId, { category:val("hf-category"), content:val("hf-content"), status:val("hf-status"), nextAction:val("hf-next"), nextActionDate:val("hf-nextdate") });
+  if(!r.ok){ toast(r.message); return; }
+  closeModal(); render(); toast(r.message);
+}
+
+/* ---- 기관협의 등록 ---- */
+function openConsultForm(complaintId){
+  const c=complaintById(complaintId);
+  openModal("관계기관 협의 등록", `
+    <div class="row2">
+      <div class="field"><label class="req">기관</label><select id="cf-agency">${DB.agencies.map(a=>`<option value="${a.id}">${esc(a.name)}</option>`).join("")}</select></div>
+      <div class="field"><label class="req">협의일</label><input type="date" id="cf-date" value="${todayISO()}"></div>
+    </div>
+    <div class="field"><label class="req">협의방법</label><select id="cf-method"><option>공문 질의</option><option>유선 협의</option><option>대면 협의</option><option>간담회</option><option>이메일</option></select></div>
+    <div class="field"><label class="req">협의내용</label><textarea id="cf-content" placeholder="협의 내용을 입력하세요"></textarea></div>
+    <div class="row2">
+      <div class="field"><label>기관 답변</label><input type="text" id="cf-answer" placeholder="답변 접수 시 입력"></div>
+      <div class="field"><label>회신기한</label><input type="date" id="cf-deadline" value="${addDays(todayISO(),7)}"></div>
+    </div>
+    <div class="field"><label>후속조치</label><input type="text" id="cf-followup" placeholder="예: 서면 답변 요청"></div>
+    <div class="btnrow"><button class="btn primary" onclick="submitConsultForm('${complaintId}')">저장</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function submitConsultForm(complaintId){
+  const r=Backend.addConsultation(complaintId, { agencyId:val("cf-agency"), date:val("cf-date"), method:val("cf-method"), content:val("cf-content"), answer:val("cf-answer"), followup:val("cf-followup"), replyDeadline:val("cf-deadline") });
+  if(!r.ok){ toast(r.message); return; }
+  closeModal(); render(); toast(r.message);
+}
+
+/* ---- 정책건의 연결 ---- */
+function openLinkPolicy(complaintId){
+  openModal("정책건의 연결", `
+    <div class="field"><label>기존 정책건의에 연결</label>
+      <select id="lp-existing"><option value="">선택 안함</option>${DB.policies.map(p=>`<option value="${p.id}">${esc(p.title)} (관련 ${p.linkedComplaintIds.length}건)</option>`).join("")}</select>
+    </div>
+    <div class="btnrow"><button class="btn primary" onclick="submitLinkExisting('${complaintId}')">연결</button></div>
+    <div class="hint" style="margin:14px 0 6px">또는 이 민원을 시작으로 새 정책건의를 생성할 수 있습니다.</div>
+    <button class="btn ghost" onclick="closeModal(); openPolicyForm(null,'${complaintId}')">+ 신규 정책건의 생성</button>
+  `);
+}
+function submitLinkExisting(complaintId){
+  const pid=val("lp-existing"); if(!pid){ toast("정책건의를 선택해 주세요"); return; }
+  const r=Backend.linkPolicy(complaintId, pid);
+  if(!r.ok){ toast(r.message); return; }
+  closeModal(); render(); toast(r.message);
+}
+
+/* ---- 담당자/중요도 변경 ---- */
+function openAssignForm(complaintId){
+  const c=complaintById(complaintId);
+  openModal("담당자 / 중요도 변경", `
+    <div class="row2">
+      <div class="field"><label>담당자</label><select id="af-assignee"><option value="">미배정</option>${DB.users.filter(u=>u.role==="담당자").map(u=>`<option value="${u.name}" ${u.name===c.assignee?'selected':''}>${esc(u.name)}</option>`).join("")}</select></div>
+      <div class="field"><label>중요도</label><select id="af-importance">${IMPORTANCE_LIST.map(i=>`<option ${i===c.importance?'selected':''}>${i}</option>`).join("")}</select></div>
+    </div>
+    <div class="field"><label>변경 사유</label><input type="text" id="af-reason" placeholder="선택 입력"></div>
+    <div class="btnrow"><button class="btn primary" onclick="submitAssignForm('${complaintId}')">저장</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function submitAssignForm(complaintId){
+  const r=Backend.reassign(complaintId, { assignee:val("af-assignee"), importance:val("af-importance"), reason:val("af-reason") });
+  if(!r.ok){ toast(r.message); return; }
+  closeModal(); render(); toast(r.message);
+}
+
+/* ---- 종결 ---- */
+function openCloseForm(complaintId){
+  openModal("민원 종결", `
+    <div class="field"><label class="req">종결사유</label><select id="cf2-reason">${CLOSE_REASONS.map(r=>`<option>${r}</option>`).join("")}</select></div>
+    <div class="field"><label>비고</label><textarea id="cf2-note" placeholder="선택 입력"></textarea></div>
+    <div class="btnrow"><button class="btn primary" onclick="submitCloseForm('${complaintId}')">종결 처리</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function submitCloseForm(complaintId){
+  const r=Backend.closeComplaint(complaintId, { reason:val("cf2-reason"), note:val("cf2-note") });
+  if(!r.ok){ toast(r.message); return; }
+  closeModal(); render(); toast(r.message);
+}
+
+/* ===================== 오늘의 업무 ===================== */
+function viewMyWork(){
+  const me=currentUser();
+  const mine = DB.complaints.filter(c=> c.assignee===me.name && !["처리완료","종결"].includes(c.status));
+  const overdue=mine.filter(isOverdue);
+  const dueToday=mine.filter(c=>c.deadline===todayISO());
+  const due3=mine.filter(c=>{ const d=diffDays(todayISO(),c.deadline); return d>0 && d<=3; });
+  const newlyAssigned=mine.filter(c=> c.receivedAt>=addDays(todayISO(),-3));
+
+  const rows=[...new Set([...overdue,...dueToday,...due3,...newlyAssigned])];
+  return `
+  <div class="card">
+    <div style="font-size:16px;font-weight:700">${esc(me.name)}님의 업무</div>
+    <div class="muted" style="margin:4px 0 14px">오늘 처리해야 할 업무 ${rows.length}건</div>
+    <div class="grid cols-4">
+      <div class="kpi" style="background:var(--danger-soft)"><div class="lbl" style="color:var(--danger)">기한초과</div><div class="val" style="color:var(--danger)">${overdue.length}<small>건</small></div></div>
+      <div class="kpi" style="background:var(--warn-soft)"><div class="lbl" style="color:var(--warn)">오늘 마감</div><div class="val" style="color:var(--warn)">${dueToday.length}<small>건</small></div></div>
+      <div class="kpi"><div class="lbl">3일 이내</div><div class="val">${due3.length}<small>건</small></div></div>
+      <div class="kpi" style="background:var(--accent-soft)"><div class="lbl" style="color:var(--accent)">신규 배정</div><div class="val" style="color:var(--accent)">${newlyAssigned.length}<small>건</small></div></div>
+    </div>
+    <table style="margin-top:16px"><thead><tr><th>우선순위</th><th>업무</th><th>회원사</th><th>마감</th><th>상태</th><th></th></tr></thead><tbody>
+    ${rows.length? rows.map(c=>{
+      const dd=ddayInfo(c);
+      const prio = isOverdue(c)?"🔴": isDueSoon(c)?"🟠":"🔵";
+      return `<tr onclick="setView('complaint-detail',{id:'${c.id}'})">
+        <td>${prio}</td><td>${esc(c.title)}</td><td>${esc(companyName(c.companyId))}</td>
+        <td>${esc(dd.label)}</td><td>${statusBadge(c.status)}</td>
+        <td><button class="btn sm" onclick="event.stopPropagation(); setView('complaint-detail',{id:'${c.id}'})">처리</button></td>
+      </tr>`;
+    }).join("") : `<tr style="cursor:default"><td colspan="6" class="empty">오늘 처리할 업무가 없습니다.</td></tr>`}
+    </tbody></table>
+  </div>`;
+}
+
+/* ===================== 회원사 ===================== */
+function viewCompanies(){
+  UI.selectedCompanyId = UI.selectedCompanyId || (DB.companies[0] && DB.companies[0].id);
+  const sel=UI.selectedCompanyId;
+  return `<div class="split2">
+    <div class="card">
+      <div class="toprow" style="justify-content:space-between;display:flex;align-items:center">
+        <h2 style="margin:0">회원사 목록</h2>
+        ${isReadOnlyRole()?"":`<button class="btn primary sm" onclick="openCompanyForm(null)">+ 회원사 추가</button>`}
+      </div>
+      <table><thead><tr><th>회원사</th><th class="num">전체</th><th class="num">처리중</th><th class="num">완료</th><th class="num">정책건의</th></tr></thead><tbody>
+      ${DB.companies.map(co=>{
+        const list=DB.complaints.filter(c=>c.companyId===co.id);
+        const inProgress=list.filter(c=>!["처리완료","종결"].includes(c.status)).length;
+        const done=list.filter(c=>["처리완료","종결"].includes(c.status)).length;
+        const policyCnt = DB.policies.filter(p=>p.linkedComplaintIds.some(id=>{ const c=complaintById(id); return c && c.companyId===co.id; })).length;
+        return `<tr class="${sel===co.id?'active':''}" style="${sel===co.id?'background:var(--line-soft)':''}" onclick="UI.selectedCompanyId='${co.id}'; render()">
+          <td>${esc(co.name)}</td><td class="num">${list.length}</td><td class="num">${inProgress}</td><td class="num">${done}</td><td class="num">${policyCnt}</td>
+        </tr>`;
+      }).join("")}
+      </tbody></table>
+    </div>
+    ${companyDetailCard(sel)}
+  </div>`;
+}
+function companyDetailCard(companyId){
+  const co=companyById(companyId);
+  if(!co) return `<div class="card"><div class="empty">회원사를 선택하세요.</div></div>`;
+  const list=DB.complaints.filter(c=>c.companyId===companyId);
+  const inProgress=list.filter(c=>!["처리완료","종결"].includes(c.status)).length;
+  const done=list.filter(c=>["처리완료","종결"].includes(c.status)).length;
+  const notDone=list.filter(c=>c.status==="신규접수").length;
+  const policyCnt = DB.policies.filter(p=>p.linkedComplaintIds.some(id=>{ const c=complaintById(id); return c && c.companyId===companyId; })).length;
+  const topIssues = [...list].sort((a,b)=>a.receivedAt<b.receivedAt?1:-1).slice(0,3);
+  const recent = [...list].sort((a,b)=>a.receivedAt<b.receivedAt?1:-1).slice(0,3);
+  return `<div class="card">
+    <div class="toprow" style="justify-content:space-between;display:flex;align-items:flex-start">
+      <h2 style="margin:0">${esc(co.name)} <small>${esc(co.bizNo)} · 담당 ${esc(co.manager)} · ${esc(co.phone)}</small></h2>
+      ${isReadOnlyRole()?"":`<button class="btn ghost sm" onclick="openCompanyForm('${co.id}')">회원사 정보 수정</button>`}
+    </div>
+    <div class="grid cols-5">
+      ${kpiCard("전체 민원", list.length)}
+      ${kpiCard("미처리(신규)", notDone)}
+      ${kpiCard("처리중", inProgress)}
+      ${kpiCard("완료", done)}
+      ${kpiCard("정책건의", policyCnt)}
+    </div>
+    <div style="margin-top:16px">
+      <div style="font-weight:700;font-size:13.5px;margin-bottom:6px">주요 애로사항</div>
+      ${topIssues.length? `<ol style="margin:0;padding-left:18px;font-size:13.5px;line-height:1.9">${topIssues.map(c=>`<li class="link" onclick="setView('complaint-detail',{id:'${c.id}'})">${esc(c.title)}</li>`).join("")}</ol>` : `<div class="empty">등록된 민원이 없습니다.</div>`}
+    </div>
+    <div style="margin-top:16px">
+      <div style="font-weight:700;font-size:13.5px;margin-bottom:6px">최근 민원</div>
+      ${recent.map(c=>`<div class="card" style="padding:12px 14px;margin-bottom:8px;background:#faf7f0;cursor:pointer" onclick="setView('complaint-detail',{id:'${c.id}'})">
+        <div style="font-weight:700">${esc(c.no)}</div><div>${esc(c.title)}</div>
+        <div style="margin-top:6px">${statusBadge(c.status)}</div>
+      </div>`).join("") || `<div class="empty">최근 민원이 없습니다.</div>`}
+    </div>
+  </div>`;
+}
+function openCompanyForm(companyId){
+  const co = companyId? companyById(companyId) : {name:"",bizNo:"",manager:"",phone:"",email:"",joinedAt:todayISO()};
+  openModal(companyId? "회원사 정보 수정" : "회원사 추가", `
+    <div class="field"><label class="req">회원사명</label><input type="text" id="cof-name" value="${esc(co.name)}"></div>
+    <div class="row2">
+      <div class="field"><label>사업자번호</label><input type="text" id="cof-bizno" value="${esc(co.bizNo)}" placeholder="000-00-00000"></div>
+      <div class="field"><label>가입일</label><input type="date" id="cof-joined" value="${esc(co.joinedAt||todayISO())}"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>담당자</label><input type="text" id="cof-manager" value="${esc(co.manager)}"></div>
+      <div class="field"><label>연락처</label><input type="tel" id="cof-phone" value="${esc(co.phone)}"></div>
+    </div>
+    <div class="field"><label>이메일</label><input type="email" id="cof-email" value="${esc(co.email)}"></div>
+    <div class="btnrow"><button class="btn primary" onclick="submitCompanyForm('${companyId||''}')">저장</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function submitCompanyForm(existingId){
+  const data={name:val("cof-name"), bizNo:val("cof-bizno"), manager:val("cof-manager"), phone:val("cof-phone"), email:val("cof-email"), joinedAt:val("cof-joined")};
+  const r=Backend.saveCompany(existingId||null, data);
+  if(!r.ok){ toast(r.message); return; }
+  if(!existingId) UI.selectedCompanyId=r.data.id;
+  closeModal(); render(); toast(r.message);
+}
+
+/* ===================== 관계기관 ===================== */
+function viewAgencies(){
+  UI.selectedAgencyId = UI.selectedAgencyId || (DB.agencies[0] && DB.agencies[0].id);
+  const sel=UI.selectedAgencyId;
+  const totalConsult=DB.consultations.length;
+  const inProgress=DB.complaints.filter(c=>c.status==="관계기관 협의중").length;
+  const waiting=DB.consultations.filter(cs=>!cs.answer).length;
+  const policyCnt=DB.policies.length;
+  return `
+  <div class="card">
+    <div class="toprow" style="justify-content:space-between;display:flex;align-items:center">
+      <div></div>
+      ${isReadOnlyRole()?"":`<button class="btn primary" onclick="openConsultFormStandalone()">+ 기관협의 등록</button>`}
+    </div>
+    <div class="grid cols-4">
+      ${kpiCard("전체 기관", DB.agencies.length)}
+      ${kpiCard("협의 진행중", inProgress)}
+      ${kpiCard("답변대기", waiting)}
+      ${kpiCard("정책건의", policyCnt)}
+    </div>
+  </div>
+  <div class="split2">
+    <div class="card">
+      <div class="toprow" style="justify-content:space-between;display:flex;align-items:center">
+        <h2 style="margin:0">기관 목록</h2>
+        ${isReadOnlyRole()?"":`<button class="btn primary sm" onclick="openAgencyForm(null)">+ 기관 추가</button>`}
+      </div>
+      <table><thead><tr><th>기관</th><th class="num">협의건수</th><th class="num">진행중</th><th class="num">답변대기</th></tr></thead><tbody>
+      ${DB.agencies.map(a=>{
+        const list=DB.consultations.filter(cs=>cs.agencyId===a.id);
+        const prog = DB.complaints.filter(c=>c.relatedAgencyIds.includes(a.id) && !["처리완료","종결"].includes(c.status)).length;
+        const wait = list.filter(cs=>!cs.answer).length;
+        return `<tr class="${sel===a.id?'active':''}" style="${sel===a.id?'background:var(--line-soft)':''}" onclick="UI.selectedAgencyId='${a.id}'; render()">
+          <td>${esc(a.name)}</td><td class="num">${list.length}</td><td class="num">${prog}</td><td class="num">${wait}</td>
+        </tr>`;
+      }).join("")}
+      </tbody></table>
+    </div>
+    ${agencyDetailCard(sel)}
+  </div>`;
+}
+function agencyDetailCard(agencyId){
+  const a=agencyById(agencyId);
+  if(!a) return `<div class="card"><div class="empty">기관을 선택하세요.</div></div>`;
+  const list=[...DB.consultations.filter(cs=>cs.agencyId===agencyId)].sort((x,y)=>x.date<y.date?1:-1);
+  return `<div class="card">
+    <div class="toprow" style="justify-content:space-between;display:flex;align-items:flex-start">
+      <h2 style="margin:0">${esc(a.name)}</h2>
+      ${isReadOnlyRole()?"":`<button class="btn ghost sm" onclick="openAgencyForm('${a.id}')">기관 정보 수정</button>`}
+    </div>
+    <div style="font-weight:700;font-size:13px;margin-bottom:4px">주요 담당부서</div>
+    <div class="muted" style="margin-bottom:14px">${esc(a.dept)}</div>
+    <div class="kv"><div class="k">담당자</div><div>${esc(a.manager)} (${esc(a.position)})</div></div>
+    <div class="kv"><div class="k">연락처</div><div>${esc(a.phone)}</div></div>
+    <div class="kv"><div class="k">이메일</div><div>${esc(a.email)}</div></div>
+    <div class="kv"><div class="k">주요 업무</div><div>${esc(a.duties||'-')}</div></div>
+    <div style="font-weight:700;font-size:13px;margin:16px 0 6px">최근 협의</div>
+    ${list.length? list.slice(0,6).map(cs=>`<div class="noteitem" onclick="setView('complaint-detail',{id:'${cs.complaintId}'})">
+        <div class="nt">${esc(cs.date)} ${esc(complaintById(cs.complaintId)?.title||'')}</div>
+        <div class="nd">${esc(cs.content)} ${cs.answer?`· 답변: ${esc(cs.answer)}`:'· 답변대기'}</div>
+      </div>`).join("") : `<div class="empty">협의 이력이 없습니다.</div>`}
+  </div>`;
+}
+function openConsultFormStandalone(){
+  openModal("기관협의 등록", `
+    <div class="field"><label class="req">관련 민원</label><select id="cf-complaint">${DB.complaints.map(c=>`<option value="${c.id}">${esc(c.no)} · ${esc(c.title)}</option>`).join("")}</select></div>
+    <div class="row2">
+      <div class="field"><label class="req">기관</label><select id="cf-agency">${DB.agencies.map(a=>`<option value="${a.id}" ${a.id===UI.selectedAgencyId?'selected':''}>${esc(a.name)}</option>`).join("")}</select></div>
+      <div class="field"><label class="req">협의일</label><input type="date" id="cf-date" value="${todayISO()}"></div>
+    </div>
+    <div class="field"><label class="req">협의방법</label><select id="cf-method"><option>공문 질의</option><option>유선 협의</option><option>대면 협의</option><option>간담회</option><option>이메일</option></select></div>
+    <div class="field"><label class="req">협의내용</label><textarea id="cf-content"></textarea></div>
+    <div class="row2">
+      <div class="field"><label>기관 답변</label><input type="text" id="cf-answer"></div>
+      <div class="field"><label>회신기한</label><input type="date" id="cf-deadline" value="${addDays(todayISO(),7)}"></div>
+    </div>
+    <div class="field"><label>후속조치</label><input type="text" id="cf-followup"></div>
+    <div class="btnrow"><button class="btn primary" onclick="submitConsultForm(document.getElementById('cf-complaint').value)">저장</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function openAgencyForm(agencyId){
+  const a = agencyId? agencyById(agencyId) : {name:"",dept:"",manager:"",position:"",phone:"",email:"",duties:""};
+  openModal(agencyId? "기관 정보 수정" : "기관 추가", `
+    <div class="field"><label class="req">기관명</label><input type="text" id="agf-name" value="${esc(a.name)}"></div>
+    <div class="field"><label>주요 담당부서</label><input type="text" id="agf-dept" value="${esc(a.dept)}" placeholder="예: 전자정책과 · 산업정책과"></div>
+    <div class="row2">
+      <div class="field"><label>담당자</label><input type="text" id="agf-manager" value="${esc(a.manager)}"></div>
+      <div class="field"><label>직위</label><input type="text" id="agf-position" value="${esc(a.position)}"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>연락처</label><input type="tel" id="agf-phone" value="${esc(a.phone)}"></div>
+      <div class="field"><label>이메일</label><input type="email" id="agf-email" value="${esc(a.email)}"></div>
+    </div>
+    <div class="field"><label>주요 담당업무</label><input type="text" id="agf-duties" value="${esc(a.duties)}"></div>
+    <div class="btnrow"><button class="btn primary" onclick="submitAgencyForm('${agencyId||''}')">저장</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function submitAgencyForm(existingId){
+  const data={name:val("agf-name"), dept:val("agf-dept"), manager:val("agf-manager"), position:val("agf-position"), phone:val("agf-phone"), email:val("agf-email"), duties:val("agf-duties")};
+  const r=Backend.saveAgency(existingId||null, data);
+  if(!r.ok){ toast(r.message); return; }
+  if(!existingId) UI.selectedAgencyId=r.data.id;
+  closeModal(); render(); toast(r.message);
+}
+
+/* ===================== 정책건의·산업현안 ===================== */
+function viewPolicies(){
+  const top=[...DB.policies].sort((a,b)=> b.linkedComplaintIds.length - a.linkedComplaintIds.length)[0];
+  return `
+  <div class="card">
+    <div class="toprow" style="justify-content:space-between;display:flex;align-items:center">
+      <div></div>
+      ${isReadOnlyRole()?"":`<button class="btn primary" onclick="openPolicyForm(null,null)">+ 신규 정책건의</button>`}
+    </div>
+    ${top? `<div class="card" style="background:var(--danger-soft);cursor:pointer;padding:16px 18px" onclick="setView('policy-detail',{id:'${top.id}'})">
+      <div style="font-weight:700;font-size:15px">🔴 ${esc(top.title)}</div>
+      <div class="toprow" style="margin-top:6px">
+        <span class="badge gray">관련 회원사 ${countLinkedCompanies(top)}개사</span>
+        <span class="badge gray">관련 민원 ${top.linkedComplaintIds.length}건</span>
+        <span class="badge gray">관계기관 ${esc(agencyName(top.targetAgencyId))}</span>
+      </div>
+      <div style="margin-top:8px"><span class="badge info">상태: ${esc(top.status)}</span></div>
+    </div>`:""}
+    <table style="margin-top:16px"><thead><tr><th>정책건의</th><th class="num">관련 민원</th><th class="num">회원사</th><th>기관</th><th>상태</th></tr></thead><tbody>
+    ${DB.policies.map(p=>`<tr onclick="setView('policy-detail',{id:'${p.id}'})">
+      <td>${esc(p.title)}</td><td class="num">${p.linkedComplaintIds.length}</td><td class="num">${countLinkedCompanies(p)}</td><td>${esc(agencyName(p.targetAgencyId))}</td><td><span class="link">${esc(p.status)}</span></td>
+    </tr>`).join("") || `<tr style="cursor:default"><td colspan="5" class="empty">등록된 정책건의가 없습니다.</td></tr>`}
+    </tbody></table>
+  </div>`;
+}
+function countLinkedCompanies(p){
+  const set=new Set(p.linkedComplaintIds.map(id=>{ const c=complaintById(id); return c? c.companyId : null; }).filter(Boolean));
+  return set.size;
+}
+function viewPolicyDetail(id){
+  const p=policyById(id);
+  if(!p) return `<div class="card"><div class="empty">현안을 찾을 수 없습니다.</div></div>`;
+  const linked=p.linkedComplaintIds.map(complaintById).filter(Boolean);
+  const consultCnt = DB.consultations.filter(cs=> linked.some(c=>c.id===cs.complaintId)).length;
+  const timeline = buildIssueTimeline(p, linked);
+  return `
+  <div class="card">
+    <div style="font-size:19px;font-weight:700">${esc(p.title)}</div>
+    <div class="toprow" style="margin-top:8px">${importanceLikeBadge(p)}<span class="badge info">${esc(p.status)}</span></div>
+    <div class="grid cols-4" style="margin-top:14px">
+      ${kpiCard("관련 회원사", countLinkedCompanies(p)+"개사")}
+      ${kpiCard("관련 민원", linked.length+"건")}
+      ${kpiCard("정책건의", "1건")}
+      ${kpiCard("기관협의", consultCnt+"회")}
+    </div>
+    <div class="grid cols-2" style="margin-top:14px">
+      <div class="card" style="background:#faf7f0">
+        <h2 style="font-size:13.5px">산업계 애로사항</h2>
+        <div style="font-size:13.5px;line-height:1.7">${esc(p.industryIssue)}</div>
+      </div>
+      <div class="card" style="background:#faf7f0">
+        <h2 style="font-size:13.5px">정책건의 흐름</h2>
+        <div class="toprow">
+          <span class="pill">현행 제도</span>→<span class="pill">문제점</span>→<span class="pill">개선방안</span>→<span class="pill">기대효과</span>
+        </div>
+        <div class="kv" style="margin-top:8px"><div class="k">현행제도</div><div>${esc(p.currentSystem)}</div></div>
+        <div class="kv"><div class="k">문제점</div><div>${esc(p.problem)}</div></div>
+        <div class="kv"><div class="k">개선방안</div><div>${esc(p.improvement)}</div></div>
+        <div class="kv"><div class="k">기대효과</div><div>${esc(p.effect)}</div></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h2>대응 타임라인</h2>
+      ${timeline.length? `<ul class="timeline" style="display:flex;gap:0;list-style:none;padding:0">${timeline.map((t,i)=>`<li style="flex:1;border-left:none;border-top:2px solid var(--line-soft);padding:14px 8px 0 0;position:relative">
+          <div style="position:absolute;left:-1px;top:-6px;width:10px;height:10px;border-radius:50%;background:${i===timeline.length-1 && !t.done? '#fff':'#3b6fe0'};border:${i===timeline.length-1 && !t.done?'2px solid #a3a39c':'none'}"></div>
+          <div style="font-size:12px;color:var(--sub)">${esc(t.date)}</div><div style="font-size:12.5px;font-weight:700">${esc(t.label)}</div>
+        </li>`).join("")}</ul>` : `<div class="empty">타임라인 데이터가 없습니다.</div>`}
+    </div>
+    <div class="btnrow" style="margin-top:16px">
+      <button class="btn" onclick="setView('complaints'); UI.filters={q:'${esc(p.title.split(' ')[0])}'}">관련 민원 보기</button>
+      <button class="btn" onclick="openPolicyDoc('${p.id}')">정책건의서 보기</button>
+      <button class="btn" onclick="setView('agencies'); UI.selectedAgencyId='${p.targetAgencyId}'">기관협의 보기</button>
+      ${isReadOnlyRole()?"":`<button class="btn ghost" onclick="openPolicyForm('${p.id}',null)">현안 정보 수정</button>`}
+    </div>
+  </div>`;
+}
+function importanceLikeBadge(p){
+  const cnt=p.linkedComplaintIds.length;
+  const level = cnt>=5? "높음" : cnt>=3? "보통" : "낮음";
+  return importanceBadge(level);
+}
+function buildIssueTimeline(p, linked){
+  const items=[];
+  if(linked.length){ const first=[...linked].sort((a,b)=>a.receivedAt<b.receivedAt?-1:1)[0]; items.push({date:first.receivedAt, label:"민원 접수", done:true}); }
+  items.push({date:p.proposedAt, label:"공통 이슈 지정 · 정책건의 발굴", done:true});
+  const consult = DB.consultations.filter(cs=> linked.some(c=>c.id===cs.complaintId)).sort((a,b)=>a.date<b.date?-1:1);
+  consult.slice(0,2).forEach(cs=> items.push({date:cs.date, label:`${agencyName(cs.agencyId)} 협의`, done:true}));
+  items.push({date:p.proposedAt, label:"기관 제출", done: !["발굴","내부검토"].includes(p.status)});
+  items.push({date: p.status==="답변완료"||p.status==="반영"||p.status==="일부반영"||p.status==="미반영" ? p.proposedAt : "-", label: ["반영","일부반영","미반영","답변완료","종결"].includes(p.status) ? "기관 답변" : "답변 예정", done: ["반영","일부반영","미반영","답변완료","종결"].includes(p.status)});
+  return items;
+}
+function openPolicyDoc(id){
+  const p=policyById(id);
+  openModalWide("정책건의서 (미리보기)", `
+    <div class="kv"><div class="k">제목</div><div><b>${esc(p.title)}</b></div></div>
+    <div class="kv"><div class="k">건의 배경</div><div>${esc(p.background)}</div></div>
+    <div class="kv"><div class="k">산업계 애로</div><div>${esc(p.industryIssue)}</div></div>
+    <div class="kv"><div class="k">현행 제도</div><div>${esc(p.currentSystem)}</div></div>
+    <div class="kv"><div class="k">문제점</div><div>${esc(p.problem)}</div></div>
+    <div class="kv"><div class="k">개선방안</div><div>${esc(p.improvement)}</div></div>
+    <div class="kv"><div class="k">기대효과</div><div>${esc(p.effect)}</div></div>
+    <div class="kv"><div class="k">건의 대상기관</div><div>${esc(agencyName(p.targetAgencyId))}</div></div>
+    <div class="kv"><div class="k">건의일</div><div>${esc(p.proposedAt)}</div></div>
+    <div class="kv"><div class="k">진행상태</div><div>${esc(p.status)}</div></div>
+    <div class="kv"><div class="k">답변내용</div><div>${esc(p.answer||'-')}</div></div>
+    <div class="kv"><div class="k">후속조치</div><div>${esc(p.followup||'-')}</div></div>
+    <div class="kv"><div class="k">관련 민원</div><div>${p.linkedComplaintIds.map(id=>{const c=complaintById(id); return c? c.no:id;}).join(", ")}</div></div>
+    <div class="btnrow" style="margin-top:14px"><button class="btn primary" onclick="window.print()">인쇄 / PDF로 저장</button><button class="btn ghost" onclick="closeModal()">닫기</button></div>
+  `);
+}
+function openPolicyForm(id, seedComplaintId){
+  const p = id? policyById(id) : null;
+  const d = p? {...p} : {title:"",background:"",industryIssue:"",currentSystem:"",problem:"",improvement:"",effect:"",targetAgencyId:DB.agencies[0].id,proposedAt:todayISO(),status:"발굴",answer:"",followup:"",linkedComplaintIds: seedComplaintId? [seedComplaintId] : []};
+  openModalWide(p? "정책건의 정보 수정" : "신규 정책건의", `
+    <div class="field"><label class="req">정책건의 제목</label><input type="text" id="pf-title" value="${esc(d.title)}"></div>
+    <div class="row2">
+      <div class="field"><label class="req">대상기관</label><select id="pf-agency">${DB.agencies.map(a=>`<option value="${a.id}" ${a.id===d.targetAgencyId?'selected':''}>${esc(a.name)}</option>`).join("")}</select></div>
+      <div class="field"><label class="req">진행상태</label><select id="pf-status">${POLICY_STATUS.map(s=>`<option ${s===d.status?'selected':''}>${s}</option>`).join("")}</select></div>
+    </div>
+    <div class="field"><label>건의 배경</label><textarea id="pf-background">${esc(d.background)}</textarea></div>
+    <div class="field"><label>산업계 애로사항</label><textarea id="pf-issue">${esc(d.industryIssue)}</textarea></div>
+    <div class="row2">
+      <div class="field"><label>현행 제도</label><textarea id="pf-current">${esc(d.currentSystem)}</textarea></div>
+      <div class="field"><label>문제점</label><textarea id="pf-problem">${esc(d.problem)}</textarea></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>개선방안</label><textarea id="pf-improve">${esc(d.improvement)}</textarea></div>
+      <div class="field"><label>기대효과</label><textarea id="pf-effect">${esc(d.effect)}</textarea></div>
+    </div>
+    <div class="field"><label>관련 민원 선택</label>
+      <div style="max-height:150px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:8px 10px">
+        ${DB.complaints.map(c=>`<div class="checkbox-row"><input type="checkbox" value="${c.id}" class="pf-link-cb" ${d.linkedComplaintIds.includes(c.id)?'checked':''}> ${esc(c.no)} · ${esc(c.title)} (${esc(companyName(c.companyId))})</div>`).join("")}
+      </div>
+    </div>
+    <div class="btnrow"><button class="btn primary" onclick="submitPolicyForm('${p? p.id : ''}')">저장</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function submitPolicyForm(existingId){
+  const linkedComplaintIds = Array.from(document.querySelectorAll(".pf-link-cb:checked")).map(el=>el.value);
+  const data={ title:val("pf-title"), background:val("pf-background"), industryIssue:val("pf-issue"), currentSystem:val("pf-current"),
+    problem:val("pf-problem"), improvement:val("pf-improve"), effect:val("pf-effect"), targetAgencyId:val("pf-agency"),
+    status:val("pf-status"), answer:"", followup:"", linkedComplaintIds };
+  const r=Backend.savePolicy(existingId||null, data);
+  if(!r.ok){ toast(r.message); return; }
+  closeModal(); render(); toast(r.message);
+}
+
+/* ===================== 통계 ===================== */
+function viewStats(){
+  UI.statsRange = UI.statsRange || "분기";
+  const total=DB.complaints.length;
+  const done=DB.complaints.filter(c=>["처리완료","종결"].includes(c.status)).length;
+  const rate = total? Math.round(done/total*1000)/10 : 0;
+  const durations = DB.complaints.filter(c=>c.completedAt).map(c=>diffDays(c.receivedAt,c.completedAt));
+  const avgDays = durations.length? Math.round(durations.reduce((a,b)=>a+b,0)/durations.length*10)/10 : 0;
+  const policyDone=DB.policies.filter(p=>["반영","일부반영"].includes(p.status)).length;
+  const policyRate = DB.policies.length? Math.round(policyDone/DB.policies.length*1000)/10 : 0;
+
+  const months=[]; for(let i=5;i>=0;i--){ const d=new Date(); d.setMonth(d.getMonth()-i); months.push(d.toISOString().slice(0,7)); }
+  const monthCounts=months.map(m=>DB.complaints.filter(c=>monthLabel(c.receivedAt)===m).length);
+  const monthPrev=months.map((m,i)=> i===0?0:monthCounts[i-1]);
+
+  const typeCounts={}; DB.complaints.forEach(c=>{ typeCounts[c.type]=(typeCounts[c.type]||0)+1; });
+  const maxType=Math.max(1,...Object.values(typeCounts));
+
+  const flow = {
+    "정책건의": DB.policies.length,
+    "기관 검토": DB.policies.filter(p=>["기관 제출","기관 검토"].includes(p.status)).length,
+    "전면 반영": DB.policies.filter(p=>p.status==="반영").length,
+    "일부 반영": DB.policies.filter(p=>p.status==="일부반영").length,
+    "지속추진": DB.policies.filter(p=>p.status==="지속추진").length,
+    "미반영": DB.policies.filter(p=>p.status==="미반영").length,
+  };
+
+  return `
+  <div class="card">
+    <div class="toprow" style="justify-content:space-between;display:flex;align-items:center">
+      <div class="btnrow">
+        ${["월간","분기","연간"].map(r=>`<button class="btn sm ${UI.statsRange===r?'primary':'ghost'}" onclick="UI.statsRange='${r}'; render()">${r}</button>`).join("")}
+      </div>
+    </div>
+    <div class="grid cols-4" style="margin-top:12px">
+      ${kpiCard("총 접수", total+"건")}
+      ${kpiCard("처리율", rate+"%")}
+      ${kpiCard("평균 처리기간", avgDays+"일")}
+      ${kpiCard("정책반영률", policyRate+"%")}
+    </div>
+  </div>
+  <div class="grid cols-2">
+    <div class="card">
+      <h2>민원 추이 (월별)</h2>
+      ${lineChart(months.map(m=>m.slice(5)+"월"), monthCounts)}
+    </div>
+    <div class="card">
+      <h2>유형별 현황</h2>
+      <div class="barlist">
+        ${Object.entries(typeCounts).sort((a,b)=>b[1]-a[1]).map(([t,v])=>`
+          <div class="brow"><div class="blab"><span>${esc(t)}</span><span>${v}건</span></div>
+            <div class="btrack"><div class="bfill" style="width:${(v/maxType*100).toFixed(0)}%"></div></div>
+          </div>`).join("") || `<div class="empty">데이터 없음</div>`}
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>정책성과 흐름</h2>
+    <div class="toprow">
+      ${Object.entries(flow).map(([k,v])=>`<span class="pill" style="${k.includes('반영')&&!k.includes('미')?'background:var(--ok-soft);color:var(--ok)':k==='미반영'?'background:var(--danger-soft);color:var(--danger)':''}">${esc(k)} ${v}</span>`).join(" → ")}
+    </div>
+  </div>
+  <div class="card">
+    <div class="btnrow">
+      <button class="btn ghost" onclick="exportCSV(DB.complaints)">⬇ Excel(CSV)</button>
+      <button class="btn ghost" onclick="window.print()">🖨 PDF 보고서(인쇄)</button>
+    </div>
+  </div>`;
+}
+
+/* ===================== 관리자 ===================== */
+function viewAdmin(){
+  UI.adminTab = UI.adminTab || "users";
+  const tabs=[["users","사용자"],["codes","분류체계"],["perm","권한 매트릭스"],["audit","감사로그"],["data","데이터 관리"]];
+  const panels={users:adminUsers, codes:adminCodes, perm:adminPermissions, audit:adminAudit, data:adminData};
+  return `<div class="card">
+    <div class="toprow" style="justify-content:space-between;display:flex;align-items:center;margin-bottom:2px">
+      <div></div>
+      <span class="badge ${isAdmin()?'ok':'gray'}">현재 로그인: ${esc(currentUser().name)} · ${esc(currentUser().role)}${isAdmin()?' (관리자 전체 권한)':''}</span>
+    </div>
+    <div class="tabs">${tabs.map(([k,l])=>`<button class="${UI.adminTab===k?'active':''}" onclick="UI.adminTab='${k}'; render()">${l}</button>`).join("")}</div>
+    ${(panels[UI.adminTab]||adminUsers)()}
+  </div>`;
+}
+function adminUsers(){
+  const editable=isAdmin();
+  return `
+  <div class="toprow" style="justify-content:space-between;display:flex;align-items:center"><h2 style="margin:0">사용자 관리</h2>${editable?`<button class="btn primary sm" onclick="openUserForm(null)">+ 사용자 추가</button>`:""}</div>
+  ${editable?"":`<div class="hint" style="margin-bottom:10px">사용자 추가·수정·삭제는 관리자 권한이 필요합니다. 현재 로그인: ${esc(currentUser().name)}(${esc(currentUser().role)})</div>`}
+  <table><thead><tr><th>이름</th><th>부서</th><th>권한</th>${editable?"<th></th>":""}</tr></thead><tbody>
+  ${DB.users.map(u=>`<tr style="cursor:default"><td>${esc(u.name)}</td><td>${esc(u.dept)}</td><td>${esc(u.role)}</td>
+    ${editable?`<td class="btnrow"><button class="btn sm ghost" onclick="openUserForm('${u.id}')">수정</button><button class="btn sm ghost" onclick="deleteUser('${u.id}')">삭제</button></td>`:""}</tr>`).join("")}
+  </tbody></table>
+  <div class="hint" style="margin-top:12px">권한 안내: 일반사용자/담당자(본인·담당 건 등록·수정) · 팀장(부서 전체) · 관리자(전체+관리) · 임원/조회자(조회만 가능, 삭제는 시스템 전체에서 지원하지 않으며 종결 처리로 대체합니다)</div>`;
+}
+function openUserForm(userId){
+  if(!isAdmin()){ toast("사용자 관리는 관리자만 가능합니다"); return; }
+  const u = userId? DB.users.find(x=>x.id===userId) : {name:"",dept:DEPTS[0],role:"담당자"};
+  openModal(userId? "사용자 정보 수정" : "사용자 추가", `
+    <div class="field"><label class="req">이름</label><input type="text" id="uf-name" value="${esc(u.name)}"></div>
+    <div class="field"><label class="req">부서</label><select id="uf-dept">${DEPTS.concat(["경영지원팀","임원실"]).map(d=>`<option ${d===u.dept?'selected':''}>${d}</option>`).join("")}</select></div>
+    <div class="field"><label class="req">권한</label><select id="uf-role">${["담당자","팀장","관리자","임원/조회자","일반사용자"].map(r=>`<option ${r===u.role?'selected':''}>${r}</option>`).join("")}</select></div>
+    <div class="btnrow"><button class="btn primary" onclick="submitUserForm('${userId||''}')">저장</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  `);
+}
+function submitUserForm(existingId){
+  const data={name:val("uf-name"), dept:val("uf-dept"), role:val("uf-role")};
+  const r=Backend.saveUser(existingId||null, data);
+  if(!r.ok){ toast(r.message); return; }
+  closeModal(); render(); toast(r.message);
+}
+function deleteUser(id){
+  if(!confirm("해당 사용자를 삭제할까요?")) return;
+  const r=Backend.deleteUser(id);
+  if(!r.ok){ toast(r.message); return; }
+  render(); toast(r.message);
+}
+function adminCodes(){
+  const editable=isAdmin();
+  return `
+  <div class="toprow" style="justify-content:space-between;display:flex;align-items:center">
+    <h2 style="margin:0">민원 유형 분류체계</h2>
+    ${editable?`<button class="btn primary sm" onclick="openAddTypeForm()">+ 대분류 추가</button>`:""}
+  </div>
+  <div class="hint" style="margin-bottom:10px">대분류/세부유형은 민원 등록 화면의 선택 목록에 사용됩니다.${editable?"":" (수정은 관리자 권한이 필요합니다)"}</div>
+  <table><thead><tr><th>대분류</th><th>세부유형</th>${editable?"<th></th>":""}</tr></thead><tbody>
+    ${Object.entries(DB.codes.types).map(([k,v])=>`<tr style="cursor:default"><td>${esc(k)}</td><td>
+        ${v.map(s=>`<span class="pill" style="margin:2px 4px 2px 0">${esc(s)}${editable?` <span class="link" style="margin-left:4px" onclick="doRemoveSubtype('${esc(k).replace(/'/g,"\\'")}','${esc(s).replace(/'/g,"\\'")}')">×</span>`:""}</span>`).join("")}
+        ${editable?`<span class="link" onclick="openAddSubtypeForm('${esc(k).replace(/'/g,"\\'")}')">+ 세부유형</span>`:""}
+      </td>${editable?`<td><button class="btn sm ghost" onclick="doRemoveType('${esc(k).replace(/'/g,"\\'")}')">대분류 삭제</button></td>`:""}</tr>`).join("")}
+  </tbody></table>
+  <div class="toprow" style="justify-content:space-between;display:flex;align-items:center;margin-top:20px">
+    <h2 style="margin:0">접수경로</h2>
+    ${editable?`<button class="btn primary sm" onclick="openAddChannelForm()">+ 접수경로 추가</button>`:""}
+  </div>
+  <div class="toprow">${DB.codes.channels.map(c=>`<span class="pill">${esc(c)}${editable?` <span class="link" style="margin-left:4px" onclick="doRemoveChannel('${esc(c).replace(/'/g,"\\'")}')">×</span>`:""}</span>`).join("")}</div>
+  <h2 style="margin-top:20px">민원 상태 / 종결사유 (고정 워크플로)</h2>
+  <div class="hint" style="margin-bottom:6px">상태·종결사유는 업무 규칙(PRD)에 정의된 고정 값으로, 임의 추가·삭제 대신 필요 시 개발 요청으로 변경합니다.</div>
+  <div class="toprow">${STATUS_LIST.map(s=>`<span class="pill">${esc(s)}</span>`).join("")}</div>`;
+}
+function openAddTypeForm(){
+  openModal("대분류 추가", `<div class="field"><label class="req">대분류명</label><input type="text" id="ty-name"></div>
+    <div class="btnrow"><button class="btn primary" onclick="doAddType()">추가</button><button class="btn ghost" onclick="closeModal()">취소</button></div>`);
+}
+function doAddType(){ const r=Backend.addType(val("ty-name")); if(!r.ok){ toast(r.message); return; } closeModal(); render(); toast(r.message); }
+function doRemoveType(name){ if(!confirm(`'${name}' 대분류를 삭제할까요? (이미 등록된 민원의 기존 유형 표시는 유지됩니다)`)) return; const r=Backend.removeType(name); if(!r.ok){ toast(r.message); return; } render(); toast(r.message); }
+function openAddSubtypeForm(major){
+  openModal(`${major} — 세부유형 추가`, `<div class="field"><label class="req">세부유형명</label><input type="text" id="sty-name"></div>
+    <div class="btnrow"><button class="btn primary" onclick="doAddSubtype('${major.replace(/'/g,"\\'")}')">추가</button><button class="btn ghost" onclick="closeModal()">취소</button></div>`);
+}
+function doAddSubtype(major){ const r=Backend.addSubtype(major, val("sty-name")); if(!r.ok){ toast(r.message); return; } closeModal(); render(); toast(r.message); }
+function doRemoveSubtype(major,name){ const r=Backend.removeSubtype(major,name); if(!r.ok){ toast(r.message); return; } render(); toast(r.message); }
+function openAddChannelForm(){
+  openModal("접수경로 추가", `<div class="field"><label class="req">접수경로명</label><input type="text" id="ch-name"></div>
+    <div class="btnrow"><button class="btn primary" onclick="doAddChannel()">추가</button><button class="btn ghost" onclick="closeModal()">취소</button></div>`);
+}
+function doAddChannel(){ const r=Backend.addChannel(val("ch-name")); if(!r.ok){ toast(r.message); return; } closeModal(); render(); toast(r.message); }
+function doRemoveChannel(name){ const r=Backend.removeChannel(name); if(!r.ok){ toast(r.message); return; } render(); toast(r.message); }
+
+function adminPermissions(){
+  const roles=[
+    {role:"일반사용자", view:"○", create:"○", edit:"본인 담당 건(또는 미배정)", del:"X", admin:"X"},
+    {role:"담당자", view:"○", create:"○", edit:"본인 담당 건(또는 미배정)", del:"X", admin:"X"},
+    {role:"팀장", view:"○", create:"○", edit:"소속 부서 전체 건", del:"제한(종결 처리로 대체)", admin:"X"},
+    {role:"관리자", view:"○", create:"○", edit:"전체 건", del:"○(사용자·코드 등 시스템 데이터)", admin:"○"},
+    {role:"임원/조회자", view:"○", create:"X", edit:"X", del:"X", admin:"X"},
+  ];
+  const counts={}; DB.users.forEach(u=> counts[u.role]=(counts[u.role]||0)+1);
+  return `
+  <h2>권한 매트릭스</h2>
+  <div class="hint" style="margin-bottom:10px">PRD §21 권한 규칙이 실제 화면에 적용된 내용입니다. 사용자별 권한 변경은 "사용자" 탭에서 합니다.</div>
+  <table><thead><tr><th>권한</th><th>조회</th><th>등록</th><th>수정 범위</th><th>삭제</th><th>시스템 관리</th><th class="num">현재 인원</th></tr></thead><tbody>
+    ${roles.map(r=>`<tr style="cursor:default"><td><b>${esc(r.role)}</b></td><td>${r.view}</td><td>${r.create}</td><td>${esc(r.edit)}</td><td>${esc(r.del)}</td><td>${r.admin}</td><td class="num">${counts[r.role]||0}명</td></tr>`).join("")}
+  </tbody></table>
+  <div class="hint" style="margin-top:12px">실제 로그인 사용자를 바꿔가며 확인하려면 화면 우측 상단의 사용자 선택 드롭다운을 사용하세요.</div>`;
+}
+
+function adminAudit(){
+  const f=UI.auditFilters=UI.auditFilters||{};
+  const entities=["민원","회원사","관계기관","정책건의","사용자","분류체계","기타"];
+  const list=Backend.globalAuditLog(f).slice(0,300);
+  return `
+  <div class="toprow" style="justify-content:space-between;display:flex;align-items:center"><h2 style="margin:0">전체 감사로그</h2><span class="muted" style="font-size:12.5px">총 ${DB.auditLog.length}건 중 최근 ${list.length}건 표시</span></div>
+  <div class="searchbar">
+    <input type="search" placeholder="사용자 / 항목 / 대상 검색" value="${esc(f.q||'')}" oninput="UI.auditFilters.q=this.value; render()">
+  </div>
+  <div class="filters">
+    <select onchange="UI.auditFilters.entity=this.value; render()"><option value="">대상유형 전체</option>${entities.map(e=>`<option value="${e}" ${f.entity===e?'selected':''}>${e}</option>`).join("")}</select>
+    ${(f.q||f.entity)?`<button class="btn ghost sm" onclick="UI.auditFilters={}; render()">필터 초기화</button>`:""}
+  </div>
+  <table><thead><tr><th>일시</th><th>사용자</th><th>대상유형</th><th>대상</th><th>항목</th><th>변경전</th><th>변경후</th><th>사유</th></tr></thead><tbody>
+  ${list.length? list.map(a=>`<tr style="cursor:${a.target&&a.target.startsWith('cp_')?'pointer':'default'}" onclick="${a.target&&a.target.startsWith('cp_')?`setView('complaint-detail',{id:'${a.target}'})`:''}">
+      <td>${esc(a.at)}</td><td>${esc(a.user)}</td><td>${esc(a.entity||Backend.entityOf(a.target))}</td><td>${esc(Backend.targetLabel(a.target))}</td>
+      <td>${esc(a.field)}</td><td>${esc(a.before)}</td><td>${esc(a.after)}</td><td>${esc(a.reason)}</td>
+    </tr>`).join("") : `<tr style="cursor:default"><td colspan="8" class="empty">기록이 없습니다.</td></tr>`}
+  </tbody></table>`;
+}
+
+function adminData(){
+  return `
+  <h2>데이터 관리</h2>
+  <div class="grid cols-3">
+    ${kpiCard("민원", DB.complaints.length+"건")}
+    ${kpiCard("회원사·기관", DB.companies.length+DB.agencies.length+"개")}
+    ${kpiCard("감사로그", DB.auditLog.length+"건")}
+  </div>
+  <div class="kv"><div class="k">정책건의</div><div>${DB.policies.length}건</div></div>
+  <div class="kv"><div class="k">처리이력</div><div>${DB.history.length}건</div></div>
+  <div class="kv"><div class="k">사용자</div><div>${DB.users.length}명</div></div>
+  <h2 style="margin-top:20px">내보내기</h2>
+  <div class="btnrow">
+    <button class="btn ghost" onclick="exportCSV(DB.complaints)">⬇ 민원 CSV 내보내기</button>
+    ${isAdmin()? `<button class="btn ghost" onclick="doExportBackup()">⬇ 전체 백업(JSON) 내보내기</button>` : ""}
+  </div>
+  ${isAdmin()? `
+  <h2 style="margin-top:20px">복원 / 초기화</h2>
+  <div class="field" style="max-width:420px"><label>백업 파일(JSON)로 복원</label><input type="file" accept="application/json" onchange="handleImportFile(this.files)"></div>
+  <div class="btnrow" style="margin-top:8px">
+    <button class="btn danger" onclick="resetSeed()">샘플 데이터로 초기화</button>
+  </div>
+  ` : `<div class="hint" style="margin-top:16px">백업 내보내기·복원·초기화는 관리자 권한이 필요합니다.</div>`}
+  <div class="hint" style="margin-top:16px">모든 데이터는 이 브라우저의 로컬 저장소(localStorage)에만 저장됩니다. 다른 PC·브라우저와 공유하려면 백업(JSON)을 내보내 상대방이 복원하면 됩니다.</div>`;
+}
+function doExportBackup(){
+  const r=Backend.buildBackupJSON();
+  if(!r.ok){ toast(r.message); return; }
+  downloadTextFile(r.data, `edpa_backup_${todayISO()}.json`, "application/json;charset=utf-8;");
+  toast(r.message);
+}
+function handleImportFile(files){
+  const file=files && files[0]; if(!file) return;
+  if(!confirm("백업 파일로 복원하면 현재 브라우저의 데이터가 모두 대체됩니다. 계속할까요?")) return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const r=Backend.restoreFromBackup(String(e.target.result));
+    if(!r.ok){ toast(r.message); return; }
+    UI.view="dashboard"; toast(r.message); render();
+  };
+  reader.onerror=function(){ toast("파일을 읽는 중 오류가 발생했습니다"); };
+  reader.readAsText(file, "utf-8");
+}
+
+/* ===================== 알림 패널 ===================== */
+function toggleNotifPanel(){
+  const list=computeNotifications();
+  document.getElementById("notif-panel-body").innerHTML = list.length? list.map(n=>`
+    <div class="noteitem" onclick="closeNotifPanel(); setView('complaint-detail',{id:'${n.complaintId}'})">
+      <div class="nt">${notifIcon(n.type)} ${esc(n.type)}</div>
+      <div class="nd">${esc(n.text)}</div>
+    </div>`).join("") : `<div class="empty">새 알림이 없습니다.</div>`;
+  document.getElementById("notif-panel-backdrop").classList.add("show");
+}
+function notifIcon(type){
+  return {"기한초과":"🔴","기한임박":"🟠","답변대기":"🔵","회신필요":"🟣","미배정":"⚪","후속조치":"🟡"}[type] || "🔔";
+}
+function closeNotifPanel(){ document.getElementById("notif-panel-backdrop").classList.remove("show"); }
+
+/* ===================== 모달 공통 ===================== */
+function openModal(title, bodyHtml){
+  document.getElementById("modal-box").classList.remove("wide");
+  document.getElementById("modal-title").textContent=title;
+  document.getElementById("modal-body").innerHTML=bodyHtml;
+  document.getElementById("modal-backdrop").classList.add("show");
+}
+function openModalWide(title, bodyHtml){
+  document.getElementById("modal-box").classList.add("wide");
+  document.getElementById("modal-title").textContent=title;
+  document.getElementById("modal-body").innerHTML=bodyHtml;
+  document.getElementById("modal-backdrop").classList.add("show");
+}
+function closeModal(){ document.getElementById("modal-backdrop").classList.remove("show"); }
+document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closeModal(); closeNotifPanel(); } });
+
+/* ===================== 초기화 ===================== */
+function init(){
+  DB = loadDB();
+  DB.attachments = DB.attachments || [];
+  UI = { view:"dashboard", params:{}, currentUserId: DB.users[0].id, filters:{}, detailTab:"info" };
+  persist();
+  render();
+}
+init();
+</script>
+</body>
+</html>

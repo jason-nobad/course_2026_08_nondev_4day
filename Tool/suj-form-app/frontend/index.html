@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>정책 애로사항 건의 접수</title>
+<style>
+  :root {
+    --ink: #222;
+    --sub: #666;
+    --line: #ddd;
+    --line-soft: #ebebeb;
+    --accent: #ff385c;
+    --bg: #fff;
+    --bg-soft: #f7f7f7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg-soft);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+    line-height: 1.5;
+    padding: 32px 16px 64px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  header { margin-bottom: 24px; }
+  h1 { font-size: 21px; font-weight: 700; margin: 0 0 8px; }
+  p.lead { color: var(--sub); font-size: 14px; margin: 0; }
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  form.card { margin-bottom: 24px; }
+  fieldset { border: none; padding: 0; margin: 0 0 24px; }
+  legend { font-size: 16px; font-weight: 600; margin-bottom: 12px; padding: 0; }
+  .field { margin-bottom: 16px; }
+  label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  label .req { color: var(--accent); margin-left: 2px; }
+  .hint { font-size: 12px; color: var(--sub); margin-top: 4px; }
+  input[type="text"], input[type="tel"], input[type="email"], textarea, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .radio-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .radio-row label { display: flex; align-items: center; gap: 6px; font-weight: 400; margin-bottom: 0; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  button {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:disabled { opacity: 0.6; cursor: not-allowed; }
+  #btn-submit { background: var(--accent); color: #fff; }
+  #btn-copy { background: var(--bg-soft); color: var(--ink); border: 1px solid var(--line); }
+  #btn-lookup { background: var(--ink); color: #fff; }
+  .notice {
+    background: var(--bg-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--sub);
+    margin-bottom: 20px;
+  }
+  .status {
+    margin-top: 16px;
+    font-size: 13px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: none;
+  }
+  .status.show { display: block; }
+  .status.ok { background: #eefaf1; color: #1b7a3d; }
+  .status.err { background: #fdeeee; color: #b3261e; }
+  .receipt-no { font-weight: 700; font-size: 15px; }
+  .lookup-result {
+    margin-top: 12px;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 12px;
+    font-size: 13px;
+    display: none;
+  }
+  .lookup-result.show { display: block; }
+  .lookup-result dt { color: var(--sub); font-weight: 600; margin-top: 8px; }
+  .lookup-result dt:first-child { margin-top: 0; }
+  .lookup-result dd { margin: 2px 0 0; }
+  footer { text-align: center; font-size: 12px; color: var(--sub); margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>전자문서산업계 정책 애로사항 건의 접수</h1>
+    <p class="lead">아래 항목을 작성해 제출해 주세요. 작성 기준은 <code>Workflow/suj.md</code> 건의 가이드라인을 따릅니다.</p>
+  </header>
+
+  <div class="notice">
+    제출한 내용은 접수 서버를 거쳐 데이터베이스에 등록되며, 접수 시 <strong>접수번호(EDPA-연도-번호)</strong>가 발급됩니다.
+    접수번호와 연락처로 아래에서 처리 현황을 조회할 수 있습니다.
+  </div>
+
+  <form id="suj-form" class="card">
+    <fieldset>
+      <legend>1. 제출자 정보</legend>
+      <div class="field">
+        <label for="org">제출 회사/단체명<span class="req">*</span></label>
+        <input type="text" id="org" name="org" required />
+      </div>
+      <div class="field">
+        <label for="contact-name">담당자 이름<span class="req">*</span></label>
+        <input type="text" id="contact-name" name="contact-name" required />
+      </div>
+      <div class="field">
+        <label for="contact-phone">연락처(전화)<span class="req">*</span></label>
+        <input type="tel" id="contact-phone" name="contact-phone" required />
+        <div class="hint">대외 공유 자료에는 회사명만 표기되고 담당자 연락처는 비식별 처리됩니다. 처리 현황 조회 시 본인 확인용으로 사용됩니다.</div>
+      </div>
+      <div class="field">
+        <label for="contact-email">이메일</label>
+        <input type="email" id="contact-email" name="contact-email" />
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. 애로사항 내용</legend>
+      <div class="field">
+        <label for="summary">애로사항 요약<span class="req">*</span></label>
+        <input type="text" id="summary" name="summary" placeholder="한두 문장으로 요약" required />
+      </div>
+      <div class="field">
+        <label for="law">관련 법령·제도명</label>
+        <input type="text" id="law" name="law" placeholder="알고 있는 범위에서 작성 (선택)" />
+      </div>
+      <div class="field">
+        <label for="detail">구체적 사례<span class="req">*</span></label>
+        <textarea id="detail" name="detail" required
+          placeholder="언제, 어떤 절차에서, 무엇이 문제였는지 — 날짜·기관명을 포함해 작성해 주세요."></textarea>
+      </div>
+      <div class="field">
+        <label for="direction">희망하는 개선 방향</label>
+        <textarea id="direction" name="direction" placeholder="선택 사항이나 작성 시 검토가 빨라집니다."></textarea>
+      </div>
+      <div class="field">
+        <label>증빙 자료 첨부 여부</label>
+        <div class="radio-row">
+          <label><input type="radio" name="has-evidence" value="있음" checked /> 있음 (담당자에게 별도 전달)</label>
+          <label><input type="radio" name="has-evidence" value="없음" /> 없음</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. 긴급 여부</legend>
+      <div class="field">
+        <div class="radio-row">
+          <label><input type="radio" name="urgent" value="일반" checked /> 일반 처리</label>
+          <label><input type="radio" name="urgent" value="긴급" /> 긴급 (즉시 대응 필요)</label>
+        </div>
+        <div class="hint">긴급 선택 시 담당자가 우선 유선으로 연락드립니다. (<code>Skills/exceptions.md</code> #1 참고)</div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit" id="btn-submit">접수하기</button>
+      <button type="button" id="btn-copy">내용 복사</button>
+    </div>
+    <div class="status" id="status"></div>
+  </form>
+
+  <form id="lookup-form" class="card">
+    <fieldset>
+      <legend>접수번호로 처리 현황 확인</legend>
+      <div class="field">
+        <label for="lookup-receipt">접수번호<span class="req">*</span></label>
+        <input type="text" id="lookup-receipt" name="lookup-receipt" placeholder="예: EDPA-2026-0001" required />
+      </div>
+      <div class="field">
+        <label for="lookup-phone">접수 시 입력한 연락처<span class="req">*</span></label>
+        <input type="tel" id="lookup-phone" name="lookup-phone" required />
+      </div>
+    </fieldset>
+    <div class="actions">
+      <button type="submit" id="btn-lookup">확인</button>
+    </div>
+    <div class="status" id="lookup-status"></div>
+    <dl class="lookup-result" id="lookup-result"></dl>
+  </form>
+
+  <footer>제출 정보는 접수 대장에만 등록되며, 대외 공유 시 비식별 처리됩니다.</footer>
+</div>
+
+<script src="config.js"></script>
+<script>
+  const API_BASE = (window.API_BASE_URL || "").replace(/\/$/, "");
+
+  function buildSummaryText(data) {
+    return [
+      "[전자문서산업계 정책 애로사항 건의]",
+      "",
+      "■ 제출자 정보",
+      `- 회사/단체명: ${data.org}`,
+      `- 담당자: ${data["contact-name"]}`,
+      `- 연락처: ${data["contact-phone"]}`,
+      `- 이메일: ${data["contact-email"] || "(미기재)"}`,
+      "",
+      "■ 애로사항",
+      `- 요약: ${data.summary}`,
+      `- 관련 법령·제도: ${data.law || "(미기재)"}`,
+      `- 구체적 사례:`,
+      `  ${data.detail.replace(/\n/g, "\n  ")}`,
+      `- 희망 개선 방향: ${data.direction || "(미기재)"}`,
+      `- 증빙 자료: ${data["has-evidence"]}`,
+      "",
+      `■ 긴급 여부: ${data.urgent}`,
+    ].join("\n");
+  }
+
+  function readForm(formEl) {
+    const fd = new FormData(formEl);
+    const data = {};
+    fd.forEach((v, k) => (data[k] = v));
+    return data;
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    }[c]));
+  }
+
+  function showStatus(elId, msg, ok) {
+    const el = document.getElementById(elId);
+    el.textContent = msg;
+    el.className = "status show " + (ok ? "ok" : "err");
+  }
+
+  const sujForm = document.getElementById("suj-form");
+  const submitBtn = document.getElementById("btn-submit");
+
+  sujForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!this.reportValidity()) return;
+    if (!API_BASE || API_BASE.includes("YOUR-BACKEND")) {
+      showStatus("status", "접수 서버 주소가 아직 설정되지 않았습니다. config.js를 확인해 주세요.", false);
+      return;
+    }
+
+    const data = readForm(sujForm);
+    submitBtn.disabled = true;
+    try {
+      const res = await fetch(`${API_BASE}/api/complaints`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (!res.ok || !result.ok) {
+        showStatus("status", result.message || "접수 중 오류가 발생했습니다.", false);
+        return;
+      }
+      showStatus(
+        "status",
+        `접수가 완료되었습니다. 접수번호: ${result.receiptNo} — 이 번호로 처리 현황을 조회할 수 있습니다.`,
+        true
+      );
+      sujForm.reset();
+    } catch (err) {
+      showStatus("status", "서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.", false);
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+
+  document.getElementById("btn-copy").addEventListener("click", async function () {
+    if (!sujForm.reportValidity()) return;
+    const data = readForm(sujForm);
+    const text = buildSummaryText(data);
+    try {
+      await navigator.clipboard.writeText(text);
+      showStatus("status", "내용이 클립보드에 복사되었습니다.", true);
+    } catch (err) {
+      showStatus("status", "복사에 실패했습니다. 직접 선택해 복사해 주세요.", false);
+    }
+  });
+
+  const lookupForm = document.getElementById("lookup-form");
+  const lookupBtn = document.getElementById("btn-lookup");
+  const lookupResult = document.getElementById("lookup-result");
+
+  lookupForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!this.reportValidity()) return;
+    if (!API_BASE || API_BASE.includes("YOUR-BACKEND")) {
+      showStatus("lookup-status", "접수 서버 주소가 아직 설정되지 않았습니다. config.js를 확인해 주세요.", false);
+      return;
+    }
+
+    const receiptNo = document.getElementById("lookup-receipt").value.trim();
+    const phone = document.getElementById("lookup-phone").value.trim();
+    lookupBtn.disabled = true;
+    lookupResult.classList.remove("show");
+    try {
+      const res = await fetch(
+        `${API_BASE}/api/complaints/${encodeURIComponent(receiptNo)}?phone=${encodeURIComponent(phone)}`
+      );
+      const result = await res.json();
+      if (!res.ok || !result.ok) {
+        showStatus("lookup-status", result.message || "조회 중 오류가 발생했습니다.", false);
+        return;
+      }
+      const d = result.data;
+      lookupResult.innerHTML = `
+        <dt>회사/단체명</dt><dd>${escapeHtml(d.org)}</dd>
+        <dt>요약</dt><dd>${escapeHtml(d.summary)}</dd>
+        <dt>처리 상태</dt><dd>${escapeHtml(d.status)}</dd>
+        <dt>긴급 여부</dt><dd>${escapeHtml(d.urgent)}</dd>
+        <dt>접수일시</dt><dd>${escapeHtml(new Date(d.created_at).toLocaleString("ko-KR"))}</dd>
+      `;
+      lookupResult.classList.add("show");
+      showStatus("lookup-status", "조회되었습니다.", true);
+    } catch (err) {
+      showStatus("lookup-status", "서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.", false);
+    } finally {
+      lookupBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
